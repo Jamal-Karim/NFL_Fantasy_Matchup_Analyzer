@@ -1,0 +1,10 @@
+spring.application.name=NFL Fantasy Football Analyzer
+
+spring.datasource.url=jdbc:mysql://localhost:3306/nfl_fantasy_analyzer
+
+spring.datasource.username=YOUR_USERNAME_HERE
+spring.datasource.password=YOUR_PASSWORD_HERE
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+server.port=8081
