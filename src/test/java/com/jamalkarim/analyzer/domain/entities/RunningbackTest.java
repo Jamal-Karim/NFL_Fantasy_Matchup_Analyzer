@@ -9,23 +9,13 @@ class RunningbackTest {
 
     @Test
     void testRunningbackConstructor() {
-        // Given
         String name = "Christian McCaffrey";
         String team = "San Francisco 49ers";
-        int rushingAttempts = 300;
-        int rushingYards = 1200;
-        int receptions = 80;
-        int receivingYards = 600;
-        int rushingTouchdowns = 12;
-        int receivingTouchdowns = 5;
 
-        // When
-        Runningback runningback = new Runningback(name, team, rushingAttempts, rushingYards,
-                receptions, receivingYards, rushingTouchdowns, receivingTouchdowns);
+        Runningback runningback = new Runningback(name, team);
 
-        // Then
-        assertEquals(name, runningback.getName());
-        assertEquals(team, runningback.getTeam());
-        assertEquals(Position.RB, runningback.getPosition());
+        assertEquals(name, runningback.getName(), "The player's name should match the name provided in the constructor.");
+        assertEquals(team, runningback.getTeam(), "The player's team should match the team provided in the constructor.");
+        assertEquals(Position.RB, runningback.getPosition(), "The player's position should be set to 'RB'.");
     }
 }
