@@ -2,7 +2,9 @@ package com.jamalkarim.analyzer.domain.entities;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.interfaces.ScareFactor;
+import lombok.Data;
 
+@Data
 public abstract class Player implements ScareFactor {
 
     private String name;
