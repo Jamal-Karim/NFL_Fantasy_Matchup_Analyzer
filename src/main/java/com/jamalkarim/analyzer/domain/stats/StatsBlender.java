@@ -6,7 +6,15 @@ public class StatsBlender {
 
     private static final int GAMES_IN_SEASON = 17;
 
-    // Blended stats for a player who played last season and upcoming / current season
+    /**
+     *
+     * Method for a player who played both last season and is playing in the current season
+     *
+     * @param lastSeasonStats Stats from the previous last season
+     * @param currentSeasonStats Stats from the current season (can be >= 1 game played)
+     *
+     * @return a combined blend of per game stats weighting both last season and current season
+     */
     public BlendedStats standardBlend(Stats lastSeasonStats, Stats currentSeasonStats){
 
         int gamesPlayedInCurrentSeason = currentSeasonStats.getGamesPlayed();
@@ -22,8 +30,15 @@ public class StatsBlender {
         return mapStats(lastSeasonStats, currentSeasonStats, helper);
     }
 
-    // Blended stats for a player who played last season and has 0 games in the current season
-    // Or for a player who has not played any games last season and only played in the current season
+    /**
+     *
+     * Method for a player who played last season and has played 0 games in the current season
+     * Also for a player who has played 0 games last season and is only playing in the current season
+     *
+     * @param singleSeasonStats Stats from the previous last season
+     *
+     * @return a blend of per game stats using only a single season
+     */
     public BlendedStats singleSeasonBlend(Stats singleSeasonStats){
 
         int gamesPlayedInLastSeason = singleSeasonStats.getGamesPlayed();
@@ -33,13 +48,28 @@ public class StatsBlender {
         return mapStats(singleSeasonStats, null, helper);
     }
 
-    // Baseline stats for an injured player who has not played any games
+    /**
+     *
+     * Method for a player who was injured and has no stats from last season or the current season
+     *
+     * @param position position of the injured player
+     *
+     * @return a blend of per game stats using only a baseline season
+     */
     public BlendedStats injuredBlend(Position position){
 
         return baselineBlend(getBaseStatsByPosition(position), 1.0);
     }
 
-    // Baseline stats for a rookie who has not played any games
+    /**
+     *
+     * Method for a player who is a rookie and has no stats from last season or the current season
+     *
+     * @param position position of the rookie player
+     * @param draftPosition draft pick of the rookie player
+     *
+     * @return a blend of per game stats using a baseline season weighted by their draft position
+     */
     public BlendedStats rookieBlend(Position position, int draftPosition){
 
         double weight = getDraftWeight(draftPosition);
@@ -70,6 +100,7 @@ public class StatsBlender {
         };
     }
 
+    // Method to blend together all stats from a season for a given player
     private BlendedStats mapStats(Stats last, Stats current, StatsBlenderHelper helper) {
 
         if (last == null) last = new Stats();
