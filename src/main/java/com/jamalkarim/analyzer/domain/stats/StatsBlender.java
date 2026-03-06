@@ -30,7 +30,7 @@ public class StatsBlender {
 
         StatsBlenderHelper helper = new StatsBlenderHelper(0, gamesPlayedInLastSeason, 0.0, 1.0);
 
-        return mapStats(singleSeasonStats, new Stats(), helper);
+        return mapStats(singleSeasonStats, null, helper);
     }
 
     // Baseline stats for an injured player who has not played any games
@@ -41,25 +41,24 @@ public class StatsBlender {
 
     // Baseline stats for a rookie who has not played any games
     public BlendedStats rookieBlend(Position position, int draftPosition){
-        double weight;
 
-        if(draftPosition >= 1 && draftPosition <= 10){
-            weight = 1.2;
-        } else if(draftPosition >= 11 && draftPosition <= 25){
-            weight = 0.9;
-        } else{
-            weight = 0.6;
-        }
+        double weight = getDraftWeight(draftPosition);
 
         return baselineBlend(getBaseStatsByPosition(position), weight);
 
+    }
+
+    private double getDraftWeight(int draftPosition) {
+        if (draftPosition <= 10) return 1.2;
+        if (draftPosition <= 25) return 0.9;
+        return 0.6;
     }
 
     // Baseline stats to use for rookie stats or an injured player stats
     private BlendedStats baselineBlend(Stats baseStats, double weight){
         StatsBlenderHelper helper = new StatsBlenderHelper(0, GAMES_IN_SEASON, 0.0, weight);
 
-        return mapStats(baseStats, new Stats(), helper);
+        return mapStats(baseStats, null, helper);
     }
 
     private Stats getBaseStatsByPosition(Position position) {
@@ -72,25 +71,36 @@ public class StatsBlender {
     }
 
     private BlendedStats mapStats(Stats last, Stats current, StatsBlenderHelper helper) {
+
+        if (last == null) last = new Stats();
+        if (current == null) current = new Stats();
+
         BlendedStats blended = new BlendedStats();
 
-        // --- Passing Stats ---
+        blendPassingStats(current, last, helper, blended);
+        blendRushingStats(current, last, helper, blended);
+        blendReceivingStats(current, last, helper, blended);
+
+        return blended;
+    }
+
+    private void blendPassingStats(Stats current, Stats last, StatsBlenderHelper helper, BlendedStats blended){
         blended.setPassingYardsPerGame(helper.blend(current.getPassingYards(), last.getPassingYards()));
         blended.setPassingTDsPerGame(helper.blend(current.getPassingTDs(), last.getPassingTDs()));
         blended.setIntsPerGame(helper.blend(current.getInterceptions(), last.getInterceptions()));
+    }
 
-        // --- Rushing Stats ---
+    private void blendRushingStats(Stats current, Stats last, StatsBlenderHelper helper, BlendedStats blended){
         blended.setRushingAttemptsPerGame(helper.blend(current.getRushingAttempts(), last.getRushingAttempts()));
         blended.setRushingYardsPerGame(helper.blend(current.getRushingYards(), last.getRushingYards()));
         blended.setRushingTDsPerGame(helper.blend(current.getRushingTDs(), last.getRushingTDs()));
+    }
 
-        // --- Receiving Stats ---
+    private void blendReceivingStats(Stats current, Stats last, StatsBlenderHelper helper, BlendedStats blended){
         blended.setTargetsPerGame(helper.blend(current.getTargets(), last.getTargets()));
         blended.setReceptionsPerGame(helper.blend(current.getReceptions(), last.getReceptions()));
         blended.setReceivingYardsPerGame(helper.blend(current.getReceivingYards(), last.getReceivingYards()));
         blended.setReceivingTDsPerGame(helper.blend(current.getReceivingTDs(), last.getReceivingTDs()));
-
-        return blended;
     }
 
     private Stats getBaselineStatsForQB(){
@@ -148,27 +158,24 @@ public class StatsBlender {
         return baselineStats;
     }
 
-
     private static class StatsBlenderHelper{
-        // current Games, last Games
-        private final int cG, lG;
 
-        // current Weight, last Weight
-        private final double cW, lW;
+        private final int currentGames, lastGames;
+        private final double currentWeight, lastWeight;
 
-        private StatsBlenderHelper(int cG, int lG, double cW, double lW) {
-            this.cG = cG;
-            this.lG = lG;
-            this.cW = cW;
-            this.lW = lW;
+        private StatsBlenderHelper(int currentGames, int lastGames, double currentWeight, double lastWeight) {
+            this.currentGames = currentGames;
+            this.lastGames = lastGames;
+            this.currentWeight = currentWeight;
+            this.lastWeight = lastWeight;
         }
 
         public double blend(int currentVal, int lastVal) {
 
-            double currentPerGame = (cG > 0) ? (double) currentVal / cG : 0;
-            double lastPerGame = (lG > 0) ? (double) lastVal / lG : 0;
+            double currentPerGame = (currentGames > 0) ? (double) currentVal / currentGames : 0;
+            double lastPerGame = (lastGames > 0) ? (double) lastVal / lastGames : 0;
 
-            double result = (currentPerGame * cW) + (lastPerGame * lW);
+            double result = (currentPerGame * currentWeight) + (lastPerGame * lastWeight);
             return Math.round(result * 100.0) / 100.0;
         }
     }
