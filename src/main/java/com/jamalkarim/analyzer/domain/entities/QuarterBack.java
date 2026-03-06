@@ -5,8 +5,11 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 public class QuarterBack extends Player{
 
-    private static final double PASSING_YARD_BENCHMARK = 300.0;
-    private static final double RUSHING_YARD_BENCHMARK = 50.0;
+    public static final double MAX_PASSING_YARDS_PER_GAME = 253.0;
+    public static final double MAX_PASSING_TDS_PER_GAME = 2.4;
+    public static final double MAX_INTERCEPTIONS_PER_GAME = 1.0;
+    public static final double MAX_RUSHING_YARDS_PER_GAME = 54.0;
+    public static final double MAX_RUSHING_TDS_PER_GAME = 0.82;
 
     public QuarterBack(String name, String team) {
         super(name, team, Position.QB);
@@ -14,15 +17,23 @@ public class QuarterBack extends Player{
 
     @Override
     public double calculateScareFactor() {
-        BlendedStats blendedStats = this.calculateStatBlendStrategy();
+        BlendedStats stats = calculateStatBlendStrategy();
 
-        double passingYards = blendedStats.getPassingYardsPerGame();
-        double passingTDs = blendedStats.getPassingTDsPerGame();
-        double ints = blendedStats.getIntsPerGame();
-        double rushingYards = blendedStats.getRushingYardsPerGame();
-        double rushingTDs = blendedStats.getRushingTDsPerGame();
+        double passingYardsPerGame = stats.getPassingYardsPerGame();
+        double passingTDsPerGame = stats.getPassingTDsPerGame();
+        double intsPerGame = stats.getIntsPerGame();
+        double rushingYardsPerGame = stats.getRushingYardsPerGame();
+        double rushingTDsPerGame = stats.getRushingTDsPerGame();
+        double completionPct = (stats.getCompletionsPerGame() / stats.getPassAttemptsPerGame());
 
-        return Math.max(0.0, (passingTDs * 0.3) + (passingYards / PASSING_YARD_BENCHMARK * 0.2)
-                - (ints * 0.15) + (rushingTDs * 0.25) + (rushingYards / RUSHING_YARD_BENCHMARK * 0.1));
+        double score = 0.0;
+        score += passingTDsPerGame / MAX_PASSING_TDS_PER_GAME * 0.25;
+        score += passingYardsPerGame / MAX_PASSING_YARDS_PER_GAME * 0.20;
+        score += completionPct * 0.05;
+        score -= intsPerGame / MAX_INTERCEPTIONS_PER_GAME * 0.15;
+        score += rushingTDsPerGame / MAX_RUSHING_TDS_PER_GAME * 0.20;
+        score += rushingYardsPerGame / MAX_RUSHING_YARDS_PER_GAME * 0.15;
+
+        return Math.max(0, score * 100);
     }
 }

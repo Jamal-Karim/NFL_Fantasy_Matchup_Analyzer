@@ -5,9 +5,9 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 public class TightEnd extends Player{
 
-    private static final double RECEPTION_BENCHMARK = 5.0;
-    private static final double RECEIVING_YARD_BENCHMARK = 50.0;
-    private static final double ELITE_RECEPTION_THRESHOLD = 7.0;
+    public static final double MAX_RECEPTIONS_PER_GAME = 7.0;
+    public static final double MAX_RECEIVING_YARDS_PER_GAME = 85.0;
+    public static final double MAX_RECEIVING_TDS_PER_GAME = 0.7;
 
     public TightEnd(String name, String team) {
         super(name, team, Position.TE);
@@ -15,21 +15,18 @@ public class TightEnd extends Player{
 
     @Override
     public double calculateScareFactor() {
+        BlendedStats stats = calculateStatBlendStrategy();
 
-        BlendedStats blendedStats = this.calculateStatBlendStrategy();
+        double score = 0.0;
+        score += (stats.getReceptionsPerGame() / MAX_RECEPTIONS_PER_GAME) * 0.40;
+        score += (stats.getReceivingYardsPerGame() / MAX_RECEIVING_YARDS_PER_GAME) * 0.35;
+        score += (stats.getReceivingTDsPerGame() / MAX_RECEIVING_TDS_PER_GAME) * 0.25;
 
-        double receivingTDs = blendedStats.getReceivingTDsPerGame();
-        double receptions = blendedStats.getReceptionsPerGame();
-        double receivingYards = blendedStats.getReceivingYardsPerGame();
-
-        double score = (receivingTDs * 0.4) + (receptions / RECEPTION_BENCHMARK * 0.35) +
-                (receivingYards / RECEIVING_YARD_BENCHMARK * 0.25);
-
-        if (receptions > ELITE_RECEPTION_THRESHOLD) {
-            score *= 1.15;
+        if (stats.getReceptionsPerGame() > MAX_RECEPTIONS_PER_GAME) {
+            score += 0.05;
         }
 
-        return Math.max(0.0, score);
+        return Math.max(0, score * 100);
     }
 
 }

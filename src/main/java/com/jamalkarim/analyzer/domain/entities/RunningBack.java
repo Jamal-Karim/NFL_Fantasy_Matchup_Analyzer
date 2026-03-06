@@ -5,10 +5,11 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 public class RunningBack extends Player{
 
-    private static final double RUSHING_YARD_BENCHMARK = 50.0;
-    private static final double RUSHING_ATTEMPT_BENCHMARK = 15.0;
-    private static final double RECEPTION_BENCHMARK = 5.0;
-    private static final double RECEIVING_YARD_BENCHMARK = 50.0;
+    public static final double MAX_RUSHING_YARDS_PER_GAME = 125.0;
+    public static final double MAX_RUSHING_TDS_PER_GAME = 1.1;
+    public static final double MAX_RECEPTIONS_PER_GAME = 6.0;
+    public static final double MAX_RECEIVING_YARDS_PER_GAME = 60.0;
+    public static final double MAX_RECEIVING_TDS_PER_GAME = 0.5;
 
     public RunningBack(String name, String team) {
         super(name, team, Position.RB);
@@ -16,16 +17,15 @@ public class RunningBack extends Player{
 
     @Override
     public double calculateScareFactor() {
-        BlendedStats blendedStats = this.calculateStatBlendStrategy();
+        BlendedStats stats = calculateStatBlendStrategy();
 
-        double rushingYards = blendedStats.getRushingYardsPerGame();
-        double rushingTDs = blendedStats.getRushingTDsPerGame();
-        double rushingAttempts = blendedStats.getRushingAttemptsPerGame();
-        double receptions = blendedStats.getReceptionsPerGame();
-        double receivingYards = blendedStats.getReceivingYardsPerGame();
+        double score = 0.0;
+        score += (stats.getRushingYardsPerGame() / MAX_RUSHING_YARDS_PER_GAME) * 0.35;
+        score += (stats.getRushingTDsPerGame() / MAX_RUSHING_TDS_PER_GAME) * 0.25;
+        score += (stats.getReceptionsPerGame() / MAX_RECEPTIONS_PER_GAME) * 0.20;
+        score += (stats.getReceivingYardsPerGame() / MAX_RECEIVING_YARDS_PER_GAME) * 0.15;
+        score += (stats.getReceivingTDsPerGame() / MAX_RECEIVING_TDS_PER_GAME) * 0.05;
 
-        return Math.max(0.0, (rushingTDs * 0.3) + (rushingYards / RUSHING_YARD_BENCHMARK * 0.25) +
-                (rushingAttempts / RUSHING_ATTEMPT_BENCHMARK * 0.1) + (receptions / RECEPTION_BENCHMARK * 0.2)
-                + (receivingYards / RECEIVING_YARD_BENCHMARK * 0.15));
+        return Math.max(0, score * 100);
     }
 }

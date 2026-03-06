@@ -5,9 +5,10 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 public class WideReceiver extends Player{
 
-    private static final double RECEPTION_BENCHMARK = 5.0;
-    private static final double RECEIVING_YARD_BENCHMARK = 50.0;
-    private static final double TARGET_BENCHMARK = 5.0;
+    public static final double MAX_RECEPTIONS_PER_GAME = 8.0;
+    public static final double MAX_RECEIVING_YARDS_PER_GAME = 105.0;
+    public static final double MAX_RECEIVING_TDS_PER_GAME = 1.0;
+    public static final double MAX_RUSHING_YARDS_PER_GAME = 15.0;
 
     public WideReceiver(String name, String team) {
         super(name, team, Position.WR);
@@ -15,15 +16,15 @@ public class WideReceiver extends Player{
 
     @Override
     public double calculateScareFactor() {
-        BlendedStats blendedStats = this.calculateStatBlendStrategy();
+        BlendedStats stats = calculateStatBlendStrategy();
 
-        double receivingTDs = blendedStats.getReceivingTDsPerGame();
-        double receptions = blendedStats.getReceptionsPerGame();
-        double receivingYards = blendedStats.getReceivingYardsPerGame();
-        double targets = blendedStats.getTargetsPerGame();
+        double score = 0.0;
+        score += (stats.getReceptionsPerGame() / MAX_RECEPTIONS_PER_GAME) * 0.40;
+        score += (stats.getReceivingYardsPerGame() / MAX_RECEIVING_YARDS_PER_GAME) * 0.30;
+        score += (stats.getReceivingTDsPerGame() / MAX_RECEIVING_TDS_PER_GAME) * 0.20;
+        score += (stats.getRushingYardsPerGame() / MAX_RUSHING_YARDS_PER_GAME) * 0.10;
 
-        return Math.max(0.0, (receivingTDs * 0.35) + (receptions / RECEPTION_BENCHMARK * 0.3) +
-                (receivingYards / RECEIVING_YARD_BENCHMARK * 0.25) + (targets / TARGET_BENCHMARK * 0.1));
+        return Math.max(0, score * 100);
     }
 
 }
