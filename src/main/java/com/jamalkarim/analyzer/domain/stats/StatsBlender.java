@@ -11,7 +11,9 @@ public class StatsBlender {
 
         int gamesPlayedInCurrentSeason = currentSeasonStats.getGamesPlayed();
         int gamesPlayedInLastSeason = lastSeasonStats.getGamesPlayed();
-        double currentSeasonWeight = (double) gamesPlayedInCurrentSeason / GAMES_IN_SEASON;
+
+        double gameRatio = (double) gamesPlayedInCurrentSeason / GAMES_IN_SEASON;
+        double currentSeasonWeight = Math.sqrt(gameRatio);
         double lastSeasonWeight = 1 - currentSeasonWeight;
 
         StatsBlenderHelper helper = new StatsBlenderHelper(gamesPlayedInCurrentSeason, gamesPlayedInLastSeason,
