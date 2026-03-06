@@ -1,12 +1,18 @@
 package com.jamalkarim.analyzer.domain.entities;
 
+import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 import com.jamalkarim.analyzer.domain.enums.Position;
+import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 import com.jamalkarim.analyzer.domain.stats.ScareFactor;
 import com.jamalkarim.analyzer.domain.stats.Stats;
+import com.jamalkarim.analyzer.domain.stats.StatsBlender;
 import lombok.Data;
 
 @Data
 public abstract class Player implements ScareFactor {
+
+    private static final StatsBlender STATS_BLENDER = new StatsBlender();
+    private static final int MIN_GAMES_FOR_TREND = 7;
 
     private String name;
     private String team;
@@ -14,6 +20,7 @@ public abstract class Player implements ScareFactor {
     private int draftPick;
     private boolean isRookie;
     private boolean isInjured;
+    private PlayerTier tier;
     private Stats currentSeasonStats;
     private Stats lastSeasonStats;
 
@@ -21,5 +28,40 @@ public abstract class Player implements ScareFactor {
         this.name = name;
         this.team = team;
         this.position = position;
+    }
+
+    public BlendedStats calculateStatBlendStrategy(){
+
+        // Handle rookie case first as top priority
+        if (isRookie) {
+            return STATS_BLENDER.rookieBlend(position, draftPick);
+        }
+
+        int currentGames = (currentSeasonStats != null) ? currentSeasonStats.getGamesPlayed() : 0;
+        int lastGames = (lastSeasonStats != null) ? lastSeasonStats.getGamesPlayed() : 0;
+
+        boolean hasLastSeasonData = lastGames >= MIN_GAMES_FOR_TREND;
+        boolean hasCurrentSeasonData = currentGames > 0;
+
+        // If it is a normal player playing in the current season, calculate blend off of last season and current season
+        if (hasCurrentSeasonData && hasLastSeasonData) {
+            return STATS_BLENDER.standardBlend(lastSeasonStats, currentSeasonStats);
+        }
+
+        // If it is a player who has not played any games in the current season but has played in the previous season
+        // calculate per game data off of just last season
+        // use case for if calculating matchup before current season
+        if (hasLastSeasonData) {
+            return STATS_BLENDER.singleSeasonBlend(lastSeasonStats);
+        }
+
+        // If it is a player who does not have any data in the previous season but has played games in the current season
+        // use case for a rookie or an injured player who has gotten to play games in the current season
+        if (hasCurrentSeasonData) {
+            return STATS_BLENDER.singleSeasonBlend(currentSeasonStats);
+        }
+
+        // Default to using the injured stats blending
+        return STATS_BLENDER.injuredBlend(position);
     }
 }
