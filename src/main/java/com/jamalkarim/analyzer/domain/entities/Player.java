@@ -11,8 +11,11 @@ public abstract class Player implements ScareFactor {
     private String name;
     private String team;
     private Position position;
+    private int draftPick;
+    private boolean isRookie;
+    private boolean isInjured;
     private Stats currentSeasonStats;
-    private Stats lassSeasonStats;
+    private Stats lastSeasonStats;
 
     public Player(String name, String team, Position position) {
         this.name = name;
