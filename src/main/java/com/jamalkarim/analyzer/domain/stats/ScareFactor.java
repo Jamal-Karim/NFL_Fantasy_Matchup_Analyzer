@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.interfaces;
+package com.jamalkarim.analyzer.domain.stats;
 
 public interface ScareFactor {
 

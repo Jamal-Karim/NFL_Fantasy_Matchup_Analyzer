@@ -11,14 +11,8 @@ class QuarterbackTest {
     void testQuarterbackConstructor() {
         String name = "Josh Allen";
         String team = "Buffalo Bills";
-        int passingYards = 4000;
-        int rushingYards = 300;
-        int passingTouchdowns = 35;
-        int rushingTouchdowns = 3;
-        int interceptions = 10;
 
-        Quarterback quarterback = new Quarterback(name, team, passingYards, rushingYards,
-                passingTouchdowns, rushingTouchdowns, interceptions);
+        Quarterback quarterback = new Quarterback(name, team);
 
         assertEquals(name, quarterback.getName(), "The player's name should match the name provided in the constructor.");
         assertEquals(team, quarterback.getTeam(), "The player's team should match the team provided in the constructor.");

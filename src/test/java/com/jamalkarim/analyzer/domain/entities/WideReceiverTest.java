@@ -11,14 +11,8 @@ class WideReceiverTest {
     void testWideReceiverConstructor() {
         String name = "Justin Jefferson";
         String team = "Minnesota Vikings";
-        int receptions = 110;
-        int receivingYards = 1700;
-        int receivingTouchdowns = 10;
-        int rushingYards = 50;
-        int rushingTouchdowns = 1;
 
-        WideReceiver wideReceiver = new WideReceiver(name, team, rushingYards, receptions,
-                receivingYards, rushingTouchdowns, receivingTouchdowns);
+        WideReceiver wideReceiver = new WideReceiver(name, team);
 
         assertEquals(name, wideReceiver.getName(), "The player's name should match the name provided in the constructor.");
         assertEquals(team, wideReceiver.getTeam(), "The player's team should match the team provided in the constructor.");

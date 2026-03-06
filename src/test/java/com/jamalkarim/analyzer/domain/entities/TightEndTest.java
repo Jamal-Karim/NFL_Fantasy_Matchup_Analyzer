@@ -11,11 +11,8 @@ class TightEndTest {
     void testTightEndConstructor() {
         String name = "Brock Bowers";
         String team = "Las Vegas Raiders";
-        int receptions = 90;
-        int receivingYards = 1100;
-        int receivingTouchdowns = 8;
 
-        TightEnd tightEnd = new TightEnd(name, team, receptions, receivingYards, receivingTouchdowns);
+        TightEnd tightEnd = new TightEnd(name, team);
 
         assertEquals(name, tightEnd.getName(), "The player's name should match the name provided in the constructor.");
         assertEquals(team, tightEnd.getTeam(), "The player's team should match the team provided in the constructor.");
