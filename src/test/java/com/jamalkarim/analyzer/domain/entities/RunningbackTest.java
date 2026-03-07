@@ -12,7 +12,7 @@ class RunningbackTest {
         String name = "Christian McCaffrey";
         String team = "San Francisco 49ers";
 
-        Runningback runningback = new Runningback(name, team);
+        RunningBack runningback = new RunningBack(name, team);
 
         assertEquals(name, runningback.getName(), "The player's name should match the name provided in the constructor.");
         assertEquals(team, runningback.getTeam(), "The player's team should match the team provided in the constructor.");

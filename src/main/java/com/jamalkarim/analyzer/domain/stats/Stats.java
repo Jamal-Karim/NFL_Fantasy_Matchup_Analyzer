@@ -8,6 +8,8 @@ public class Stats {
     private int season;
     private int gamesPlayed;
 
+    private int passAttempts;
+    private int completions;
     private int passingYards;
     private int passingTDs;
     private int interceptions;

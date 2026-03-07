@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class QuarterbackTest {
+class QuarterBackTest {
 
     @Test
     void testQuarterbackConstructor() {
         String name = "Josh Allen";
         String team = "Buffalo Bills";
 
-        Quarterback quarterback = new Quarterback(name, team);
+        QuarterBack quarterback = new QuarterBack(name, team);
 
         assertEquals(name, quarterback.getName(), "The player's name should match the name provided in the constructor.");
         assertEquals(team, quarterback.getTeam(), "The player's team should match the team provided in the constructor.");

@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class BlendedStats {
 
+    private double passAttemptsPerGame;
+    private double completionsPerGame;
     private double passingYardsPerGame;
     private double passingTDsPerGame;
     private double intsPerGame;
