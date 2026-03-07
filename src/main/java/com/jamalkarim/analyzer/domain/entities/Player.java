@@ -64,4 +64,17 @@ public abstract class Player implements ScareFactor {
         // Default to using the injured stats blending
         return STATS_BLENDER.injuredBlend(position);
     }
+
+    protected double applySoftCap(double rawScore) {
+        if (rawScore <= 85.0) {
+            return rawScore;
+        }
+
+        double excess = rawScore - 85.0;
+        double range = 15.0;
+
+        double cappedScore = 85.0 + (excess / (1.0 + (excess / range)));
+
+        return Math.min(99.9, cappedScore);
+    }
 }

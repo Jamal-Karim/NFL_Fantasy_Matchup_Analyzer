@@ -5,9 +5,9 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 public class WideReceiver extends Player{
 
-    public static final double MAX_RECEPTIONS_PER_GAME = 8.0;
+    public static final double MAX_RECEPTIONS_PER_GAME = 8.2;
     public static final double MAX_RECEIVING_YARDS_PER_GAME = 105.0;
-    public static final double MAX_RECEIVING_TDS_PER_GAME = 1.0;
+    public static final double MAX_RECEIVING_TDS_PER_GAME = 0.80;
     public static final double MAX_RUSHING_YARDS_PER_GAME = 15.0;
 
     public WideReceiver(String name, String team) {
@@ -18,13 +18,18 @@ public class WideReceiver extends Player{
     public double calculateScareFactor() {
         BlendedStats stats = calculateStatBlendStrategy();
 
-        double score = 0.0;
-        score += (stats.getReceptionsPerGame() / MAX_RECEPTIONS_PER_GAME) * 0.40;
-        score += (stats.getReceivingYardsPerGame() / MAX_RECEIVING_YARDS_PER_GAME) * 0.30;
-        score += (stats.getReceivingTDsPerGame() / MAX_RECEIVING_TDS_PER_GAME) * 0.20;
-        score += (stats.getRushingYardsPerGame() / MAX_RUSHING_YARDS_PER_GAME) * 0.10;
+        double receptions = stats.getReceptionsPerGame();
+        double yards = stats.getReceivingYardsPerGame();
+        double tds = stats.getReceivingTDsPerGame();
+        double rushYards = stats.getRushingYardsPerGame();
 
-        return Math.max(0, score * 100);
+        double score = 0.0;
+        score += (receptions / MAX_RECEPTIONS_PER_GAME) * 0.25;
+        score += (yards / MAX_RECEIVING_YARDS_PER_GAME) * 0.35;
+        score += (tds / MAX_RECEIVING_TDS_PER_GAME) * 0.35;
+        score += (rushYards / MAX_RUSHING_YARDS_PER_GAME) * 0.05;
+
+        return Math.max(0, applySoftCap(score * 138));
     }
 
 }
