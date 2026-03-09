@@ -70,4 +70,97 @@ public class QuarterBack extends Player{
 
         return impactMap;
     }
+
+
+    @Override
+    public List<String> generateListOfExplanations() {
+        Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
+        List<String> explanations = new ArrayList<>();
+
+        for(Map.Entry<PlayerStats, Double> entry : topContributingFactors.entrySet()){
+            PlayerStats stat = entry.getKey();
+            Double value = entry.getValue();
+            switch (stat){
+                case PassingYards -> explanations.add(getPassingYardsLabel(getTierForStatistic(value, PASSING_YARDS_WEIGHT)));
+                case PassingTDs -> explanations.add(getPassingTDsLabel(getTierForStatistic(value, PASSING_TDS_WEIGHT)));
+                case Interceptions -> explanations.add(getIntsLabel(getTierForStatistic(value, INT_WEIGHT)));
+                case Completion -> explanations.add(getCompletionsLabel(getTierForStatistic(value, COMPLETION_WEIGHT)));
+                case RushingYards -> explanations.add(getRushingYardsLabel(getTierForStatistic(value, RUSHING_YARDS_WEIGHT)));
+                case RushingTDs -> explanations.add(getRushingTDsLabel(getTierForStatistic(value, RUSHING_TDS_WEIGHT)));
+            }
+        }
+        return explanations;
+    }
+
+    private String getPassingYardsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite passing QB";
+            case 2  -> "Highly productive pocket general with strong yardage output";
+            case 3  -> "Efficient move-the-chains passer; reliable volume";
+            case -1 -> "Struggles to find rhythm; limited downfield production";
+            case -2 -> "Inconsistent air attack; frequently under pressure";
+            case -3 -> "Conservative passing approach with low explosive potential";
+            default -> "Average passing impact";
+        };
+    }
+
+    private String getPassingTDsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite red zone sniper; high-frequency scoring threat";
+            case 2  -> "Aggressive finisher; consistently finds the end zone";
+            case 3  -> "Steady contributor in scoring situations";
+            case -1 -> "Red zone liability; struggles to capitalize on scoring drives";
+            case -2 -> "Low touchdown frequency; offense stalls in the red zone";
+            case -3 -> "Difficulty finishing drives through the air";
+            default -> "Average passing touchdown impact";
+        };
+    }
+
+    private String getIntsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite ball security; rarely puts the ball in harm's way";
+            case 2  -> "Disciplined decision-maker; avoids costly turnovers";
+            case 3  -> "Generally safe with the ball; manages risk well";
+            case -1 -> "Erratic gunslinger; high turnover risk in tight windows";
+            case -2 -> "Prone to critical mistakes; struggles with defensive reads";
+            case -3 -> "Frequent turnovers are a major drag on offensive momentum";
+            default -> "Average interception risk";
+        };
+    }
+
+    private String getCompletionsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Surgical precision; consistently hits receivers in stride";
+            case 2  -> "High-accuracy passer; keeps the offense on schedule";
+            case 3  -> "Reliable completion rate in a standard offensive scheme";
+            case -1 -> "Erratic ball placement; frequently misses open targets";
+            case -2 -> "Inaccurate under pressure; struggles with timing routes";
+            case -3 -> "Low-efficiency passer; often off-target on routine throws";
+            default -> "Average accuracy";
+        };
+    }
+
+    private String getRushingYardsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite dual-threat scrambler";
+            case 2  -> "Dangerous runner out of the pocket";
+            case 3  -> "Capable of picking up yards on the ground";
+            case -1 -> "Strictly a pocket passer; zero mobility";
+            case -2 -> "Limited mobility; heavy reliance on protection";
+            case -3 -> "Primarily stays in the pocket";
+            default -> "Average rushing impact";
+        };
+    }
+
+    private String getRushingTDsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite goal-line weapon";
+            case 2  -> "Dynamic red zone runner";
+            case 3  -> "Can be used to pick up a touchdown";
+            case -1 -> "Never used as an option in the red zone";
+            case -2 -> "Rarely used to pick up touchdowns";
+            case -3 -> "More likely to pass than run in the red zone";
+            default -> "Average rushing red zone impact";
+        };
+    }
 }

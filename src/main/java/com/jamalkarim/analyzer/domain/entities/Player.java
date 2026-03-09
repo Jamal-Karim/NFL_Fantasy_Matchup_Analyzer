@@ -83,17 +83,6 @@ public abstract class Player implements ScareFactor {
         return Math.min(99.9, cappedScore);
     }
 
-    @Getter
-    protected class Impact{
-        private final double pointsGained;
-        private final double pointsLost;
-
-        public Impact(double pointsGained, double pointsLost) {
-            this.pointsGained = pointsGained;
-            this.pointsLost = pointsLost;
-        }
-    }
-
     protected abstract Map<PlayerStats, Impact> generateImpactMap();
 
     protected Impact generateImpactForStat(double ratio, double weight){
@@ -102,16 +91,16 @@ public abstract class Player implements ScareFactor {
         return new Impact(pointsGained, pointsLost);
     }
 
-    protected Map<PlayerStats, Double> findTopContributingScores(Map<PlayerStats, Impact> map){
+    protected Map<PlayerStats, Double> findTopContributingScores(Map<PlayerStats, Impact> map) {
         Map<PlayerStats, Double> initialMap = new HashMap<>();
 
-        for(Map.Entry<PlayerStats, Impact> entry : map.entrySet()){
+        for (Map.Entry<PlayerStats, Impact> entry : map.entrySet()) {
             double pointsGained = entry.getValue().pointsGained;
             double pointsLost = entry.getValue().pointsLost;
 
-            if(pointsGained >= pointsLost){
+            if (pointsGained >= pointsLost) {
                 initialMap.put(entry.getKey(), pointsGained);
-            } else{
+            } else {
                 initialMap.put(entry.getKey(), pointsLost * -1);
             }
         }
@@ -123,8 +112,40 @@ public abstract class Player implements ScareFactor {
         Map<PlayerStats, Double> result = new LinkedHashMap<>();
         for (Map.Entry<PlayerStats, Double> entry : entries) {
             if (result.size() >= 3) break;
-            result.put(entry.getKey(), entry.getValue())
-
+            result.put(entry.getKey(), entry.getValue());
+        }
         return result;
     }
+
+    protected int getTierForStatistic(double value, double weight){
+        if(value > 0){
+            if(value > (weight * 0.9)){
+                return 1;
+            } else if(value > (weight * 0.6)){
+                return 2;
+            } else{
+                return 3;
+            }
+        } else {
+            if(Math.abs(value) > (weight * 0.9)){
+                return -1;
+            } else if(Math.abs(value) > (weight * 0.6)){
+                return -2;
+            } else{
+                return -3;
+            }
+        }
+    }
+
+    @Getter
+    protected class Impact{
+        private final double pointsGained;
+        private final double pointsLost;
+
+        public Impact(double pointsGained, double pointsLost) {
+            this.pointsGained = pointsGained;
+            this.pointsLost = pointsLost;
+        }
+    }
+
 }
