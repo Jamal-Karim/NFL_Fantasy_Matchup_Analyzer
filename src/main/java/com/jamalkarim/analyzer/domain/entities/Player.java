@@ -1,5 +1,6 @@
 package com.jamalkarim.analyzer.domain.entities;
 
+import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.BlendedStats;
@@ -7,6 +8,9 @@ import com.jamalkarim.analyzer.domain.stats.ScareFactor;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import com.jamalkarim.analyzer.domain.stats.StatsBlender;
 import lombok.Data;
+import lombok.Getter;
+
+import java.util.Map;
 
 @Data
 public abstract class Player implements ScareFactor {
@@ -76,5 +80,24 @@ public abstract class Player implements ScareFactor {
         double cappedScore = 85.0 + (excess / (1.0 + (excess / range)));
 
         return Math.min(99.9, cappedScore);
+    }
+
+    @Getter
+    protected class Impact{
+        private final double pointsGained;
+        private final double pointsLost;
+
+        public Impact(double pointsGained, double pointsLost) {
+            this.pointsGained = pointsGained;
+            this.pointsLost = pointsLost;
+        }
+    }
+
+    protected abstract Map<PlayerStats, Impact> generateImpactMap();
+
+    protected Impact generateImpactForStat(double ratio, double weight){
+        double pointsGained = ratio * weight;
+        double pointsLost = (1.0 - ratio) * weight;
+        return new Impact(pointsGained, pointsLost);
     }
 }
