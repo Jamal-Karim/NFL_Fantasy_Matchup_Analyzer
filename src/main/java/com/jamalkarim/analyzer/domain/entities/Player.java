@@ -10,7 +10,8 @@ import com.jamalkarim.analyzer.domain.stats.StatsBlender;
 import lombok.Data;
 import lombok.Getter;
 
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 public abstract class Player implements ScareFactor {
@@ -99,5 +100,31 @@ public abstract class Player implements ScareFactor {
         double pointsGained = ratio * weight;
         double pointsLost = (1.0 - ratio) * weight;
         return new Impact(pointsGained, pointsLost);
+    }
+
+    protected Map<PlayerStats, Double> findTopContributingScores(Map<PlayerStats, Impact> map){
+        Map<PlayerStats, Double> initialMap = new HashMap<>();
+
+        for(Map.Entry<PlayerStats, Impact> entry : map.entrySet()){
+            double pointsGained = entry.getValue().pointsGained;
+            double pointsLost = entry.getValue().pointsLost;
+
+            if(pointsGained >= pointsLost){
+                initialMap.put(entry.getKey(), pointsGained);
+            } else{
+                initialMap.put(entry.getKey(), pointsLost * -1);
+            }
+        }
+
+        List<Map.Entry<PlayerStats, Double>> entries = new ArrayList<>(initialMap.entrySet());
+
+        entries.sort((a, b) -> Double.compare(Math.abs(b.getValue()), Math.abs(a.getValue())));
+
+        Map<PlayerStats, Double> result = new LinkedHashMap<>();
+        for (Map.Entry<PlayerStats, Double> entry : entries) {
+            if (result.size() >= 3) break;
+            result.put(entry.getKey(), entry.getValue())
+
+        return result;
     }
 }
