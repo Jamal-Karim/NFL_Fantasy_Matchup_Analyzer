@@ -4,8 +4,7 @@ import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class WideReceiver extends Player{
 
@@ -49,5 +48,60 @@ public class WideReceiver extends Player{
         impactMap.put(PlayerStats.ReceivingTDs, generateImpactForStat(receivingTDsRatio, RECEIVING_TDS_WEIGHT));
 
         return impactMap;
+    }
+
+    @Override
+    public List<String> generateListOfExplanations() {
+        Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
+        List<String> explanations = new ArrayList<>();
+
+        for (Map.Entry<PlayerStats, Double> entry : topContributingFactors.entrySet()) {
+            PlayerStats stat = entry.getKey();
+            double value = entry.getValue();
+
+            switch (stat) {
+                case Receptions     -> explanations.add(getReceptionsLabel(getTierForStatistic(value, RECEPTIONS_WEIGHT)));
+                case ReceivingYards -> explanations.add(getReceivingYardsLabel(getTierForStatistic(value, RECEIVING_YARDS_WEIGHT)));
+                case ReceivingTDs   -> explanations.add(getReceivingTDsLabel(getTierForStatistic(value, RECEIVING_TDS_WEIGHT)));
+            }
+        }
+
+        return explanations;
+    }
+
+    private String getReceptionsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite target vacuum; a consistent chain-mover and reliable safety valve";
+            case 2  -> "High-volume possession receiver with dependable hands";
+            case 3  -> "Steady contributor; finds soft spots in the secondary regularly";
+            case -1 -> "Struggles to create separation; rarely targeted in the progression";
+            case -2 -> "Low-volume receiver; limited involvement in the weekly gameplan";
+            case -3 -> "Inconsistent hands; high frequency of missed connections";
+            default -> "Average reception volume";
+        };
+    }
+
+    private String getReceivingYardsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite vertical threat; capable of taking the top off any defense";
+            case 2  -> "Highly productive playmaker with significant yardage upside";
+            case 3  -> "Efficient yardage producer; gains chunk plays on intermediate routes";
+            case -1 -> "Minimal downfield impact; yardage production is largely stalled";
+            case -2 -> "Underwhelming air-yard share; struggles to generate big plays";
+            case -3 -> "Limited explosive potential; strictly a short-yardage option";
+            default -> "Average yardage production";
+        };
+    }
+
+    private String getReceivingTDsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite red zone weapon; a nightmare for cornerbacks in the end zone";
+            case 2  -> "Dangerous scoring threat; consistently finds paydirt";
+            case 3  -> "Reliable finisher on scoring drives";
+            case -1 -> "Zero impact as a scoring threat; struggles to haul in touchdowns";
+            case -2 -> "Rarely utilized in high-leverage scoring situations";
+            case -3 -> "Low probability of finding the end zone; primarily a decoy in the red zone";
+            default -> "Average touchdown frequency";
+        };
     }
 }

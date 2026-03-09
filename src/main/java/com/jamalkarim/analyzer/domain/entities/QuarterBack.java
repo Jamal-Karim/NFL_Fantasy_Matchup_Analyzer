@@ -71,7 +71,6 @@ public class QuarterBack extends Player{
         return impactMap;
     }
 
-
     @Override
     public List<String> generateListOfExplanations() {
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
@@ -81,12 +80,12 @@ public class QuarterBack extends Player{
             PlayerStats stat = entry.getKey();
             Double value = entry.getValue();
             switch (stat){
-                case PassingYards -> explanations.add(getPassingYardsLabel(getTierForStatistic(value, PASSING_YARDS_WEIGHT)));
-                case PassingTDs -> explanations.add(getPassingTDsLabel(getTierForStatistic(value, PASSING_TDS_WEIGHT)));
+                case PassingYards  -> explanations.add(getPassingYardsLabel(getTierForStatistic(value, PASSING_YARDS_WEIGHT)));
+                case PassingTDs    -> explanations.add(getPassingTDsLabel(getTierForStatistic(value, PASSING_TDS_WEIGHT)));
                 case Interceptions -> explanations.add(getIntsLabel(getTierForStatistic(value, INT_WEIGHT)));
-                case Completion -> explanations.add(getCompletionsLabel(getTierForStatistic(value, COMPLETION_WEIGHT)));
-                case RushingYards -> explanations.add(getRushingYardsLabel(getTierForStatistic(value, RUSHING_YARDS_WEIGHT)));
-                case RushingTDs -> explanations.add(getRushingTDsLabel(getTierForStatistic(value, RUSHING_TDS_WEIGHT)));
+                case Completion    -> explanations.add(getCompletionsLabel(getTierForStatistic(value, COMPLETION_WEIGHT)));
+                case RushingYards  -> explanations.add(getRushingYardsLabel(getTierForStatistic(value, RUSHING_YARDS_WEIGHT)));
+                case RushingTDs    -> explanations.add(getRushingTDsLabel(getTierForStatistic(value, RUSHING_TDS_WEIGHT)));
             }
         }
         return explanations;

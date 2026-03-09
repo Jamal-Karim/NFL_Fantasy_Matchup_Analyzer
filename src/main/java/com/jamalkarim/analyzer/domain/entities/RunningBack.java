@@ -4,8 +4,7 @@ import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RunningBack extends Player{
 
@@ -63,5 +62,85 @@ public class RunningBack extends Player{
         impactMap.put(PlayerStats.ReceivingTDs, generateImpactForStat(receivingTDsRatio, RECEIVING_TDS_WEIGHT));
 
         return impactMap;
+    }
+
+    @Override
+    public List<String> generateListOfExplanations() {
+        Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
+        List<String> explanations = new ArrayList<>();
+
+        for(Map.Entry<PlayerStats, Double> entry : topContributingFactors.entrySet()){
+            PlayerStats stat = entry.getKey();
+            Double value = entry.getValue();
+            switch (stat) {
+                case RushingYards   -> explanations.add(getRushingYardsLabel(getTierForStatistic(value, RUSHING_YARDS_WEIGHT)));
+                case RushingTDs     -> explanations.add(getRushingTDsLabel(getTierForStatistic(value, RUSHING_TDS_WEIGHT)));
+                case Receptions     -> explanations.add(getReceptionsLabel(getTierForStatistic(value, RECEPTIONS_WEIGHT)));
+                case ReceivingYards -> explanations.add(getReceivingYardsLabel(getTierForStatistic(value, RECEIVING_YARDS_WEIGHT)));
+                case ReceivingTDs   -> explanations.add(getReceivingTDsLabel(getTierForStatistic(value, RECEIVING_TDS_WEIGHT)));
+            }
+        }
+        return explanations;
+
+    }
+
+    private String getRushingYardsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite workhorse back; consistently tears through the second level";
+            case 2  -> "Highly productive lead runner with strong yardage output";
+            case 3  -> "Reliable chain-mover; steady presence in the run game";
+            case -1 -> "Struggles to find daylight; frequently bottled up at the line";
+            case -2 -> "Inconsistent rushing production; yardage is hard to come by";
+            case -3 -> "Low-volume runner with limited explosive potential";
+            default -> "Average rushing impact";
+        };
+    }
+
+    private String getRushingTDsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite goal-line hammer; a nightmare to stop in short-yardage";
+            case 2  -> "Lethal red zone threat; consistently finds the end zone";
+            case 3  -> "Reliable finisher when the offense gets close to the stripe";
+            case -1 -> "Zero goal-line impact; struggles to punch it in";
+            case -2 -> "Rarely utilized as a scoring option in the red zone";
+            case -3 -> "Difficulty converting rushing attempts into scores";
+            default -> "Average rushing touchdown impact";
+        };
+    }
+
+    private String getReceptionsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite receiving back; a vital mismatch in the passing game";
+            case 2  -> "High-volume safety valve; reliable hands out of the backfield";
+            case 3  -> "Consistent check-down option for the quarterback";
+            case -1 -> "Non-factor in the passing game; strictly a standard runner";
+            case -2 -> "Limited involvement as a receiver; rarely targeted";
+            case -3 -> "Minimal impact on passing downs";
+            default -> "Average reception volume";
+        };
+    }
+
+    private String getReceivingYardsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Dangerous playmaker in space; elite yardage after the catch";
+            case 2  -> "Productive receiving threat; creates significant chunk plays";
+            case 3  -> "Efficient at picking up yards through the air";
+            case -1 -> "Negligible production as a receiver; low yardage upside";
+            case -2 -> "Struggles to gain traction in the passing attack";
+            case -3 -> "Limited contribution to the team's air yards";
+            default -> "Average receiving yardage";
+        };
+    }
+
+    private String getReceivingTDsLabel(int tier) {
+        return switch (tier) {
+            case 1  -> "Elite multi-dimensional scorer; dangerous target in the red zone";
+            case 2  -> "Aggressive scoring threat through the air";
+            case 3  -> "Occasional threat to haul in a touchdown pass";
+            case -1 -> "Zero impact as a receiving scorer";
+            case -2 -> "Rarely targeted for touchdowns in the passing game";
+            case -3 -> "Low probability of scoring via the air";
+            default -> "Average receiving touchdown impact";
+        };
     }
 }
