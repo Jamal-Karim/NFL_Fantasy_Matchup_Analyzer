@@ -59,7 +59,7 @@ public class TightEnd extends Player {
     @Override
     public List<String> generateListOfExplanations() {
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
-        List<String> explanations = new ArrayList<>();
+        List<String> explanations = new LinkedList<>();
 
         for (Map.Entry<PlayerStats, Double> entry : topContributingFactors.entrySet()) {
             PlayerStats stat = entry.getKey();
