@@ -152,13 +152,13 @@ public class PlayerTest {
         assertEquals(3, topScores.size(), "Should return top 3 contributing factors.");
         
         List<PlayerStats> keys = new java.util.ArrayList<>(topScores.keySet());
-        assertEquals(PlayerStats.Interceptions, keys.get(0));
-        assertEquals(-30.0, topScores.get(PlayerStats.Interceptions));
+        assertEquals(PlayerStats.Interceptions, keys.get(0), "Interceptions should be the top contributing factor.");
+        assertEquals(-30.0, topScores.get(PlayerStats.Interceptions), "Interceptions should have a score of -30.0.");
         
-        assertEquals(PlayerStats.PassingTDs, keys.get(1));
-        assertEquals(20.0, topScores.get(PlayerStats.PassingTDs));
+        assertEquals(PlayerStats.PassingTDs, keys.get(1), "Passing TDs should be the second contributing factor.");
+        assertEquals(20.0, topScores.get(PlayerStats.PassingTDs), "Passing TDs should have a score of 20.0.");
         
-        assertEquals(PlayerStats.PassingYards, keys.get(2));
-        assertEquals(10.0, topScores.get(PlayerStats.PassingYards));
+        assertEquals(PlayerStats.PassingYards, keys.get(2), "Passing yards should be the third contributing factor.");
+        assertEquals(10.0, topScores.get(PlayerStats.PassingYards), "Passing yards should have a score of 10.0.");
     }
 }

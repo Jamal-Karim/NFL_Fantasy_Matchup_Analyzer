@@ -70,7 +70,7 @@ class QuarterBackTest {
         qb.setCurrentSeasonStats(stats);
 
         double scareFactor = qb.calculateScareFactor();
-        assertEquals(0.0, scareFactor);
+        assertEquals(0.0, scareFactor, "Player with no throws should have a scare factor of 0.");
     }
 
     @Test
@@ -83,7 +83,7 @@ class QuarterBackTest {
         qb.setCurrentSeasonStats(stats);
 
         java.util.List<String> explanations = qb.generateListOfExplanations();
-        assertFalse(explanations.isEmpty());
+        assertFalse(explanations.isEmpty(), "Explanations list should not be empty for an elite player.");
         assertTrue(explanations.get(0).contains("Elite") || explanations.get(0).contains("Highly productive"), 
             "First explanation should reflect high performance.");
     }
