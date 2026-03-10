@@ -4,14 +4,13 @@ import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.BlendedStats;
-import com.jamalkarim.analyzer.domain.stats.ScareFactor;
+import com.jamalkarim.analyzer.domain.scoring.ScareFactor;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import com.jamalkarim.analyzer.domain.stats.StatsBlender;
 import lombok.Data;
 import lombok.Getter;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Data
 public abstract class Player implements ScareFactor {

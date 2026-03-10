@@ -2,7 +2,8 @@ package com.jamalkarim.analyzer.domain.stats;
 
 import com.jamalkarim.analyzer.domain.entities.Player;
 import com.jamalkarim.analyzer.domain.entities.QuarterBack;
-import com.jamalkarim.analyzer.domain.enums.PlayerTier;
+import com.jamalkarim.analyzer.domain.scoring.ScareResult;
+import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

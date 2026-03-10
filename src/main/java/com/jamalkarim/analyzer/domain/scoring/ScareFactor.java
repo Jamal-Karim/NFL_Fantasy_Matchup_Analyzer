@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.stats;
+package com.jamalkarim.analyzer.domain.scoring;
 
 import java.util.List;
 
