@@ -17,9 +17,9 @@ class ScareResultTest {
         QuarterBack qb = new QuarterBack("Test Player", "Test Team");
         ScareResult result = new ScareResult(qb);
 
-        assertEquals("Test Player", result.getName());
-        assertEquals("Test Team", result.getTeam());
-        assertEquals(Position.QB, result.getPosition());
+        assertEquals("Test Player", result.getName(), "The name should be correctly initialized.");
+        assertEquals("Test Team", result.getTeam(), "The team should be correctly initialized.");
+        assertEquals(Position.QB, result.getPosition(), "The position should be correctly initialized.");
     }
 
     @Test
@@ -31,6 +31,6 @@ class ScareResultTest {
         result.setPrimaryExplanation("High yardage output");
         result.setSupportingExplanations(List.of("Reliable hands", "Great vision"));
 
-        assertDoesNotThrow(result::printScareReport);
+        assertDoesNotThrow(result::printScareReport, "Printing the scare report should not throw an exception.");
     }
 }

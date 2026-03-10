@@ -23,13 +23,13 @@ class ScareResultFactoryTest {
 
         ScareResult result = factory.generateScareResult(player);
 
-        assertNotNull(result);
-        assertEquals("Josh Allen", result.getName());
-        assertEquals("BUF", result.getTeam());
-        assertTrue(result.getScareScore() > 0);
-        assertNotNull(result.getScareTier());
-        assertNotNull(result.getPrimaryExplanation());
-        assertNotNull(result.getSupportingExplanations());
-        assertEquals(2, result.getSupportingExplanations().size());
+        assertNotNull(result, "The generated ScareResult should not be null.");
+        assertEquals("Josh Allen", result.getName(), "The player name in the result should match.");
+        assertEquals("BUF", result.getTeam(), "The team in the result should match.");
+        assertTrue(result.getScareScore() > 0, "The scare score should be greater than 0.");
+        assertNotNull(result.getScareTier(), "The scare tier should not be null.");
+        assertNotNull(result.getPrimaryExplanation(), "The primary explanation should not be null.");
+        assertNotNull(result.getSupportingExplanations(), "The supporting explanations should not be null.");
+        assertEquals(2, result.getSupportingExplanations().size(), "There should be exactly 2 supporting explanations.");
     }
 }
