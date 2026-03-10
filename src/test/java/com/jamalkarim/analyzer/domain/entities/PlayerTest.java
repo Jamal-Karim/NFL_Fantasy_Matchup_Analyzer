@@ -124,4 +124,41 @@ public class PlayerTest {
         assertEquals(99.9, player.applySoftCap(10000.0), 0.01, "Scores should be capped at a maximum of 99.9.");
     }
 
+    @Test
+    void testGetTierForStatistic() {
+        Player player = new QuarterBack("TierTest", "Team");
+        
+        assertEquals(1, player.getTierForStatistic(9.5, 10.0), "Value > 90% of weight should be tier 1.");
+        assertEquals(2, player.getTierForStatistic(6.5, 10.0), "Value > 60% of weight should be tier 2.");
+        assertEquals(3, player.getTierForStatistic(3.0, 10.0), "Value <= 60% of weight should be tier 3.");
+        
+        assertEquals(-1, player.getTierForStatistic(-9.5, 10.0), "Abs value > 90% of weight should be tier -1.");
+        assertEquals(-2, player.getTierForStatistic(-6.5, 10.0), "Abs value > 60% of weight should be tier -2.");
+        assertEquals(-3, player.getTierForStatistic(-3.0, 10.0), "Abs value <= 60% of weight should be tier -3.");
+    }
+
+    @Test
+    void testFindTopContributingScores() {
+        Player player = new QuarterBack("TopContrib", "Team");
+        
+        Map<PlayerStats, Player.Impact> impactMap = new java.util.HashMap<>();
+        impactMap.put(PlayerStats.PassingYards, player.new Impact(10.0, 0.0));
+        impactMap.put(PlayerStats.PassingTDs, player.new Impact(20.0, 0.0));
+        impactMap.put(PlayerStats.Interceptions, player.new Impact(0.0, 30.0)); // Points lost
+        impactMap.put(PlayerStats.RushingYards, player.new Impact(5.0, 0.0));
+
+        Map<PlayerStats, Double> topScores = player.findTopContributingScores(impactMap);
+
+        assertEquals(3, topScores.size(), "Should return top 3 contributing factors.");
+        
+        List<PlayerStats> keys = new java.util.ArrayList<>(topScores.keySet());
+        assertEquals(PlayerStats.Interceptions, keys.get(0));
+        assertEquals(-30.0, topScores.get(PlayerStats.Interceptions));
+        
+        assertEquals(PlayerStats.PassingTDs, keys.get(1));
+        assertEquals(20.0, topScores.get(PlayerStats.PassingTDs));
+        
+        assertEquals(PlayerStats.PassingYards, keys.get(2));
+        assertEquals(10.0, topScores.get(PlayerStats.PassingYards));
+    }
 }

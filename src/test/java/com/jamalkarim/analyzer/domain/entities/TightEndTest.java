@@ -36,5 +36,21 @@ class TightEndTest {
         assertTrue(scareFactor > 85.0, "High performing TE should have a scare factor above 85.");
         assertTrue(scareFactor < 100.0, "Scare factor should be capped below 100.");
     }
+
+    @Test
+    void testTightEndReceptionBonus() {
+        TightEnd te = new TightEnd("Bonus TE", "Team");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setReceptions(7);
+        te.setCurrentSeasonStats(stats);
+
+        double scoreWithBonus = te.calculateScareFactor();
+
+        stats.setReceptions(6);
+        double scoreWithoutBonus = te.calculateScareFactor();
+
+        assertTrue(scoreWithBonus > scoreWithoutBonus, "TE with > 6.5 receptions per game should get a bonus.");
+    }
 }
 

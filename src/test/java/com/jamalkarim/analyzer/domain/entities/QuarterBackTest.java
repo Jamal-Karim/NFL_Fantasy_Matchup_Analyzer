@@ -4,8 +4,7 @@ import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class QuarterBackTest {
 
@@ -37,5 +36,55 @@ class QuarterBackTest {
         
         assertTrue(scareFactor > 85.0, "High performing QB should have a scare factor above 85.");
         assertTrue(scareFactor < 100.0, "Scare factor should be capped below 100.");
+    }
+
+    @Test
+    void testCalculateScareFactorZeroStats() {
+        QuarterBack qb = new QuarterBack("Zero Man", "None");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        qb.setCurrentSeasonStats(stats);
+
+        double scareFactor = qb.calculateScareFactor();
+        assertEquals(0.0, scareFactor, "Player with zero stats should have a scare factor of 0.");
+    }
+
+    @Test
+    void testCalculateScareFactorPoorPerformance() {
+        QuarterBack qb = new QuarterBack("Mistake Prone", "Bad");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setInterceptions(5);
+        qb.setCurrentSeasonStats(stats);
+
+        double scareFactor = qb.calculateScareFactor();
+        assertEquals(0.0, scareFactor, "Negative impacts should be clamped to 0.");
+    }
+
+    @Test
+    void testPreventDivisionByZeroInCompletionPct() {
+        QuarterBack qb = new QuarterBack("No Throws", "None");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setPassAttempts(0);
+        qb.setCurrentSeasonStats(stats);
+
+        double scareFactor = qb.calculateScareFactor();
+        assertEquals(0.0, scareFactor);
+    }
+
+    @Test
+    void testGenerateListOfExplanations() {
+        QuarterBack qb = new QuarterBack("Elite QB", "Team");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setPassingYards(300);
+        stats.setPassingTDs(3);
+        qb.setCurrentSeasonStats(stats);
+
+        java.util.List<String> explanations = qb.generateListOfExplanations();
+        assertFalse(explanations.isEmpty());
+        assertTrue(explanations.get(0).contains("Elite") || explanations.get(0).contains("Highly productive"), 
+            "First explanation should reflect high performance.");
     }
 }

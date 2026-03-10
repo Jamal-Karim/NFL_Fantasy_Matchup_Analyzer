@@ -38,4 +38,27 @@ class RunningbackTest {
         assertTrue(scareFactor > 85.0, "High performing RB should have a scare factor above 85.");
         assertTrue(scareFactor < 100.0, "Scare factor should be capped below 100.");
     }
+
+    @Test
+    void testCalculateScareFactorZeroStats() {
+        RunningBack rb = new RunningBack("Zero RB", "None");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        rb.setCurrentSeasonStats(stats);
+
+        double scareFactor = rb.calculateScareFactor();
+        assertEquals(0.0, scareFactor, "Player with zero stats should have a scare factor of 0.");
+    }
+
+    @Test
+    void testCalculateScareFactorPoorPerformance() {
+        RunningBack rb = new RunningBack("Fumble Prone", "Bad");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setRushingYards(-10);
+        rb.setCurrentSeasonStats(stats);
+
+        double scareFactor = rb.calculateScareFactor();
+        assertEquals(0.0, scareFactor, "Negative impacts should be clamped to 0.");
+    }
 }

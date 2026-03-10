@@ -16,6 +16,8 @@ public enum PlayerTier {
     }
 
     public static PlayerTier fromScore(double score) {
+        if (score >= ELITE.min) return ELITE;
+        
         for (PlayerTier tier : PlayerTier.values()) {
             if (score >= tier.min && score <= tier.max) {
                 return tier;

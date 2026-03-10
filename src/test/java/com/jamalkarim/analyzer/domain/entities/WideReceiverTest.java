@@ -36,4 +36,27 @@ class WideReceiverTest {
         assertTrue(scareFactor > 85.0, "High performing WR should have a scare factor above 85.");
         assertTrue(scareFactor < 100.0, "Scare factor should be capped below 100.");
     }
+
+    @Test
+    void testCalculateScareFactorZeroStats() {
+        WideReceiver wr = new WideReceiver("Zero WR", "None");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        wr.setCurrentSeasonStats(stats);
+
+        double scareFactor = wr.calculateScareFactor();
+        assertEquals(0.0, scareFactor, "Player with zero stats should have a scare factor of 0.");
+    }
+
+    @Test
+    void testCalculateScareFactorPoorPerformance() {
+        WideReceiver wr = new WideReceiver("Hands of Stone", "Bad");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setReceivingYards(-5); 
+        wr.setCurrentSeasonStats(stats);
+
+        double scareFactor = wr.calculateScareFactor();
+        assertEquals(0.0, scareFactor, "Negative impacts should be clamped to 0.");
+    }
 }
