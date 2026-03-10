@@ -1,9 +1,14 @@
 package com.jamalkarim.analyzer.domain.entities;
 
+import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
@@ -12,8 +17,18 @@ public class PlayerTest {
     void testPlayerConstructor(){
         Player player = new Player("NFL Player", "NFL Team", Position.QB) {
             @Override
+            protected Map<PlayerStats, Impact> generateImpactMap() {
+                return Map.of();
+            }
+
+            @Override
             public double calculateScareFactor() {
                 return 0;
+            }
+
+            @Override
+            public List<String> generateListOfExplanations() {
+                return List.of();
             }
         };
 

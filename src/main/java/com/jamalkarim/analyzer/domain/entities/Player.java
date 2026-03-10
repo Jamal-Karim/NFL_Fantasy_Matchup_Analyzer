@@ -137,6 +137,17 @@ public abstract class Player implements ScareFactor {
         }
     }
 
+    public String findPrimaryExplanation(List<String> explanations){
+        return explanations.get(0);
+    }
+
+    public List<String> findSupportingExplanations(List<String> explanations){
+        List<String> supportingExplanations = new LinkedList<>();
+        supportingExplanations.add(explanations.get(1));
+        supportingExplanations.add(explanations.get(2));
+        return supportingExplanations;
+    }
+
     @Getter
     protected class Impact{
         private final double pointsGained;
