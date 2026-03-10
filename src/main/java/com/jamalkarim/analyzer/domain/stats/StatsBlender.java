@@ -2,13 +2,21 @@ package com.jamalkarim.analyzer.domain.stats;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 
+/**
+ * Responsible for normalizing and merging statistics from multiple sources
+ * (Current Season, Last Season, and League Baselines) into a single 
+ * per-game representation.
+ */
 public class StatsBlender {
 
     private static final int GAMES_IN_SEASON = 17;
 
     /**
-     *
-     * Method for a player who played both last season and is playing in the current season
+     * Blends current and previous season stats. 
+     * 
+     * The weight of the current season is calculated as the square root of 
+     * the season completion percentage, allowing "momentum" to be captured
+     * quickly early in the year without being overly reactive to small samples.
      *
      * @param lastSeasonStats Stats from the previous last season
      * @param currentSeasonStats Stats from the current season (can be >= 1 game played)
@@ -16,6 +24,7 @@ public class StatsBlender {
      * @return a combined blend of per game stats weighting both last season and current season
      */
     public BlendedStats standardBlend(Stats lastSeasonStats, Stats currentSeasonStats){
+        // ...
 
         int gamesPlayedInCurrentSeason = currentSeasonStats.getGamesPlayed();
         int gamesPlayedInLastSeason = lastSeasonStats.getGamesPlayed();

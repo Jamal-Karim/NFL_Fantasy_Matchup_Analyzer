@@ -6,8 +6,16 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 import java.util.*;
 
+/**
+ * Quarterback-specific implementation of the Scare Factor.
+ * 
+ * Scoring focuses on passing efficiency (TD/Int ratios) and 
+ * rushing "floor" for dual-threat mobility.
+ */
 public class QuarterBack extends Player{
 
+    /** Max statistics for QBs determined from the most elite players
+     * at that position from the 2023, 2024, and 2025 NFL season */
     public static final double MAX_PASSING_YARDS_PER_GAME = 235.0;
     public static final double MAX_PASSING_TDS_PER_GAME = 2.0;
     public static final double MAX_INTERCEPTIONS_PER_GAME = 1.0;
@@ -26,23 +34,6 @@ public class QuarterBack extends Player{
     }
 
     @Override
-    public double calculateScareFactor() {
-        Map<PlayerStats, Impact> impactMap = generateImpactMap();
-
-        double score = 0.0;
-
-        score += impactMap.get(PlayerStats.PassingTDs).getPointsGained();
-        score += impactMap.get(PlayerStats.PassingYards).getPointsGained();
-        score += impactMap.get(PlayerStats.Completion).getPointsGained();
-
-        score -= impactMap.get(PlayerStats.Interceptions).getPointsGained();
-
-        score += impactMap.get(PlayerStats.RushingTDs).getPointsGained();
-        score += impactMap.get(PlayerStats.RushingYards).getPointsGained();
-
-        return Math.max(0, applySoftCap(score * 125));
-    }
-
     protected Map<PlayerStats, Impact> generateImpactMap(){
         Map<PlayerStats, Impact> impactMap = new HashMap<>();
         BlendedStats stats = calculateStatBlendStrategy();
@@ -69,6 +60,24 @@ public class QuarterBack extends Player{
         impactMap.put(PlayerStats.Completion, generateImpactForStat(completionPct, COMPLETION_WEIGHT));
 
         return impactMap;
+    }
+
+    @Override
+    public double calculateScareFactor() {
+        Map<PlayerStats, Impact> impactMap = generateImpactMap();
+
+        double score = 0.0;
+
+        score += impactMap.get(PlayerStats.PassingTDs).getPointsGained();
+        score += impactMap.get(PlayerStats.PassingYards).getPointsGained();
+        score += impactMap.get(PlayerStats.Completion).getPointsGained();
+
+        score -= impactMap.get(PlayerStats.Interceptions).getPointsGained();
+
+        score += impactMap.get(PlayerStats.RushingTDs).getPointsGained();
+        score += impactMap.get(PlayerStats.RushingYards).getPointsGained();
+
+        return Math.max(0, applySoftCap(score * 125));
     }
 
     @Override
