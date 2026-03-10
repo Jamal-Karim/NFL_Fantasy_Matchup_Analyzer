@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.stats;
+package com.jamalkarim.analyzer.domain.scoring;
 
 import com.jamalkarim.analyzer.domain.entities.Player;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
@@ -7,6 +7,13 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ *  Object that encapsulates the final results of a
+ * Scare Factor analysis.
+ * 
+ * Contains the numerical score, the categorical tier, and textual 
+ * explanations for display in reports or UIs.
+ */
 @Data
 public class ScareResult {
 

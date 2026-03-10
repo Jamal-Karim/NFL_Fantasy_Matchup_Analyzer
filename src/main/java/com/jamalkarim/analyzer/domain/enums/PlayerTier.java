@@ -1,5 +1,9 @@
 package com.jamalkarim.analyzer.domain.enums;
 
+/**
+ * Enum to represent the categorical classification of a player based on their
+ * calculated Scare Factor score.
+ */
 public enum PlayerTier {
     ELITE(90, 101),
     SCARY(80, 89.99),

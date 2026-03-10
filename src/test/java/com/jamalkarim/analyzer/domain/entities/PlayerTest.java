@@ -142,10 +142,10 @@ public class PlayerTest {
         Player player = new QuarterBack("TopContrib", "Team");
         
         Map<PlayerStats, Player.Impact> impactMap = new java.util.HashMap<>();
-        impactMap.put(PlayerStats.PassingYards, player.new Impact(10.0, 0.0));
-        impactMap.put(PlayerStats.PassingTDs, player.new Impact(20.0, 0.0));
-        impactMap.put(PlayerStats.Interceptions, player.new Impact(0.0, 30.0)); // Points lost
-        impactMap.put(PlayerStats.RushingYards, player.new Impact(5.0, 0.0));
+        impactMap.put(PlayerStats.PassingYards, new Player.Impact(10.0, 0.0));
+        impactMap.put(PlayerStats.PassingTDs, new Player.Impact(20.0, 0.0));
+        impactMap.put(PlayerStats.Interceptions, new Player.Impact(0.0, 30.0)); // Points lost
+        impactMap.put(PlayerStats.RushingYards, new Player.Impact(5.0, 0.0));
 
         Map<PlayerStats, Double> topScores = player.findTopContributingScores(impactMap);
 

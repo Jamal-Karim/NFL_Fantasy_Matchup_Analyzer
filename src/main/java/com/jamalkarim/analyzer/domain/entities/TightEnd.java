@@ -6,8 +6,16 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 import java.util.*;
 
+/**
+ * Tight End-specific implementation of the Scare Factor.
+ * 
+ * Includes a unique "Reception Bonus" for elite high-volume TEs 
+ * who act as the primary target of their offense.
+ */
 public class TightEnd extends Player {
 
+    /** Max statistics for TEs determined from the most elite players
+     * at that position from the 2023, 2024, and 2025 NFL season */
     public static final double MAX_RECEPTIONS_PER_GAME = 6.0;
     public static final double MAX_RECEIVING_YARDS_PER_GAME = 70.0;
     public static final double MAX_RECEIVING_TDS_PER_GAME = 0.6;
@@ -18,24 +26,6 @@ public class TightEnd extends Player {
 
     public TightEnd(String name, String team) {
         super(name, team, Position.TE);
-    }
-
-    @Override
-    public double calculateScareFactor() {
-        BlendedStats stats = calculateStatBlendStrategy();
-        Map<PlayerStats, Impact> impactMap = generateImpactMap();
-
-        double score = 0.0;
-        score += impactMap.get(PlayerStats.Receptions).getPointsGained();
-        score += impactMap.get(PlayerStats.ReceivingYards).getPointsGained();
-        score += impactMap.get(PlayerStats.ReceivingTDs).getPointsGained();
-
-        double receptions = stats.getReceptionsPerGame();
-        if (receptions > 6.5) {
-            score += 0.10;
-        }
-
-        return Math.max(0, applySoftCap(score * 135));
     }
 
     @Override
@@ -54,6 +44,24 @@ public class TightEnd extends Player {
         impactMap.put(PlayerStats.ReceivingTDs, generateImpactForStat(receivingTDsRatio, RECEIVING_TDS_WEIGHT));
 
         return impactMap;
+    }
+
+    @Override
+    public double calculateScareFactor() {
+        BlendedStats stats = calculateStatBlendStrategy();
+        Map<PlayerStats, Impact> impactMap = generateImpactMap();
+
+        double score = 0.0;
+        score += impactMap.get(PlayerStats.Receptions).getPointsGained();
+        score += impactMap.get(PlayerStats.ReceivingYards).getPointsGained();
+        score += impactMap.get(PlayerStats.ReceivingTDs).getPointsGained();
+
+        double receptions = stats.getReceptionsPerGame();
+        if (receptions > 6.5) {
+            score += 0.10;
+        }
+
+        return Math.max(0, applySoftCap(score * 135));
     }
 
     @Override

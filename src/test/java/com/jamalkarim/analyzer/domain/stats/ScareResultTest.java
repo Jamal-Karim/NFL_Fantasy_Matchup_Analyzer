@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.domain.stats;
 import com.jamalkarim.analyzer.domain.entities.QuarterBack;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 import com.jamalkarim.analyzer.domain.enums.Position;
+import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

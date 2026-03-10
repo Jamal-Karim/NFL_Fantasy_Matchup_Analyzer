@@ -6,8 +6,16 @@ import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 
 import java.util.*;
 
+/**
+ * Running Back-specific implementation of the Scare Factor.
+ * 
+ * Scoring is heavily weighted towards rushing volume and touchdown 
+ * production, with a secondary focus on receiving involvement.
+ */
 public class RunningBack extends Player{
 
+    /** Max statistics for RBs determined from the most elite players
+     * at that position from the 2023, 2024, and 2025 NFL season */
     public static final double MAX_RUSHING_YARDS_PER_GAME = 110.0;
     public static final double MAX_RUSHING_TDS_PER_GAME = 0.85;
     public static final double MAX_RECEPTIONS_PER_GAME = 5.0;
@@ -22,22 +30,6 @@ public class RunningBack extends Player{
 
     public RunningBack(String name, String team) {
         super(name, team, Position.RB);
-    }
-
-    @Override
-    public double calculateScareFactor() {
-        Map<PlayerStats, Impact> impactMap = generateImpactMap();
-
-        double score = 0.0;
-
-        score += impactMap.get(PlayerStats.RushingYards).getPointsGained();
-        score += impactMap.get(PlayerStats.RushingTDs).getPointsGained();
-
-        score += impactMap.get(PlayerStats.Receptions).getPointsGained();
-        score += impactMap.get(PlayerStats.ReceivingYards).getPointsGained();
-        score += impactMap.get(PlayerStats.ReceivingTDs).getPointsGained();
-
-        return Math.max(0, applySoftCap(score * 130));
     }
 
     @Override
@@ -62,6 +54,22 @@ public class RunningBack extends Player{
         impactMap.put(PlayerStats.ReceivingTDs, generateImpactForStat(receivingTDsRatio, RECEIVING_TDS_WEIGHT));
 
         return impactMap;
+    }
+
+    @Override
+    public double calculateScareFactor() {
+        Map<PlayerStats, Impact> impactMap = generateImpactMap();
+
+        double score = 0.0;
+
+        score += impactMap.get(PlayerStats.RushingYards).getPointsGained();
+        score += impactMap.get(PlayerStats.RushingTDs).getPointsGained();
+
+        score += impactMap.get(PlayerStats.Receptions).getPointsGained();
+        score += impactMap.get(PlayerStats.ReceivingYards).getPointsGained();
+        score += impactMap.get(PlayerStats.ReceivingTDs).getPointsGained();
+
+        return Math.max(0, applySoftCap(score * 130));
     }
 
     @Override
