@@ -1,16 +1,18 @@
 package com.jamalkarim.analyzer.domain.entities;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
+import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TightEndTest {
 
     @Test
     void testTightEndConstructor() {
-        String name = "Brock Bowers";
-        String team = "Las Vegas Raiders";
+        String name = "Travis Kelce";
+        String team = "Kansas City Chiefs";
 
         TightEnd tightEnd = new TightEnd(name, team);
 
@@ -18,4 +20,21 @@ class TightEndTest {
         assertEquals(team, tightEnd.getTeam(), "The player's team should match the team provided in the constructor.");
         assertEquals(Position.TE, tightEnd.getPosition(), "The player's position should be set to 'TE'.");
     }
+
+    @Test
+    void testCalculateScareFactor() {
+        TightEnd te = new TightEnd("Kelce", "Chiefs");
+        Stats stats = new Stats();
+        stats.setGamesPlayed(1);
+        stats.setReceptions(7);
+        stats.setReceivingYards(80);
+        stats.setReceivingTDs(1);
+        te.setCurrentSeasonStats(stats);
+
+        double scareFactor = te.calculateScareFactor();
+
+        assertTrue(scareFactor > 85.0, "High performing TE should have a scare factor above 85.");
+        assertTrue(scareFactor < 100.0, "Scare factor should be capped below 100.");
+    }
 }
+
