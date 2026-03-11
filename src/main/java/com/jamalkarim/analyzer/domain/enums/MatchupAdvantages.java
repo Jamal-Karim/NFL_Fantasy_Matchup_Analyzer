@@ -1,9 +1,9 @@
 package com.jamalkarim.analyzer.domain.enums;
 
 /**
- * Enum to represent the different advantages for a player matchup.
+ * Enum to represent the different advantages for a matchup.
  */
-public enum PlayerAdvantages {
+public enum MatchupAdvantages {
     EVEN,
     SLIGHT_EDGE,
     CLEAR_EDGE,

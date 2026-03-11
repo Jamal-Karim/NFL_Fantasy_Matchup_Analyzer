@@ -2,6 +2,13 @@ package com.jamalkarim.analyzer.domain.stats;
 
 import lombok.Data;
 
+/**
+ * Represents a set of normalized, per-game statistics.
+ * <p>
+ * This object is the result of the {@link StatsBlender}'s logic, 
+ * merging data from different seasons and league baselines into
+ * a single predictive representation used for Scare Factor calculations.
+ */
 @Data
 public class BlendedStats {
 

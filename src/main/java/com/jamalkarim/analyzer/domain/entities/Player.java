@@ -35,18 +35,18 @@ public abstract class Player implements ScareFactor {
     }
 
     /**
-     * Determines the most appropriate statistical blending strategy based on the player's 
+     * Determines the most appropriate statistical blending strategy based on the player's
      * career stage and data availability.
-     *
+     * <p>
      * The strategy priority is:
      * 1. Rookie: Weighted by draft position.
      * 2. Standard: Blends last season and current season (weighted by games played).
      * 3. Single Season: Used when only one season of reliable data exists.
      * 4. Injured/Baseline: Default fallback using league-average baselines.
-     * 
+     *
      * @return A BlendedStats object containing normalized per-game statistics.
      */
-    public BlendedStats calculateStatBlendStrategy(){
+    public BlendedStats calculateStatBlendStrategy() {
 
         // Handle rookie case first as top priority
         if (isRookie) {
@@ -81,11 +81,11 @@ public abstract class Player implements ScareFactor {
         return STATS_BLENDER.injuredBlend(position);
     }
 
-    public String findPrimaryExplanation(List<String> explanations){
+    public String findPrimaryExplanation(List<String> explanations) {
         return explanations.get(0);
     }
 
-    public List<String> findSupportingExplanations(List<String> explanations){
+    public List<String> findSupportingExplanations(List<String> explanations) {
         List<String> supportingExplanations = new LinkedList<>();
         supportingExplanations.add(explanations.get(1));
         supportingExplanations.add(explanations.get(2));
@@ -94,10 +94,10 @@ public abstract class Player implements ScareFactor {
 
     /**
      * Applies a hyperbolic soft cap to raw scores exceeding the elite threshold (85.0).
-     * 
+     * <p>
      * This ensures that while elite performances are rewarded, the final
      * Scare Factor remains realistically bound below 100.0.
-     * 
+     *
      * @param rawScore The un-capped calculated impact score.
      * @return A score between 0.0 and 99.9.
      */
@@ -117,7 +117,7 @@ public abstract class Player implements ScareFactor {
     /**
      * Generates a mapping of player statistics to their relative "Impact" (points gained/lost).
      * This is implemented uniquely by each position subclass to reflect different scoring values.
-     * 
+     *
      * @return A map of stats to Impact objects.
      */
     protected abstract Map<PlayerStats, Impact> generateImpactMap();
@@ -125,12 +125,12 @@ public abstract class Player implements ScareFactor {
     /**
      * Calculates the points gained or lost for a specific statistic based on its
      * performance ratio (actual vs. league max) and its weight.
-     * 
-     * @param ratio The normalized performance (0.0 to 1.0+).
+     *
+     * @param ratio  The normalized performance (0.0 to 1.0+).
      * @param weight The importance of this stat for the player's position.
      * @return An Impact object containing pointsGained and pointsLost.
      */
-    protected Impact generateImpactForStat(double ratio, double weight){
+    protected Impact generateImpactForStat(double ratio, double weight) {
         double pointsGained = ratio * weight;
         double pointsLost = (1.0 - ratio) * weight;
         return new Impact(pointsGained, pointsLost);
@@ -138,12 +138,11 @@ public abstract class Player implements ScareFactor {
 
     /**
      * Identifies the top 3 statistical contributors (positive or negative) to a player's score.
-     * 
+     *
      * @param map The map of statistical impacts.
      * @return A sorted map containing the top 3 most significant statistical factors.
      */
     protected Map<PlayerStats, Double> findTopContributingScores(Map<PlayerStats, Impact> map) {
-        // ...
         Map<PlayerStats, Double> initialMap = new HashMap<>();
 
         for (Map.Entry<PlayerStats, Impact> entry : map.entrySet()) {
@@ -169,28 +168,28 @@ public abstract class Player implements ScareFactor {
         return result;
     }
 
-    protected int getTierForStatistic(double value, double weight){
-        if(value > 0){
-            if(value > (weight * 0.9)){
+    protected int getTierForStatistic(double value, double weight) {
+        if (value > 0) {
+            if (value > (weight * 0.9)) {
                 return 1;
-            } else if(value > (weight * 0.6)){
+            } else if (value > (weight * 0.6)) {
                 return 2;
-            } else{
+            } else {
                 return 3;
             }
         } else {
-            if(Math.abs(value) > (weight * 0.9)){
+            if (Math.abs(value) > (weight * 0.9)) {
                 return -1;
-            } else if(Math.abs(value) > (weight * 0.6)){
+            } else if (Math.abs(value) > (weight * 0.6)) {
                 return -2;
-            } else{
+            } else {
                 return -3;
             }
         }
     }
 
     @Getter
-    protected static class Impact{
+    protected static class Impact {
         private final double pointsGained;
         private final double pointsLost;
 

@@ -1,7 +1,7 @@
 package com.jamalkarim.analyzer.domain.matchups;
 
 import com.jamalkarim.analyzer.domain.entities.QuarterBack;
-import com.jamalkarim.analyzer.domain.enums.PlayerAdvantages;
+import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,11 +36,11 @@ class PlayerMatchupAnalyzerTest {
         assertEquals(qb1, result.getWinner().orElse(null), "Player 1 should be the winner.");
         assertEquals(qb2, result.getLoser().orElse(null), "Player 2 should be the loser.");
         assertTrue(result.getScareDifference() > 15, "The scare difference should be greater than 15.");
-        assertEquals(PlayerAdvantages.DOMINANT, result.getAdvantage(), "The advantage should be DOMINANT.");
-        }
+        assertEquals(MatchupAdvantages.DOMINANT, result.getAdvantage(), "The advantage should be DOMINANT.");
+    }
 
-        @Test
-        void testAnalyzeMatchupWinnerPlayer2() {
+    @Test
+    void testAnalyzeMatchupWinnerPlayer2() {
         // qb1 is average
         Stats stats1 = new Stats();
         stats1.setGamesPlayed(1);
@@ -56,12 +56,11 @@ class PlayerMatchupAnalyzerTest {
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(qb1, qb2);
 
         assertEquals(qb2, result.getWinner().orElse(null), "Player 2 should be the winner.");
-        assertEquals(PlayerAdvantages.SLIGHT_EDGE, result.getAdvantage(), "The advantage should be SLIGHT_EDGE.");
-        }
+        assertEquals(MatchupAdvantages.SLIGHT_EDGE, result.getAdvantage(), "The advantage should be SLIGHT_EDGE.");
+    }
 
-        @Test
-        void testAnalyzeMatchupDeadHeat() {
-        // Both have zero stats
+    @Test
+    void testAnalyzeMatchupDeadHeat() {
         Stats stats = new Stats();
         stats.setGamesPlayed(1);
         qb1.setCurrentSeasonStats(stats);
@@ -70,14 +69,14 @@ class PlayerMatchupAnalyzerTest {
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(qb1, qb2);
 
         assertFalse(result.getWinner().isPresent(), "There should be no winner in a dead heat.");
-        assertEquals(PlayerAdvantages.EVEN, result.getAdvantage(), "The advantage should be EVEN in a dead heat.");
+        assertEquals(MatchupAdvantages.EVEN, result.getAdvantage(), "The advantage should be EVEN in a dead heat.");
         assertEquals("Both players bring equal threat levels.", result.getExplanation(), "The explanation should indicate equal threat levels.");
-        }
+    }
 
-        @Test
-        void testAdvantageThresholds() {
+    @Test
+    void testAdvantageThresholds() {
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(qb1, qb2);
         assertNotNull(result.getAdvantage(), "The advantage should not be null.");
-        }
-        }
+    }
+}
 
