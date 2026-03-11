@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.entities;
+package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.Position;
@@ -8,14 +8,16 @@ import java.util.*;
 
 /**
  * Quarterback-specific implementation of the Scare Factor.
- * 
- * Scoring focuses on passing efficiency (TD/Int ratios) and 
+ * <p>
+ * Scoring focuses on passing efficiency (TD/Int ratios) and
  * rushing "floor" for dual-threat mobility.
  */
-public class QuarterBack extends Player{
+public class QuarterBack extends Player {
 
-    /** Max statistics for QBs determined from the most elite players
-     * at that position from the 2023, 2024, and 2025 NFL season */
+    /**
+     * Max statistics for QBs determined from the most elite players
+     * at that position from the 2023, 2024, and 2025 NFL season
+     */
     public static final double MAX_PASSING_YARDS_PER_GAME = 235.0;
     public static final double MAX_PASSING_TDS_PER_GAME = 2.0;
     public static final double MAX_INTERCEPTIONS_PER_GAME = 1.0;
@@ -34,7 +36,7 @@ public class QuarterBack extends Player{
     }
 
     @Override
-    protected Map<PlayerStats, Impact> generateImpactMap(){
+    protected Map<PlayerStats, Impact> generateImpactMap() {
         Map<PlayerStats, Impact> impactMap = new HashMap<>();
         BlendedStats stats = calculateStatBlendStrategy();
 
@@ -85,16 +87,18 @@ public class QuarterBack extends Player{
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
         List<String> explanations = new LinkedList<>();
 
-        for(Map.Entry<PlayerStats, Double> entry : topContributingFactors.entrySet()){
+        for (Map.Entry<PlayerStats, Double> entry : topContributingFactors.entrySet()) {
             PlayerStats stat = entry.getKey();
             Double value = entry.getValue();
-            switch (stat){
-                case PassingYards  -> explanations.add(getPassingYardsLabel(getTierForStatistic(value, PASSING_YARDS_WEIGHT)));
-                case PassingTDs    -> explanations.add(getPassingTDsLabel(getTierForStatistic(value, PASSING_TDS_WEIGHT)));
+            switch (stat) {
+                case PassingYards ->
+                        explanations.add(getPassingYardsLabel(getTierForStatistic(value, PASSING_YARDS_WEIGHT)));
+                case PassingTDs -> explanations.add(getPassingTDsLabel(getTierForStatistic(value, PASSING_TDS_WEIGHT)));
                 case Interceptions -> explanations.add(getIntsLabel(getTierForStatistic(value, INT_WEIGHT)));
-                case Completion    -> explanations.add(getCompletionsLabel(getTierForStatistic(value, COMPLETION_WEIGHT)));
-                case RushingYards  -> explanations.add(getRushingYardsLabel(getTierForStatistic(value, RUSHING_YARDS_WEIGHT)));
-                case RushingTDs    -> explanations.add(getRushingTDsLabel(getTierForStatistic(value, RUSHING_TDS_WEIGHT)));
+                case Completion -> explanations.add(getCompletionsLabel(getTierForStatistic(value, COMPLETION_WEIGHT)));
+                case RushingYards ->
+                        explanations.add(getRushingYardsLabel(getTierForStatistic(value, RUSHING_YARDS_WEIGHT)));
+                case RushingTDs -> explanations.add(getRushingTDsLabel(getTierForStatistic(value, RUSHING_TDS_WEIGHT)));
             }
         }
         return explanations;
@@ -102,9 +106,9 @@ public class QuarterBack extends Player{
 
     private String getPassingYardsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite passing QB";
-            case 2  -> "Highly productive pocket general with strong yardage output";
-            case 3  -> "Efficient move-the-chains passer; reliable volume";
+            case 1 -> "Elite passing QB";
+            case 2 -> "Highly productive pocket general with strong yardage output";
+            case 3 -> "Efficient move-the-chains passer; reliable volume";
             case -1 -> "Struggles to find rhythm; limited downfield production";
             case -2 -> "Inconsistent air attack; frequently under pressure";
             case -3 -> "Conservative passing approach with low explosive potential";
@@ -114,9 +118,9 @@ public class QuarterBack extends Player{
 
     private String getPassingTDsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite red zone sniper; high-frequency scoring threat";
-            case 2  -> "Aggressive finisher; consistently finds the end zone";
-            case 3  -> "Steady contributor in scoring situations";
+            case 1 -> "Elite red zone sniper; high-frequency scoring threat";
+            case 2 -> "Aggressive finisher; consistently finds the end zone";
+            case 3 -> "Steady contributor in scoring situations";
             case -1 -> "Red zone liability; struggles to capitalize on scoring drives";
             case -2 -> "Low touchdown frequency; offense stalls in the red zone";
             case -3 -> "Difficulty finishing drives through the air";
@@ -126,9 +130,9 @@ public class QuarterBack extends Player{
 
     private String getIntsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite ball security; rarely puts the ball in harm's way";
-            case 2  -> "Disciplined decision-maker; avoids costly turnovers";
-            case 3  -> "Generally safe with the ball; manages risk well";
+            case 1 -> "Elite ball security; rarely puts the ball in harm's way";
+            case 2 -> "Disciplined decision-maker; avoids costly turnovers";
+            case 3 -> "Generally safe with the ball; manages risk well";
             case -1 -> "Erratic gunslinger; high turnover risk in tight windows";
             case -2 -> "Prone to critical mistakes; struggles with defensive reads";
             case -3 -> "Frequent turnovers are a major drag on offensive momentum";
@@ -138,9 +142,9 @@ public class QuarterBack extends Player{
 
     private String getCompletionsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Surgical precision; consistently hits receivers in stride";
-            case 2  -> "High-accuracy passer; keeps the offense on schedule";
-            case 3  -> "Reliable completion rate in a standard offensive scheme";
+            case 1 -> "Surgical precision; consistently hits receivers in stride";
+            case 2 -> "High-accuracy passer; keeps the offense on schedule";
+            case 3 -> "Reliable completion rate in a standard offensive scheme";
             case -1 -> "Erratic ball placement; frequently misses open targets";
             case -2 -> "Inaccurate under pressure; struggles with timing routes";
             case -3 -> "Low-efficiency passer; often off-target on routine throws";
@@ -150,9 +154,9 @@ public class QuarterBack extends Player{
 
     private String getRushingYardsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite dual-threat scrambler";
-            case 2  -> "Dangerous runner out of the pocket";
-            case 3  -> "Capable of picking up yards on the ground";
+            case 1 -> "Elite dual-threat scrambler";
+            case 2 -> "Dangerous runner out of the pocket";
+            case 3 -> "Capable of picking up yards on the ground";
             case -1 -> "Strictly a pocket passer; zero mobility";
             case -2 -> "Limited mobility; heavy reliance on protection";
             case -3 -> "Primarily stays in the pocket";
@@ -162,9 +166,9 @@ public class QuarterBack extends Player{
 
     private String getRushingTDsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite goal-line weapon";
-            case 2  -> "Dynamic red zone runner";
-            case 3  -> "Can be used to pick up a touchdown";
+            case 1 -> "Elite goal-line weapon";
+            case 2 -> "Dynamic red zone runner";
+            case 3 -> "Can be used to pick up a touchdown";
             case -1 -> "Never used as an option in the red zone";
             case -2 -> "Rarely used to pick up touchdowns";
             case -3 -> "More likely to pass than run in the red zone";

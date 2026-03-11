@@ -1,6 +1,6 @@
 package com.jamalkarim.analyzer.domain.scoring;
 
-import com.jamalkarim.analyzer.domain.entities.Player;
+import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 
 import java.util.List;
@@ -13,11 +13,11 @@ public class ScareResultFactory {
 
     /**
      * Performs a full "Scare Factor" analysis on a player.
-     * 
+     *
      * @param player The player entity to analyze.
      * @return A ScareResult containing the final score, tier, and textual explanations.
      */
-    public ScareResult generateScareResult(Player player){
+    public ScareResult generateScareResult(Player player) {
         ScareResult scareResult = new ScareResult(player);
 
         double scareScore = player.calculateScareFactor();

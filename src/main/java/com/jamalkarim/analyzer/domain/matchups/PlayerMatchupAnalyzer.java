@@ -1,6 +1,6 @@
 package com.jamalkarim.analyzer.domain.matchups;
 
-import com.jamalkarim.analyzer.domain.entities.Player;
+import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;

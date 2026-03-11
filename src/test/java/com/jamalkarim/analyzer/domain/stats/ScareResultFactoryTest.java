@@ -1,7 +1,7 @@
 package com.jamalkarim.analyzer.domain.stats;
 
-import com.jamalkarim.analyzer.domain.entities.Player;
-import com.jamalkarim.analyzer.domain.entities.QuarterBack;
+import com.jamalkarim.analyzer.domain.models.Player;
+import com.jamalkarim.analyzer.domain.models.QuarterBack;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ class ScareResultFactoryTest {
     void testGenerateScareResult() {
         ScareResultFactory factory = new ScareResultFactory();
         Player player = new QuarterBack("Josh Allen", "BUF");
-        
+
         Stats stats = new Stats();
         stats.setGamesPlayed(1);
         stats.setPassingYards(300);

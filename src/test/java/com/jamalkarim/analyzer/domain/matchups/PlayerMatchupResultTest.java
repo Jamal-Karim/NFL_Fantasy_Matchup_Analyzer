@@ -1,6 +1,6 @@
 package com.jamalkarim.analyzer.domain.matchups;
 
-import com.jamalkarim.analyzer.domain.entities.QuarterBack;
+import com.jamalkarim.analyzer.domain.models.QuarterBack;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import org.junit.jupiter.api.Test;

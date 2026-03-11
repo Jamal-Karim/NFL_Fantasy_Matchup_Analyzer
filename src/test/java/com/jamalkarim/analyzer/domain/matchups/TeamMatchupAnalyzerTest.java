@@ -1,14 +1,12 @@
 package com.jamalkarim.analyzer.domain.matchups;
 
-import com.jamalkarim.analyzer.domain.entities.*;
+import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -135,7 +133,7 @@ class TeamMatchupAnalyzerTest {
     void shouldThrowExceptionForUnequalTeamSizes() {
         team1.addPlayer(createElitePlayer(Position.QB, "QB1", "T1"));
         team1.addPlayer(createElitePlayer(Position.RB, "RB1", "T1"));
-        
+
         team2.addPlayer(createElitePlayer(Position.QB, "QB2", "T2"));
 
         assertThatThrownBy(() -> analyzer.analyzeTeamMatchup(team1, team2))

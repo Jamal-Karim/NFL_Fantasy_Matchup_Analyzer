@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.entities;
+package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.Position;
@@ -8,14 +8,16 @@ import java.util.*;
 
 /**
  * Wide Receiver-specific implementation of the Scare Factor.
- * 
- * Scoring balances volume (receptions) with efficiency (yards) 
+ * <p>
+ * Scoring balances volume (receptions) with efficiency (yards)
  * and scoring threat (TDs).
  */
-public class WideReceiver extends Player{
+public class WideReceiver extends Player {
 
-    /** Max statistics for WRs determined from the most elite players
-     * at that position from the 2023, 2024, and 2025 NFL season */
+    /**
+     * Max statistics for WRs determined from the most elite players
+     * at that position from the 2023, 2024, and 2025 NFL season
+     */
     public static final double MAX_RECEPTIONS_PER_GAME = 8.2;
     public static final double MAX_RECEIVING_YARDS_PER_GAME = 105.0;
     public static final double MAX_RECEIVING_TDS_PER_GAME = 0.80;
@@ -68,9 +70,11 @@ public class WideReceiver extends Player{
             double value = entry.getValue();
 
             switch (stat) {
-                case Receptions     -> explanations.add(getReceptionsLabel(getTierForStatistic(value, RECEPTIONS_WEIGHT)));
-                case ReceivingYards -> explanations.add(getReceivingYardsLabel(getTierForStatistic(value, RECEIVING_YARDS_WEIGHT)));
-                case ReceivingTDs   -> explanations.add(getReceivingTDsLabel(getTierForStatistic(value, RECEIVING_TDS_WEIGHT)));
+                case Receptions -> explanations.add(getReceptionsLabel(getTierForStatistic(value, RECEPTIONS_WEIGHT)));
+                case ReceivingYards ->
+                        explanations.add(getReceivingYardsLabel(getTierForStatistic(value, RECEIVING_YARDS_WEIGHT)));
+                case ReceivingTDs ->
+                        explanations.add(getReceivingTDsLabel(getTierForStatistic(value, RECEIVING_TDS_WEIGHT)));
             }
         }
 
@@ -79,9 +83,9 @@ public class WideReceiver extends Player{
 
     private String getReceptionsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite target vacuum; a consistent chain-mover and reliable safety valve";
-            case 2  -> "High-volume possession receiver with dependable hands";
-            case 3  -> "Steady contributor; finds soft spots in the secondary regularly";
+            case 1 -> "Elite target vacuum; a consistent chain-mover and reliable safety valve";
+            case 2 -> "High-volume possession receiver with dependable hands";
+            case 3 -> "Steady contributor; finds soft spots in the secondary regularly";
             case -1 -> "Struggles to create separation; rarely targeted in the progression";
             case -2 -> "Low-volume receiver; limited involvement in the weekly gameplan";
             case -3 -> "Inconsistent hands; high frequency of missed connections";
@@ -91,9 +95,9 @@ public class WideReceiver extends Player{
 
     private String getReceivingYardsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite vertical threat; capable of taking the top off any defense";
-            case 2  -> "Highly productive playmaker with significant yardage upside";
-            case 3  -> "Efficient yardage producer; gains chunk plays on intermediate routes";
+            case 1 -> "Elite vertical threat; capable of taking the top off any defense";
+            case 2 -> "Highly productive playmaker with significant yardage upside";
+            case 3 -> "Efficient yardage producer; gains chunk plays on intermediate routes";
             case -1 -> "Minimal downfield impact; yardage production is largely stalled";
             case -2 -> "Underwhelming air-yard share; struggles to generate big plays";
             case -3 -> "Limited explosive potential; strictly a short-yardage option";
@@ -103,9 +107,9 @@ public class WideReceiver extends Player{
 
     private String getReceivingTDsLabel(int tier) {
         return switch (tier) {
-            case 1  -> "Elite red zone weapon; a nightmare for cornerbacks in the end zone";
-            case 2  -> "Dangerous scoring threat; consistently finds paydirt";
-            case 3  -> "Reliable finisher on scoring drives";
+            case 1 -> "Elite red zone weapon; a nightmare for cornerbacks in the end zone";
+            case 2 -> "Dangerous scoring threat; consistently finds paydirt";
+            case 3 -> "Reliable finisher on scoring drives";
             case -1 -> "Zero impact as a scoring threat; struggles to haul in touchdowns";
             case -2 -> "Rarely utilized in high-leverage scoring situations";
             case -3 -> "Low probability of finding the end zone; primarily a decoy in the red zone";
