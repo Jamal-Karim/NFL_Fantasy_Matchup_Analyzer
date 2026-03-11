@@ -6,8 +6,27 @@ import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 
 import java.util.*;
 
+/**
+ * Service responsible for comparing two teams and predicting
+ * which one has a statistical advantage.
+ * <p>
+ * The analysis involves aggregating Scare Factor scores, calculating
+ * win probabilities, and identifying key star-player matchups.
+ */
 public class TeamMatchupAnalyzer {
 
+    /**
+     * Performs a comprehensive head-to-head analysis of two teams.
+     * <p>
+     * Both teams must have identical roster sizes. The analyzer
+     * compares total impact scores and identifies the top 3 player
+     * matchups by impact rank.
+     *
+     * @param team1 The first team to analyze.
+     * @param team2 The second team to analyze.
+     * @return A TeamMatchupResult containing scores, probabilities, and star matchups.
+     * @throws RuntimeException if team sizes are not equal.
+     */
     public TeamMatchupResult analyzeTeamMatchup(Team team1, Team team2) {
 
         if (!areTeamSizesEqual(team1, team2)) {

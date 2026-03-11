@@ -6,6 +6,13 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Represents the final results of a head-to-head team comparison.
+ * <p>
+ * Contains aggregated scores, win probabilities for each team,
+ * and a list of key individual player matchups that influenced
+ * the overall outcome.
+ */
 @Data
 public class TeamMatchupResult {
     private String team1;
@@ -22,6 +29,12 @@ public class TeamMatchupResult {
         this.team2 = team2;
     }
 
+    /**
+     * Prints a formatted report of the team matchup to the console.
+     * <p>
+     * Includes total scores, win probabilities, the overall advantage level,
+     * and a breakdown of the key star-player battles.
+     */
     public void printTeamMatchupReport() {
         String separator = "==================================================";
         String subSeparator = "--------------------------------------------------";

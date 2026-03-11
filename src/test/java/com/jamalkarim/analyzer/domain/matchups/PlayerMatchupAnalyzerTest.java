@@ -2,7 +2,6 @@ package com.jamalkarim.analyzer.domain.matchups;
 
 import com.jamalkarim.analyzer.domain.entities.QuarterBack;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
-import com.jamalkarim.analyzer.domain.enums.PlayerAdvantages;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -62,7 +61,6 @@ class PlayerMatchupAnalyzerTest {
 
     @Test
     void testAnalyzeMatchupDeadHeat() {
-        // Both have zero stats
         Stats stats = new Stats();
         stats.setGamesPlayed(1);
         qb1.setCurrentSeasonStats(stats);

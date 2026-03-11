@@ -6,6 +6,13 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a fantasy football team, managing a roster of players
+ * and enforcing league-standard roster construction rules.
+ * <p>
+ * The team enforces limits on specific positions (QB, RB, WR, TE)
+ * and supports a single Flex slot for additional RB, WR, or TE players.
+ */
 @Data
 public class Team {
 
@@ -22,6 +29,15 @@ public class Team {
         this.name = name;
     }
 
+    /**
+     * Adds a player to the roster if there is an available slot.
+     * <p>
+     * The method first attempts to place the player in their primary position slot.
+     * If that slot is full, it attempts to place them in the Flex slot (unless they are a QB).
+     *
+     * @param player The player to add to the team.
+     * @throws RuntimeException if the position slot and Flex slot are both full, or if a QB is added when the QB slot is full.
+     */
     public void addPlayer(Player player) {
 
         if (checkCountOfPosition(roster, player.getPosition()) < getLimitOfPosition(player.getPosition())) {

@@ -2,6 +2,12 @@ package com.jamalkarim.analyzer.domain.stats;
 
 import lombok.Data;
 
+/**
+ * Represents the raw seasonal statistics for a player.
+ * <p>
+ * This object holds cumulative totals for passing, rushing, and receiving
+ * statistics, along with metadata such as the season year and games played.
+ */
 @Data
 public class Stats {
 
