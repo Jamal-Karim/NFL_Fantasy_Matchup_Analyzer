@@ -143,7 +143,6 @@ public abstract class Player implements ScareFactor {
      * @return A sorted map containing the top 3 most significant statistical factors.
      */
     protected Map<PlayerStats, Double> findTopContributingScores(Map<PlayerStats, Impact> map) {
-        // ...
         Map<PlayerStats, Double> initialMap = new HashMap<>();
 
         for (Map.Entry<PlayerStats, Impact> entry : map.entrySet()) {

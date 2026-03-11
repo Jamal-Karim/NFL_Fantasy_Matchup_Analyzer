@@ -1,7 +1,7 @@
 package com.jamalkarim.analyzer.domain.matchups;
 
 import com.jamalkarim.analyzer.domain.entities.Player;
-import com.jamalkarim.analyzer.domain.enums.PlayerAdvantages;
+import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 
 /**
  * Represents the final report of a head-to-head player comparison.
- * Contains winner/loser data, the magnitude of the advantage, 
+ * Contains winner/loser data, the magnitude of the advantage,
  * and an explanation of the outcome.
  */
 @Data
@@ -17,7 +17,7 @@ public class PlayerMatchupResult {
     private Player player1;
     private Player player2;
     private double scareDifference;
-    private PlayerAdvantages advantage;
+    private MatchupAdvantages advantage;
     private Player winner;
     private Player loser;
     private String explanation;
@@ -65,8 +65,8 @@ public class PlayerMatchupResult {
         System.out.println(subSeparator);
 
         System.out.println("SCORES:");
-        System.out.println(player1.getName() + ": " + (int)player1ScareResult.getScareScore() + " [" + player1ScareResult.getScareTier() + "]");
-        System.out.println(player2.getName() + ": " + (int)player2ScareResult.getScareScore() + " [" + player2ScareResult.getScareTier() + "]");
+        System.out.println(player1.getName() + ": " + (int) player1ScareResult.getScareScore() + " [" + player1ScareResult.getScareTier() + "]");
+        System.out.println(player2.getName() + ": " + (int) player2ScareResult.getScareScore() + " [" + player2ScareResult.getScareTier() + "]");
 
         System.out.println(separator + "\n");
     }

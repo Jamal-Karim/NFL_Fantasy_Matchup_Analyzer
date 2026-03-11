@@ -1,10 +1,12 @@
 package com.jamalkarim.analyzer.domain.entities;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class Team {
 
     public static final int MAX_QB = 1;
@@ -14,8 +16,11 @@ public class Team {
     public static final int MAX_FLEX = 1;
 
     private String name;
-    private int wins;
     private List<Player> roster = new ArrayList<>();
+
+    public Team(String name) {
+        this.name = name;
+    }
 
     public void addPlayer(Player player) {
 
