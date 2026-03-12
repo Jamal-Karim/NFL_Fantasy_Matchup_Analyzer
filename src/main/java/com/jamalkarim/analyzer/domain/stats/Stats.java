@@ -24,7 +24,6 @@ public class Stats {
     private int rushingYards;
     private int rushingTDs;
 
-    private int targets;
     private int receptions;
     private int receivingYards;
     private int receivingTDs;

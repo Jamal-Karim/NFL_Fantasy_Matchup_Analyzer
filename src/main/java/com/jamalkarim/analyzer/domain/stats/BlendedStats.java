@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * Represents a set of normalized, per-game statistics.
  * <p>
- * This object is the result of the {@link StatsBlender}'s logic, 
+ * This object is the result of the {@link StatsBlender}'s logic,
  * merging data from different seasons and league baselines into
  * a single predictive representation used for Scare Factor calculations.
  */
@@ -22,7 +22,6 @@ public class BlendedStats {
     private double rushingYardsPerGame;
     private double rushingTDsPerGame;
 
-    private double targetsPerGame;
     private double receptionsPerGame;
     private double receivingYardsPerGame;
     private double receivingTDsPerGame;
