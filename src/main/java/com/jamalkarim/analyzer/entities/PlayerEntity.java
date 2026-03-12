@@ -14,6 +14,8 @@ public class PlayerEntity {
     private Long id;
 
     private String name;
+
+    @Column(name = "nfl_team")
     private String NFLTeam;
 
     @Enumerated(EnumType.STRING)

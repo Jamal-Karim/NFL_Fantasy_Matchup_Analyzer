@@ -25,8 +25,7 @@ public class TeamMatchupResultEntity {
     @Enumerated(EnumType.STRING)
     private MatchupAdvantages advantage;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "team_matchup_id")
+    @OneToMany(mappedBy = "teamMatchupResult", cascade = CascadeType.ALL)
     private List<PlayerMatchupResultEntity> playerMatchupResults;
 
 }

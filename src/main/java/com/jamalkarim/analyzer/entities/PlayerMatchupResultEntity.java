@@ -37,4 +37,8 @@ public class PlayerMatchupResultEntity {
     @JoinColumn(name = "player_2_scare_result_id")
     private ScareResultEntity player2ScareResult;
 
+    @ManyToOne
+    @JoinColumn(name = "team_matchup_id")
+    private TeamMatchupResultEntity teamMatchupResult;
+
 }
