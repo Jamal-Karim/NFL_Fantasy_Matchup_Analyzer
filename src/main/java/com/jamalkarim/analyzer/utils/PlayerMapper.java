@@ -14,8 +14,10 @@ public class PlayerMapper {
         player.setNFLTeam(mockPlayerDTO.getNflTeam());
         player.setPosition(mockPlayerDTO.getPosition());
 
-        StatsEntity stats = statsMapper.mockToEntity(mockPlayerDTO.getStats());
-        player.setStats(stats);
+        StatsEntity currentStats = statsMapper.mockToEntity(mockPlayerDTO.getCurrentSeasonStats());
+        StatsEntity lastStats = statsMapper.mockToEntity(mockPlayerDTO.getLastSeasonStats());
+        player.setCurrentSeasonStats(currentStats);
+        player.setLastSeasonStats(lastStats);
         return player;
     }
 }

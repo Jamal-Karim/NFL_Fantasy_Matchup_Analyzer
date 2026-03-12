@@ -8,5 +8,6 @@ public class MockPlayerDTO {
     private String name;
     private String nflTeam;
     private Position position;
-    private MockStatsDTO stats;
+    private MockStatsDTO currentSeasonStats;
+    private MockStatsDTO lastSeasonStats;
 }
