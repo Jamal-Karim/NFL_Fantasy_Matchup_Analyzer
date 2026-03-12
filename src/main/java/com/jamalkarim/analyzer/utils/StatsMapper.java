@@ -1,9 +1,33 @@
 package com.jamalkarim.analyzer.utils;
 
+import com.jamalkarim.analyzer.domain.stats.Stats;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 
 public class StatsMapper {
+
+    public Stats entityToDomain(StatsEntity statsEntity) {
+        Stats stats = new Stats();
+
+        stats.setSeason(statsEntity.getSeason());
+        stats.setGamesPlayed(statsEntity.getGamesPlayed());
+
+        stats.setPassAttempts(statsEntity.getPassAttempts());
+        stats.setCompletions(statsEntity.getCompletions());
+        stats.setPassingYards(statsEntity.getPassingYards());
+        stats.setPassingTDs(statsEntity.getPassingTDs());
+        stats.setInterceptions(statsEntity.getInterceptions());
+
+        stats.setRushingAttempts(statsEntity.getRushingAttempts());
+        stats.setRushingYards(statsEntity.getRushingYards());
+        stats.setRushingTDs(statsEntity.getRushingTDs());
+
+        stats.setReceptions(statsEntity.getReceptions());
+        stats.setReceivingYards(statsEntity.getReceivingYards());
+        stats.setReceivingTDs(statsEntity.getReceivingTDs());
+
+        return stats;
+    }
 
     public StatsEntity mockToEntity(MockStatsDTO mockStatsDTO) {
         StatsEntity stats = new StatsEntity();
