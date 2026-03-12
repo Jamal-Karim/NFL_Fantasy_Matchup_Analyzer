@@ -1,0 +1,606 @@
+[
+  {
+    "name": "Bijan Robinson",
+    "nfl_team": "Atlanta Falcons",
+    "position": "RB",
+    "draft_pick": 8,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1478,
+      "rushing_tds": 9,
+      "receptions": 79,
+      "receiving_yards": 820,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 1456,
+      "rushing_tds": 7,
+      "receptions": 61,
+      "receiving_yards": 431,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Jahmyr Gibbs",
+    "nfl_team": "Detroit Lions",
+    "position": "RB",
+    "draft_pick": 12,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1223,
+      "rushing_tds": 13,
+      "receptions": 77,
+      "receiving_yards": 616,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 1412,
+      "rushing_tds": 16,
+      "receptions": 52,
+      "receiving_yards": 517,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Jonathan Taylor",
+    "nfl_team": "Indianapolis Colts",
+    "position": "RB",
+    "draft_pick": 41,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1585,
+      "rushing_tds": 18,
+      "receptions": 46,
+      "receiving_yards": 378,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 14,
+      "rushing_yards": 1431,
+      "rushing_tds": 11,
+      "receptions": 18,
+      "receiving_yards": 136,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Christian McCaffrey",
+    "nfl_team": "San Francisco 49ers",
+    "position": "RB",
+    "draft_pick": 8,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1202,
+      "rushing_tds": 11,
+      "receptions": 102,
+      "receiving_yards": 924,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 4,
+      "rushing_yards": 202,
+      "rushing_tds": 0,
+      "receptions": 15,
+      "receiving_yards": 146,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "James Cook",
+    "nfl_team": "Buffalo Bills",
+    "position": "RB",
+    "draft_pick": 63,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1621,
+      "rushing_tds": 12,
+      "receptions": 33,
+      "receiving_yards": 291,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "rushing_yards": 1009,
+      "rushing_tds": 16,
+      "receptions": 32,
+      "receiving_yards": 258,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Devon Achane",
+    "nfl_team": "Miami Dolphins",
+    "position": "RB",
+    "draft_pick": 84,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "rushing_yards": 1350,
+      "rushing_tds": 8,
+      "receptions": 67,
+      "receiving_yards": 488,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 907,
+      "rushing_tds": 6,
+      "receptions": 78,
+      "receiving_yards": 592,
+      "receiving_tds": 6
+    }
+  },
+  {
+    "name": "Jeremiyah Love",
+    "nfl_team": "FA",
+    "position": "RB",
+    "draft_pick": 8,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": null,
+    "last_season_stats": null
+  },
+  {
+    "name": "Ashton Jeanty",
+    "nfl_team": "Las Vegas Raiders",
+    "position": "RB",
+    "draft_pick": 6,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 975,
+      "rushing_tds": 6,
+      "receptions": 55,
+      "receiving_yards": 346,
+      "receiving_tds": 5
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Omarion Hampton",
+    "nfl_team": "Los Angeles Chargers",
+    "position": "RB",
+    "draft_pick": 22,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 9,
+      "rushing_yards": 545,
+      "rushing_tds": 4,
+      "receptions": 32,
+      "receiving_yards": 192,
+      "receiving_tds": 1
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Derrick Henry",
+    "nfl_team": "Baltimore Ravens",
+    "position": "RB",
+    "draft_pick": 45,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1595,
+      "rushing_tds": 16,
+      "receptions": 15,
+      "receiving_yards": 150,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 1921,
+      "rushing_tds": 16,
+      "receptions": 19,
+      "receiving_yards": 193,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Saquon Barkley",
+    "nfl_team": "Philadelphia Eagles",
+    "position": "RB",
+    "draft_pick": 2,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "rushing_yards": 1140,
+      "rushing_tds": 7,
+      "receptions": 37,
+      "receiving_yards": 273,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "rushing_yards": 2005,
+      "rushing_tds": 13,
+      "receptions": 33,
+      "receiving_yards": 278,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Chase Brown",
+    "nfl_team": "Cincinnati Bengals",
+    "position": "RB",
+    "draft_pick": 163,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1019,
+      "rushing_tds": 6,
+      "receptions": 69,
+      "receiving_yards": 437,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "rushing_yards": 990,
+      "rushing_tds": 7,
+      "receptions": 54,
+      "receiving_yards": 360,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Josh Jacobs",
+    "nfl_team": "Green Bay Packers",
+    "position": "RB",
+    "draft_pick": 24,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "rushing_yards": 929,
+      "rushing_tds": 13,
+      "receptions": 36,
+      "receiving_yards": 282,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 1329,
+      "rushing_tds": 15,
+      "receptions": 36,
+      "receiving_yards": 342,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Kenneth Walker",
+    "nfl_team": "Kansas City Chiefs",
+    "position": "RB",
+    "draft_pick": 41,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1027,
+      "rushing_tds": 5,
+      "receptions": 31,
+      "receiving_yards": 282,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 11,
+      "rushing_yards": 573,
+      "rushing_tds": 7,
+      "receptions": 46,
+      "receiving_yards": 299,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Breece Hall",
+    "nfl_team": "New York Jets",
+    "position": "RB",
+    "draft_pick": 36,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "rushing_yards": 1065,
+      "rushing_tds": 4,
+      "receptions": 36,
+      "receiving_yards": 350,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "rushing_yards": 876,
+      "rushing_tds": 5,
+      "receptions": 57,
+      "receiving_yards": 483,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Bucky Irving",
+    "nfl_team": "Tampa Bay Buccaneers",
+    "position": "RB",
+    "draft_pick": 125,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 10,
+      "rushing_yards": 588,
+      "rushing_tds": 1,
+      "receptions": 30,
+      "receiving_yards": 277,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 1122,
+      "rushing_tds": 8,
+      "receptions": 47,
+      "receiving_yards": 392,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Kyren Williams",
+    "nfl_team": "Los Angeles Rams",
+    "position": "RB",
+    "draft_pick": 164,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1252,
+      "rushing_tds": 10,
+      "receptions": 36,
+      "receiving_yards": 281,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "rushing_yards": 1299,
+      "rushing_tds": 14,
+      "receptions": 34,
+      "receiving_yards": 182,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Javonte Williams",
+    "nfl_team": "Dallas Cowboys",
+    "position": "RB",
+    "draft_pick": 35,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "rushing_yards": 1201,
+      "rushing_tds": 11,
+      "receptions": 35,
+      "receiving_yards": 137,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 513,
+      "rushing_tds": 4,
+      "receptions": 52,
+      "receiving_yards": 346,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Travis Etienne Jr.",
+    "nfl_team": "New Orleans Saints",
+    "position": "RB",
+    "draft_pick": 25,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 1107,
+      "rushing_tds": 7,
+      "receptions": 36,
+      "receiving_yards": 292,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "rushing_yards": 558,
+      "rushing_tds": 2,
+      "receptions": 39,
+      "receiving_yards": 254,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "TreVeyon Henderson",
+    "nfl_team": "New England Patriots",
+    "position": "RB",
+    "draft_pick": 38,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 911,
+      "rushing_tds": 9,
+      "receptions": 35,
+      "receiving_yards": 221,
+      "receiving_tds": 1
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Cam Skattebo",
+    "nfl_team": "New York Giants",
+    "position": "RB",
+    "draft_pick": 105,
+    "is_rookie": false,
+    "is_injured": true,
+    "current_season_stats": null,
+    "last_season_stats": null
+  },
+  {
+    "name": "Quinshon Judkins",
+    "nfl_team": "Cleveland Browns",
+    "position": "RB",
+    "draft_pick": 36,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 14,
+      "rushing_yards": 827,
+      "rushing_tds": 7,
+      "receptions": 26,
+      "receiving_yards": 171,
+      "receiving_tds": 0
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "D'Andre Swift",
+    "nfl_team": "Chicago Bears",
+    "position": "RB",
+    "draft_pick": 35,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "rushing_yards": 1087,
+      "rushing_tds": 9,
+      "receptions": 34,
+      "receiving_yards": 299,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "rushing_yards": 959,
+      "rushing_tds": 6,
+      "receptions": 42,
+      "receiving_yards": 386,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "RJ Harvey",
+    "nfl_team": "Denver Broncos",
+    "position": "RB",
+    "draft_pick": 60,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 540,
+      "rushing_tds": 7,
+      "receptions": 47,
+      "receiving_yards": 356,
+      "receiving_tds": 5
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "David Montgomery",
+    "nfl_team": "Houston Texans",
+    "position": "RB",
+    "draft_pick": 73,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "rushing_yards": 716,
+      "rushing_tds": 8,
+      "receptions": 24,
+      "receiving_yards": 192,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 14,
+      "rushing_yards": 775,
+      "rushing_tds": 11,
+      "receptions": 36,
+      "receiving_yards": 341,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Jaylen Warren",
+    "nfl_team": "Pittsburgh Steelers",
+    "position": "RB",
+    "draft_pick": 257,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "rushing_yards": 958,
+      "rushing_tds": 5,
+      "receptions": 40,
+      "receiving_yards": 333,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "rushing_yards": 511,
+      "rushing_tds": 1,
+      "receptions": 38,
+      "receiving_yards": 310,
+      "receiving_tds": 0
+    }
+  }
+]
