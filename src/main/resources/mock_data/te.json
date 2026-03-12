@@ -1,7 +1,7 @@
 [
   {
     "name": "Brock Bowers",
-    "nfl_team": "Las Vegas Raiders",
+    "nfl_team": "LV",
     "position": "TE",
     "draft_pick": 13,
     "is_rookie": true,
@@ -23,7 +23,7 @@
   },
   {
     "name": "Trey McBride",
-    "nfl_team": "Arizona Cardinals",
+    "nfl_team": "ARI",
     "position": "TE",
     "draft_pick": 55,
     "is_rookie": false,
@@ -45,7 +45,7 @@
   },
   {
     "name": "Colston Loveland",
-    "nfl_team": "Chicago Bears",
+    "nfl_team": "CHI",
     "position": "TE",
     "draft_pick": 10,
     "is_rookie": false,
@@ -61,7 +61,7 @@
   },
   {
     "name": "Tucker Kraft",
-    "nfl_team": "Green Bay Packers",
+    "nfl_team": "GB",
     "position": "TE",
     "draft_pick": 78,
     "is_rookie": false,
@@ -83,7 +83,7 @@
   },
   {
     "name": "Tyler Warren",
-    "nfl_team": "Indianapolis Colts",
+    "nfl_team": "IND",
     "position": "TE",
     "draft_pick": 14,
     "is_rookie": false,
@@ -99,7 +99,7 @@
   },
   {
     "name": "Harold Fannin Jr.",
-    "nfl_team": "Cleveland Browns",
+    "nfl_team": "CLE",
     "position": "TE",
     "draft_pick": 67,
     "is_rookie": false,
@@ -115,7 +115,7 @@
   },
   {
     "name": "Sam LaPorta",
-    "nfl_team": "Detroit Lions",
+    "nfl_team": "DET",
     "position": "TE",
     "draft_pick": 34,
     "is_rookie": false,
@@ -137,7 +137,7 @@
   },
   {
     "name": "Kyle Pitts",
-    "nfl_team": "Atlanta Falcons",
+    "nfl_team": "ATL",
     "position": "TE",
     "draft_pick": 4,
     "is_rookie": false,
@@ -159,7 +159,7 @@
   },
   {
     "name": "Dalton Kincaid",
-    "nfl_team": "Buffalo Bills",
+    "nfl_team": "BUF",
     "position": "TE",
     "draft_pick": 25,
     "is_rookie": false,
@@ -181,7 +181,7 @@
   },
   {
     "name": "Oronde Gadsden",
-    "nfl_team": "Los Angeles Chargers",
+    "nfl_team": "LAC",
     "position": "TE",
     "draft_pick": 165,
     "is_rookie": false,
@@ -197,7 +197,7 @@
   },
   {
     "name": "Brenton Strange",
-    "nfl_team": "Jacksonville Jaguars",
+    "nfl_team": "JAX",
     "position": "TE",
     "draft_pick": 61,
     "is_rookie": false,
@@ -219,7 +219,7 @@
   },
   {
     "name": "Jake Ferguson",
-    "nfl_team": "Dallas Cowboys",
+    "nfl_team": "DAL",
     "position": "TE",
     "draft_pick": 129,
     "is_rookie": false,
@@ -241,7 +241,7 @@
   },
   {
     "name": "Juwan Johnson",
-    "nfl_team": "New Orleans Saints",
+    "nfl_team": "NO",
     "position": "TE",
     "draft_pick": 257,
     "is_rookie": false,
@@ -285,7 +285,7 @@
   },
   {
     "name": "George Kittle",
-    "nfl_team": "San Francisco 49ers",
+    "nfl_team": "SF",
     "position": "TE",
     "draft_pick": 146,
     "is_rookie": false,
@@ -307,7 +307,7 @@
   },
   {
     "name": "Hunter Henry",
-    "nfl_team": "New England Patriots",
+    "nfl_team": "NE",
     "position": "TE",
     "draft_pick": 35,
     "is_rookie": false,
@@ -329,7 +329,7 @@
   },
   {
     "name": "Mark Andrews",
-    "nfl_team": "Baltimore Ravens",
+    "nfl_team": "BAL",
     "position": "TE",
     "draft_pick": 86,
     "is_rookie": false,
@@ -351,7 +351,7 @@
   },
   {
     "name": "Travis Kelce",
-    "nfl_team": "Kansas City Chiefs",
+    "nfl_team": "KC",
     "position": "TE",
     "draft_pick": 63,
     "is_rookie": false,
@@ -373,7 +373,7 @@
   },
   {
     "name": "Dalton Schultz",
-    "nfl_team": "Houston Texans",
+    "nfl_team": "HOU",
     "position": "TE",
     "draft_pick": 137,
     "is_rookie": false,
@@ -395,7 +395,7 @@
   },
   {
     "name": "Isaiah Likely",
-    "nfl_team": "New York Giants",
+    "nfl_team": "NYG",
     "position": "TE",
     "draft_pick": 139,
     "is_rookie": false,

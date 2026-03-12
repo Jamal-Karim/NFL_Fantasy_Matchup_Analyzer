@@ -1,7 +1,7 @@
 [
   {
     "name": "Josh Allen",
-    "nfl_team": "Bills",
+    "nfl_team": "BUF",
     "position": "QB",
     "draft_pick": 7,
     "is_rookie": false,
@@ -29,7 +29,7 @@
   },
   {
     "name": "Drake Maye",
-    "nfl_team": "Patriots",
+    "nfl_team": "NE",
     "position": "QB",
     "draft_pick": 3,
     "is_rookie": false,
@@ -57,7 +57,7 @@
   },
   {
     "name": "Lamar Jackson",
-    "nfl_team": "Ravens",
+    "nfl_team": "BAL",
     "position": "QB",
     "draft_pick": 32,
     "is_rookie": false,
@@ -85,7 +85,7 @@
   },
   {
     "name": "Joe Burrow",
-    "nfl_team": "Bengals",
+    "nfl_team": "CIN",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,
@@ -113,7 +113,7 @@
   },
   {
     "name": "Jayden Daniels",
-    "nfl_team": "Commanders",
+    "nfl_team": "WAS",
     "position": "QB",
     "draft_pick": 2,
     "is_rookie": false,
@@ -141,7 +141,7 @@
   },
   {
     "name": "Jalen Hurts",
-    "nfl_team": "Eagles",
+    "nfl_team": "PHI",
     "position": "QB",
     "draft_pick": 53,
     "is_rookie": false,
@@ -169,7 +169,7 @@
   },
   {
     "name": "Justin Herbert",
-    "nfl_team": "Chargers",
+    "nfl_team": "LAC",
     "position": "QB",
     "draft_pick": 6,
     "is_rookie": false,
@@ -197,7 +197,7 @@
   },
   {
     "name": "Jaxson Dart",
-    "nfl_team": "Giants",
+    "nfl_team": "NYG",
     "position": "QB",
     "draft_pick": 25,
     "is_rookie": true,
@@ -216,7 +216,7 @@
   },
   {
     "name": "Trevor Lawrence",
-    "nfl_team": "Jaguars",
+    "nfl_team": "JAX",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,
@@ -244,7 +244,7 @@
   },
   {
     "name": "Caleb Williams",
-    "nfl_team": "Bears",
+    "nfl_team": "CHI",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,
@@ -272,7 +272,7 @@
   },
   {
     "name": "Dak Prescott",
-    "nfl_team": "Cowboys",
+    "nfl_team": "DAL",
     "position": "QB",
     "draft_pick": 135,
     "is_rookie": false,
@@ -300,7 +300,7 @@
   },
   {
     "name": "Brock Purdy",
-    "nfl_team": "49ers",
+    "nfl_team": "SF",
     "position": "QB",
     "draft_pick": 262,
     "is_rookie": false,
@@ -328,7 +328,7 @@
   },
   {
     "name": "Patrick Mahomes",
-    "nfl_team": "Chiefs",
+    "nfl_team": "KC",
     "position": "QB",
     "draft_pick": 10,
     "is_rookie": false,
@@ -356,7 +356,7 @@
   },
   {
     "name": "Matthew Stafford",
-    "nfl_team": "Rams",
+    "nfl_team": "LAR",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,
@@ -384,7 +384,7 @@
   },
   {
     "name": "Bo Nix",
-    "nfl_team": "Broncos",
+    "nfl_team": "DEN",
     "position": "QB",
     "draft_pick": 12,
     "is_rookie": false,
@@ -422,7 +422,7 @@
   },
   {
     "name": "Jared Goff",
-    "nfl_team": "Detroit Lions",
+    "nfl_team": "DET",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,
@@ -448,7 +448,7 @@
   },
   {
     "name": "Jordan Love",
-    "nfl_team": "Green Bay Packers",
+    "nfl_team": "GB",
     "position": "QB",
     "draft_pick": 26,
     "is_rookie": false,
@@ -474,7 +474,7 @@
   },
   {
     "name": "Baker Mayfield",
-    "nfl_team": "Tampa Bay Buccaneers",
+    "nfl_team": "TB",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,
@@ -500,7 +500,7 @@
   },
   {
     "name": "Sam Darnold",
-    "nfl_team": "Seattle Seahawks",
+    "nfl_team": "SEA",
     "position": "QB",
     "draft_pick": 3,
     "is_rookie": false,
@@ -526,7 +526,7 @@
   },
   {
     "name": "Bryce Young",
-    "nfl_team": "Carolina Panthers",
+    "nfl_team": "CAR",
     "position": "QB",
     "draft_pick": 1,
     "is_rookie": false,

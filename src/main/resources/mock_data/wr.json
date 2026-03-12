@@ -1,7 +1,7 @@
 [
   {
     "name": "Puka Nacua",
-    "nfl_team": "Los Angeles Rams",
+    "nfl_team": "LAR",
     "position": "WR",
     "draft_pick": 177,
     "is_rookie": false,
@@ -23,7 +23,7 @@
   },
   {
     "name": "Jamarr Chase",
-    "nfl_team": "Cincinnati Bengals",
+    "nfl_team": "CIN",
     "position": "WR",
     "draft_pick": 5,
     "is_rookie": false,
@@ -49,7 +49,7 @@
   },
   {
     "name": "Jaxon Smith-Njigba",
-    "nfl_team": "Seattle Seahawks",
+    "nfl_team": "SEA",
     "position": "WR",
     "draft_pick": 20,
     "is_rookie": false,
@@ -71,7 +71,7 @@
   },
   {
     "name": "Amon-Ra St Brown",
-    "nfl_team": "Detroit Lions",
+    "nfl_team": "DET",
     "position": "WR",
     "draft_pick": 112,
     "is_rookie": false,
@@ -93,7 +93,7 @@
   },
   {
     "name": "CeeDee Lamb",
-    "nfl_team": "Dallas Cowboys",
+    "nfl_team": "DAL",
     "position": "WR",
     "draft_pick": 17,
     "is_rookie": false,
@@ -115,7 +115,7 @@
   },
   {
     "name": "Drake London",
-    "nfl_team": "Atlanta Falcons",
+    "nfl_team": "ATL",
     "position": "WR",
     "draft_pick": 8,
     "is_rookie": false,
@@ -137,7 +137,7 @@
   },
   {
     "name": "Malik Nabers",
-    "nfl_team": "New York Giants",
+    "nfl_team": "NYG",
     "position": "WR",
     "draft_pick": 6,
     "is_rookie": false,
@@ -159,7 +159,7 @@
   },
   {
     "name": "Nico Collins",
-    "nfl_team": "Houston Texans",
+    "nfl_team": "HOU",
     "position": "WR",
     "draft_pick": 89,
     "is_rookie": false,
@@ -181,7 +181,7 @@
   },
   {
     "name": "George Pickens",
-    "nfl_team": "Dallas Cowboys",
+    "nfl_team": "DAL",
     "position": "WR",
     "draft_pick": 52,
     "is_rookie": false,
@@ -203,7 +203,7 @@
   },
   {
     "name": "Justin Jefferson",
-    "nfl_team": "Minnesota Vikings",
+    "nfl_team": "MIN",
     "position": "WR",
     "draft_pick": 22,
     "is_rookie": false,
@@ -225,7 +225,7 @@
   },
   {
     "name": "Chris Olave",
-    "nfl_team": "New Orleans Saints",
+    "nfl_team": "NO",
     "position": "WR",
     "draft_pick": 11,
     "is_rookie": false,
@@ -247,7 +247,7 @@
   },
   {
     "name": "Rashee Rice",
-    "nfl_team": "Kansas City Chiefs",
+    "nfl_team": "KC",
     "position": "WR",
     "draft_pick": 55,
     "is_rookie": false,
@@ -269,7 +269,7 @@
   },
   {
     "name": "A.J. Brown",
-    "nfl_team": "Philadelphia Eagles",
+    "nfl_team": "PHI",
     "position": "WR",
     "draft_pick": 51,
     "is_rookie": false,
@@ -291,7 +291,7 @@
   },
   {
     "name": "Tee Higgins",
-    "nfl_team": "Cincinnati Bengals",
+    "nfl_team": "CIN",
     "position": "WR",
     "draft_pick": 33,
     "is_rookie": false,
@@ -313,7 +313,7 @@
   },
   {
     "name": "Tetairoa McMillan",
-    "nfl_team": "Carolina Panthers",
+    "nfl_team": "CAR",
     "position": "WR",
     "draft_pick": 8,
     "is_rookie": false,
@@ -329,7 +329,7 @@
   },
   {
     "name": "Davante Adams",
-    "nfl_team": "Los Angeles Rams",
+    "nfl_team": "LAR",
     "position": "WR",
     "draft_pick": 53,
     "is_rookie": false,
@@ -351,7 +351,7 @@
   },
   {
     "name": "Garrett Wilson",
-    "nfl_team": "New York Jets",
+    "nfl_team": "NYJ",
     "position": "WR",
     "draft_pick": 10,
     "is_rookie": false,
@@ -373,7 +373,7 @@
   },
   {
     "name": "Jameson Williams",
-    "nfl_team": "Detroit Lions",
+    "nfl_team": "DET",
     "position": "WR",
     "draft_pick": 12,
     "is_rookie": false,
@@ -395,7 +395,7 @@
   },
   {
     "name": "Zay Flowers",
-    "nfl_team": "Baltimore Ravens",
+    "nfl_team": "BAL",
     "position": "WR",
     "draft_pick": 22,
     "is_rookie": false,
@@ -417,7 +417,7 @@
   },
   {
     "name": "Jaylen Waddle",
-    "nfl_team": "Miami Dolphins",
+    "nfl_team": "MIA",
     "position": "WR",
     "draft_pick": 6,
     "is_rookie": false,
@@ -439,7 +439,7 @@
   },
   {
     "name": "Terry McLaurin",
-    "nfl_team": "Washington Commanders",
+    "nfl_team": "WAS",
     "position": "WR",
     "draft_pick": 76,
     "is_rookie": false,
@@ -461,7 +461,7 @@
   },
   {
     "name": "Ladd McConkey",
-    "nfl_team": "Los Angeles Chargers",
+    "nfl_team": "LAC",
     "position": "WR",
     "draft_pick": 34,
     "is_rookie": false,
@@ -483,7 +483,7 @@
   },
   {
     "name": "Christian Watson",
-    "nfl_team": "Green Bay Packers",
+    "nfl_team": "GB",
     "position": "WR",
     "draft_pick": 34,
     "is_rookie": false,
@@ -505,7 +505,7 @@
   },
   {
     "name": "Luther Burden III",
-    "nfl_team": "Chicago Bears",
+    "nfl_team": "CHI",
     "position": "WR",
     "draft_pick": 2,
     "is_rookie": false,
@@ -521,7 +521,7 @@
   },
   {
     "name": "DeVonta Smith",
-    "nfl_team": "Philadelphia Eagles",
+    "nfl_team": "PHI",
     "position": "WR",
     "draft_pick": 10,
     "is_rookie": false,
@@ -543,7 +543,7 @@
   },
   {
     "name": "Emeka Egbuka",
-    "nfl_team": "Tampa Bay Buccaneers",
+    "nfl_team": "TB",
     "position": "WR",
     "draft_pick": 28,
     "is_rookie": false,
@@ -579,7 +579,7 @@
   },
   {
     "name": "Mike Evans",
-    "nfl_team": "San Francisco 49ers",
+    "nfl_team": "SF",
     "position": "WR",
     "draft_pick": 7,
     "is_rookie": false,
@@ -601,7 +601,7 @@
   },
   {
     "name": "Rome Odunze",
-    "nfl_team": "Chicago Bears",
+    "nfl_team": "CHI",
     "position": "WR",
     "draft_pick": 9,
     "is_rookie": false,
@@ -623,7 +623,7 @@
   },
   {
     "name": "Courtland Sutton",
-    "nfl_team": "Denver Broncos",
+    "nfl_team": "DEN",
     "position": "WR",
     "draft_pick": 40,
     "is_rookie": false,
@@ -645,7 +645,7 @@
   },
   {
     "name": "DK Metcalf",
-    "nfl_team": "Pittsburgh Steelers",
+    "nfl_team": "PIT",
     "position": "WR",
     "draft_pick": 64,
     "is_rookie": false,
@@ -667,7 +667,7 @@
   },
   {
     "name": "DJ Moore",
-    "nfl_team": "Buffalo Bills",
+    "nfl_team": "BUF",
     "position": "WR",
     "draft_pick": 24,
     "is_rookie": false,
@@ -689,7 +689,7 @@
   },
   {
     "name": "Alec Pierce",
-    "nfl_team": "Indianapolis Colts",
+    "nfl_team": "IND",
     "position": "WR",
     "draft_pick": 53,
     "is_rookie": false,
@@ -711,7 +711,7 @@
   },
   {
     "name": "Brian Thomas Jr.",
-    "nfl_team": "Jacksonville Jaguars",
+    "nfl_team": "JAX",
     "position": "WR",
     "draft_pick": 23,
     "is_rookie": false,
@@ -733,7 +733,7 @@
   },
   {
     "name": "Michael Wilson",
-    "nfl_team": "Arizona Cardinals",
+    "nfl_team": "ARI",
     "position": "WR",
     "draft_pick": 94,
     "is_rookie": false,
@@ -755,7 +755,7 @@
   },
   {
     "name": "Marvin Harrison Jr.",
-    "nfl_team": "Arizona Cardinals",
+    "nfl_team": "ARI",
     "position": "WR",
     "draft_pick": 4,
     "is_rookie": false,

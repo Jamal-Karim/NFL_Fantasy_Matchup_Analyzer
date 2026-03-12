@@ -1,7 +1,7 @@
 [
   {
     "name": "Bijan Robinson",
-    "nfl_team": "Atlanta Falcons",
+    "nfl_team": "ATL",
     "position": "RB",
     "draft_pick": 8,
     "is_rookie": false,
@@ -27,7 +27,7 @@
   },
   {
     "name": "Jahmyr Gibbs",
-    "nfl_team": "Detroit Lions",
+    "nfl_team": "DET",
     "position": "RB",
     "draft_pick": 12,
     "is_rookie": false,
@@ -53,7 +53,7 @@
   },
   {
     "name": "Jonathan Taylor",
-    "nfl_team": "Indianapolis Colts",
+    "nfl_team": "IND",
     "position": "RB",
     "draft_pick": 41,
     "is_rookie": false,
@@ -79,7 +79,7 @@
   },
   {
     "name": "Christian McCaffrey",
-    "nfl_team": "San Francisco 49ers",
+    "nfl_team": "SF",
     "position": "RB",
     "draft_pick": 8,
     "is_rookie": false,
@@ -105,7 +105,7 @@
   },
   {
     "name": "James Cook",
-    "nfl_team": "Buffalo Bills",
+    "nfl_team": "BUF",
     "position": "RB",
     "draft_pick": 63,
     "is_rookie": false,
@@ -131,7 +131,7 @@
   },
   {
     "name": "Devon Achane",
-    "nfl_team": "Miami Dolphins",
+    "nfl_team": "MIA",
     "position": "RB",
     "draft_pick": 84,
     "is_rookie": false,
@@ -167,7 +167,7 @@
   },
   {
     "name": "Ashton Jeanty",
-    "nfl_team": "Las Vegas Raiders",
+    "nfl_team": "LV",
     "position": "RB",
     "draft_pick": 6,
     "is_rookie": false,
@@ -185,7 +185,7 @@
   },
   {
     "name": "Omarion Hampton",
-    "nfl_team": "Los Angeles Chargers",
+    "nfl_team": "LAC",
     "position": "RB",
     "draft_pick": 22,
     "is_rookie": false,
@@ -203,7 +203,7 @@
   },
   {
     "name": "Derrick Henry",
-    "nfl_team": "Baltimore Ravens",
+    "nfl_team": "BAL",
     "position": "RB",
     "draft_pick": 45,
     "is_rookie": false,
@@ -229,7 +229,7 @@
   },
   {
     "name": "Saquon Barkley",
-    "nfl_team": "Philadelphia Eagles",
+    "nfl_team": "PHI",
     "position": "RB",
     "draft_pick": 2,
     "is_rookie": false,
@@ -255,7 +255,7 @@
   },
   {
     "name": "Chase Brown",
-    "nfl_team": "Cincinnati Bengals",
+    "nfl_team": "CIN",
     "position": "RB",
     "draft_pick": 163,
     "is_rookie": false,
@@ -281,7 +281,7 @@
   },
   {
     "name": "Josh Jacobs",
-    "nfl_team": "Green Bay Packers",
+    "nfl_team": "GB",
     "position": "RB",
     "draft_pick": 24,
     "is_rookie": false,
@@ -307,7 +307,7 @@
   },
   {
     "name": "Kenneth Walker",
-    "nfl_team": "Kansas City Chiefs",
+    "nfl_team": "KC",
     "position": "RB",
     "draft_pick": 41,
     "is_rookie": false,
@@ -333,7 +333,7 @@
   },
   {
     "name": "Breece Hall",
-    "nfl_team": "New York Jets",
+    "nfl_team": "NYJ",
     "position": "RB",
     "draft_pick": 36,
     "is_rookie": false,
@@ -359,7 +359,7 @@
   },
   {
     "name": "Bucky Irving",
-    "nfl_team": "Tampa Bay Buccaneers",
+    "nfl_team": "TB",
     "position": "RB",
     "draft_pick": 125,
     "is_rookie": false,
@@ -385,7 +385,7 @@
   },
   {
     "name": "Kyren Williams",
-    "nfl_team": "Los Angeles Rams",
+    "nfl_team": "LAR",
     "position": "RB",
     "draft_pick": 164,
     "is_rookie": false,
@@ -411,7 +411,7 @@
   },
   {
     "name": "Javonte Williams",
-    "nfl_team": "Dallas Cowboys",
+    "nfl_team": "DAL",
     "position": "RB",
     "draft_pick": 35,
     "is_rookie": false,
@@ -437,7 +437,7 @@
   },
   {
     "name": "Travis Etienne Jr.",
-    "nfl_team": "New Orleans Saints",
+    "nfl_team": "NO",
     "position": "RB",
     "draft_pick": 25,
     "is_rookie": false,
@@ -463,7 +463,7 @@
   },
   {
     "name": "TreVeyon Henderson",
-    "nfl_team": "New England Patriots",
+    "nfl_team": "NE",
     "position": "RB",
     "draft_pick": 38,
     "is_rookie": false,
@@ -481,7 +481,7 @@
   },
   {
     "name": "Cam Skattebo",
-    "nfl_team": "New York Giants",
+    "nfl_team": "NYG",
     "position": "RB",
     "draft_pick": 105,
     "is_rookie": false,
@@ -491,7 +491,7 @@
   },
   {
     "name": "Quinshon Judkins",
-    "nfl_team": "Cleveland Browns",
+    "nfl_team": "CLE",
     "position": "RB",
     "draft_pick": 36,
     "is_rookie": false,
@@ -509,7 +509,7 @@
   },
   {
     "name": "D'Andre Swift",
-    "nfl_team": "Chicago Bears",
+    "nfl_team": "CHI",
     "position": "RB",
     "draft_pick": 35,
     "is_rookie": false,
@@ -535,7 +535,7 @@
   },
   {
     "name": "RJ Harvey",
-    "nfl_team": "Denver Broncos",
+    "nfl_team": "DEN",
     "position": "RB",
     "draft_pick": 60,
     "is_rookie": false,
@@ -553,7 +553,7 @@
   },
   {
     "name": "David Montgomery",
-    "nfl_team": "Houston Texans",
+    "nfl_team": "HOU",
     "position": "RB",
     "draft_pick": 73,
     "is_rookie": false,
@@ -579,7 +579,7 @@
   },
   {
     "name": "Jaylen Warren",
-    "nfl_team": "Pittsburgh Steelers",
+    "nfl_team": "PIT",
     "position": "RB",
     "draft_pick": 257,
     "is_rookie": false,
