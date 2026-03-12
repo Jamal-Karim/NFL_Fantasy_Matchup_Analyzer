@@ -1,7 +1,7 @@
 package com.jamalkarim.analyzer.domain.matchups;
 
-import com.jamalkarim.analyzer.domain.entities.Player;
-import com.jamalkarim.analyzer.domain.entities.Team;
+import com.jamalkarim.analyzer.domain.models.Player;
+import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 
 import java.util.*;

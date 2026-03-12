@@ -1,6 +1,6 @@
 package com.jamalkarim.analyzer.domain.scoring;
 
-import com.jamalkarim.analyzer.domain.entities.Player;
+import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import lombok.Data;
@@ -8,10 +8,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- *  Object that encapsulates the final results of a
+ * Object that encapsulates the final results of a
  * Scare Factor analysis.
- * 
- * Contains the numerical score, the categorical tier, and textual 
+ * <p>
+ * Contains the numerical score, the categorical tier, and textual
  * explanations for display in reports or UIs.
  */
 @Data
@@ -39,7 +39,7 @@ public class ScareResult {
         System.out.println("\n" + separator);
         System.out.print(this.name.toUpperCase());
         System.out.println(" | " + this.team.toUpperCase());
-        System.out.println(this.position + " | Scare Factor: " + (int)this.scareScore);
+        System.out.println(this.position + " | Scare Factor: " + (int) this.scareScore);
         System.out.println("Tier: " + this.scareTier);
         System.out.println(separator);
 

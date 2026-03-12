@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.entities;
+package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.PlayerStats;
 import com.jamalkarim.analyzer.domain.enums.Position;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlayerTest {
 
     @Test
-    void testPlayerConstructor(){
+    void testPlayerConstructor() {
         Player player = new Player("NFL Player", "NFL Team", Position.QB) {
             @Override
             protected Map<PlayerStats, Impact> generateImpactMap() {
@@ -92,7 +92,7 @@ public class PlayerTest {
     @Test
     void testCalculateStatBlendStrategyInjured() {
         Player player = new QuarterBack("Injured", "Team");
-        
+
         BlendedStats result = player.calculateStatBlendStrategy();
         assertEquals(176.47, result.getPassingYardsPerGame(), 0.01, "Injured or data-less players should default to the injured/baseline blend.");
     }
@@ -101,7 +101,7 @@ public class PlayerTest {
     void testTrendGamesBoundary() {
         Player player = new QuarterBack("Boundary", "Team");
         Stats last = new Stats();
-        last.setGamesPlayed(6); 
+        last.setGamesPlayed(6);
         last.setPassingYards(1800);
         player.setLastSeasonStats(last);
 
@@ -117,7 +117,7 @@ public class PlayerTest {
     @Test
     void testApplySoftCap() {
         Player player = new QuarterBack("CapTest", "Team");
-        
+
         assertEquals(85.0, player.applySoftCap(85.0), "Scores at exactly 85 should not be capped.");
         assertEquals(50.0, player.applySoftCap(50.0), "Scores below 85 should not be affected by the soft cap.");
         assertEquals(92.5, player.applySoftCap(100.0), 0.01, "Scores above 85 should be progressively capped.");
@@ -127,11 +127,11 @@ public class PlayerTest {
     @Test
     void testGetTierForStatistic() {
         Player player = new QuarterBack("TierTest", "Team");
-        
+
         assertEquals(1, player.getTierForStatistic(9.5, 10.0), "Value > 90% of weight should be tier 1.");
         assertEquals(2, player.getTierForStatistic(6.5, 10.0), "Value > 60% of weight should be tier 2.");
         assertEquals(3, player.getTierForStatistic(3.0, 10.0), "Value <= 60% of weight should be tier 3.");
-        
+
         assertEquals(-1, player.getTierForStatistic(-9.5, 10.0), "Abs value > 90% of weight should be tier -1.");
         assertEquals(-2, player.getTierForStatistic(-6.5, 10.0), "Abs value > 60% of weight should be tier -2.");
         assertEquals(-3, player.getTierForStatistic(-3.0, 10.0), "Abs value <= 60% of weight should be tier -3.");
@@ -140,7 +140,7 @@ public class PlayerTest {
     @Test
     void testFindTopContributingScores() {
         Player player = new QuarterBack("TopContrib", "Team");
-        
+
         Map<PlayerStats, Player.Impact> impactMap = new java.util.HashMap<>();
         impactMap.put(PlayerStats.PassingYards, new Player.Impact(10.0, 0.0));
         impactMap.put(PlayerStats.PassingTDs, new Player.Impact(20.0, 0.0));
@@ -150,14 +150,14 @@ public class PlayerTest {
         Map<PlayerStats, Double> topScores = player.findTopContributingScores(impactMap);
 
         assertEquals(3, topScores.size(), "Should return top 3 contributing factors.");
-        
+
         List<PlayerStats> keys = new java.util.ArrayList<>(topScores.keySet());
         assertEquals(PlayerStats.Interceptions, keys.get(0), "Interceptions should be the top contributing factor.");
         assertEquals(-30.0, topScores.get(PlayerStats.Interceptions), "Interceptions should have a score of -30.0.");
-        
+
         assertEquals(PlayerStats.PassingTDs, keys.get(1), "Passing TDs should be the second contributing factor.");
         assertEquals(20.0, topScores.get(PlayerStats.PassingTDs), "Passing TDs should have a score of 20.0.");
-        
+
         assertEquals(PlayerStats.PassingYards, keys.get(2), "Passing yards should be the third contributing factor.");
         assertEquals(10.0, topScores.get(PlayerStats.PassingYards), "Passing yards should have a score of 10.0.");
     }

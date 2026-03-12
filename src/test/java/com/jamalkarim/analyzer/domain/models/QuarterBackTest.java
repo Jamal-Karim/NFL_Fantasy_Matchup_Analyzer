@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.entities;
+package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.Stats;
@@ -33,7 +33,7 @@ class QuarterBackTest {
         qb.setCurrentSeasonStats(stats);
 
         double scareFactor = qb.calculateScareFactor();
-        
+
         assertTrue(scareFactor > 85.0, "High performing QB should have a scare factor above 85.");
         assertTrue(scareFactor < 100.0, "Scare factor should be capped below 100.");
     }
@@ -84,7 +84,7 @@ class QuarterBackTest {
 
         java.util.List<String> explanations = qb.generateListOfExplanations();
         assertFalse(explanations.isEmpty(), "Explanations list should not be empty for an elite player.");
-        assertTrue(explanations.get(0).contains("Elite") || explanations.get(0).contains("Highly productive"), 
-            "First explanation should reflect high performance.");
+        assertTrue(explanations.get(0).contains("Elite") || explanations.get(0).contains("Highly productive"),
+                "First explanation should reflect high performance.");
     }
 }

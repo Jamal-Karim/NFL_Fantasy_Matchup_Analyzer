@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.entities;
+package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.Stats;

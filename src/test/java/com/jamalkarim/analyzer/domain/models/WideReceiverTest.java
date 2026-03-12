@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.domain.entities;
+package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.Stats;
@@ -53,7 +53,7 @@ class WideReceiverTest {
         WideReceiver wr = new WideReceiver("Hands of Stone", "Bad");
         Stats stats = new Stats();
         stats.setGamesPlayed(1);
-        stats.setReceivingYards(-5); 
+        stats.setReceivingYards(-5);
         wr.setCurrentSeasonStats(stats);
 
         double scareFactor = wr.calculateScareFactor();
