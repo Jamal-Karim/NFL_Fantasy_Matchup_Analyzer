@@ -14,6 +14,9 @@ public class PlayerEntity {
     private Long id;
 
     private String name;
+    private int draftPick;
+    private boolean isRookie;
+    private boolean isInjured;
 
     @Column(name = "nfl_team")
     private String NFLTeam;
@@ -22,8 +25,12 @@ public class PlayerEntity {
     private Position position;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "stats_id")
-    private StatsEntity stats;
+    @JoinColumn(name = "current_stats_id")
+    private StatsEntity currentSeasonStats;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "last_stats_id")
+    private StatsEntity lastSeasonStats;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
