@@ -1,0 +1,788 @@
+[
+  {
+    "name": "Puka Nacua",
+    "nfl_team": "LAR",
+    "position": "WR",
+    "draft_pick": 177,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "receptions": 129,
+      "receiving_yards": 1715,
+      "receiving_tds": 10
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 11,
+      "receptions": 79,
+      "receiving_yards": 990,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Jamarr Chase",
+    "nfl_team": "CIN",
+    "position": "WR",
+    "draft_pick": 5,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "receptions": 125,
+      "receiving_yards": 1412,
+      "receiving_tds": 8,
+      "rushing_yards": 14,
+      "rushing_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 127,
+      "receiving_yards": 1708,
+      "receiving_tds": 17,
+      "rushing_yards": 32,
+      "rushing_tds": 0
+    }
+  },
+  {
+    "name": "Jaxon Smith-Njigba",
+    "nfl_team": "SEA",
+    "position": "WR",
+    "draft_pick": 20,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 119,
+      "receiving_yards": 1793,
+      "receiving_tds": 10
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 100,
+      "receiving_yards": 1130,
+      "receiving_tds": 6
+    }
+  },
+  {
+    "name": "Amon-Ra St Brown",
+    "nfl_team": "DET",
+    "position": "WR",
+    "draft_pick": 112,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 117,
+      "receiving_yards": 1401,
+      "receiving_tds": 11
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 115,
+      "receiving_yards": 1263,
+      "receiving_tds": 12
+    }
+  },
+  {
+    "name": "CeeDee Lamb",
+    "nfl_team": "DAL",
+    "position": "WR",
+    "draft_pick": 17,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 14,
+      "receptions": 75,
+      "receiving_yards": 1077,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "receptions": 101,
+      "receiving_yards": 1194,
+      "receiving_tds": 6
+    }
+  },
+  {
+    "name": "Drake London",
+    "nfl_team": "ATL",
+    "position": "WR",
+    "draft_pick": 8,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 12,
+      "receptions": 68,
+      "receiving_yards": 919,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 100,
+      "receiving_yards": 1271,
+      "receiving_tds": 9
+    }
+  },
+  {
+    "name": "Malik Nabers",
+    "nfl_team": "NYG",
+    "position": "WR",
+    "draft_pick": 6,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 4,
+      "receptions": 18,
+      "receiving_yards": 271,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "receptions": 109,
+      "receiving_yards": 1204,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Nico Collins",
+    "nfl_team": "HOU",
+    "position": "WR",
+    "draft_pick": 89,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "receptions": 71,
+      "receiving_yards": 1117,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 12,
+      "receptions": 68,
+      "receiving_yards": 1006,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "George Pickens",
+    "nfl_team": "DAL",
+    "position": "WR",
+    "draft_pick": 52,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 93,
+      "receiving_yards": 1429,
+      "receiving_tds": 9
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 14,
+      "receptions": 59,
+      "receiving_yards": 900,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Justin Jefferson",
+    "nfl_team": "MIN",
+    "position": "WR",
+    "draft_pick": 22,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 84,
+      "receiving_yards": 1048,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 103,
+      "receiving_yards": 1533,
+      "receiving_tds": 10
+    }
+  },
+  {
+    "name": "Chris Olave",
+    "nfl_team": "NO",
+    "position": "WR",
+    "draft_pick": 11,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "receptions": 100,
+      "receiving_yards": 1163,
+      "receiving_tds": 9
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 8,
+      "receptions": 32,
+      "receiving_yards": 400,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Rashee Rice",
+    "nfl_team": "KC",
+    "position": "WR",
+    "draft_pick": 55,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 8,
+      "receptions": 53,
+      "receiving_yards": 571,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 4,
+      "receptions": 24,
+      "receiving_yards": 288,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "A.J. Brown",
+    "nfl_team": "PHI",
+    "position": "WR",
+    "draft_pick": 51,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "receptions": 78,
+      "receiving_yards": 1003,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 13,
+      "receptions": 67,
+      "receiving_yards": 1079,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Tee Higgins",
+    "nfl_team": "CIN",
+    "position": "WR",
+    "draft_pick": 33,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "receptions": 59,
+      "receiving_yards": 846,
+      "receiving_tds": 11
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 12,
+      "receptions": 73,
+      "receiving_yards": 911,
+      "receiving_tds": 10
+    }
+  },
+  {
+    "name": "Tetairoa McMillan",
+    "nfl_team": "CAR",
+    "position": "WR",
+    "draft_pick": 8,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 70,
+      "receiving_yards": 1014,
+      "receiving_tds": 7
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Davante Adams",
+    "nfl_team": "LAR",
+    "position": "WR",
+    "draft_pick": 53,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 14,
+      "receptions": 60,
+      "receiving_yards": 789,
+      "receiving_tds": 14
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 14,
+      "receptions": 85,
+      "receiving_yards": 1063,
+      "receiving_tds": 8
+    }
+  },
+  {
+    "name": "Garrett Wilson",
+    "nfl_team": "NYJ",
+    "position": "WR",
+    "draft_pick": 10,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 7,
+      "receptions": 36,
+      "receiving_yards": 395,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 101,
+      "receiving_yards": 1104,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Jameson Williams",
+    "nfl_team": "DET",
+    "position": "WR",
+    "draft_pick": 12,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 65,
+      "receiving_yards": 1117,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "receptions": 58,
+      "receiving_yards": 1001,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Zay Flowers",
+    "nfl_team": "BAL",
+    "position": "WR",
+    "draft_pick": 22,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 86,
+      "receiving_yards": 1211,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 74,
+      "receiving_yards": 1059,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Jaylen Waddle",
+    "nfl_team": "MIA",
+    "position": "WR",
+    "draft_pick": 6,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "receptions": 64,
+      "receiving_yards": 910,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "receptions": 58,
+      "receiving_yards": 744,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Terry McLaurin",
+    "nfl_team": "WAS",
+    "position": "WR",
+    "draft_pick": 76,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 10,
+      "receptions": 38,
+      "receiving_yards": 582,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 82,
+      "receiving_yards": 1096,
+      "receiving_tds": 13
+    }
+  },
+  {
+    "name": "Ladd McConkey",
+    "nfl_team": "LAC",
+    "position": "WR",
+    "draft_pick": 34,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "receptions": 66,
+      "receiving_yards": 789,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "receptions": 82,
+      "receiving_yards": 1149,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Christian Watson",
+    "nfl_team": "GB",
+    "position": "WR",
+    "draft_pick": 34,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 10,
+      "receptions": 35,
+      "receiving_yards": 611,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "receptions": 29,
+      "receiving_yards": 620,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Luther Burden III",
+    "nfl_team": "CHI",
+    "position": "WR",
+    "draft_pick": 2,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "receptions": 47,
+      "receiving_yards": 652,
+      "receiving_tds": 2
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "DeVonta Smith",
+    "nfl_team": "PHI",
+    "position": "WR",
+    "draft_pick": 10,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 77,
+      "receiving_yards": 1008,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 13,
+      "receptions": 68,
+      "receiving_yards": 833,
+      "receiving_tds": 8
+    }
+  },
+  {
+    "name": "Emeka Egbuka",
+    "nfl_team": "TB",
+    "position": "WR",
+    "draft_pick": 28,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 63,
+      "receiving_yards": 938,
+      "receiving_tds": 6
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Carnell Tate",
+    "nfl_team": "FA",
+    "position": "WR",
+    "draft_pick": 8,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": null,
+    "last_season_stats": null
+  },
+  {
+    "name": "Makai Lemon",
+    "nfl_team": "FA",
+    "position": "WR",
+    "draft_pick": 12,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": null,
+    "last_season_stats": null
+  },
+  {
+    "name": "Mike Evans",
+    "nfl_team": "SF",
+    "position": "WR",
+    "draft_pick": 7,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 8,
+      "receptions": 30,
+      "receiving_yards": 368,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 14,
+      "receptions": 74,
+      "receiving_yards": 1004,
+      "receiving_tds": 11
+    }
+  },
+  {
+    "name": "Rome Odunze",
+    "nfl_team": "CHI",
+    "position": "WR",
+    "draft_pick": 9,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 12,
+      "receptions": 44,
+      "receiving_yards": 661,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 54,
+      "receiving_yards": 734,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Courtland Sutton",
+    "nfl_team": "DEN",
+    "position": "WR",
+    "draft_pick": 40,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 74,
+      "receiving_yards": 1017,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 81,
+      "receiving_yards": 1081,
+      "receiving_tds": 8
+    }
+  },
+  {
+    "name": "DK Metcalf",
+    "nfl_team": "PIT",
+    "position": "WR",
+    "draft_pick": 64,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "receptions": 59,
+      "receiving_yards": 850,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "receptions": 66,
+      "receiving_yards": 992,
+      "receiving_tds": 5
+    }
+  },
+  {
+    "name": "DJ Moore",
+    "nfl_team": "BUF",
+    "position": "WR",
+    "draft_pick": 24,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 50,
+      "receiving_yards": 682,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 98,
+      "receiving_yards": 966,
+      "receiving_tds": 6
+    }
+  },
+  {
+    "name": "Alec Pierce",
+    "nfl_team": "IND",
+    "position": "WR",
+    "draft_pick": 53,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "receptions": 47,
+      "receiving_yards": 1003,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "receptions": 37,
+      "receiving_yards": 824,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Brian Thomas Jr.",
+    "nfl_team": "JAX",
+    "position": "WR",
+    "draft_pick": 23,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 14,
+      "receptions": 48,
+      "receiving_yards": 707,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 87,
+      "receiving_yards": 1282,
+      "receiving_tds": 10
+    }
+  },
+  {
+    "name": "Michael Wilson",
+    "nfl_team": "ARI",
+    "position": "WR",
+    "draft_pick": 94,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "receptions": 78,
+      "receiving_yards": 1006,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 16,
+      "receptions": 47,
+      "receiving_yards": 548,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Marvin Harrison Jr.",
+    "nfl_team": "ARI",
+    "position": "WR",
+    "draft_pick": 4,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 12,
+      "receptions": 41,
+      "receiving_yards": 608,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "receptions": 62,
+      "receiving_yards": 885,
+      "receiving_tds": 8
+    }
+  },
+  {
+    "name": "Jordyn Tyson",
+    "nfl_team": "FA",
+    "position": "WR",
+    "draft_pick": 13,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": null,
+    "last_season_stats": null
+  }
+]

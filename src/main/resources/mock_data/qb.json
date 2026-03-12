@@ -1,0 +1,553 @@
+[
+  {
+    "name": "Josh Allen",
+    "nfl_team": "BUF",
+    "position": "QB",
+    "draft_pick": 7,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 3668,
+      "passing_tds": 25,
+      "interceptions": 10,
+      "rushing_attempts": 112,
+      "rushing_yards": 579,
+      "rushing_tds": 14
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3731,
+      "passing_tds": 28,
+      "interceptions": 6,
+      "rushing_attempts": 102,
+      "rushing_yards": 531,
+      "rushing_tds": 12
+    }
+  },
+  {
+    "name": "Drake Maye",
+    "nfl_team": "NE",
+    "position": "QB",
+    "draft_pick": 3,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 4394,
+      "passing_tds": 31,
+      "interceptions": 8,
+      "rushing_attempts": 103,
+      "rushing_yards": 450,
+      "rushing_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 13,
+      "passing_yards": 2276,
+      "passing_tds": 15,
+      "interceptions": 10,
+      "rushing_attempts": 54,
+      "rushing_yards": 421,
+      "rushing_tds": 2
+    }
+  },
+  {
+    "name": "Lamar Jackson",
+    "nfl_team": "BAL",
+    "position": "QB",
+    "draft_pick": 32,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 13,
+      "passing_yards": 2549,
+      "passing_tds": 21,
+      "interceptions": 7,
+      "rushing_attempts": 67,
+      "rushing_yards": 349,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 4172,
+      "passing_tds": 41,
+      "interceptions": 4,
+      "rushing_attempts": 139,
+      "rushing_yards": 915,
+      "rushing_tds": 10
+    }
+  },
+  {
+    "name": "Joe Burrow",
+    "nfl_team": "CIN",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 8,
+      "passing_yards": 1809,
+      "passing_tds": 17,
+      "interceptions": 5,
+      "rushing_attempts": 14,
+      "rushing_yards": 41,
+      "rushing_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 4918,
+      "passing_tds": 43,
+      "interceptions": 9,
+      "rushing_attempts": 42,
+      "rushing_yards": 201,
+      "rushing_tds": 2
+    }
+  },
+  {
+    "name": "Jayden Daniels",
+    "nfl_team": "WAS",
+    "position": "QB",
+    "draft_pick": 2,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 7,
+      "passing_yards": 1262,
+      "passing_tds": 8,
+      "interceptions": 3,
+      "rushing_attempts": 58,
+      "rushing_yards": 278,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3568,
+      "passing_tds": 25,
+      "interceptions": 9,
+      "rushing_attempts": 148,
+      "rushing_yards": 891,
+      "rushing_tds": 6
+    }
+  },
+  {
+    "name": "Jalen Hurts",
+    "nfl_team": "PHI",
+    "position": "QB",
+    "draft_pick": 53,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "passing_yards": 3224,
+      "passing_tds": 25,
+      "interceptions": 6,
+      "rushing_attempts": 105,
+      "rushing_yards": 421,
+      "rushing_tds": 9
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "passing_yards": 2903,
+      "passing_tds": 18,
+      "interceptions": 5,
+      "rushing_attempts": 150,
+      "rushing_yards": 630,
+      "rushing_tds": 14
+    }
+  },
+  {
+    "name": "Justin Herbert",
+    "nfl_team": "LAC",
+    "position": "QB",
+    "draft_pick": 6,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "passing_yards": 3727,
+      "passing_tds": 26,
+      "interceptions": 13,
+      "rushing_attempts": 83,
+      "rushing_yards": 498,
+      "rushing_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3870,
+      "passing_tds": 23,
+      "interceptions": 3,
+      "rushing_attempts": 69,
+      "rushing_yards": 306,
+      "rushing_tds": 4
+    }
+  },
+  {
+    "name": "Jaxson Dart",
+    "nfl_team": "NYG",
+    "position": "QB",
+    "draft_pick": 25,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 14,
+      "passing_yards": 2272,
+      "passing_tds": 15,
+      "interceptions": 5,
+      "rushing_attempts": 86,
+      "rushing_yards": 487,
+      "rushing_tds": 2
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Trevor Lawrence",
+    "nfl_team": "JAX",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 4007,
+      "passing_tds": 29,
+      "interceptions": 12,
+      "rushing_attempts": 82,
+      "rushing_yards": 359,
+      "rushing_tds": 9
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 10,
+      "passing_yards": 2045,
+      "passing_tds": 11,
+      "interceptions": 7,
+      "rushing_attempts": 26,
+      "rushing_yards": 119,
+      "rushing_tds": 3
+    }
+  },
+  {
+    "name": "Caleb Williams",
+    "nfl_team": "CHI",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 3942,
+      "passing_tds": 27,
+      "interceptions": 7,
+      "rushing_attempts": 77,
+      "rushing_yards": 388,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3541,
+      "passing_tds": 20,
+      "interceptions": 6,
+      "rushing_attempts": 81,
+      "rushing_yards": 489,
+      "rushing_tds": 1
+    }
+  },
+  {
+    "name": "Dak Prescott",
+    "nfl_team": "DAL",
+    "position": "QB",
+    "draft_pick": 135,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 4552,
+      "passing_tds": 30,
+      "interceptions": 10,
+      "rushing_attempts": 53,
+      "rushing_yards": 177,
+      "rushing_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 8,
+      "passing_yards": 1978,
+      "passing_tds": 11,
+      "interceptions": 8,
+      "rushing_attempts": 13,
+      "rushing_yards": 54,
+      "rushing_tds": 1
+    }
+  },
+  {
+    "name": "Brock Purdy",
+    "nfl_team": "SF",
+    "position": "QB",
+    "draft_pick": 262,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 9,
+      "passing_yards": 2167,
+      "passing_tds": 20,
+      "interceptions": 10,
+      "rushing_attempts": 33,
+      "rushing_yards": 147,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "passing_yards": 3864,
+      "passing_tds": 20,
+      "interceptions": 12,
+      "rushing_attempts": 66,
+      "rushing_yards": 323,
+      "rushing_tds": 5
+    }
+  },
+  {
+    "name": "Patrick Mahomes",
+    "nfl_team": "KC",
+    "position": "QB",
+    "draft_pick": 10,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 14,
+      "passing_yards": 3587,
+      "passing_tds": 22,
+      "interceptions": 11,
+      "rushing_attempts": 64,
+      "rushing_yards": 422,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "passing_yards": 3928,
+      "passing_tds": 26,
+      "interceptions": 11,
+      "rushing_attempts": 58,
+      "rushing_yards": 307,
+      "rushing_tds": 3
+    }
+  },
+  {
+    "name": "Matthew Stafford",
+    "nfl_team": "LAR",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 4707,
+      "passing_tds": 46,
+      "interceptions": 8,
+      "rushing_attempts": 29,
+      "rushing_yards": 10,
+      "rushing_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "passing_yards": 3762,
+      "passing_tds": 20,
+      "interceptions": 8,
+      "rushing_attempts": 30,
+      "rushing_yards": 41,
+      "rushing_tds": 0
+    }
+  },
+  {
+    "name": "Bo Nix",
+    "nfl_team": "DEN",
+    "position": "QB",
+    "draft_pick": 12,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 3931,
+      "passing_tds": 25,
+      "interceptions": 11,
+      "rushing_attempts": 83,
+      "rushing_yards": 356,
+      "rushing_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3775,
+      "passing_tds": 29,
+      "interceptions": 12,
+      "rushing_attempts": 92,
+      "rushing_yards": 430,
+      "rushing_tds": 3
+    }
+  },
+  {
+    "name": "Fernando Mendoza",
+    "nfl_team": "FA",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": null,
+    "last_season_stats": null
+  },
+  {
+    "name": "Jared Goff",
+    "nfl_team": "DET",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "passing_yards": 4564,
+      "passing_tds": 34,
+      "interceptions": 8,
+      "rushing_yards": 45,
+      "rushing_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "passing_yards": 4629,
+      "passing_tds": 37,
+      "interceptions": 12,
+      "rushing_yards": 55,
+      "rushing_tds": 0
+    }
+  },
+  {
+    "name": "Jordan Love",
+    "nfl_team": "GB",
+    "position": "QB",
+    "draft_pick": 26,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 15,
+      "passing_yards": 3381,
+      "passing_tds": 23,
+      "interceptions": 6,
+      "rushing_yards": 199,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 15,
+      "passing_yards": 3389,
+      "passing_tds": 25,
+      "interceptions": 11,
+      "rushing_yards": 83,
+      "rushing_tds": 1
+    }
+  },
+  {
+    "name": "Baker Mayfield",
+    "nfl_team": "TB",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "passing_yards": 3693,
+      "passing_tds": 26,
+      "interceptions": 11,
+      "rushing_yards": 382,
+      "rushing_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "passing_yards": 4500,
+      "passing_tds": 41,
+      "interceptions": 16,
+      "rushing_yards": 378,
+      "rushing_tds": 3
+    }
+  },
+  {
+    "name": "Sam Darnold",
+    "nfl_team": "SEA",
+    "position": "QB",
+    "draft_pick": 3,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 17,
+      "passing_yards": 4048,
+      "passing_tds": 25,
+      "interceptions": 14,
+      "rushing_yards": 95,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 17,
+      "passing_yards": 4319,
+      "passing_tds": 35,
+      "interceptions": 12,
+      "rushing_yards": 212,
+      "rushing_tds": 1
+    }
+  },
+  {
+    "name": "Bryce Young",
+    "nfl_team": "CAR",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games": 16,
+      "passing_yards": 3011,
+      "passing_tds": 23,
+      "interceptions": 11,
+      "rushing_yards": 216,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games": 14,
+      "passing_yards": 2403,
+      "passing_tds": 15,
+      "interceptions": 9,
+      "rushing_yards": 249,
+      "rushing_tds": 3
+    }
+  }
+]
