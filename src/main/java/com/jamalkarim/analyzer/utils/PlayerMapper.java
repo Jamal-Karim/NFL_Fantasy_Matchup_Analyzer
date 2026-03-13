@@ -5,7 +5,9 @@ import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PlayerMapper {
 
     private final StatsMapper statsMapper = new StatsMapper();
