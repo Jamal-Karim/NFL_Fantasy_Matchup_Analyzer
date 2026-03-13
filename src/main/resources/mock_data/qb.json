@@ -429,7 +429,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "passing_yards": 4564,
       "passing_tds": 34,
       "interceptions": 8,
@@ -438,7 +438,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "passing_yards": 4629,
       "passing_tds": 37,
       "interceptions": 12,
@@ -455,7 +455,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 15,
+      "games_played": 15,
       "passing_yards": 3381,
       "passing_tds": 23,
       "interceptions": 6,
@@ -464,7 +464,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 15,
+      "games_played": 15,
       "passing_yards": 3389,
       "passing_tds": 25,
       "interceptions": 11,
@@ -481,7 +481,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "passing_yards": 3693,
       "passing_tds": 26,
       "interceptions": 11,
@@ -490,7 +490,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "passing_yards": 4500,
       "passing_tds": 41,
       "interceptions": 16,
@@ -507,7 +507,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "passing_yards": 4048,
       "passing_tds": 25,
       "interceptions": 14,
@@ -516,7 +516,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "passing_yards": 4319,
       "passing_tds": 35,
       "interceptions": 12,
@@ -533,7 +533,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "passing_yards": 3011,
       "passing_tds": 23,
       "interceptions": 11,
@@ -542,7 +542,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 14,
+      "games_played": 14,
       "passing_yards": 2403,
       "passing_tds": 15,
       "interceptions": 9,

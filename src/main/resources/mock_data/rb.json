@@ -8,7 +8,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1478,
       "rushing_tds": 9,
       "receptions": 79,
@@ -17,7 +17,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1456,
       "rushing_tds": 7,
       "receptions": 61,
@@ -34,7 +34,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1223,
       "rushing_tds": 13,
       "receptions": 77,
@@ -43,7 +43,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1412,
       "rushing_tds": 16,
       "receptions": 52,
@@ -60,7 +60,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1585,
       "rushing_tds": 18,
       "receptions": 46,
@@ -69,7 +69,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 14,
+      "games_played": 14,
       "rushing_yards": 1431,
       "rushing_tds": 11,
       "receptions": 18,
@@ -86,7 +86,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1202,
       "rushing_tds": 11,
       "receptions": 102,
@@ -95,7 +95,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 4,
+      "games_played": 4,
       "rushing_yards": 202,
       "rushing_tds": 0,
       "receptions": 15,
@@ -112,7 +112,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1621,
       "rushing_tds": 12,
       "receptions": 33,
@@ -121,7 +121,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1009,
       "rushing_tds": 16,
       "receptions": 32,
@@ -138,7 +138,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1350,
       "rushing_tds": 8,
       "receptions": 67,
@@ -147,7 +147,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 907,
       "rushing_tds": 6,
       "receptions": 78,
@@ -174,7 +174,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 975,
       "rushing_tds": 6,
       "receptions": 55,
@@ -192,7 +192,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 9,
+      "games_played": 9,
       "rushing_yards": 545,
       "rushing_tds": 4,
       "receptions": 32,
@@ -210,7 +210,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1595,
       "rushing_tds": 16,
       "receptions": 15,
@@ -219,7 +219,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1921,
       "rushing_tds": 16,
       "receptions": 19,
@@ -236,7 +236,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1140,
       "rushing_tds": 7,
       "receptions": 37,
@@ -245,7 +245,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 2005,
       "rushing_tds": 13,
       "receptions": 33,
@@ -262,7 +262,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1019,
       "rushing_tds": 6,
       "receptions": 69,
@@ -271,7 +271,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 990,
       "rushing_tds": 7,
       "receptions": 54,
@@ -288,7 +288,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 15,
+      "games_played": 15,
       "rushing_yards": 929,
       "rushing_tds": 13,
       "receptions": 36,
@@ -297,7 +297,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1329,
       "rushing_tds": 15,
       "receptions": 36,
@@ -314,7 +314,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1027,
       "rushing_tds": 5,
       "receptions": 31,
@@ -323,7 +323,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 11,
+      "games_played": 11,
       "rushing_yards": 573,
       "rushing_tds": 7,
       "receptions": 46,
@@ -340,7 +340,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1065,
       "rushing_tds": 4,
       "receptions": 36,
@@ -349,7 +349,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 876,
       "rushing_tds": 5,
       "receptions": 57,
@@ -366,7 +366,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 10,
+      "games_played": 10,
       "rushing_yards": 588,
       "rushing_tds": 1,
       "receptions": 30,
@@ -375,7 +375,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1122,
       "rushing_tds": 8,
       "receptions": 47,
@@ -392,7 +392,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1252,
       "rushing_tds": 10,
       "receptions": 36,
@@ -401,7 +401,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1299,
       "rushing_tds": 14,
       "receptions": 34,
@@ -418,7 +418,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1201,
       "rushing_tds": 11,
       "receptions": 35,
@@ -427,7 +427,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 513,
       "rushing_tds": 4,
       "receptions": 52,
@@ -444,7 +444,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 1107,
       "rushing_tds": 7,
       "receptions": 36,
@@ -453,7 +453,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 15,
+      "games_played": 15,
       "rushing_yards": 558,
       "rushing_tds": 2,
       "receptions": 39,
@@ -470,7 +470,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 911,
       "rushing_tds": 9,
       "receptions": 35,
@@ -498,7 +498,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 14,
+      "games_played": 14,
       "rushing_yards": 827,
       "rushing_tds": 7,
       "receptions": 26,
@@ -516,7 +516,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 1087,
       "rushing_tds": 9,
       "receptions": 34,
@@ -525,7 +525,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 959,
       "rushing_tds": 6,
       "receptions": 42,
@@ -542,7 +542,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 540,
       "rushing_tds": 7,
       "receptions": 47,
@@ -560,7 +560,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "rushing_yards": 716,
       "rushing_tds": 8,
       "receptions": 24,
@@ -569,7 +569,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 14,
+      "games_played": 14,
       "rushing_yards": 775,
       "rushing_tds": 11,
       "receptions": 36,
@@ -586,7 +586,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "rushing_yards": 958,
       "rushing_tds": 5,
       "receptions": 40,
@@ -595,7 +595,7 @@
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 15,
+      "games_played": 15,
       "rushing_yards": 511,
       "rushing_tds": 1,
       "receptions": 38,

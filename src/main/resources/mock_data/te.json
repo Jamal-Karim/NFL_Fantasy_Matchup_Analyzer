@@ -8,14 +8,14 @@
     "is_injured": true,
     "current_season_stats": {
       "season": 2025,
-      "games": 12,
+      "games_played": 12,
       "receptions": 64,
       "receiving_yards": 680,
       "receiving_tds": 7
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 112,
       "receiving_yards": 1194,
       "receiving_tds": 5
@@ -30,14 +30,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 126,
       "receiving_yards": 1239,
       "receiving_tds": 11
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "receptions": 111,
       "receiving_yards": 1146,
       "receiving_tds": 2
@@ -52,7 +52,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "receptions": 58,
       "receiving_yards": 713,
       "receiving_tds": 6
@@ -68,14 +68,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 8,
+      "games_played": 8,
       "receptions": 32,
       "receiving_yards": 489,
       "receiving_tds": 6
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 50,
       "receiving_yards": 707,
       "receiving_tds": 7
@@ -90,7 +90,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 76,
       "receiving_yards": 817,
       "receiving_tds": 4
@@ -106,7 +106,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 16,
+      "games_played": 16,
       "receptions": 72,
       "receiving_yards": 731,
       "receiving_tds": 6
@@ -122,14 +122,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 9,
+      "games_played": 9,
       "receptions": 40,
       "receiving_yards": 489,
       "receiving_tds": 3
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "receptions": 60,
       "receiving_yards": 726,
       "receiving_tds": 7
@@ -144,14 +144,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 88,
       "receiving_yards": 928,
       "receiving_tds": 5
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 47,
       "receiving_yards": 602,
       "receiving_tds": 4
@@ -166,14 +166,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 12,
+      "games_played": 12,
       "receptions": 39,
       "receiving_yards": 571,
       "receiving_tds": 5
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 13,
+      "games_played": 13,
       "receptions": 44,
       "receiving_yards": 448,
       "receiving_tds": 2
@@ -188,7 +188,7 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 15,
+      "games_played": 15,
       "receptions": 49,
       "receiving_yards": 664,
       "receiving_tds": 3
@@ -204,14 +204,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 12,
+      "games_played": 12,
       "receptions": 46,
       "receiving_yards": 540,
       "receiving_tds": 3
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 40,
       "receiving_yards": 411,
       "receiving_tds": 2
@@ -226,14 +226,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 82,
       "receiving_yards": 600,
       "receiving_tds": 8
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 14,
+      "games_played": 14,
       "receptions": 59,
       "receiving_yards": 494,
       "receiving_tds": 0
@@ -248,14 +248,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 77,
       "receiving_yards": 889,
       "receiving_tds": 3
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 50,
       "receiving_yards": 548,
       "receiving_tds": 3
@@ -270,14 +270,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 15,
+      "games_played": 15,
       "receptions": 60,
       "receiving_yards": 591,
       "receiving_tds": 11
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 10,
+      "games_played": 10,
       "receptions": 42,
       "receiving_yards": 496,
       "receiving_tds": 2
@@ -292,14 +292,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 11,
+      "games_played": 11,
       "receptions": 57,
       "receiving_yards": 628,
       "receiving_tds": 7
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 15,
+      "games_played": 15,
       "receptions": 78,
       "receiving_yards": 1106,
       "receiving_tds": 8
@@ -314,14 +314,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 60,
       "receiving_yards": 768,
       "receiving_tds": 7
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "receptions": 66,
       "receiving_yards": 674,
       "receiving_tds": 2
@@ -336,14 +336,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 48,
       "receiving_yards": 422,
       "receiving_tds": 5
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 55,
       "receiving_yards": 673,
       "receiving_tds": 11
@@ -358,14 +358,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 76,
       "receiving_yards": 851,
       "receiving_tds": 5
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "receptions": 97,
       "receiving_yards": 823,
       "receiving_tds": 3
@@ -380,14 +380,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 17,
+      "games_played": 17,
       "receptions": 82,
       "receiving_yards": 777,
       "receiving_tds": 3
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 17,
+      "games_played": 17,
       "receptions": 53,
       "receiving_yards": 532,
       "receiving_tds": 2
@@ -402,14 +402,14 @@
     "is_injured": false,
     "current_season_stats": {
       "season": 2025,
-      "games": 14,
+      "games_played": 14,
       "receptions": 27,
       "receiving_yards": 307,
       "receiving_tds": 1
     },
     "last_season_stats": {
       "season": 2024,
-      "games": 16,
+      "games_played": 16,
       "receptions": 42,
       "receiving_yards": 477,
       "receiving_tds": 6
