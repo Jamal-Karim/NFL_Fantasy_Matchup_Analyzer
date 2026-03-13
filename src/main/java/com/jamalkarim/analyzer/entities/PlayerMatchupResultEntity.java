@@ -13,11 +13,11 @@ public class PlayerMatchupResultEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "player_1_id")
     private PlayerEntity player1;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "player_2_id")
     private PlayerEntity player2;
 
