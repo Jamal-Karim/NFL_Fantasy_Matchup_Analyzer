@@ -18,11 +18,13 @@ public class PlayerMatchupService {
     private final PlayerRepository playerRepository;
     private final PlayerMatchupRepository matchupRepository;
     private final PlayerMatchupMapper mapper;
+    private final PlayerMatchupAnalyzer analyzer;
 
-    public PlayerMatchupService(PlayerRepository playerRepository, PlayerMatchupRepository matchupRepository, PlayerMatchupMapper mapper) {
+    public PlayerMatchupService(PlayerRepository playerRepository, PlayerMatchupRepository matchupRepository, PlayerMatchupMapper mapper, PlayerMatchupAnalyzer analyzer) {
         this.playerRepository = playerRepository;
         this.matchupRepository = matchupRepository;
         this.mapper = mapper;
+        this.analyzer = analyzer;
     }
 
     public PlayerMatchupResult getPlayerMatchupById(long id) {
@@ -36,7 +38,6 @@ public class PlayerMatchupService {
     }
 
     public PlayerMatchupResult getPlayerMatchup(Player player1, Player player2) {
-        PlayerMatchupAnalyzer analyzer = new PlayerMatchupAnalyzer();
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);
 
         PlayerMatchupResultEntity playerMatchupResultEntity = mapper.domainToEntity(result);

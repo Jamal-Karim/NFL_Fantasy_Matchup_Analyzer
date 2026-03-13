@@ -2,6 +2,7 @@ package com.jamalkarim.analyzer.domain.matchups;
 
 import com.jamalkarim.analyzer.domain.models.QuarterBack;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
+import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,10 @@ class PlayerMatchupAnalyzerTest {
 
     @BeforeEach
     void setUp() {
-        analyzer = new PlayerMatchupAnalyzer();
+
+        ScareResultFactory factory = new ScareResultFactory();
+
+        analyzer = new PlayerMatchupAnalyzer(factory);
         qb1 = new QuarterBack("QB One", "Team A");
         qb2 = new QuarterBack("QB Two", "Team B");
     }
