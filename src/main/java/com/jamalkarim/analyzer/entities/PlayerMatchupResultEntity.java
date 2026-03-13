@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.entities;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -15,10 +16,12 @@ public class PlayerMatchupResultEntity {
 
     @ManyToOne
     @JoinColumn(name = "player_1_id")
+    @ToString.Exclude
     private PlayerEntity player1;
 
     @ManyToOne
     @JoinColumn(name = "player_2_id")
+    @ToString.Exclude
     private PlayerEntity player2;
 
     private double scareDifference;
@@ -26,19 +29,29 @@ public class PlayerMatchupResultEntity {
     @Enumerated(EnumType.STRING)
     private MatchupAdvantages advantage;
 
-    @Column(columnDefinition = "TEXT")
+    @Transient
     private String explanation;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "winner_id")
+    private PlayerEntity winner;
+
+    @ManyToOne
+    @JoinColumn(name = "loser_id")
+    private PlayerEntity loser;
+
+    @ManyToOne
     @JoinColumn(name = "player_1_scare_result_id")
     private ScareResultEntity player1ScareResult;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "player_2_scare_result_id")
+    @ToString.Exclude
     private ScareResultEntity player2ScareResult;
 
     @ManyToOne
     @JoinColumn(name = "team_matchup_id")
+    @ToString.Exclude
     private TeamMatchupResultEntity teamMatchupResult;
 
 }
