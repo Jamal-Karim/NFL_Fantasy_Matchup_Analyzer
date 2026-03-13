@@ -10,6 +10,8 @@ import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMatchupMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PlayerMatchupService {
 
@@ -23,6 +25,16 @@ public class PlayerMatchupService {
         this.mapper = mapper;
     }
 
+    public PlayerMatchupResult getPlayerMatchupById(long id) {
+        Optional<PlayerMatchupResultEntity> entity = matchupRepository.findById(id);
+
+        if (entity.isPresent()) {
+            return mapper.entityToDomain(entity.get());
+        } else {
+            throw new RuntimeException("Player matchup does not exist");
+        }
+    }
+
     public PlayerMatchupResult getPlayerMatchup(Player player1, Player player2) {
         PlayerMatchupAnalyzer analyzer = new PlayerMatchupAnalyzer();
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);
@@ -33,12 +45,24 @@ public class PlayerMatchupService {
                 .ifPresent(p1 -> {
                     playerMatchupResultEntity.setPlayer1(p1);
                     playerMatchupResultEntity.setPlayer1ScareResult(p1.getScareResult());
+
+                    if (result.getWinner().isPresent() && result.getWinner().get().equals(player1)) {
+                        playerMatchupResultEntity.setWinner(p1);
+                    } else if (result.getLoser().isPresent() && result.getLoser().get().equals(player1)) {
+                        playerMatchupResultEntity.setLoser(p1);
+                    }
                 });
 
         playerRepository.findByNameAndNflTeam(player2.getName(), player2.getTeam())
                 .ifPresent(p2 -> {
                     playerMatchupResultEntity.setPlayer2(p2);
-                    playerMatchupResultEntity.setPlayer2ScareResult(p2.getScareResult()); // Fixed the P1 overwrite
+                    playerMatchupResultEntity.setPlayer2ScareResult(p2.getScareResult());
+
+                    if (result.getWinner().isPresent() && result.getWinner().get().equals(player2)) {
+                        playerMatchupResultEntity.setWinner(p2);
+                    } else if (result.getLoser().isPresent() && result.getLoser().get().equals(player2)) {
+                        playerMatchupResultEntity.setLoser(p2);
+                    }
                 });
 
         matchupRepository.save(playerMatchupResultEntity);

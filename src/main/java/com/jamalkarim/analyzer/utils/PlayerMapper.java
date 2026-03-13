@@ -82,4 +82,15 @@ public class PlayerMapper {
         scareResultEntity.setScareScore(scareResult.getScareScore());
         return scareResultEntity;
     }
+
+    public ScareResult scareEntityToScareDomain(ScareResultEntity entity) {
+        ScareResult result = new ScareResult(entityToDomain(entity.getPlayer()));
+
+        result.setScareScore(entity.getScareScore());
+        result.setScareTier(entity.getPlayerTier());
+        result.setPrimaryExplanation(entity.getPrimaryExplanation());
+        result.setSupportingExplanations(entity.getSupportingExplanations());
+
+        return result;
+    }
 }

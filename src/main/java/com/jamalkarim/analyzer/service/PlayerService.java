@@ -25,6 +25,17 @@ public class PlayerService {
         this.playerMapper = playerMapper;
     }
 
+    public Player getPlayerByID(long id) {
+
+        Optional<PlayerEntity> player = repository.findById(id);
+
+        if (player.isPresent()) {
+            return playerMapper.entityToDomain(player.get());
+        } else {
+            throw new RuntimeException("Player does not exist");
+        }
+    }
+
     public Player getOrSyncPlayer(String name, String team) {
         Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
         if (player.isPresent()) {
