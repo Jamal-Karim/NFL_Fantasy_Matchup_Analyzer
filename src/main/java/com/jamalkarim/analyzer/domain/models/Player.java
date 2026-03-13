@@ -18,6 +18,7 @@ public abstract class Player implements ScareFactor {
     private static final StatsBlender STATS_BLENDER = new StatsBlender();
     private static final int MIN_GAMES_FOR_TREND = 7;
 
+    private Long id;
     private String name;
     private String team;
     private Position position;
