@@ -19,7 +19,7 @@ public class PlayerEntity {
     private boolean isInjured;
 
     @Column(name = "nfl_team")
-    private String NFLTeam;
+    private String nflTeam;
 
     @Enumerated(EnumType.STRING)
     private Position position;
@@ -35,4 +35,7 @@ public class PlayerEntity {
     @ManyToOne
     @JoinColumn(name = "team_id")
     private TeamEntity teamEntity;
+
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    private ScareResultEntity scareResult;
 }

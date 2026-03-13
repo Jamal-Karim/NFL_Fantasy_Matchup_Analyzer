@@ -2,7 +2,9 @@ package com.jamalkarim.analyzer.provider;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
+import com.jamalkarim.analyzer.utils.PlayerMapper;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -11,10 +13,16 @@ import java.util.List;
 
 @Repository
 public class MockPlayerProvider implements PlayerDataProvider {
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
+    private final PlayerMapper playerMapper;
+
+    public MockPlayerProvider(ObjectMapper objectMapper, PlayerMapper playerMapper) {
+        this.objectMapper = objectMapper;
+        this.playerMapper = playerMapper;
+    }
 
     @Override
-    public MockPlayerDTO fetchPlayer(String name, String nflTeam) {
+    public Player fetchPlayer(String name, String nflTeam) {
         String[] jsonFiles = {"mock_data/qb.json", "mock_data/rb.json", "mock_data/wr.json", "mock_data/te.json"};
 
         for (String fileName : jsonFiles) {
@@ -25,13 +33,13 @@ public class MockPlayerProvider implements PlayerDataProvider {
                     continue;
                 }
 
-                List<MockPlayerDTO> players = mapper.readValue(inputStream, new TypeReference<List<MockPlayerDTO>>() {
+                List<MockPlayerDTO> players = objectMapper.readValue(inputStream, new TypeReference<List<MockPlayerDTO>>() {
                 });
 
                 for (MockPlayerDTO player : players) {
                     if (player.getName().equalsIgnoreCase(name) &&
                             player.getNflTeam().equalsIgnoreCase(nflTeam)) {
-                        return player;
+                        return playerMapper.entityToDomain(playerMapper.mockToEntity(player));
                     }
                 }
             } catch (IOException e) {

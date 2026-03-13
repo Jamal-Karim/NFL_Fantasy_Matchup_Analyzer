@@ -2,10 +2,14 @@ package com.jamalkarim.analyzer.utils;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
+import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
+import com.jamalkarim.analyzer.entities.ScareResultEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PlayerMapper {
 
     private final StatsMapper statsMapper = new StatsMapper();
@@ -14,10 +18,10 @@ public class PlayerMapper {
         Position position = playerEntity.getPosition();
 
         Player domainPlayer = switch (position) {
-            case QB -> new QuarterBack(playerEntity.getName(), playerEntity.getNFLTeam());
-            case RB -> new RunningBack(playerEntity.getName(), playerEntity.getNFLTeam());
-            case WR -> new WideReceiver(playerEntity.getName(), playerEntity.getNFLTeam());
-            case TE -> new TightEnd(playerEntity.getName(), playerEntity.getNFLTeam());
+            case QB -> new QuarterBack(playerEntity.getName(), playerEntity.getNflTeam());
+            case RB -> new RunningBack(playerEntity.getName(), playerEntity.getNflTeam());
+            case WR -> new WideReceiver(playerEntity.getName(), playerEntity.getNflTeam());
+            case TE -> new TightEnd(playerEntity.getName(), playerEntity.getNflTeam());
         };
 
         domainPlayer.setDraftPick(playerEntity.getDraftPick());
@@ -39,7 +43,7 @@ public class PlayerMapper {
         PlayerEntity player = new PlayerEntity();
 
         player.setName(mockPlayerDTO.getName());
-        player.setNFLTeam(mockPlayerDTO.getNflTeam());
+        player.setNflTeam(mockPlayerDTO.getNflTeam());
         player.setPosition(mockPlayerDTO.getPosition());
 
         StatsEntity currentStats = statsMapper.mockToEntity(mockPlayerDTO.getCurrentSeasonStats());
@@ -52,5 +56,30 @@ public class PlayerMapper {
         player.setInjured(mockPlayerDTO.isInjured());
 
         return player;
+    }
+
+    public PlayerEntity domainToEntity(Player player) {
+        PlayerEntity playerEntity = new PlayerEntity();
+
+        playerEntity.setName(player.getName());
+        playerEntity.setNflTeam(player.getTeam());
+        playerEntity.setPosition(player.getPosition());
+
+        StatsEntity currentStats = statsMapper.domainToEntity(player.getCurrentSeasonStats());
+        StatsEntity lastStats = statsMapper.domainToEntity(player.getLastSeasonStats());
+        playerEntity.setCurrentSeasonStats(currentStats);
+        playerEntity.setLastSeasonStats(lastStats);
+
+        playerEntity.setDraftPick(player.getDraftPick());
+        playerEntity.setRookie(player.isRookie());
+        playerEntity.setInjured(player.isInjured());
+
+        return playerEntity;
+    }
+
+    public ScareResultEntity scareDomainToScareEntity(ScareResult scareResult) {
+        ScareResultEntity scareResultEntity = new ScareResultEntity();
+        scareResultEntity.setScareScore(scareResult.getScareScore());
+        return scareResultEntity;
     }
 }
