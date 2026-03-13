@@ -1,45 +1,47 @@
 package com.jamalkarim.analyzer.dto.mock;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 public class MockStatsDTO {
 
-    private int season;
+    private Integer season;
 
     @JsonProperty("games_played")
-    private int gamesPlayed;
+    private Integer gamesPlayed;
 
     @JsonProperty("passing_attempts")
-    private int passAttempts;
+    private Integer passAttempts;
 
-    private int completions;
+    private Integer completions;
 
     @JsonProperty("passing_yards")
-    private int passingYards;
+    private Integer passingYards;
 
     @JsonProperty("passing_tds")
-    private int passingTDs;
+    private Integer passingTDs;
 
-    private int interceptions;
+    private Integer interceptions;
 
     @JsonProperty("rushing_attempts")
-    private int rushingAttempts;
+    private Integer rushingAttempts;
 
     @JsonProperty("rushing_yards")
-    private int rushingYards;
+    private Integer rushingYards;
 
     @JsonProperty("rushing_tds")
-    private int rushingTDs;
+    private Integer rushingTDs;
 
-    private int receptions;
+    private Integer receptions;
 
     @JsonProperty("receiving_yards")
-    private int receivingYards;
+    private Integer receivingYards;
 
     @JsonProperty("receiving_tds")
-    private int receivingTDs;
+    private Integer receivingTDs;
 }

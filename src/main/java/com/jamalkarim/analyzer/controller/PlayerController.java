@@ -4,6 +4,8 @@ import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.requests.MatchupRequest;
+import com.jamalkarim.analyzer.dto.response.ApiResponse;
+import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerMatchupService;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
@@ -24,8 +26,8 @@ public class PlayerController {
     }
 
     @GetMapping("/team/{nflTeam}")
-    public Player getPlayerByName(@RequestParam String name, @PathVariable String nflTeam) {
-        return playerService.getOrSyncPlayer(name, nflTeam);
+    public ApiResponse<PlayerResponseDTO> getPlayerByName(@RequestParam String name, @PathVariable String nflTeam) {
+        return ApiResponse.success(playerService.getOrSyncPlayer(name, nflTeam));
     }
 
     @GetMapping("/{id}")

@@ -4,6 +4,7 @@ import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
+import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.ScareResultEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
@@ -24,6 +25,7 @@ public class PlayerMapper {
             case TE -> new TightEnd(playerEntity.getName(), playerEntity.getNflTeam());
         };
 
+        domainPlayer.setId(playerEntity.getId());
         domainPlayer.setDraftPick(playerEntity.getDraftPick());
         domainPlayer.setRookie(playerEntity.isRookie());
         domainPlayer.setInjured(playerEntity.isInjured());
@@ -75,6 +77,21 @@ public class PlayerMapper {
         playerEntity.setInjured(player.isInjured());
 
         return playerEntity;
+    }
+
+    public PlayerResponseDTO domainToResponse(Player player) {
+        PlayerResponseDTO playerResponseDTO = new PlayerResponseDTO();
+
+        playerResponseDTO.setId(player.getId());
+        playerResponseDTO.setName(player.getName());
+        playerResponseDTO.setNflTeam(player.getTeam());
+        playerResponseDTO.setPosition(player.getPosition());
+        playerResponseDTO.setRookie(player.isRookie());
+        playerResponseDTO.setInjured(player.isInjured());
+        playerResponseDTO.setCurrentSeasonStats(statsMapper.domainToMock(player.getCurrentSeasonStats(), player.getPosition()));
+        playerResponseDTO.setLastSeasonStats(statsMapper.domainToMock(player.getLastSeasonStats(), player.getPosition()));
+
+        return playerResponseDTO;
     }
 
     public ScareResultEntity scareDomainToScareEntity(ScareResult scareResult) {
