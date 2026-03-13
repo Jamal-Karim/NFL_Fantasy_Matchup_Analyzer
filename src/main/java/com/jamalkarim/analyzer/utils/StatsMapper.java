@@ -29,6 +29,29 @@ public class StatsMapper {
         return stats;
     }
 
+    public StatsEntity domainToEntity(Stats domainStats) {
+        StatsEntity stats = new StatsEntity();
+
+        stats.setSeason(domainStats.getSeason());
+        stats.setGamesPlayed(domainStats.getGamesPlayed());
+
+        stats.setPassAttempts(domainStats.getPassAttempts());
+        stats.setCompletions(domainStats.getCompletions());
+        stats.setPassingYards(domainStats.getPassingYards());
+        stats.setPassingTDs(domainStats.getPassingTDs());
+        stats.setInterceptions(domainStats.getInterceptions());
+
+        stats.setRushingAttempts(domainStats.getRushingAttempts());
+        stats.setRushingYards(domainStats.getRushingYards());
+        stats.setRushingTDs(domainStats.getRushingTDs());
+
+        stats.setReceptions(domainStats.getReceptions());
+        stats.setReceivingYards(domainStats.getReceivingYards());
+        stats.setReceivingTDs(domainStats.getReceivingTDs());
+
+        return stats;
+    }
+
     public StatsEntity mockToEntity(MockStatsDTO mockStatsDTO) {
         StatsEntity stats = new StatsEntity();
 

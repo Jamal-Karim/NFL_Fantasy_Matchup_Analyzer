@@ -19,7 +19,7 @@ public class PlayerEntity {
     private boolean isInjured;
 
     @Column(name = "nfl_team")
-    private String NFLTeam;
+    private String nflTeam;
 
     @Enumerated(EnumType.STRING)
     private Position position;
