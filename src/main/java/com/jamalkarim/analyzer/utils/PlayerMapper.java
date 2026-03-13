@@ -2,8 +2,10 @@ package com.jamalkarim.analyzer.utils;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
+import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
+import com.jamalkarim.analyzer.entities.ScareResultEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 import org.springframework.stereotype.Component;
 
@@ -73,5 +75,11 @@ public class PlayerMapper {
         playerEntity.setInjured(player.isInjured());
 
         return playerEntity;
+    }
+
+    public ScareResultEntity scareDomainToScareEntity(ScareResult scareResult) {
+        ScareResultEntity scareResultEntity = new ScareResultEntity();
+        scareResultEntity.setScareScore(scareResult.getScareScore());
+        return scareResultEntity;
     }
 }

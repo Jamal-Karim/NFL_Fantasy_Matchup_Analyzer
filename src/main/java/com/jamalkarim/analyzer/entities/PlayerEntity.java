@@ -35,4 +35,7 @@ public class PlayerEntity {
     @ManyToOne
     @JoinColumn(name = "team_id")
     private TeamEntity teamEntity;
+
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    private ScareResultEntity scareResult;
 }
