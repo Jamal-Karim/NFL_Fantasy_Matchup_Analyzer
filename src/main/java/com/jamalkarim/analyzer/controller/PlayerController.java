@@ -2,9 +2,11 @@ package com.jamalkarim.analyzer.controller;
 
 import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Player;
+import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.requests.MatchupRequest;
 import com.jamalkarim.analyzer.service.PlayerMatchupService;
 import com.jamalkarim.analyzer.service.PlayerService;
+import com.jamalkarim.analyzer.service.ScareResultService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,10 +15,12 @@ public class PlayerController {
 
     private final PlayerService playerService;
     private final PlayerMatchupService matchupService;
+    private final ScareResultService scareResultService;
 
-    public PlayerController(PlayerService playerService, PlayerMatchupService matchupService) {
+    public PlayerController(PlayerService playerService, PlayerMatchupService matchupService, ScareResultService scareResultService) {
         this.playerService = playerService;
         this.matchupService = matchupService;
+        this.scareResultService = scareResultService;
     }
 
     @GetMapping("/team/{nflTeam}")
@@ -40,5 +44,10 @@ public class PlayerController {
     @GetMapping("/matchup/{id:\\d+}")
     public PlayerMatchupResult getMatchupById(@PathVariable long id) {
         return matchupService.getPlayerMatchupById(id);
+    }
+
+    @GetMapping("/{id:\\d+}/analysis")
+    public ScareResult getScareResultById(@PathVariable long id) {
+        return scareResultService.getScareResultById(id);
     }
 }

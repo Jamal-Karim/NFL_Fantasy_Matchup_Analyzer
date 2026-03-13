@@ -2,6 +2,7 @@ package com.jamalkarim.analyzer.domain.scoring;
 
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.enums.PlayerTier;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * Factory class responsible for orchestrating the analysis of a Player entity
  * and packaging the results into a ScareResult report.
  */
+@Component
 public class ScareResultFactory {
 
     /**

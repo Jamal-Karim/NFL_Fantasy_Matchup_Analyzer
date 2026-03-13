@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.domain.matchups;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -13,7 +14,14 @@ import java.util.*;
  * The analysis involves aggregating Scare Factor scores, calculating
  * win probabilities, and identifying key star-player matchups.
  */
+@Component
 public class TeamMatchupAnalyzer {
+
+    private final PlayerMatchupAnalyzer analyzer;
+
+    public TeamMatchupAnalyzer(PlayerMatchupAnalyzer analyzer) {
+        this.analyzer = analyzer;
+    }
 
     /**
      * Performs a comprehensive head-to-head analysis of two teams.
@@ -100,8 +108,6 @@ public class TeamMatchupAnalyzer {
     private List<PlayerMatchupResult> generatePlayerMatchupResultsForTopPlayers(List<Player> team1Players, List<Player> team2Players) {
 
         List<PlayerMatchupResult> listOfPlayerMatchups = new LinkedList<>();
-
-        PlayerMatchupAnalyzer analyzer = new PlayerMatchupAnalyzer();
 
         for (int i = 0; i < team1Players.size(); i++) {
             PlayerMatchupResult result = analyzer.analyzePlayerMatchup(team1Players.get(i), team2Players.get(i));

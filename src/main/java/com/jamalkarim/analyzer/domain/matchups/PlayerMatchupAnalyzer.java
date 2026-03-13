@@ -4,12 +4,20 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * Service responsible for comparing two players and determining
  * which one presents a higher statistical threat based on Scare Factor.
  */
+@Component
 public class PlayerMatchupAnalyzer {
+
+    private final ScareResultFactory scareResultFactory;
+
+    public PlayerMatchupAnalyzer(ScareResultFactory scareResultFactory) {
+        this.scareResultFactory = scareResultFactory;
+    }
 
     /**
      * Performs a side-by-side comparison of two players.
@@ -19,7 +27,6 @@ public class PlayerMatchupAnalyzer {
      * @return A PlayerMatchupResult containing the winner, advantage level, and detailed analysis.
      */
     public PlayerMatchupResult analyzePlayerMatchup(Player player1, Player player2) {
-        ScareResultFactory scareResultFactory = new ScareResultFactory();
         ScareResult player1ScareResult = scareResultFactory.generateScareResult(player1);
         ScareResult player2ScareResult = scareResultFactory.generateScareResult(player2);
 

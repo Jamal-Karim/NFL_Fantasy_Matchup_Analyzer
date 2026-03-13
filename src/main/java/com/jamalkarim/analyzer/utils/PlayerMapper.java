@@ -80,6 +80,7 @@ public class PlayerMapper {
     public ScareResultEntity scareDomainToScareEntity(ScareResult scareResult) {
         ScareResultEntity scareResultEntity = new ScareResultEntity();
         scareResultEntity.setScareScore(scareResult.getScareScore());
+        scareResultEntity.setPlayerTier(scareResult.getScareTier());
         return scareResultEntity;
     }
 

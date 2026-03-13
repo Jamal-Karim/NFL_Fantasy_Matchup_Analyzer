@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.domain.matchups;
 import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.enums.Position;
+import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +20,10 @@ class TeamMatchupAnalyzerTest {
 
     @BeforeEach
     void setUp() {
-        analyzer = new TeamMatchupAnalyzer();
+        ScareResultFactory factory = new ScareResultFactory();
+        PlayerMatchupAnalyzer playerAnalyzer = new PlayerMatchupAnalyzer(factory);
+
+        analyzer = new TeamMatchupAnalyzer(playerAnalyzer);
         team1 = new Team("Eagles");
         team2 = new Team("Cowboys");
     }
