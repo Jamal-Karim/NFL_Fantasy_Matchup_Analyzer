@@ -4,7 +4,7 @@
     "nfl_team": "LV",
     "position": "TE",
     "draft_pick": 13,
-    "is_rookie": true,
+    "is_rookie": false,
     "is_injured": true,
     "current_season_stats": {
       "season": 2025,

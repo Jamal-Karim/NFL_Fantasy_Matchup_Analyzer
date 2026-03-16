@@ -10,6 +10,7 @@ import com.jamalkarim.analyzer.exceptions.PlayerNotFoundException;
 import com.jamalkarim.analyzer.provider.PlayerDataProvider;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
+import com.jamalkarim.analyzer.utils.ScareResultMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,13 +21,26 @@ public class PlayerService {
     private final PlayerRepository repository;
     private final PlayerDataProvider provider;
     private final PlayerMapper playerMapper;
+    private final ScareResultMapper scareResultMapper;
     private final ScareResultFactory factory;
 
-    public PlayerService(PlayerRepository repository, PlayerDataProvider provider, PlayerMapper playerMapper, ScareResultFactory factory) {
+    public PlayerService(PlayerRepository repository, PlayerDataProvider provider, PlayerMapper playerMapper, ScareResultMapper scareResultMapper, ScareResultFactory factory) {
         this.repository = repository;
         this.provider = provider;
         this.playerMapper = playerMapper;
+        this.scareResultMapper = scareResultMapper;
         this.factory = factory;
+    }
+
+    public PlayerResponseDTO getPlayerResponseDTOByID(long id) {
+
+        Optional<PlayerEntity> player = repository.findById(id);
+
+        if (player.isPresent()) {
+            return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
+        } else {
+            throw new PlayerNotFoundException(id);
+        }
     }
 
     public Player getPlayerByID(long id) {
@@ -39,6 +53,7 @@ public class PlayerService {
             throw new PlayerNotFoundException(id);
         }
     }
+
 
     public PlayerResponseDTO getOrSyncPlayer(String name, String team) {
         Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
@@ -55,7 +70,7 @@ public class PlayerService {
 
             ScareResult res = factory.generateScareResult(newPlayer);
 
-            ScareResultEntity scareEntity = playerMapper.scareDomainToScareEntity(res);
+            ScareResultEntity scareEntity = scareResultMapper.scareDomainToScareEntity(res);
 
             scareEntity.setPlayer(playerEntity);
             playerEntity.setScareResult(scareEntity);

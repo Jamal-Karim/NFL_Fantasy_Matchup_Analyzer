@@ -25,7 +25,6 @@ public abstract class Player implements ScareFactor {
     private int draftPick;
     private boolean isRookie;
     private boolean isInjured;
-    private PlayerTier tier;
     private Stats currentSeasonStats;
     private Stats lastSeasonStats;
 

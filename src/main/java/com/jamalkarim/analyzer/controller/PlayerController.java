@@ -5,7 +5,9 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.requests.MatchupRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
+import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerMatchupService;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
@@ -31,25 +33,26 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public Player getPlayerById(@PathVariable long id) {
-        return playerService.getPlayerByID(id);
+    public ApiResponse<PlayerResponseDTO> getPlayerById(@PathVariable long id) {
+        return ApiResponse.success(playerService.getPlayerResponseDTOByID(id));
     }
 
     @PostMapping("/matchup/create")
-    public PlayerMatchupResult createPlayerMatchup(@RequestBody MatchupRequest request) {
+    public ApiResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody MatchupRequest request) {
         Player player1 = playerService.getPlayerByID(request.getPlayer1Id());
         Player player2 = playerService.getPlayerByID(request.getPlayer2Id());
 
-        return matchupService.getPlayerMatchup(player1, player2);
+        PlayerMatchupResponseDTO response = matchupService.getPlayerMatchup(player1, player2);
+        return ApiResponse.success(response);
     }
 
     @GetMapping("/matchup/{id:\\d+}")
-    public PlayerMatchupResult getMatchupById(@PathVariable long id) {
-        return matchupService.getPlayerMatchupById(id);
+    public ApiResponse<PlayerMatchupResponseDTO> getMatchupById(@PathVariable long id) {
+        return ApiResponse.success(matchupService.getPlayerMatchupResponseById(id));
     }
 
     @GetMapping("/{id:\\d+}/analysis")
-    public ScareResult getScareResultById(@PathVariable long id) {
-        return scareResultService.getScareResultById(id);
+    public ApiResponse<ScareResponseDTO> getScareResultById(@PathVariable long id) {
+        return ApiResponse.success(scareResultService.getScareResultById(id));
     }
 }

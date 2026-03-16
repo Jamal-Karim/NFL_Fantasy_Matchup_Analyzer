@@ -2,11 +2,9 @@ package com.jamalkarim.analyzer.utils;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
-import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
-import com.jamalkarim.analyzer.entities.ScareResultEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 import org.springframework.stereotype.Component;
 
@@ -92,23 +90,5 @@ public class PlayerMapper {
         playerResponseDTO.setLastSeasonStats(statsMapper.domainToMock(player.getLastSeasonStats(), player.getPosition()));
 
         return playerResponseDTO;
-    }
-
-    public ScareResultEntity scareDomainToScareEntity(ScareResult scareResult) {
-        ScareResultEntity scareResultEntity = new ScareResultEntity();
-        scareResultEntity.setScareScore(scareResult.getScareScore());
-        scareResultEntity.setPlayerTier(scareResult.getScareTier());
-        return scareResultEntity;
-    }
-
-    public ScareResult scareEntityToScareDomain(ScareResultEntity entity) {
-        ScareResult result = new ScareResult(entityToDomain(entity.getPlayer()));
-
-        result.setScareScore(entity.getScareScore());
-        result.setScareTier(entity.getPlayerTier());
-        result.setPrimaryExplanation(entity.getPrimaryExplanation());
-        result.setSupportingExplanations(entity.getSupportingExplanations());
-
-        return result;
     }
 }
