@@ -32,6 +32,17 @@ public class PlayerService {
         this.factory = factory;
     }
 
+    public PlayerResponseDTO getPlayerResponseDTOByID(long id) {
+
+        Optional<PlayerEntity> player = repository.findById(id);
+
+        if (player.isPresent()) {
+            return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
+        } else {
+            throw new PlayerNotFoundException(id);
+        }
+    }
+
     public Player getPlayerByID(long id) {
 
         Optional<PlayerEntity> player = repository.findById(id);
@@ -42,6 +53,7 @@ public class PlayerService {
             throw new PlayerNotFoundException(id);
         }
     }
+
 
     public PlayerResponseDTO getOrSyncPlayer(String name, String team) {
         Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);

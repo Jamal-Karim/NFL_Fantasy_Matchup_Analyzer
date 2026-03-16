@@ -32,8 +32,8 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public Player getPlayerById(@PathVariable long id) {
-        return playerService.getPlayerByID(id);
+    public ApiResponse<PlayerResponseDTO> getPlayerById(@PathVariable long id) {
+        return ApiResponse.success(playerService.getPlayerResponseDTOByID(id));
     }
 
     @PostMapping("/matchup/create")
