@@ -17,6 +17,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(TeamNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleTeamNotFound(TeamNotFoundException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleAllExceptions(Exception ex) {
         ApiResponse<Void> response = ApiResponse.error("An unexpected error occurred: " + ex.getMessage());
