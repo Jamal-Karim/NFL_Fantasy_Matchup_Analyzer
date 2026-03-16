@@ -6,6 +6,7 @@ import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.ScareResultEntity;
+import com.jamalkarim.analyzer.exceptions.PlayerNotFoundException;
 import com.jamalkarim.analyzer.provider.PlayerDataProvider;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
@@ -35,7 +36,7 @@ public class PlayerService {
         if (player.isPresent()) {
             return playerMapper.entityToDomain(player.get());
         } else {
-            throw new RuntimeException("Player does not exist");
+            throw new PlayerNotFoundException(id);
         }
     }
 
@@ -45,6 +46,10 @@ public class PlayerService {
             return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
         } else {
             Player newPlayer = provider.fetchPlayer(name, team);
+
+            if (newPlayer == null) {
+                throw new PlayerNotFoundException(name, team);
+            }
 
             PlayerEntity playerEntity = playerMapper.domainToEntity(newPlayer);
 

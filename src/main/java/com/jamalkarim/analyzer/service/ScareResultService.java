@@ -4,6 +4,7 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
+import com.jamalkarim.analyzer.exceptions.PlayerNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class ScareResultService {
             Player player = playerMapper.entityToDomain(entityOpt.get());
             return factory.generateScareResult(player);
         } else {
-            throw new RuntimeException("No player exists");
+            throw new PlayerNotFoundException();
         }
     }
 }
