@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 public class PlayerMatchupMapper {
 
     private final PlayerMapper playerMapper;
+    private final ScareResultMapper scareResultMapper;
     private final PlayerMatchupAnalyzer analyzer;
 
-    public PlayerMatchupMapper(PlayerMapper playerMapper, PlayerMatchupAnalyzer analyzer) {
+    public PlayerMatchupMapper(PlayerMapper playerMapper, ScareResultMapper scareResultMapper, PlayerMatchupAnalyzer analyzer) {
         this.playerMapper = playerMapper;
+        this.scareResultMapper = scareResultMapper;
         this.analyzer = analyzer;
     }
 
@@ -44,8 +46,8 @@ public class PlayerMatchupMapper {
             result.setLoser(playerMapper.entityToDomain(entity.getLoser()));
         }
 
-        ScareResult player1ScareResult = playerMapper.scareEntityToScareDomain(entity.getPlayer1ScareResult());
-        ScareResult player2ScareResult = playerMapper.scareEntityToScareDomain(entity.getPlayer2ScareResult());
+        ScareResult player1ScareResult = scareResultMapper.scareEntityToScareDomain(entity.getPlayer1ScareResult());
+        ScareResult player2ScareResult = scareResultMapper.scareEntityToScareDomain(entity.getPlayer2ScareResult());
 
         result.setPlayer1ScareResult(player1ScareResult);
         result.setPlayer2ScareResult(player2ScareResult);

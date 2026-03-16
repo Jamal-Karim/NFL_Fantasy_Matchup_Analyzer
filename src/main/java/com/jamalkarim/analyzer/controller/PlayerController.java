@@ -6,6 +6,7 @@ import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.requests.MatchupRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerMatchupService;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
@@ -49,7 +50,7 @@ public class PlayerController {
     }
 
     @GetMapping("/{id:\\d+}/analysis")
-    public ScareResult getScareResultById(@PathVariable long id) {
-        return scareResultService.getScareResultById(id);
+    public ApiResponse<ScareResponseDTO> getScareResultById(@PathVariable long id) {
+        return ApiResponse.success(scareResultService.getScareResultById(id));
     }
 }
