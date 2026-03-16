@@ -4,6 +4,8 @@ package com.jamalkarim.analyzer.service;
 import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupAnalyzer;
 import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Player;
+import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
+import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.repository.PlayerMatchupRepository;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
@@ -19,25 +21,30 @@ public class PlayerMatchupService {
     private final PlayerMatchupRepository matchupRepository;
     private final PlayerMatchupMapper mapper;
     private final PlayerMatchupAnalyzer analyzer;
+    private final ScareResultFactory factory;
 
-    public PlayerMatchupService(PlayerRepository playerRepository, PlayerMatchupRepository matchupRepository, PlayerMatchupMapper mapper, PlayerMatchupAnalyzer analyzer) {
+    public PlayerMatchupService(PlayerRepository playerRepository, PlayerMatchupRepository matchupRepository, PlayerMatchupMapper mapper, PlayerMatchupAnalyzer analyzer, ScareResultFactory factory) {
         this.playerRepository = playerRepository;
         this.matchupRepository = matchupRepository;
         this.mapper = mapper;
         this.analyzer = analyzer;
+        this.factory = factory;
     }
 
-    public PlayerMatchupResult getPlayerMatchupById(long id) {
-        Optional<PlayerMatchupResultEntity> entity = matchupRepository.findById(id);
+    public PlayerMatchupResponseDTO getPlayerMatchupResponseById(long id) {
 
-        if (entity.isPresent()) {
-            return mapper.entityToDomain(entity.get());
-        } else {
-            throw new RuntimeException("Player matchup does not exist");
-        }
+        PlayerMatchupResultEntity entity = matchupRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Player matchup does not exist"));
+
+        PlayerMatchupResult matchup = mapper.entityToDomain(entity);
+
+        matchup.setPlayer1ScareResult(factory.generateScareResult(matchup.getPlayer1()));
+        matchup.setPlayer2ScareResult(factory.generateScareResult(matchup.getPlayer2()));
+
+        return mapper.domainToResponse(matchup);
     }
 
-    public PlayerMatchupResult getPlayerMatchup(Player player1, Player player2) {
+    public PlayerMatchupResponseDTO getPlayerMatchup(Player player1, Player player2) {
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);
 
         PlayerMatchupResultEntity playerMatchupResultEntity = mapper.domainToEntity(result);
@@ -66,7 +73,9 @@ public class PlayerMatchupService {
                     }
                 });
 
-        matchupRepository.save(playerMatchupResultEntity);
-        return result;
+        PlayerMatchupResultEntity savedEntity = matchupRepository.save(playerMatchupResultEntity);
+        result.setId(savedEntity.getId());
+
+        return mapper.domainToResponse(result);
     }
 }

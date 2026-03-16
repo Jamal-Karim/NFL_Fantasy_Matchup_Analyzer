@@ -4,6 +4,8 @@ import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupAnalyzer;
 import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
+import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
+import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import org.springframework.stereotype.Component;
 
@@ -53,5 +55,35 @@ public class PlayerMatchupMapper {
         result.setPlayer2ScareResult(player2ScareResult);
 
         return result;
+    }
+
+    public PlayerMatchupResponseDTO domainToResponse(PlayerMatchupResult playerMatchupResult) {
+        PlayerMatchupResponseDTO playerMatchupResponseDTO = new PlayerMatchupResponseDTO();
+
+        playerMatchupResponseDTO.setId(playerMatchupResult.getId());
+
+        playerMatchupResponseDTO.setWinner(
+                playerMatchupResult.getWinner()
+                        .map(Player::getName)
+                        .orElse("TIE")
+        );
+
+        playerMatchupResponseDTO.setLoser(
+                playerMatchupResult.getLoser()
+                        .map(Player::getName)
+                        .orElse("TIE")
+        );
+
+        playerMatchupResponseDTO.setScareDifference(playerMatchupResult.getScareDifference());
+        playerMatchupResponseDTO.setAdvantage(playerMatchupResult.getAdvantage());
+        playerMatchupResponseDTO.setExplanation(playerMatchupResult.getExplanation());
+
+        ScareResponseDTO player1ScareResult = scareResultMapper.domainToResponse(playerMatchupResult.getPlayer1ScareResult());
+        playerMatchupResponseDTO.setPlayer1ScareResult(player1ScareResult);
+
+        ScareResponseDTO player2ScareResult = scareResultMapper.domainToResponse(playerMatchupResult.getPlayer2ScareResult());
+        playerMatchupResponseDTO.setPlayer2ScareResult(player2ScareResult);
+
+        return playerMatchupResponseDTO;
     }
 }

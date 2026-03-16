@@ -14,6 +14,8 @@ import java.util.Optional;
  */
 @Data
 public class PlayerMatchupResult {
+
+    private Long id;
     private Player player1;
     private Player player2;
     private double scareDifference;
