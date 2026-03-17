@@ -15,6 +15,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service for managing player-related operations.
+ * Handles player retrieval, database persistence, and synchronization with external data providers.
+ */
 @Service
 public class PlayerService {
 
@@ -32,6 +36,13 @@ public class PlayerService {
         this.factory = factory;
     }
 
+    /**
+     * Retrieves a player's response DTO by their database ID.
+     *
+     * @param id The unique identifier of the player
+     * @return The player's data transfer object
+     * @throws PlayerNotFoundException if no player exists with the given ID
+     */
     public PlayerResponseDTO getPlayerResponseDTOByID(long id) {
 
         Optional<PlayerEntity> player = repository.findById(id);
@@ -43,6 +54,13 @@ public class PlayerService {
         }
     }
 
+    /**
+     * Retrieves a player domain object by their database ID.
+     *
+     * @param id The unique identifier of the player
+     * @return The player domain model
+     * @throws PlayerNotFoundException if no player exists with the given ID
+     */
     public Player getPlayerByID(long id) {
 
         Optional<PlayerEntity> player = repository.findById(id);
@@ -55,6 +73,15 @@ public class PlayerService {
     }
 
 
+    /**
+     * Finds a player in the local database or fetches them from the provider if they don't exist.
+     * Newly fetched players are saved to the database along with their initial Scare Factor analysis.
+     *
+     * @param name The name of the player
+     * @param team The team they play for
+     * @return The player's data transfer object
+     * @throws PlayerNotFoundException if the player is not found in the database or the provider
+     */
     public PlayerResponseDTO getOrSyncPlayer(String name, String team) {
         Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
         if (player.isPresent()) {

@@ -5,12 +5,22 @@ import com.jamalkarim.analyzer.domain.stats.Stats;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 
+/**
+ * Mapper utility for player statistics.
+ * Handles conversions between mock DTOs, JPA entities, domain models, and API response DTOs.
+ */
 public class StatsMapper {
 
     private int zeroIfNull(Integer value) {
         return value == null ? 0 : value;
     }
 
+    /**
+     * Converts a database entity to its domain model.
+     *
+     * @param statsEntity The database entity
+     * @return The domain model
+     */
     public Stats entityToDomain(StatsEntity statsEntity) {
         Stats stats = new Stats();
 
@@ -34,6 +44,12 @@ public class StatsMapper {
         return stats;
     }
 
+    /**
+     * Converts a domain model to a database entity.
+     *
+     * @param domainStats The domain model
+     * @return A database entity
+     */
     public StatsEntity domainToEntity(Stats domainStats) {
 
         if (domainStats == null) {
@@ -62,6 +78,12 @@ public class StatsMapper {
         return stats;
     }
 
+    /**
+     * Converts a MockStatsDTO to a database entity.
+     *
+     * @param mockStatsDTO The mock data transfer object
+     * @return A database entity
+     */
     public StatsEntity mockToEntity(MockStatsDTO mockStatsDTO) {
 
         if (mockStatsDTO == null) {
@@ -90,6 +112,13 @@ public class StatsMapper {
         return stats;
     }
 
+    /**
+     * Converts a domain model to a MockStatsDTO.
+     *
+     * @param domainStats The domain model
+     * @param position    The player's position to determine which stats are relevant
+     * @return A mock data transfer object
+     */
     public MockStatsDTO domainToMock(Stats domainStats, Position position) {
 
         if (domainStats == null) {

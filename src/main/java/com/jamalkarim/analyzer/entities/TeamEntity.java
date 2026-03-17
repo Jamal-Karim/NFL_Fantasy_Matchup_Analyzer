@@ -6,6 +6,10 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Persistence entity representing a team.
+ * Holds a roster of player entities.
+ */
 @Data
 @Entity
 @Table(name = "team")

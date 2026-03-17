@@ -4,6 +4,10 @@ import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for PlayerMatchupResultEntity.
+ * Handles persistence for head-to-head player matchup analyses.
+ */
 @Repository
 public interface PlayerMatchupRepository extends JpaRepository<PlayerMatchupResultEntity, Long> {
 }

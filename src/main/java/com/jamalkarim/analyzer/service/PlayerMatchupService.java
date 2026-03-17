@@ -12,8 +12,10 @@ import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMatchupMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
+/**
+ * Service for analyzing and retrieving head-to-head player matchups.
+ * Orchestrates the comparison of players and handles the persistence of matchup results.
+ */
 @Service
 public class PlayerMatchupService {
 
@@ -31,6 +33,14 @@ public class PlayerMatchupService {
         this.factory = factory;
     }
 
+    /**
+     * Retrieves a stored player matchup report by its ID.
+     * Re-generates Scare Factors for both players to ensure the response includes current analysis.
+     *
+     * @param id The ID of the matchup record
+     * @return A DTO containing the matchup result and player analyses
+     * @throws RuntimeException if the matchup record is not found
+     */
     public PlayerMatchupResponseDTO getPlayerMatchupResponseById(long id) {
 
         PlayerMatchupResultEntity entity = matchupRepository.findById(id)
@@ -44,6 +54,13 @@ public class PlayerMatchupService {
         return mapper.domainToResponse(matchup);
     }
 
+    /**
+     * Analyzes a head-to-head matchup between two players and saves the result to the database.
+     *
+     * @param player1 The first player model
+     * @param player2 The second player model
+     * @return A DTO containing the results of the analysis
+     */
     public PlayerMatchupResponseDTO getPlayerMatchup(Player player1, Player player2) {
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);
 

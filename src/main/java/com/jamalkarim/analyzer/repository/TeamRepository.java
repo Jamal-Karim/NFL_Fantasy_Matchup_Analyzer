@@ -4,6 +4,10 @@ import com.jamalkarim.analyzer.entities.TeamEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for TeamEntity.
+ * Handles database operations for NFL fantasy teams.
+ */
 @Repository
 public interface TeamRepository extends JpaRepository<TeamEntity, Long> {
 }

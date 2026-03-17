@@ -6,6 +6,10 @@ import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import lombok.Data;
 
+/**
+ * Data Transfer Object for detailed player information.
+ * Used for delivering player data through the API.
+ */
 @Data
 @JsonPropertyOrder({"id", "name", "team", "position"})
 public class PlayerResponseDTO {

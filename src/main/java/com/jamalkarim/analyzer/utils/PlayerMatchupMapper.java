@@ -9,6 +9,10 @@ import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper utility for head-to-head player matchup data.
+ * Handles conversions between domain models, JPA entities, and API response DTOs.
+ */
 @Component
 public class PlayerMatchupMapper {
 
@@ -22,6 +26,12 @@ public class PlayerMatchupMapper {
         this.analyzer = analyzer;
     }
 
+    /**
+     * Converts a player matchup domain model to its database entity representation.
+     *
+     * @param playerMatchupResult The domain model
+     * @return A database entity
+     */
     public PlayerMatchupResultEntity domainToEntity(PlayerMatchupResult playerMatchupResult) {
         PlayerMatchupResultEntity entity = new PlayerMatchupResultEntity();
 
@@ -31,6 +41,12 @@ public class PlayerMatchupMapper {
         return entity;
     }
 
+    /**
+     * Converts a player matchup database entity to its domain model.
+     *
+     * @param entity The stored matchup entity
+     * @return A domain model
+     */
     public PlayerMatchupResult entityToDomain(PlayerMatchupResultEntity entity) {
 
         Player player1 = playerMapper.entityToDomain(entity.getPlayer1());
@@ -57,6 +73,12 @@ public class PlayerMatchupMapper {
         return result;
     }
 
+    /**
+     * Converts a player matchup domain model to its API response representation.
+     *
+     * @param playerMatchupResult The domain model
+     * @return An API response DTO
+     */
     public PlayerMatchupResponseDTO domainToResponse(PlayerMatchupResult playerMatchupResult) {
         PlayerMatchupResponseDTO playerMatchupResponseDTO = new PlayerMatchupResponseDTO();
 

@@ -13,6 +13,11 @@ import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST Controller for managing and analyzing players and matchups.
+ * Provides endpoints for retrieving player data, initiating head-to-head comparisons,
+ * and performing detailed Scare Factor analysis.
+ */
 @RestController
 @RequestMapping("/api/player")
 public class PlayerController {
@@ -27,16 +32,36 @@ public class PlayerController {
         this.scareResultService = scareResultService;
     }
 
+    /**
+     * Retrieves a player by their name and NFL team.
+     * If the player is not found locally, the system will attempt to sync from an external provider.
+     *
+     * @param name    The full name of the player
+     * @param nflTeam The abbreviation of the NFL team (e.g., "BUF", "SF")
+     * @return An ApiResponse containing player details
+     */
     @GetMapping("/team/{nflTeam}")
     public ApiResponse<PlayerResponseDTO> getPlayerByName(@RequestParam String name, @PathVariable String nflTeam) {
         return ApiResponse.success(playerService.getOrSyncPlayer(name, nflTeam));
     }
 
+    /**
+     * Retrieves a player by their unique database identifier.
+     *
+     * @param id The ID of the player record
+     * @return An ApiResponse containing player details
+     */
     @GetMapping("/{id}")
     public ApiResponse<PlayerResponseDTO> getPlayerById(@PathVariable long id) {
         return ApiResponse.success(playerService.getPlayerResponseDTOByID(id));
     }
 
+    /**
+     * Initiates a head-to-head matchup analysis between two players.
+     *
+     * @param request A request containing the IDs of the two players to compare
+     * @return An ApiResponse containing detailed matchup results
+     */
     @PostMapping("/matchup/create")
     public ApiResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody MatchupRequest request) {
         Player player1 = playerService.getPlayerByID(request.getPlayer1Id());
@@ -46,11 +71,23 @@ public class PlayerController {
         return ApiResponse.success(response);
     }
 
+    /**
+     * Retrieves an existing player matchup report by its ID.
+     *
+     * @param id The unique identifier for the matchup result
+     * @return An ApiResponse containing the stored matchup details
+     */
     @GetMapping("/matchup/{id:\\d+}")
     public ApiResponse<PlayerMatchupResponseDTO> getMatchupById(@PathVariable long id) {
         return ApiResponse.success(matchupService.getPlayerMatchupResponseById(id));
     }
 
+    /**
+     * Retrieves a detailed Scare Factor analysis for a specific player.
+     *
+     * @param id The ID of the player to analyze
+     * @return An ApiResponse containing the numerical score and descriptive reasoning
+     */
     @GetMapping("/{id:\\d+}/analysis")
     public ApiResponse<ScareResponseDTO> getScareResultById(@PathVariable long id) {
         return ApiResponse.success(scareResultService.getScareResultById(id));
