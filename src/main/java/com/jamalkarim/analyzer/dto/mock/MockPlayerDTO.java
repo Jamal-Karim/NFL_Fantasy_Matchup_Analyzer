@@ -5,8 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import lombok.Data;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * Data Transfer Object for mapping player data from mock JSON files.
+ */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MockPlayerDTO {
 
     private String name;

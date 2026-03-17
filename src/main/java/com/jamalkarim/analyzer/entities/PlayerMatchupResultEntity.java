@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+/**
+ * Persistence entity for storing the results of a player-to-player comparison.
+ * Tracks the participants, the score differential, and the determined winner.
+ */
 @Data
 @Entity
 @Table(name = "player_matchup")

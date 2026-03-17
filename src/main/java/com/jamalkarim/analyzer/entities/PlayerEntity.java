@@ -4,6 +4,10 @@ import com.jamalkarim.analyzer.domain.enums.Position;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * Database entity representing an NFL player.
+ * Contains demographic information, status, and links to seasonal statistics.
+ */
 @Data
 @Entity
 @Table(name = "player")

@@ -6,8 +6,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Repository interface for PlayerEntity.
+ * Handles database operations for NFL players.
+ */
 @Repository
 public interface PlayerRepository extends JpaRepository<PlayerEntity, Long> {
 
+    /**
+     * Finds a player by their name and NFL team.
+     *
+     * @param name The name of the player
+     * @param nflTeam The abbreviation of the player's team
+     * @return An Optional containing the player entity if found
+     */
     Optional<PlayerEntity> findByNameAndNflTeam(String name, String nflTeam);
 }

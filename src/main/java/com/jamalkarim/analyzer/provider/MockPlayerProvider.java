@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+/**
+ * Mock implementation of PlayerDataProvider.
+ * Reads player statistical data from local JSON files to simulate an external API.
+ */
 @Repository
 public class MockPlayerProvider implements PlayerDataProvider {
     private final ObjectMapper objectMapper;
@@ -21,6 +25,14 @@ public class MockPlayerProvider implements PlayerDataProvider {
         this.playerMapper = playerMapper;
     }
 
+    /**
+     * Fetches a player by searching through local mock JSON data files.
+     * Searches through QB, RB, WR, and TE files to find a matching name and team.
+     *
+     * @param name The name of the player
+     * @param nflTeam The NFL team the player plays for
+     * @return A Player domain object if found in the mock files, otherwise null
+     */
     @Override
     public Player fetchPlayer(String name, String nflTeam) {
         String[] jsonFiles = {"mock_data/qb.json", "mock_data/rb.json", "mock_data/wr.json", "mock_data/te.json"};

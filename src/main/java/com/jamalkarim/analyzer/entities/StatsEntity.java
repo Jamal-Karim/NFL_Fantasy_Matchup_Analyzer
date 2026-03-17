@@ -3,6 +3,10 @@ package com.jamalkarim.analyzer.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * Persistence entity for storing seasonal player statistics.
+ * Contains fields for passing, rushing, and receiving metrics.
+ */
 @Data
 @Entity
 @Table(name = "stats")
