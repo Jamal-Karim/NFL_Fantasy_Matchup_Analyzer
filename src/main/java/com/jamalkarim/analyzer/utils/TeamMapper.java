@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Mapper utility for converting Team-related objects between different layers.
+ * Handles conversions between JPA Entities and Domain Models.
+ */
 @Component
 public class TeamMapper {
 
@@ -18,6 +22,13 @@ public class TeamMapper {
         this.playerMapper = playerMapper;
     }
 
+    /**
+     * Converts a TeamEntity to its corresponding domain model.
+     * Maps all players in the roster using PlayerMapper.
+     *
+     * @param entity The database entity
+     * @return A Team domain model
+     */
     public Team entityToDomain(TeamEntity entity) {
         Team team = new Team(entity.getName());
 
@@ -30,11 +41,5 @@ public class TeamMapper {
         team.setId(entity.getId());
         team.setRoster(roster);
         return team;
-    }
-
-    public TeamEntity domainToEntity(Team domain) {
-        TeamEntity entity = new TeamEntity();
-        entity.setName(domain.getName());
-        return entity;
     }
 }

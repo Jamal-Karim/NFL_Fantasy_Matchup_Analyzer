@@ -13,6 +13,10 @@ import com.jamalkarim.analyzer.utils.PlayerMapper;
 import com.jamalkarim.analyzer.utils.TeamMapper;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service for managing NFL fantasy teams.
+ * Handles team creation, retrieval, and roster management.
+ */
 @Service
 public class TeamService {
 
@@ -30,12 +34,28 @@ public class TeamService {
         this.playerMapper = playerMapper;
     }
 
+    /**
+     * Retrieves a team by its unique database identifier.
+     *
+     * @param id The ID of the team record
+     * @return The Team domain model
+     * @throws TeamNotFoundException if no team exists with the given ID
+     */
     public Team getTeamById(long id) {
         return repository.findById(id)
                 .map(mapper::entityToDomain)
                 .orElseThrow(() -> new TeamNotFoundException(id));
     }
 
+    /**
+     * Creates a new fantasy team based on the provided request.
+     * If a team with the same name already exists, returns the existing team.
+     * Validates that players added to the roster are not already assigned to another team.
+     *
+     * @param request The team creation request containing name and roster
+     * @return The created or existing Team domain model
+     * @throws RuntimeException if a player is already assigned to another team
+     */
     public Team createTeam(TeamRequest request) {
         if (repository.findByName(request.getName()).isPresent()) {
             return mapper.entityToDomain(repository.findByName(request.getName()).get());
