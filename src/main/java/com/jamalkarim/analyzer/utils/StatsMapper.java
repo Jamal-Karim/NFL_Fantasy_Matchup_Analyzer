@@ -113,6 +113,36 @@ public class StatsMapper {
     }
 
     /**
+     * Converts a mock model to a domain stats object.
+     *
+     * @param mockStatsDTO The mock model
+     * @return A domain stats object
+     */
+
+    public Stats mockToDomain(MockStatsDTO mockStatsDTO) {
+        Stats stats = new Stats();
+
+        stats.setSeason(zeroIfNull(mockStatsDTO.getSeason()));
+        stats.setGamesPlayed(zeroIfNull(mockStatsDTO.getGamesPlayed()));
+
+        stats.setPassAttempts(zeroIfNull(mockStatsDTO.getPassAttempts()));
+        stats.setCompletions(zeroIfNull(mockStatsDTO.getCompletions()));
+        stats.setPassingYards(zeroIfNull(mockStatsDTO.getPassingYards()));
+        stats.setPassingTDs(zeroIfNull(mockStatsDTO.getPassingTDs()));
+        stats.setInterceptions(zeroIfNull(mockStatsDTO.getInterceptions()));
+
+        stats.setRushingAttempts(zeroIfNull(mockStatsDTO.getRushingAttempts()));
+        stats.setRushingYards(zeroIfNull(mockStatsDTO.getRushingYards()));
+        stats.setRushingTDs(zeroIfNull(mockStatsDTO.getRushingTDs()));
+
+        stats.setReceptions(zeroIfNull(mockStatsDTO.getReceptions()));
+        stats.setReceivingYards(zeroIfNull(mockStatsDTO.getReceivingYards()));
+        stats.setReceivingTDs(zeroIfNull(mockStatsDTO.getReceivingTDs()));
+
+        return stats;
+    }
+
+    /**
      * Converts a domain model to a MockStatsDTO.
      *
      * @param domainStats The domain model

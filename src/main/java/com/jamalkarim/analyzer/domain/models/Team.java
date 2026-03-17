@@ -22,6 +22,7 @@ public class Team {
     public static final int MAX_TE = 1;
     public static final int MAX_FLEX = 1;
 
+    private long id;
     private String name;
     private List<Player> roster = new ArrayList<>();
 

@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.utils;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
+import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
@@ -118,5 +119,48 @@ public class PlayerMapper {
         playerResponseDTO.setLastSeasonStats(statsMapper.domainToMock(player.getLastSeasonStats(), player.getPosition()));
 
         return playerResponseDTO;
+    }
+
+    public Player responseToDomain(PlayerResponseDTO responseDTO) {
+
+//        PlayerEntity player = new PlayerEntity();
+//
+//        player.setName(responseDTO.getName());
+//        player.setNflTeam(responseDTO.getNflTeam());
+//        player.setPosition(responseDTO.getPosition());
+//
+//        StatsEntity currentStats = statsMapper.mockToEntity(responseDTO.getCurrentSeasonStats());
+//        StatsEntity lastStats = statsMapper.mockToEntity(responseDTO.getLastSeasonStats());
+//        player.setCurrentSeasonStats(currentStats);
+//        player.setLastSeasonStats(lastStats);
+//
+//        player.setRookie(responseDTO.isRookie());
+//        player.setInjured(responseDTO.isInjured());
+//
+//        return player;
+
+        Position position = responseDTO.getPosition();
+
+        Player domainPlayer = switch (position) {
+            case QB -> new QuarterBack(responseDTO.getName(), responseDTO.getNflTeam());
+            case RB -> new RunningBack(responseDTO.getName(), responseDTO.getNflTeam());
+            case WR -> new WideReceiver(responseDTO.getName(), responseDTO.getNflTeam());
+            case TE -> new TightEnd(responseDTO.getName(), responseDTO.getNflTeam());
+        };
+
+        domainPlayer.setId(responseDTO.getId());
+//        domainPlayer.setDraftPick(responseDTO.getDraftPick());
+        domainPlayer.setRookie(responseDTO.isRookie());
+        domainPlayer.setInjured(responseDTO.isInjured());
+
+        if (responseDTO.getCurrentSeasonStats() != null) {
+            domainPlayer.setCurrentSeasonStats(statsMapper.mockToDomain(responseDTO.getCurrentSeasonStats()));
+        }
+
+        if (responseDTO.getLastSeasonStats() != null) {
+            domainPlayer.setLastSeasonStats(statsMapper.mockToDomain(responseDTO.getLastSeasonStats()));
+        }
+
+        return domainPlayer;
     }
 }

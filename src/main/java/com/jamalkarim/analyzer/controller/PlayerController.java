@@ -1,8 +1,6 @@
 package com.jamalkarim.analyzer.controller;
 
-import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Player;
-import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.requests.MatchupRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
