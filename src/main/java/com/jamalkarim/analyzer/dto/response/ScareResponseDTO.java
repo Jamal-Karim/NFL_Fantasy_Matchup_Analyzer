@@ -8,6 +8,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object for detailed Scare Factor analysis results.
+ * Contains the score, tier, and descriptive reasons behind the analysis.
+ */
 @Data
 @JsonPropertyOrder({
         "name",

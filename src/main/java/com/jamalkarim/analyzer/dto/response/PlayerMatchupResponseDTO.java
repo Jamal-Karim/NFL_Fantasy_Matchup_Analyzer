@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import lombok.Data;
 
+/**
+ * Data Transfer Object representing the results of a player matchup analysis.
+ * Includes both players' detailed stats and the calculated advantage.
+ */
 @Data
 @JsonPropertyOrder({
         "id",

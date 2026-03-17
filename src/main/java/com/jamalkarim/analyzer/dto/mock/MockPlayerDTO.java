@@ -1,11 +1,12 @@
 package com.jamalkarim.analyzer.dto.mock;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import lombok.Data;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * Data Transfer Object for mapping player data from mock JSON files.
+ */
 @Data
 public class MockPlayerDTO {
 
