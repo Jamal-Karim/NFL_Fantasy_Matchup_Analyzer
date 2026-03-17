@@ -2,10 +2,8 @@ package com.jamalkarim.analyzer.dto.requests;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class TeamRequest {
+public class PlayerRequest {
     private String name;
-    private List<PlayerRequest> roster;
+    private String team;
 }

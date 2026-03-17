@@ -18,4 +18,9 @@ public class TeamEntity {
 
     @OneToMany(mappedBy = "teamEntity", cascade = CascadeType.ALL)
     private List<PlayerEntity> roster = new ArrayList<>();
+
+    public void addPlayer(PlayerEntity player) {
+        this.roster.add(player);
+        player.setTeamEntity(this);
+    }
 }

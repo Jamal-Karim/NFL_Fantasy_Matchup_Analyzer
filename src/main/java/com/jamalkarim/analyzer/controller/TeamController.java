@@ -23,6 +23,6 @@ public class TeamController {
 
     @PostMapping("/create")
     public Team createTeam(@RequestBody TeamRequest request) {
-        return teamService.createTeam(request.getName());
+        return teamService.createTeam(request);
     }
 }
