@@ -30,7 +30,7 @@ public class ApiResponse<T> {
      * Creates a successful API response with a data payload.
      *
      * @param data The payload to return
-     * @param <T> The payload type
+     * @param <T>  The payload type
      * @return A success ApiResponse
      */
     public static <T> ApiResponse<T> success(T data) {
@@ -41,7 +41,7 @@ public class ApiResponse<T> {
      * Creates an error API response.
      *
      * @param errorMessage The error message to return
-     * @param <T> The expected payload type
+     * @param <T>          The expected payload type
      * @return An error ApiResponse
      */
     public static <T> ApiResponse<T> error(String errorMessage) {
