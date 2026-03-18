@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Data
 public class TeamMatchupResult {
+    private long id;
     private String team1;
     private String team2;
     private double team1TotalScore;

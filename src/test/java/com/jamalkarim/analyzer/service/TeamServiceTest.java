@@ -69,12 +69,12 @@ public class TeamServiceTest {
     }
 
     @Test
-    void getTeamById_Success() {
+    void getTeamResponseById_Success() {
         when(repository.findById(1L)).thenReturn(Optional.of(teamEntity));
         when(mapper.entityToDomain(teamEntity)).thenReturn(teamDomain);
         when(mapper.domainToResponse(teamDomain)).thenReturn(teamResponseDTO);
 
-        TeamResponseDTO result = teamService.getTeamById(1L);
+        TeamResponseDTO result = teamService.getTeamResponseById(1L);
 
         assertNotNull(result);
         assertEquals("San Francisco 49ers", result.getName());
@@ -82,10 +82,10 @@ public class TeamServiceTest {
     }
 
     @Test
-    void getTeamById_NotFound() {
+    void getTeamResponseById_NotFound() {
         when(repository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(TeamNotFoundException.class, () -> teamService.getTeamById(1L));
+        assertThrows(TeamNotFoundException.class, () -> teamService.getTeamResponseById(1L));
     }
 
     @Test

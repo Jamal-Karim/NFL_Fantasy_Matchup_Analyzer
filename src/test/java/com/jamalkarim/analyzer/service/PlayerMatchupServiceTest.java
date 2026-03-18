@@ -6,7 +6,6 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
-import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.repository.PlayerMatchupRepository;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
@@ -58,18 +57,18 @@ public class PlayerMatchupServiceTest {
     }
 
     @Test
-    void getPlayerMatchupResponseById_Success() {
+    void createPlayerMatchupResponseById_Success() {
         when(matchupRepository.findById(1L)).thenReturn(Optional.of(matchupEntity));
         when(mapper.entityToDomain(matchupEntity)).thenReturn(matchupResult);
-        
+
         when(matchupResult.getPlayer1()).thenReturn(player1);
         when(matchupResult.getPlayer2()).thenReturn(player2);
-        
+
         ScareResult scare1 = mock(ScareResult.class);
         ScareResult scare2 = mock(ScareResult.class);
         when(factory.generateScareResult(player1)).thenReturn(scare1);
         when(factory.generateScareResult(player2)).thenReturn(scare2);
-        
+
         when(mapper.domainToResponse(matchupResult)).thenReturn(responseDTO);
 
         PlayerMatchupResponseDTO result = matchupService.getPlayerMatchupResponseById(1L);
@@ -79,14 +78,14 @@ public class PlayerMatchupServiceTest {
     }
 
     @Test
-    void getPlayerMatchupResponseById_NotFound() {
+    void createPlayerMatchupResponseById_NotFound() {
         when(matchupRepository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(RuntimeException.class, () -> matchupService.getPlayerMatchupResponseById(1L));
     }
 
     @Test
-    void getPlayerMatchup_Success() {
+    void createPlayerMatchup_Success() {
         when(player1.getName()).thenReturn("Player 1");
         when(player1.getTeam()).thenReturn("Team 1");
         when(player2.getName()).thenReturn("Player 2");
@@ -94,14 +93,14 @@ public class PlayerMatchupServiceTest {
 
         when(analyzer.analyzePlayerMatchup(player1, player2)).thenReturn(matchupResult);
         when(mapper.domainToEntity(matchupResult)).thenReturn(matchupEntity);
-        
+
         when(playerRepository.findByNameAndNflTeam("Player 1", "Team 1")).thenReturn(Optional.empty());
         when(playerRepository.findByNameAndNflTeam("Player 2", "Team 2")).thenReturn(Optional.empty());
-        
+
         when(matchupRepository.save(any(PlayerMatchupResultEntity.class))).thenReturn(matchupEntity);
         when(mapper.domainToResponse(matchupResult)).thenReturn(responseDTO);
 
-        PlayerMatchupResponseDTO result = matchupService.getPlayerMatchup(player1, player2);
+        PlayerMatchupResponseDTO result = matchupService.createPlayerMatchup(player1, player2);
 
         assertNotNull(result);
         verify(matchupRepository).save(any(PlayerMatchupResultEntity.class));

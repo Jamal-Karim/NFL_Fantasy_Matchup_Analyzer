@@ -41,13 +41,26 @@ public class TeamService {
      * Retrieves a team by its unique database identifier.
      *
      * @param id The ID of the team record
-     * @return The Team domain model
+     * @return The Team response object
      * @throws TeamNotFoundException if no team exists with the given ID
      */
-    public TeamResponseDTO getTeamById(long id) {
+    public TeamResponseDTO getTeamResponseById(long id) {
         return repository.findById(id)
                 .map(mapper::entityToDomain)
                 .map(mapper::domainToResponse)
+                .orElseThrow(() -> new TeamNotFoundException(id));
+    }
+
+    /**
+     * Retrieves a team by its unique database identifier.
+     *
+     * @param id The ID of the team record
+     * @return The Team domain object
+     * @throws TeamNotFoundException if no team exists with the given ID
+     */
+    public Team getTeamById(long id) {
+        return repository.findById(id)
+                .map(mapper::entityToDomain)
                 .orElseThrow(() -> new TeamNotFoundException(id));
     }
 
