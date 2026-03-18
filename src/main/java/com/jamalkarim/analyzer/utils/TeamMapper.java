@@ -45,6 +45,13 @@ public class TeamMapper {
         return team;
     }
 
+    /**
+     * Converts a Team domain model to its corresponding API response DTO.
+     * Maps all players in the roster using PlayerMapper.
+     *
+     * @param domain The team domain model
+     * @return A TeamResponseDTO for API responses
+     */
     public TeamResponseDTO domainToResponse(Team domain) {
         TeamResponseDTO responseDTO = new TeamResponseDTO();
         responseDTO.setId(domain.getId());

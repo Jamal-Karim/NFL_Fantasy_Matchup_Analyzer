@@ -122,6 +122,12 @@ public class PlayerMapper {
         return playerResponseDTO;
     }
 
+    /**
+     * Converts an API response DTO to a Player domain model.
+     *
+     * @param responseDTO The API response DTO
+     * @return A concrete instance of Player
+     */
     public Player responseToDomain(PlayerResponseDTO responseDTO) {
 
         Position position = responseDTO.getPosition();
@@ -134,7 +140,6 @@ public class PlayerMapper {
         };
 
         domainPlayer.setId(responseDTO.getId());
-//        domainPlayer.setDraftPick(responseDTO.getDraftPick());
         domainPlayer.setRookie(responseDTO.isRookie());
         domainPlayer.setInjured(responseDTO.isInjured());
 
@@ -149,6 +154,12 @@ public class PlayerMapper {
         return domainPlayer;
     }
 
+    /**
+     * Converts a Player domain model to a simplified RosterMemberDTO.
+     *
+     * @param player The player domain model
+     * @return A RosterMemberDTO containing key player info
+     */
     public RosterMemberDTO domainToRosterMember(Player player) {
         RosterMemberDTO rosterMemberDTO = new RosterMemberDTO();
         rosterMemberDTO.setId(player.getId());

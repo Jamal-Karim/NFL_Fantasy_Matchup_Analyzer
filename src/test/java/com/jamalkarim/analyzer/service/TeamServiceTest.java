@@ -48,6 +48,7 @@ public class TeamServiceTest {
     private TeamEntity teamEntity;
     private Team teamDomain;
     private TeamRequest teamRequest;
+    private TeamResponseDTO teamResponseDTO;
 
     @BeforeEach
     void setUp() {
@@ -61,12 +62,17 @@ public class TeamServiceTest {
         teamRequest = new TeamRequest();
         teamRequest.setName("San Francisco 49ers");
         teamRequest.setRoster(new ArrayList<>());
+
+        teamResponseDTO = new TeamResponseDTO();
+        teamResponseDTO.setId(1L);
+        teamResponseDTO.setName("San Francisco 49ers");
     }
 
     @Test
     void getTeamById_Success() {
         when(repository.findById(1L)).thenReturn(Optional.of(teamEntity));
         when(mapper.entityToDomain(teamEntity)).thenReturn(teamDomain);
+        when(mapper.domainToResponse(teamDomain)).thenReturn(teamResponseDTO);
 
         TeamResponseDTO result = teamService.getTeamById(1L);
 
@@ -86,6 +92,7 @@ public class TeamServiceTest {
     void createTeam_AlreadyExists() {
         when(repository.findByName("San Francisco 49ers")).thenReturn(Optional.of(teamEntity));
         when(mapper.entityToDomain(teamEntity)).thenReturn(teamDomain);
+        when(mapper.domainToResponse(teamDomain)).thenReturn(teamResponseDTO);
 
         TeamResponseDTO result = teamService.createTeam(teamRequest);
 
@@ -122,6 +129,7 @@ public class TeamServiceTest {
 
         when(playerRepository.findById(10L)).thenReturn(Optional.of(playerEntity));
         when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
+        when(mapper.domainToResponse(any(Team.class))).thenReturn(teamResponseDTO);
 
         // Act
         TeamResponseDTO result = teamService.createTeam(teamRequest);

@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object representing the response for team-related API requests.
+ */
 @Data
 @JsonPropertyOrder({"id", "name", "roster"})
 public class TeamResponseDTO {
