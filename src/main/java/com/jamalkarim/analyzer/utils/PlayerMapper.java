@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.RosterMemberDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 import org.springframework.stereotype.Component;
@@ -123,22 +124,6 @@ public class PlayerMapper {
 
     public Player responseToDomain(PlayerResponseDTO responseDTO) {
 
-//        PlayerEntity player = new PlayerEntity();
-//
-//        player.setName(responseDTO.getName());
-//        player.setNflTeam(responseDTO.getNflTeam());
-//        player.setPosition(responseDTO.getPosition());
-//
-//        StatsEntity currentStats = statsMapper.mockToEntity(responseDTO.getCurrentSeasonStats());
-//        StatsEntity lastStats = statsMapper.mockToEntity(responseDTO.getLastSeasonStats());
-//        player.setCurrentSeasonStats(currentStats);
-//        player.setLastSeasonStats(lastStats);
-//
-//        player.setRookie(responseDTO.isRookie());
-//        player.setInjured(responseDTO.isInjured());
-//
-//        return player;
-
         Position position = responseDTO.getPosition();
 
         Player domainPlayer = switch (position) {
@@ -162,5 +147,14 @@ public class PlayerMapper {
         }
 
         return domainPlayer;
+    }
+
+    public RosterMemberDTO domainToRosterMember(Player player) {
+        RosterMemberDTO rosterMemberDTO = new RosterMemberDTO();
+        rosterMemberDTO.setId(player.getId());
+        rosterMemberDTO.setName(player.getName());
+        rosterMemberDTO.setPosition(player.getPosition());
+        rosterMemberDTO.setNflTeam(player.getTeam());
+        return rosterMemberDTO;
     }
 }

@@ -2,6 +2,8 @@ package com.jamalkarim.analyzer.utils;
 
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.models.Team;
+import com.jamalkarim.analyzer.dto.response.RosterMemberDTO;
+import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.TeamEntity;
 import org.springframework.stereotype.Component;
@@ -41,5 +43,18 @@ public class TeamMapper {
         team.setId(entity.getId());
         team.setRoster(roster);
         return team;
+    }
+
+    public TeamResponseDTO domainToResponse(Team domain) {
+        TeamResponseDTO responseDTO = new TeamResponseDTO();
+        responseDTO.setId(domain.getId());
+        responseDTO.setName(domain.getName());
+
+        List<RosterMemberDTO> roster = new ArrayList<>();
+        for (Player player : domain.getRoster()) {
+            roster.add(playerMapper.domainToRosterMember(player));
+        }
+        responseDTO.setRoster(roster);
+        return responseDTO;
     }
 }

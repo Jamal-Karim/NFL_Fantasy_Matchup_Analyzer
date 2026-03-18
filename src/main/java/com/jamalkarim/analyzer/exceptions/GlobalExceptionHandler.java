@@ -49,4 +49,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(TeamAlreadyExistsException.class)
+    public ResponseEntity<ApiResponse<Void>> handleTeamAlreadyExists(TeamAlreadyExistsException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+
+    @ExceptionHandler(PlayerAlreadyRosteredException.class)
+    public ResponseEntity<ApiResponse<Void>> handlePlayerAlreadyExists(PlayerAlreadyRosteredException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 }
