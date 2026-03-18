@@ -42,6 +42,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     * Handles TeamNotFoundException and returns a 404 NOT FOUND status.
+     *
+     * @param ex The exception thrown when a team is not found
+     * @return A ResponseEntity containing an error ApiResponse
+     */
     @ExceptionHandler(TeamNotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleTeamNotFound(TeamNotFoundException ex) {
         ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
@@ -49,4 +55,29 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Handles TeamAlreadyExistsException and returns a 409 CONFLICT status.
+     *
+     * @param ex The exception thrown when a team already exists
+     * @return A ResponseEntity containing an error ApiResponse
+     */
+    @ExceptionHandler(TeamAlreadyExistsException.class)
+    public ResponseEntity<ApiResponse<Void>> handleTeamAlreadyExists(TeamAlreadyExistsException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    /**
+     * Handles PlayerAlreadyRosteredException and returns a 409 CONFLICT status.
+     *
+     * @param ex The exception thrown when a player is already assigned to another team
+     * @return A ResponseEntity containing an error ApiResponse
+     */
+    @ExceptionHandler(PlayerAlreadyRosteredException.class)
+    public ResponseEntity<ApiResponse<Void>> handlePlayerAlreadyExists(PlayerAlreadyRosteredException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 }

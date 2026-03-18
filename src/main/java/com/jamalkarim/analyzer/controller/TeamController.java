@@ -1,28 +1,44 @@
 package com.jamalkarim.analyzer.controller;
 
-import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
+import com.jamalkarim.analyzer.dto.response.ApiResponse;
+import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST controller for managing NFL fantasy teams.
+ * Provides endpoints for creating teams and retrieving team details.
+ */
 @RestController
 @RequestMapping("/api/team")
 public class TeamController {
 
     private final TeamService teamService;
 
-
     public TeamController(TeamService teamService) {
         this.teamService = teamService;
     }
 
+    /**
+     * Retrieves a team by its unique identifier.
+     *
+     * @param id The ID of the team to retrieve
+     * @return An ApiResponse containing the TeamResponseDTO
+     */
     @GetMapping("/{id}")
-    public Team getTeamById(@PathVariable long id) {
-        return teamService.getTeamById(id);
+    public ApiResponse<TeamResponseDTO> getTeamById(@PathVariable long id) {
+        return ApiResponse.success(teamService.getTeamById(id));
     }
 
+    /**
+     * Creates a new fantasy team or returns the existing one if the name matches.
+     *
+     * @param request The TeamRequest containing team name and roster
+     * @return An ApiResponse containing the created or existing TeamResponseDTO
+     */
     @PostMapping("/create")
-    public Team createTeam(@RequestBody TeamRequest request) {
-        return teamService.createTeam(request);
+    public ApiResponse<TeamResponseDTO> createTeam(@RequestBody TeamRequest request) {
+        return ApiResponse.success(teamService.createTeam(request));
     }
 }

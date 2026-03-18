@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer;
 import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
+import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.service.TeamService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +40,14 @@ public class TeamIntegrationTest {
 
         request.setRoster(roster);
 
-        Team createdTeam = teamService.createTeam(request);
+        TeamResponseDTO createdTeam = teamService.createTeam(request);
 
         assertNotNull(createdTeam);
         assertNotNull(createdTeam.getId());
         assertEquals("Dream Team", createdTeam.getName());
         assertEquals(2, createdTeam.getRoster().size());
 
-        Team retrievedTeam = teamService.getTeamById(createdTeam.getId());
+        TeamResponseDTO retrievedTeam = teamService.getTeamById(createdTeam.getId());
         assertEquals("Dream Team", retrievedTeam.getName());
         assertEquals(2, retrievedTeam.getRoster().size());
     }
@@ -59,7 +60,7 @@ public class TeamIntegrationTest {
 
         teamService.createTeam(request);
 
-        Team secondAttempt = teamService.createTeam(request);
+        TeamResponseDTO secondAttempt = teamService.createTeam(request);
 
         assertNotNull(secondAttempt);
         assertEquals("Existing Team", secondAttempt.getName());

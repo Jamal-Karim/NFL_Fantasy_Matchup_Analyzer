@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.RosterMemberDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 import org.springframework.stereotype.Component;
@@ -121,23 +122,13 @@ public class PlayerMapper {
         return playerResponseDTO;
     }
 
+    /**
+     * Converts an API response DTO to a Player domain model.
+     *
+     * @param responseDTO The API response DTO
+     * @return A concrete instance of Player
+     */
     public Player responseToDomain(PlayerResponseDTO responseDTO) {
-
-//        PlayerEntity player = new PlayerEntity();
-//
-//        player.setName(responseDTO.getName());
-//        player.setNflTeam(responseDTO.getNflTeam());
-//        player.setPosition(responseDTO.getPosition());
-//
-//        StatsEntity currentStats = statsMapper.mockToEntity(responseDTO.getCurrentSeasonStats());
-//        StatsEntity lastStats = statsMapper.mockToEntity(responseDTO.getLastSeasonStats());
-//        player.setCurrentSeasonStats(currentStats);
-//        player.setLastSeasonStats(lastStats);
-//
-//        player.setRookie(responseDTO.isRookie());
-//        player.setInjured(responseDTO.isInjured());
-//
-//        return player;
 
         Position position = responseDTO.getPosition();
 
@@ -149,7 +140,6 @@ public class PlayerMapper {
         };
 
         domainPlayer.setId(responseDTO.getId());
-//        domainPlayer.setDraftPick(responseDTO.getDraftPick());
         domainPlayer.setRookie(responseDTO.isRookie());
         domainPlayer.setInjured(responseDTO.isInjured());
 
@@ -162,5 +152,20 @@ public class PlayerMapper {
         }
 
         return domainPlayer;
+    }
+
+    /**
+     * Converts a Player domain model to a simplified RosterMemberDTO.
+     *
+     * @param player The player domain model
+     * @return A RosterMemberDTO containing key player info
+     */
+    public RosterMemberDTO domainToRosterMember(Player player) {
+        RosterMemberDTO rosterMemberDTO = new RosterMemberDTO();
+        rosterMemberDTO.setId(player.getId());
+        rosterMemberDTO.setName(player.getName());
+        rosterMemberDTO.setPosition(player.getPosition());
+        rosterMemberDTO.setNflTeam(player.getTeam());
+        return rosterMemberDTO;
     }
 }

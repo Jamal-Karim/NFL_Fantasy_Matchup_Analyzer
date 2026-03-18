@@ -5,7 +5,10 @@ import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.entities.TeamEntity;
+import com.jamalkarim.analyzer.exceptions.PlayerAlreadyRosteredException;
+import com.jamalkarim.analyzer.exceptions.TeamAlreadyExistsException;
 import com.jamalkarim.analyzer.exceptions.TeamNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamRepository;
@@ -41,9 +44,10 @@ public class TeamService {
      * @return The Team domain model
      * @throws TeamNotFoundException if no team exists with the given ID
      */
-    public Team getTeamById(long id) {
+    public TeamResponseDTO getTeamById(long id) {
         return repository.findById(id)
                 .map(mapper::entityToDomain)
+                .map(mapper::domainToResponse)
                 .orElseThrow(() -> new TeamNotFoundException(id));
     }
 
@@ -54,40 +58,41 @@ public class TeamService {
      *
      * @param request The team creation request containing name and roster
      * @return The created or existing Team domain model
-     * @throws RuntimeException if a player is already assigned to another team
+     * @throws TeamAlreadyExistsException     if a team already exists
+     * @throws PlayerAlreadyRosteredException if a player is already assigned to another team
      */
-    public Team createTeam(TeamRequest request) {
+    public TeamResponseDTO createTeam(TeamRequest request) {
+
         if (repository.findByName(request.getName()).isPresent()) {
-            return mapper.entityToDomain(repository.findByName(request.getName()).get());
-        } else {
-
-            Team teamDomain = new Team(request.getName());
-
-            for (PlayerRequest pr : request.getRoster()) {
-                PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());
-                Player player = playerMapper.responseToDomain(dto);
-
-                teamDomain.addPlayer(player);
-            }
-
-            TeamEntity teamEntity = new TeamEntity();
-            teamEntity.setName(teamDomain.getName());
-
-            for (Player p : teamDomain.getRoster()) {
-                playerRepository.findById(p.getId()).ifPresent(livePlayer -> {
-
-                    if (livePlayer.getTeamEntity() != null) {
-                        throw new RuntimeException(
-                                livePlayer.getName() + " is already on team: " + livePlayer.getTeamEntity().getName()
-                        );
-                    }
-                    teamEntity.addPlayer(livePlayer);
-                });
-            }
-
-            TeamEntity savedEntity = repository.save(teamEntity);
-            teamDomain.setId(savedEntity.getId());
-            return teamDomain;
+            throw new TeamAlreadyExistsException("Team with name '" + request.getName() + "' already exists.");
         }
+
+        Team teamDomain = new Team(request.getName());
+
+        for (PlayerRequest pr : request.getRoster()) {
+            PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());
+            Player player = playerMapper.responseToDomain(dto);
+
+            teamDomain.addPlayer(player);
+        }
+
+        TeamEntity teamEntity = new TeamEntity();
+        teamEntity.setName(teamDomain.getName());
+
+        for (Player p : teamDomain.getRoster()) {
+            playerRepository.findById(p.getId()).ifPresent(livePlayer -> {
+
+                if (livePlayer.getTeamEntity() != null) {
+                    throw new PlayerAlreadyRosteredException(
+                            livePlayer.getName() + " is already on team: " + livePlayer.getTeamEntity().getName()
+                    );
+                }
+                teamEntity.addPlayer(livePlayer);
+            });
+        }
+
+        TeamEntity savedEntity = repository.save(teamEntity);
+        teamDomain.setId(savedEntity.getId());
+        return mapper.domainToResponse(teamDomain);
     }
 }

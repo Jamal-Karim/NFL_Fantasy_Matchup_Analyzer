@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.TeamEntity;
 import com.jamalkarim.analyzer.exceptions.TeamNotFoundException;
@@ -47,6 +48,7 @@ public class TeamServiceTest {
     private TeamEntity teamEntity;
     private Team teamDomain;
     private TeamRequest teamRequest;
+    private TeamResponseDTO teamResponseDTO;
 
     @BeforeEach
     void setUp() {
@@ -60,14 +62,19 @@ public class TeamServiceTest {
         teamRequest = new TeamRequest();
         teamRequest.setName("San Francisco 49ers");
         teamRequest.setRoster(new ArrayList<>());
+
+        teamResponseDTO = new TeamResponseDTO();
+        teamResponseDTO.setId(1L);
+        teamResponseDTO.setName("San Francisco 49ers");
     }
 
     @Test
     void getTeamById_Success() {
         when(repository.findById(1L)).thenReturn(Optional.of(teamEntity));
         when(mapper.entityToDomain(teamEntity)).thenReturn(teamDomain);
+        when(mapper.domainToResponse(teamDomain)).thenReturn(teamResponseDTO);
 
-        Team result = teamService.getTeamById(1L);
+        TeamResponseDTO result = teamService.getTeamById(1L);
 
         assertNotNull(result);
         assertEquals("San Francisco 49ers", result.getName());
@@ -85,8 +92,9 @@ public class TeamServiceTest {
     void createTeam_AlreadyExists() {
         when(repository.findByName("San Francisco 49ers")).thenReturn(Optional.of(teamEntity));
         when(mapper.entityToDomain(teamEntity)).thenReturn(teamDomain);
+        when(mapper.domainToResponse(teamDomain)).thenReturn(teamResponseDTO);
 
-        Team result = teamService.createTeam(teamRequest);
+        TeamResponseDTO result = teamService.createTeam(teamRequest);
 
         assertNotNull(result);
         assertEquals("San Francisco 49ers", result.getName());
@@ -97,7 +105,7 @@ public class TeamServiceTest {
     void createTeam_NewTeam_Success() {
         // Arrange
         when(repository.findByName("San Francisco 49ers")).thenReturn(Optional.empty());
-        
+
         PlayerRequest pr = new PlayerRequest();
         pr.setName("Brock Purdy");
         pr.setTeam("SF");
@@ -106,7 +114,7 @@ public class TeamServiceTest {
         PlayerResponseDTO playerDTO = new PlayerResponseDTO();
         playerDTO.setId(10L);
         playerDTO.setName("Brock Purdy");
-        
+
         Player playerModel = mock(Player.class);
         when(playerModel.getId()).thenReturn(10L);
         when(playerModel.getPosition()).thenReturn(com.jamalkarim.analyzer.domain.enums.Position.QB);
@@ -121,9 +129,10 @@ public class TeamServiceTest {
 
         when(playerRepository.findById(10L)).thenReturn(Optional.of(playerEntity));
         when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
+        when(mapper.domainToResponse(any(Team.class))).thenReturn(teamResponseDTO);
 
         // Act
-        Team result = teamService.createTeam(teamRequest);
+        TeamResponseDTO result = teamService.createTeam(teamRequest);
 
         // Assert
         assertNotNull(result);
@@ -135,7 +144,7 @@ public class TeamServiceTest {
     void createTeam_PlayerAlreadyOnAnotherTeam_ThrowsException() {
         // Arrange
         when(repository.findByName("San Francisco 49ers")).thenReturn(Optional.empty());
-        
+
         PlayerRequest pr = new PlayerRequest();
         pr.setName("Brock Purdy");
         pr.setTeam("SF");
@@ -144,7 +153,7 @@ public class TeamServiceTest {
         PlayerResponseDTO playerDTO = new PlayerResponseDTO();
         playerDTO.setId(10L);
         playerDTO.setName("Brock Purdy");
-        
+
         Player playerModel = mock(Player.class);
         when(playerModel.getId()).thenReturn(10L);
         when(playerModel.getPosition()).thenReturn(com.jamalkarim.analyzer.domain.enums.Position.QB);
@@ -155,7 +164,7 @@ public class TeamServiceTest {
         PlayerEntity playerEntity = new PlayerEntity();
         playerEntity.setId(10L);
         playerEntity.setName("Brock Purdy");
-        
+
         TeamEntity otherTeam = new TeamEntity();
         otherTeam.setName("Other Team");
         playerEntity.setTeamEntity(otherTeam);
