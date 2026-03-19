@@ -2,11 +2,14 @@ package com.jamalkarim.analyzer.utils;
 
 import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.matchups.TeamMatchupResult;
+import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseForTeamDTO;
+import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.entities.TeamMatchupResultEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Component
@@ -31,7 +34,7 @@ public class TeamMatchupMapper {
         entity.setTeam2Probability(domain.getTeam2Probability());
         entity.setAdvantage(domain.getAdvantage());
 
-        List<PlayerMatchupResultEntity> playerMatchupResultEntities = new ArrayList<>();
+        List<PlayerMatchupResultEntity> playerMatchupResultEntities = new LinkedList<>();
 
         for (PlayerMatchupResult matchupResult : domain.getPlayerMatchupResults()) {
             playerMatchupResultEntities.add(playerMatchupMapper.domainToEntity(matchupResult));
@@ -51,7 +54,7 @@ public class TeamMatchupMapper {
         result.setTeam2Probability(entity.getTeam2Probability());
         result.setAdvantage(entity.getAdvantage());
 
-        List<PlayerMatchupResult> playerMatchupResults = new ArrayList<>();
+        List<PlayerMatchupResult> playerMatchupResults = new LinkedList<>();
 
         for (PlayerMatchupResultEntity playerMatchupResultEntity : entity.getPlayerMatchupResults()) {
             playerMatchupResults.add(playerMatchupMapper.entityToDomain(playerMatchupResultEntity));
@@ -60,5 +63,27 @@ public class TeamMatchupMapper {
         result.setPlayerMatchupResults(playerMatchupResults);
         result.setId(entity.getId());
         return result;
+    }
+
+    public TeamMatchupResponseDTO domainToResponse(TeamMatchupResult domain) {
+        TeamMatchupResponseDTO responseDTO = new TeamMatchupResponseDTO();
+        responseDTO.setId(domain.getId());
+        responseDTO.setTeam1(domain.getTeam1());
+        responseDTO.setTeam2(domain.getTeam2());
+        responseDTO.setTeam1TotalScore(domain.getTeam1TotalScore());
+        responseDTO.setTeam2TotalScore(domain.getTeam2TotalScore());
+        responseDTO.setTeam1Probability(domain.getTeam1Probability());
+        responseDTO.setTeam2Probability(domain.getTeam2Probability());
+        responseDTO.setAdvantage(domain.getAdvantage());
+
+        List<PlayerMatchupResponseForTeamDTO> playerMatchups = new LinkedList<>();
+
+        for (PlayerMatchupResult domainMatchups : domain.getPlayerMatchupResults()) {
+            playerMatchups.add(playerMatchupMapper.domainToTeamResponse(domainMatchups));
+        }
+
+        responseDTO.setPlayerMatchupResponses(playerMatchups);
+
+        return responseDTO;
     }
 }

@@ -3,6 +3,8 @@ package com.jamalkarim.analyzer.entities;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -30,6 +32,8 @@ public class TeamMatchupResultEntity {
     private MatchupAdvantages advantage;
 
     @OneToMany(mappedBy = "teamMatchupResult", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<PlayerMatchupResultEntity> playerMatchupResults;
 
 }

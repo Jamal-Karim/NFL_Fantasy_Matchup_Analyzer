@@ -4,6 +4,7 @@ import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.matchups.TeamMatchupAnalyzer;
 import com.jamalkarim.analyzer.domain.matchups.TeamMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Team;
+import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.entities.TeamMatchupResultEntity;
 import com.jamalkarim.analyzer.repository.PlayerMatchupRepository;
@@ -38,21 +39,21 @@ public class TeamMatchupService {
         this.playerMapper = playerMapper;
     }
 
-    public TeamMatchupResult getTeamMatchupById(long id) {
+    public TeamMatchupResponseDTO getTeamMatchupById(long id) {
         TeamMatchupResultEntity entity = teamMatchupRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Team matchup does not exist")
         );
 
-        return teamMatchupMapper.entityToDomain(entity);
+        return teamMatchupMapper.domainToResponse(teamMatchupMapper.entityToDomain(entity));
     }
 
-    public TeamMatchupResult createTeamMatchup(Team team1, Team team2) {
+    public TeamMatchupResponseDTO createTeamMatchup(Team team1, Team team2) {
 
         Optional<TeamMatchupResultEntity> existing = teamMatchupRepository
                 .findByTeam1AndTeam2(team1.getName(), team2.getName());
 
         if (existing.isPresent()) {
-            return teamMatchupMapper.entityToDomain(existing.get());
+            return teamMatchupMapper.domainToResponse(teamMatchupMapper.entityToDomain(existing.get()));
         }
 
         TeamMatchupResult result = teamMatchupAnalyzer.analyzeTeamMatchup(team1, team2);
@@ -67,10 +68,9 @@ public class TeamMatchupService {
         }
 
         TeamMatchupResultEntity savedEntity = teamMatchupRepository.save(entity);
-        result.setId(savedEntity.getId());
+        TeamMatchupResult savedDomain = teamMatchupMapper.entityToDomain(savedEntity);
 
-        return result;
-
+        return teamMatchupMapper.domainToResponse(savedDomain);
     }
 
     private void attachPlayerToMatchup(PlayerMatchupResultEntity entityResult, PlayerMatchupResult domainResult) {
