@@ -1,5 +1,6 @@
 package com.jamalkarim.analyzer.service;
 
+import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
@@ -11,6 +12,10 @@ import com.jamalkarim.analyzer.provider.PlayerDataProvider;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import com.jamalkarim.analyzer.utils.ScareResultMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -107,5 +112,22 @@ public class PlayerService {
 
             return playerMapper.domainToResponse(newPlayer);
         }
+    }
+
+    public Page<PlayerResponseDTO> getAllPlayers(Position position, int page, int size) {
+
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by("scareResult.scareScore").descending()
+        );
+
+        Page<PlayerEntity> entities;
+        if (position == null) {
+            entities = repository.findAll(pageable);
+        } else {
+            entities = repository.findAllByPosition(position, pageable);
+        }
+        return entities.map(playerMapper::entityToDomain).map(playerMapper::domainToResponse);
     }
 }
