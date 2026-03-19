@@ -96,7 +96,7 @@ public class PlayerMatchupMapper {
                         .orElse("TIE")
         );
 
-        playerMatchupResponseDTO.setScareDifference(playerMatchupResult.getScareDifference());
+        playerMatchupResponseDTO.setScareDifference(NumberUtils.round(playerMatchupResult.getScareDifference()));
         playerMatchupResponseDTO.setAdvantage(playerMatchupResult.getAdvantage());
         playerMatchupResponseDTO.setExplanation(playerMatchupResult.getExplanation());
 
@@ -127,7 +127,7 @@ public class PlayerMatchupMapper {
                         .orElse("TIE")
         );
 
-        response.setScareDifference(domain.getScareDifference());
+        response.setScareDifference(NumberUtils.round(domain.getScareDifference()));
         response.setAdvantage(domain.getAdvantage());
 
         return response;
