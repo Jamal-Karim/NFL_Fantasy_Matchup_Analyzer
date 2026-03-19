@@ -168,4 +168,13 @@ public class PlayerMapper {
         rosterMemberDTO.setNflTeam(player.getTeam());
         return rosterMemberDTO;
     }
+
+    public RosterMemberDTO entityToRosterMember(PlayerEntity player) {
+        RosterMemberDTO rosterMemberDTO = new RosterMemberDTO();
+        rosterMemberDTO.setId(player.getId());
+        rosterMemberDTO.setName(player.getName());
+        rosterMemberDTO.setPosition(player.getPosition());
+        rosterMemberDTO.setNflTeam(player.getNflTeam());
+        return rosterMemberDTO;
+    }
 }

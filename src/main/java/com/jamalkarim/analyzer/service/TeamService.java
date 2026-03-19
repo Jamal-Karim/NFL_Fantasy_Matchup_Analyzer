@@ -6,6 +6,7 @@ import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
+import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.TeamEntity;
 import com.jamalkarim.analyzer.exceptions.PlayerAlreadyRosteredException;
 import com.jamalkarim.analyzer.exceptions.TeamAlreadyExistsException;
@@ -14,10 +15,13 @@ import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamRepository;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import com.jamalkarim.analyzer.utils.TeamMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Service for managing NFL fantasy teams.
@@ -38,6 +42,17 @@ public class TeamService {
         this.mapper = mapper;
         this.playerService = playerService;
         this.playerMapper = playerMapper;
+    }
+
+    public Page<TeamResponseDTO> getAllTeams(int page, int size) {
+        Pageable pageable = PageRequest.of(
+                page,
+                size
+        );
+
+        Page<TeamEntity> entities;
+        entities = repository.findAll(pageable);
+        return entities.map(mapper::entityToDomain).map(mapper::domainToResponse);
     }
 
     /**
@@ -77,49 +92,52 @@ public class TeamService {
      * @throws TeamAlreadyExistsException     if a team already exists
      * @throws PlayerAlreadyRosteredException if a player is already assigned to another team
      */
+    @Transactional
     public TeamResponseDTO createTeam(TeamRequest request) {
 
         if (repository.findByName(request.getName()).isPresent()) {
             throw new TeamAlreadyExistsException("Team with name '" + request.getName() + "' already exists.");
         }
-
-        Team teamDomain = new Team(request.getName());
-
-        for (PlayerRequest pr : request.getRoster()) {
-            PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());
-            Player player = playerMapper.responseToDomain(dto);
-
-            teamDomain.addPlayer(player);
-        }
-
         TeamEntity teamEntity = new TeamEntity();
-        teamEntity.setName(teamDomain.getName());
+        teamEntity.setName(request.getName());
+        teamEntity = repository.save(teamEntity);
 
-        for (Player p : teamDomain.getRoster()) {
-            playerRepository.findById(p.getId()).ifPresent(livePlayer -> {
+        addRosterToEntity(teamEntity, request.getRoster());
 
-                if (livePlayer.getTeamEntity() != null) {
-                    throw new PlayerAlreadyRosteredException(
-                            livePlayer.getName() + " is already on team: " + livePlayer.getTeamEntity().getName()
-                    );
-                }
-                teamEntity.addPlayer(livePlayer);
-            });
-        }
+//        TeamEntity saved = repository.save(teamEntity);
 
-        TeamEntity savedEntity = repository.save(teamEntity);
-        teamDomain.setId(savedEntity.getId());
-        return mapper.domainToResponse(teamDomain);
+//        return mapper.domainToResponse(mapper.entityToDomain(saved));
+        return mapper.entityToResponse(repository.save(teamEntity));
     }
 
-    public Page<TeamResponseDTO> getAllTeams(int page, int size) {
-        Pageable pageable = PageRequest.of(
-                page,
-                size
+    @Transactional
+    public TeamResponseDTO updateTeam(long id, TeamRequest request) {
+        TeamEntity teamEntity = repository.findById(id).orElseThrow(
+                () -> new TeamNotFoundException(id)
         );
 
-        Page<TeamEntity> entities;
-        entities = repository.findAll(pageable);
-        return entities.map(mapper::entityToDomain).map(mapper::domainToResponse);
+        teamEntity.clearRoster();
+
+        teamEntity.setName(request.getName());
+
+        addRosterToEntity(teamEntity, request.getRoster());
+
+        return mapper.entityToResponse(repository.save(teamEntity));
+    }
+
+    private void addRosterToEntity(TeamEntity teamEntity, List<PlayerRequest> roster) {
+        for (PlayerRequest pr : roster) {
+            PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());
+
+            PlayerEntity player = playerRepository.findById(dto.getId())
+                    .orElseThrow(() -> new RuntimeException("Player sync failed"));
+
+            if (player.getTeamEntity() != null && !player.getTeamEntity().getId().equals(teamEntity.getId())) {
+                throw new PlayerAlreadyRosteredException(
+                        player.getName() + " is already on team: " + player.getTeamEntity().getName()
+                );
+            }
+            teamEntity.addPlayer(player);
+        }
     }
 }

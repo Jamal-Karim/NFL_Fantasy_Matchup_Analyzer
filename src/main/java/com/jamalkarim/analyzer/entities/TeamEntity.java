@@ -29,4 +29,17 @@ public class TeamEntity {
         this.roster.add(player);
         player.setTeamEntity(this);
     }
+
+    public void removePlayer(PlayerEntity player) {
+        this.roster.remove(player);
+        player.setTeamEntity(null);
+    }
+
+    public void clearRoster() {
+        List<PlayerEntity> players = new ArrayList<>(this.roster);
+        for (PlayerEntity player : players) {
+            removePlayer(player);
+        }
+    }
+
 }

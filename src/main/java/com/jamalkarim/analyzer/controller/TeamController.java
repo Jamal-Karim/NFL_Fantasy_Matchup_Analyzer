@@ -49,4 +49,10 @@ public class TeamController {
         Page<TeamResponseDTO> teamPage = teamService.getAllTeams(page, size);
         return ApiResponse.success(teamPage);
     }
+
+    @PutMapping("/{id}")
+    public ApiResponse<TeamResponseDTO> updateTeam(@PathVariable long id, @RequestBody TeamRequest request) {
+        return ApiResponse.success(teamService.updateTeam(id, request));
+
+    }
 }
