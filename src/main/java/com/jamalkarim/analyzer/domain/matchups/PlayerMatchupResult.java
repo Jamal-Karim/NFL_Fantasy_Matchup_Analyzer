@@ -45,6 +45,11 @@ public class PlayerMatchupResult {
         return Optional.ofNullable(loser);
     }
 
+    /**
+     * Prints a formatted report of the player matchup to the console.
+     * <p>
+     * Includes player names, winner, advantage level, analysis explanation, and numerical scores.
+     */
     public void printMatchupReport() {
         String separator = "==========================================";
         String subSeparator = "------------------------------------------";

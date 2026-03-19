@@ -12,6 +12,13 @@ import lombok.Getter;
 
 import java.util.*;
 
+/**
+ * Abstract base class representing an NFL player.
+ * <p>
+ * Provides core properties and common logic for calculating Scare Factor,
+ * handling statistical blending, and generating performance explanations.
+ * Specialized scoring logic is implemented by concrete position subclasses.
+ */
 @Data
 public abstract class Player implements ScareFactor {
 
@@ -81,10 +88,22 @@ public abstract class Player implements ScareFactor {
         return STATS_BLENDER.injuredBlend(position);
     }
 
+    /**
+     * Extracts the primary explanation for a player's Scare Factor from a list of reasons.
+     *
+     * @param explanations A list of generated descriptive strings
+     * @return The first (most significant) explanation
+     */
     public String findPrimaryExplanation(List<String> explanations) {
         return explanations.get(0);
     }
 
+    /**
+     * Extracts secondary explanations for a player's Scare Factor from a list of reasons.
+     *
+     * @param explanations A list of generated descriptive strings
+     * @return A sublist containing the second and third most significant explanations
+     */
     public List<String> findSupportingExplanations(List<String> explanations) {
         List<String> supportingExplanations = new LinkedList<>();
         supportingExplanations.add(explanations.get(1));
@@ -188,6 +207,11 @@ public abstract class Player implements ScareFactor {
         }
     }
 
+    /**
+     * Internal data structure to represent the scoring impact of a specific statistic.
+     * Tracks how many points were earned based on performance and how many were "missed"
+     * compared to league-best thresholds.
+     */
     @Getter
     protected static class Impact {
         private final double pointsGained;

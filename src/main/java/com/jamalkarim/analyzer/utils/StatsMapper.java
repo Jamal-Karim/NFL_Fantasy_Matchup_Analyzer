@@ -113,12 +113,11 @@ public class StatsMapper {
     }
 
     /**
-     * Converts a mock model to a domain stats object.
+     * Converts a mock statistical DTO to a domain stats object.
      *
-     * @param mockStatsDTO The mock model
+     * @param mockStatsDTO The mock data transfer object
      * @return A domain stats object
      */
-
     public Stats mockToDomain(MockStatsDTO mockStatsDTO) {
         Stats stats = new Stats();
 

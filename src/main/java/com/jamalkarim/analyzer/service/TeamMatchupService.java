@@ -16,29 +16,33 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service for analyzing and retrieving head-to-head team matchups.
+ * Orchestrates the comparison of team rosters and handles the persistence of the results.
+ */
 @Service
 public class TeamMatchupService {
 
     private final TeamMatchupRepository teamMatchupRepository;
-    private final PlayerMatchupRepository playerMatchupRepository;
     private final TeamMatchupAnalyzer teamMatchupAnalyzer;
     private final TeamMatchupMapper teamMatchupMapper;
     private final PlayerRepository playerRepository;
-    private final PlayerMatchupService playerMatchupService;
-    private final PlayerMapper playerMapper;
 
-    public TeamMatchupService(TeamMatchupRepository teamMatchupRepository, PlayerMatchupRepository playerMatchupRepository,
-                              TeamMatchupAnalyzer teamMatchupAnalyzer, TeamMatchupMapper teamMatchupMapper, PlayerRepository playerRepository,
-                              PlayerMatchupService playerMatchupService, PlayerMapper playerMapper) {
+    public TeamMatchupService(TeamMatchupRepository teamMatchupRepository, TeamMatchupAnalyzer teamMatchupAnalyzer,
+                              TeamMatchupMapper teamMatchupMapper, PlayerRepository playerRepository) {
         this.teamMatchupRepository = teamMatchupRepository;
-        this.playerMatchupRepository = playerMatchupRepository;
         this.teamMatchupAnalyzer = teamMatchupAnalyzer;
         this.teamMatchupMapper = teamMatchupMapper;
         this.playerRepository = playerRepository;
-        this.playerMatchupService = playerMatchupService;
-        this.playerMapper = playerMapper;
     }
 
+    /**
+     * Retrieves a stored team matchup report by its ID.
+     *
+     * @param id The unique identifier of the team matchup record
+     * @return A DTO containing the team matchup results
+     * @throws RuntimeException if the matchup record is not found
+     */
     public TeamMatchupResponseDTO getTeamMatchupById(long id) {
         TeamMatchupResultEntity entity = teamMatchupRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Team matchup does not exist")
@@ -47,6 +51,14 @@ public class TeamMatchupService {
         return teamMatchupMapper.domainToResponse(teamMatchupMapper.entityToDomain(entity));
     }
 
+    /**
+     * Performs a head-to-head analysis between two teams and saves the result.
+     * If a matchup between these exact two teams already exists, the stored result is returned.
+     *
+     * @param team1 The first fantasy team
+     * @param team2 The second fantasy team
+     * @return A DTO containing the analysis results, including player battles
+     */
     public TeamMatchupResponseDTO createTeamMatchup(Team team1, Team team2) {
 
         Optional<TeamMatchupResultEntity> existing = teamMatchupRepository

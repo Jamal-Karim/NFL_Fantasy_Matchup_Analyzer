@@ -33,6 +33,12 @@ public class ScareResult {
         this.position = player.getPosition();
     }
 
+    /**
+     * Prints a detailed Scare Factor report to the console.
+     * <p>
+     * Includes player name, team, position, final score, tier,
+     * and a breakdown of both primary and supporting explanations.
+     */
     public void printScareReport() {
         String separator = "------------------------------------------";
 

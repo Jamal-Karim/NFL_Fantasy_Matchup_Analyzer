@@ -39,12 +39,13 @@ public class StatsBlender {
     }
 
     /**
+     * Normalizes statistics using only a single season of data.
+     * <p>
+     * This is used when a player only has data for one relevant season (e.g.,
+     * before a new season starts, or for a rookie who has played some games).
      *
-     * Method for a player who played last season and has played 0 games in the current season
-     * Also for a player who has played 0 games last season and is only playing in the current season
-     *
-     * @param singleSeasonStats Stats from the previous last season
-     * @return a blend of per game stats using only a single season
+     * @param singleSeasonStats The stats from the single available season
+     * @return A per-game representation based on the provided season
      */
     public BlendedStats singleSeasonBlend(Stats singleSeasonStats) {
 
@@ -56,11 +57,13 @@ public class StatsBlender {
     }
 
     /**
+     * Provides a baseline statistical representation for an injured player.
+     * <p>
+     * Returns standard league-average baselines for the player's position
+     * since no recent performance data is available.
      *
-     * Method for a player who was injured and has no stats from last season or the current season
-     *
-     * @param position position of the injured player
-     * @return a blend of per game stats using only a baseline season
+     * @param position The position of the injured player
+     * @return A per-game representation using position baselines
      */
     public BlendedStats injuredBlend(Position position) {
 
@@ -68,12 +71,14 @@ public class StatsBlender {
     }
 
     /**
+     * Provides a statistical prediction for a rookie player.
+     * <p>
+     * Uses position baselines weighted by the player's draft position. Higher draft
+     * picks are assigned a higher statistical expectation.
      *
-     * Method for a player who is a rookie and has no stats from last season or the current season
-     *
-     * @param position      position of the rookie player
-     * @param draftPosition draft pick of the rookie player
-     * @return a blend of per game stats using a baseline season weighted by their draft position
+     * @param position      The position of the rookie player
+     * @param draftPosition The overall draft pick number (1-250+)
+     * @return A per-game representation weighted by draft capital
      */
     public BlendedStats rookieBlend(Position position, int draftPosition) {
 

@@ -49,6 +49,12 @@ public class TeamController {
         return ApiResponse.success(teamService.createTeam(request));
     }
 
+    /**
+     * Initiates a head-to-head matchup analysis between two teams.
+     *
+     * @param request A request containing the IDs of the two teams to compare
+     * @return An ApiResponse containing detailed team matchup results
+     */
     @PostMapping("/matchup/create")
     public ApiResponse<TeamMatchupResponseDTO> createTeamMatchupResult(@RequestBody TeamMatchupRequest request) {
         Team team1 = teamService.getTeamById(request.getTeam1Id());
@@ -57,6 +63,12 @@ public class TeamController {
         return ApiResponse.success(teamMatchupService.createTeamMatchup(team1, team2));
     }
 
+    /**
+     * Retrieves an existing team matchup report by its ID.
+     *
+     * @param id The unique identifier for the team matchup result
+     * @return An ApiResponse containing the stored team matchup details
+     */
     @GetMapping("/matchup/{id:\\d+}")
     public ApiResponse<TeamMatchupResponseDTO> getTeamMatchupById(@PathVariable long id) {
         return ApiResponse.success(teamMatchupService.getTeamMatchupById(id));
