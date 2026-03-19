@@ -1,12 +1,8 @@
 package com.jamalkarim.analyzer.controller;
 
-import com.jamalkarim.analyzer.domain.models.Player;
-import com.jamalkarim.analyzer.dto.requests.PlayerMatchupRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
-import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
-import com.jamalkarim.analyzer.service.PlayerMatchupService;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +17,10 @@ import org.springframework.web.bind.annotation.*;
 public class PlayerController {
 
     private final PlayerService playerService;
-    private final PlayerMatchupService matchupService;
     private final ScareResultService scareResultService;
 
-    public PlayerController(PlayerService playerService, PlayerMatchupService matchupService, ScareResultService scareResultService) {
+    public PlayerController(PlayerService playerService, ScareResultService scareResultService) {
         this.playerService = playerService;
-        this.matchupService = matchupService;
         this.scareResultService = scareResultService;
     }
 
@@ -52,32 +46,6 @@ public class PlayerController {
     @GetMapping("/{id}")
     public ApiResponse<PlayerResponseDTO> getPlayerById(@PathVariable long id) {
         return ApiResponse.success(playerService.getPlayerResponseDTOByID(id));
-    }
-
-    /**
-     * Initiates a head-to-head matchup analysis between two players.
-     *
-     * @param request A request containing the IDs of the two players to compare
-     * @return An ApiResponse containing detailed matchup results
-     */
-    @PostMapping("/matchup/create")
-    public ApiResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody PlayerMatchupRequest request) {
-        Player player1 = playerService.getPlayerByID(request.getPlayer1Id());
-        Player player2 = playerService.getPlayerByID(request.getPlayer2Id());
-
-        PlayerMatchupResponseDTO response = matchupService.createPlayerMatchup(player1, player2);
-        return ApiResponse.success(response);
-    }
-
-    /**
-     * Retrieves an existing player matchup report by its ID.
-     *
-     * @param id The unique identifier for the matchup result
-     * @return An ApiResponse containing the stored matchup details
-     */
-    @GetMapping("/matchup/{id:\\d+}")
-    public ApiResponse<PlayerMatchupResponseDTO> getMatchupById(@PathVariable long id) {
-        return ApiResponse.success(matchupService.getPlayerMatchupResponseById(id));
     }
 
     /**
