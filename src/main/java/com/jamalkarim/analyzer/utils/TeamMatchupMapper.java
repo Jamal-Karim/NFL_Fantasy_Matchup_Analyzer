@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Mapper utility for team matchup data.
+ * Handles conversions between TeamMatchupResult domain models, JPA entities, and API response DTOs.
+ */
 @Component
 public class TeamMatchupMapper {
 
@@ -21,6 +25,12 @@ public class TeamMatchupMapper {
         this.playerMatchupMapper = playerMatchupMapper;
     }
 
+    /**
+     * Converts a team matchup domain model to its database entity representation.
+     *
+     * @param domain The team matchup domain model
+     * @return A database entity
+     */
     public TeamMatchupResultEntity domainToEntity(TeamMatchupResult domain) {
         TeamMatchupResultEntity entity = new TeamMatchupResultEntity();
 
@@ -44,6 +54,12 @@ public class TeamMatchupMapper {
         return entity;
     }
 
+    /**
+     * Converts a team matchup database entity to its domain model.
+     *
+     * @param entity The stored team matchup entity
+     * @return A domain model
+     */
     public TeamMatchupResult entityToDomain(TeamMatchupResultEntity entity) {
         TeamMatchupResult result = new TeamMatchupResult(entity.getTeam1(), entity.getTeam2());
 
@@ -65,6 +81,12 @@ public class TeamMatchupMapper {
         return result;
     }
 
+    /**
+     * Converts a team matchup domain model to its API response representation.
+     *
+     * @param domain The team matchup domain model
+     * @return An API response DTO
+     */
     public TeamMatchupResponseDTO domainToResponse(TeamMatchupResult domain) {
         TeamMatchupResponseDTO responseDTO = new TeamMatchupResponseDTO();
         responseDTO.setId(domain.getId());

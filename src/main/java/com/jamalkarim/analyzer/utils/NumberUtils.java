@@ -3,6 +3,9 @@ package com.jamalkarim.analyzer.utils;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Utility class for performing common numerical operations.
+ */
 public class NumberUtils {
 
     /**

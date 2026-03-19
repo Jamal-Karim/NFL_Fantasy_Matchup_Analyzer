@@ -111,6 +111,12 @@ public class PlayerMatchupMapper {
         return playerMatchupResponseDTO;
     }
 
+    /**
+     * Converts a player matchup domain model to a simplified DTO for team reports.
+     *
+     * @param domain The player matchup domain model
+     * @return A simplified PlayerMatchupResponseForTeamDTO
+     */
     public PlayerMatchupResponseForTeamDTO domainToTeamResponse(PlayerMatchupResult domain) {
         PlayerMatchupResponseForTeamDTO response = new PlayerMatchupResponseForTeamDTO();
         response.setId(domain.getId());

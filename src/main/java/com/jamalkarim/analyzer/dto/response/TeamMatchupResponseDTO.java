@@ -7,6 +7,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object representing the results of a team-to-team matchup analysis.
+ * Contains aggregated scores, win probabilities, and individual player battle results.
+ */
 @Data
 @JsonPropertyOrder({
         "id",

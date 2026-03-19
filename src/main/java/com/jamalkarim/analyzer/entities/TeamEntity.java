@@ -1,7 +1,8 @@
 package com.jamalkarim.analyzer.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
  * Persistence entity representing a team.
  * Holds a roster of player entities.
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "team")
 public class TeamEntity {

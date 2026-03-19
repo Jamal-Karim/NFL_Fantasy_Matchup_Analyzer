@@ -2,14 +2,16 @@ package com.jamalkarim.analyzer.entities;
 
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
  * Persistence entity for storing the results of a player-to-player comparison.
  * Tracks the participants, the score differential, and the determined winner.
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "player_matchup")
 public class PlayerMatchupResultEntity {

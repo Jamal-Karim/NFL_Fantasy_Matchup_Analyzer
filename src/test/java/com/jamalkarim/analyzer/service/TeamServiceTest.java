@@ -91,13 +91,9 @@ public class TeamServiceTest {
     @Test
     void createTeam_AlreadyExists() {
         when(repository.findByName("San Francisco 49ers")).thenReturn(Optional.of(teamEntity));
-        when(mapper.entityToDomain(teamEntity)).thenReturn(teamDomain);
-        when(mapper.domainToResponse(teamDomain)).thenReturn(teamResponseDTO);
 
-        TeamResponseDTO result = teamService.createTeam(teamRequest);
-
-        assertNotNull(result);
-        assertEquals("San Francisco 49ers", result.getName());
+        assertThrows(com.jamalkarim.analyzer.exceptions.TeamAlreadyExistsException.class, () -> teamService.createTeam(teamRequest));
+        
         verify(repository, never()).save(any());
     }
 

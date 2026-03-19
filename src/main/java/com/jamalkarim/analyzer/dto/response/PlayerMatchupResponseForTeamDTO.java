@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import lombok.Data;
 
+/**
+ * Data Transfer Object representing a simplified player matchup result,
+ * specifically for inclusion within a team matchup report.
+ */
 @Data
 @JsonPropertyOrder({
         "id",
