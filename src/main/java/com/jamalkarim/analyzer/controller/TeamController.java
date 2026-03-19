@@ -4,6 +4,7 @@ import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.service.TeamService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -40,5 +41,12 @@ public class TeamController {
     @PostMapping("/create")
     public ApiResponse<TeamResponseDTO> createTeam(@RequestBody TeamRequest request) {
         return ApiResponse.success(teamService.createTeam(request));
+    }
+
+    @GetMapping
+    public ApiResponse<Page<TeamResponseDTO>> getAllTeams(@RequestParam(defaultValue = "0") int page,
+                                                          @RequestParam(defaultValue = "10") int size) {
+        Page<TeamResponseDTO> teamPage = teamService.getAllTeams(page, size);
+        return ApiResponse.success(teamPage);
     }
 }

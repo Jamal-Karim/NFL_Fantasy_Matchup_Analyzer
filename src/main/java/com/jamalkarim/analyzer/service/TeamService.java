@@ -14,6 +14,9 @@ import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamRepository;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import com.jamalkarim.analyzer.utils.TeamMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -107,5 +110,16 @@ public class TeamService {
         TeamEntity savedEntity = repository.save(teamEntity);
         teamDomain.setId(savedEntity.getId());
         return mapper.domainToResponse(teamDomain);
+    }
+
+    public Page<TeamResponseDTO> getAllTeams(int page, int size) {
+        Pageable pageable = PageRequest.of(
+                page,
+                size
+        );
+
+        Page<TeamEntity> entities;
+        entities = repository.findAll(pageable);
+        return entities.map(mapper::entityToDomain).map(mapper::domainToResponse);
     }
 }
