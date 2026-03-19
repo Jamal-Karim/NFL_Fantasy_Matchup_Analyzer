@@ -8,6 +8,7 @@ import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.TeamEntity;
 import com.jamalkarim.analyzer.exceptions.PlayerAlreadyRosteredException;
+import com.jamalkarim.analyzer.exceptions.PlayerSyncException;
 import com.jamalkarim.analyzer.exceptions.TeamAlreadyExistsException;
 import com.jamalkarim.analyzer.exceptions.TeamNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
@@ -168,7 +169,7 @@ public class TeamService {
             PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());
 
             PlayerEntity player = playerRepository.findById(dto.getId())
-                    .orElseThrow(() -> new RuntimeException("Player sync failed"));
+                    .orElseThrow(() -> new PlayerSyncException("Player sync failed for ID " + dto.getId()));
 
             if (player.getTeamEntity() != null && !player.getTeamEntity().getId().equals(teamEntity.getId())) {
                 throw new PlayerAlreadyRosteredException(

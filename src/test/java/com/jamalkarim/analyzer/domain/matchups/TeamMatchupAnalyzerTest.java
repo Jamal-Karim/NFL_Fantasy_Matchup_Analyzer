@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.domain.stats.Stats;
+import com.jamalkarim.analyzer.exceptions.InvalidRosterException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -142,7 +143,7 @@ class TeamMatchupAnalyzerTest {
 
         assertThatThrownBy(() -> analyzer.analyzeTeamMatchup(team1, team2))
                 .as("Should fail because team sizes are not equal")
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(InvalidRosterException.class)
                 .hasMessageContaining("roster sizes should be equal");
     }
 
@@ -157,7 +158,7 @@ class TeamMatchupAnalyzerTest {
 
         assertThatThrownBy(() -> analyzer.analyzeTeamMatchup(team1, team2))
                 .as("Should fail because roster size is less than 3")
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(InvalidRosterException.class)
                 .hasMessageContaining("must be greater than a size of 3");
     }
 }

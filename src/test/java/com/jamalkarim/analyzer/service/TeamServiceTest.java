@@ -164,9 +164,7 @@ public class TeamServiceTest {
         when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
 
         // Act & Assert
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> teamService.createTeam(teamRequest));
-        assertNotNull(exception.getMessage());
-        assertTrue(exception.getMessage().contains("already on team"));
+        assertThrows(com.jamalkarim.analyzer.exceptions.PlayerAlreadyRosteredException.class, () -> teamService.createTeam(teamRequest));
     }
 
     @Test
