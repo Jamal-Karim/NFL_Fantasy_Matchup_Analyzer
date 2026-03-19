@@ -1,6 +1,5 @@
 package com.jamalkarim.analyzer.service;
 
-import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
@@ -104,9 +103,6 @@ public class TeamService {
 
         addRosterToEntity(teamEntity, request.getRoster());
 
-//        TeamEntity saved = repository.save(teamEntity);
-
-//        return mapper.domainToResponse(mapper.entityToDomain(saved));
         return mapper.entityToResponse(repository.save(teamEntity));
     }
 
@@ -123,6 +119,18 @@ public class TeamService {
         addRosterToEntity(teamEntity, request.getRoster());
 
         return mapper.entityToResponse(repository.save(teamEntity));
+    }
+
+    @Transactional
+    public String deleteTeam(long id) {
+        TeamEntity teamEntity = repository.findById(id).orElseThrow(
+                () -> new TeamNotFoundException(id)
+        );
+
+        teamEntity.clearRoster();
+        String name = teamEntity.getName();
+        repository.delete(teamEntity);
+        return "Successfully deleted team " + name;
     }
 
     private void addRosterToEntity(TeamEntity teamEntity, List<PlayerRequest> roster) {

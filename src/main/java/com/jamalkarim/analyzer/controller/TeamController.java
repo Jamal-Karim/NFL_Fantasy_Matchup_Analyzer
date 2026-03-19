@@ -53,6 +53,10 @@ public class TeamController {
     @PutMapping("/{id}")
     public ApiResponse<TeamResponseDTO> updateTeam(@PathVariable long id, @RequestBody TeamRequest request) {
         return ApiResponse.success(teamService.updateTeam(id, request));
+    }
 
+    @DeleteMapping("/{id}")
+    public ApiResponse<String> deleteTeam(@PathVariable long id) {
+        return ApiResponse.success(teamService.deleteTeam(id));
     }
 }
