@@ -1,11 +1,7 @@
 package com.jamalkarim.analyzer.controller;
 
-import com.jamalkarim.analyzer.domain.models.Team;
-import com.jamalkarim.analyzer.dto.requests.TeamMatchupRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
-import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
-import com.jamalkarim.analyzer.service.TeamMatchupService;
 import com.jamalkarim.analyzer.service.TeamService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -17,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -31,9 +28,6 @@ public class TeamControllerTest {
 
     @MockitoBean
     private TeamService teamService;
-
-    @MockitoBean
-    private TeamMatchupService teamMatchupService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -74,44 +68,44 @@ public class TeamControllerTest {
     }
 
     @Test
-    void createTeamMatchupResult_Success() throws Exception {
-        TeamMatchupRequest request = new TeamMatchupRequest();
-        request.setTeam1Id(1L);
-        request.setTeam2Id(2L);
+    void getAllTeams_Success() throws Exception {
+        java.util.List<TeamResponseDTO> teams = java.util.Collections.singletonList(new TeamResponseDTO());
+        org.springframework.data.domain.Page<TeamResponseDTO> teamPage = new org.springframework.data.domain.PageImpl<>(teams);
+        when(teamService.getAllTeams(0, 10)).thenReturn(teamPage);
 
-        Team team1 = new Team("Team 1");
-        Team team2 = new Team("Team 2");
+        mockMvc.perform(get("/api/team")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("SUCCESS"));
+    }
 
-        TeamMatchupResponseDTO responseDTO = new TeamMatchupResponseDTO();
-        responseDTO.setTeam1("Team 1");
-        responseDTO.setTeam2("Team 2");
+    @Test
+    void updateTeam_Success() throws Exception {
+        TeamRequest request = new TeamRequest();
+        request.setName("Updated Team");
 
-        when(teamService.getTeamById(1L)).thenReturn(team1);
-        when(teamService.getTeamById(2L)).thenReturn(team2);
-        when(teamMatchupService.createTeamMatchup(eq(team1), eq(team2))).thenReturn(responseDTO);
+        TeamResponseDTO responseDTO = new TeamResponseDTO();
+        responseDTO.setId(1L);
+        responseDTO.setName("Updated Team");
 
-        mockMvc.perform(post("/api/team/matchup/create")
+        when(teamService.updateTeam(eq(1L), any(TeamRequest.class))).thenReturn(responseDTO);
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/team/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("SUCCESS"))
-                .andExpect(jsonPath("$.data.team_1").value("Team 1"))
-                .andExpect(jsonPath("$.data.team_2").value("Team 2"));
+                .andExpect(jsonPath("$.data.name").value("Updated Team"));
     }
 
     @Test
-    void getTeamMatchupById_Success() throws Exception {
-        TeamMatchupResponseDTO responseDTO = new TeamMatchupResponseDTO();
-        responseDTO.setId(1L);
-        responseDTO.setTeam1("Team 1");
+    void deleteTeam_Success() throws Exception {
+        when(teamService.deleteTeam(1L)).thenReturn("Successfully deleted team Test Team");
 
-        when(teamMatchupService.getTeamMatchupById(1L)).thenReturn(responseDTO);
-
-        mockMvc.perform(get("/api/team/matchup/1")
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete("/api/team/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("SUCCESS"))
-                .andExpect(jsonPath("$.data.id").value(1))
-                .andExpect(jsonPath("$.data.team_1").value("Team 1"));
+                .andExpect(jsonPath("$.data").value("Successfully deleted team Test Team"));
     }
 }

@@ -119,4 +119,20 @@ public class PlayerServiceTest {
 
         assertThrows(PlayerNotFoundException.class, () -> playerService.getOrSyncPlayer("Patrick Mahomes", "KC"));
     }
+
+    @Test
+    void getAllPlayers_Success() {
+        java.util.List<PlayerEntity> entities = java.util.Collections.singletonList(playerEntity);
+        org.springframework.data.domain.Page<PlayerEntity> entityPage = new org.springframework.data.domain.PageImpl<>(entities);
+        
+        when(repository.findAll(any(org.springframework.data.domain.Pageable.class))).thenReturn(entityPage);
+        when(playerMapper.entityToDomain(any())).thenReturn(player);
+        when(playerMapper.domainToResponse(any())).thenReturn(responseDTO);
+
+        org.springframework.data.domain.Page<PlayerResponseDTO> result = playerService.getAllPlayers(null, 0, 10);
+
+        assertNotNull(result);
+        assertEquals(1, result.getContent().size());
+        verify(repository).findAll(any(org.springframework.data.domain.Pageable.class));
+    }
 }

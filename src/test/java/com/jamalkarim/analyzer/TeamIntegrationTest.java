@@ -62,4 +62,39 @@ public class TeamIntegrationTest {
             teamService.createTeam(request);
         });
     }
+
+    @Test
+    void updateTeam_Integration() {
+        String teamName = "Team to Update " + System.currentTimeMillis();
+        TeamRequest request = new TeamRequest();
+        request.setName(teamName);
+        request.setRoster(new ArrayList<>());
+
+        TeamResponseDTO createdTeam = teamService.createTeam(request);
+
+        TeamRequest updateRequest = new TeamRequest();
+        updateRequest.setName(teamName + " Updated");
+        updateRequest.setRoster(new ArrayList<>());
+
+        TeamResponseDTO updatedTeam = teamService.updateTeam(createdTeam.getId(), updateRequest);
+
+        assertEquals(teamName + " Updated", updatedTeam.getName());
+    }
+
+    @Test
+    void deleteTeam_Integration() {
+        String teamName = "Team to Delete " + System.currentTimeMillis();
+        TeamRequest request = new TeamRequest();
+        request.setName(teamName);
+        request.setRoster(new ArrayList<>());
+
+        TeamResponseDTO createdTeam = teamService.createTeam(request);
+
+        String result = teamService.deleteTeam(createdTeam.getId());
+
+        assertTrue(result.contains("Successfully deleted"));
+        assertThrows(com.jamalkarim.analyzer.exceptions.TeamNotFoundException.class, () -> {
+            teamService.getTeamResponseById(createdTeam.getId());
+        });
+    }
 }

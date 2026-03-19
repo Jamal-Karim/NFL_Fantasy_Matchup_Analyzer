@@ -111,12 +111,7 @@ public class TeamServiceTest {
         playerDTO.setId(10L);
         playerDTO.setName("Brock Purdy");
 
-        Player playerModel = mock(Player.class);
-        when(playerModel.getId()).thenReturn(10L);
-        when(playerModel.getPosition()).thenReturn(com.jamalkarim.analyzer.domain.enums.Position.QB);
-
         when(playerService.getOrSyncPlayer("Brock Purdy", "SF")).thenReturn(playerDTO);
-        when(playerMapper.responseToDomain(playerDTO)).thenReturn(playerModel);
 
         PlayerEntity playerEntity = new PlayerEntity();
         playerEntity.setId(10L);
@@ -124,8 +119,10 @@ public class TeamServiceTest {
         // playerEntity.getTeamEntity() is null by default
 
         when(playerRepository.findById(10L)).thenReturn(Optional.of(playerEntity));
+        
+        // Mock save to return entity with ID so addRosterToEntity doesn't NPE or fail comparison
         when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
-        when(mapper.domainToResponse(any(Team.class))).thenReturn(teamResponseDTO);
+        when(mapper.entityToResponse(any(TeamEntity.class))).thenReturn(teamResponseDTO);
 
         // Act
         TeamResponseDTO result = teamService.createTeam(teamRequest);
@@ -133,7 +130,7 @@ public class TeamServiceTest {
         // Assert
         assertNotNull(result);
         assertEquals("San Francisco 49ers", result.getName());
-        verify(repository).save(any(TeamEntity.class));
+        verify(repository, atLeastOnce()).save(any(TeamEntity.class));
     }
 
     @Test
@@ -150,26 +147,64 @@ public class TeamServiceTest {
         playerDTO.setId(10L);
         playerDTO.setName("Brock Purdy");
 
-        Player playerModel = mock(Player.class);
-        when(playerModel.getId()).thenReturn(10L);
-        when(playerModel.getPosition()).thenReturn(com.jamalkarim.analyzer.domain.enums.Position.QB);
-
         when(playerService.getOrSyncPlayer("Brock Purdy", "SF")).thenReturn(playerDTO);
-        when(playerMapper.responseToDomain(playerDTO)).thenReturn(playerModel);
 
         PlayerEntity playerEntity = new PlayerEntity();
         playerEntity.setId(10L);
         playerEntity.setName("Brock Purdy");
 
         TeamEntity otherTeam = new TeamEntity();
+        otherTeam.setId(2L);
         otherTeam.setName("Other Team");
         playerEntity.setTeamEntity(otherTeam);
 
         when(playerRepository.findById(10L)).thenReturn(Optional.of(playerEntity));
+        
+        // Mock the first save in createTeam
+        when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
 
         // Act & Assert
         RuntimeException exception = assertThrows(RuntimeException.class, () -> teamService.createTeam(teamRequest));
         assertNotNull(exception.getMessage());
         assertTrue(exception.getMessage().contains("already on team"));
+    }
+
+    @Test
+    void getAllTeams_Success() {
+        java.util.List<TeamEntity> entities = java.util.Collections.singletonList(teamEntity);
+        org.springframework.data.domain.Page<TeamEntity> entityPage = new org.springframework.data.domain.PageImpl<>(entities);
+        
+        when(repository.findAll(any(org.springframework.data.domain.Pageable.class))).thenReturn(entityPage);
+        when(mapper.entityToDomain(any())).thenReturn(teamDomain);
+        when(mapper.domainToResponse(any())).thenReturn(teamResponseDTO);
+
+        org.springframework.data.domain.Page<TeamResponseDTO> result = teamService.getAllTeams(0, 10);
+
+        assertNotNull(result);
+        assertEquals(1, result.getContent().size());
+        verify(repository).findAll(any(org.springframework.data.domain.Pageable.class));
+    }
+
+    @Test
+    void updateTeam_Success() {
+        when(repository.findById(1L)).thenReturn(Optional.of(teamEntity));
+        when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
+        when(mapper.entityToResponse(any(TeamEntity.class))).thenReturn(teamResponseDTO);
+
+        TeamResponseDTO result = teamService.updateTeam(1L, teamRequest);
+
+        assertNotNull(result);
+        assertEquals("San Francisco 49ers", result.getName());
+        verify(repository).save(any(TeamEntity.class));
+    }
+
+    @Test
+    void deleteTeam_Success() {
+        when(repository.findById(1L)).thenReturn(Optional.of(teamEntity));
+
+        String result = teamService.deleteTeam(1L);
+
+        assertEquals("Successfully deleted team San Francisco 49ers", result);
+        verify(repository).delete(teamEntity);
     }
 }
