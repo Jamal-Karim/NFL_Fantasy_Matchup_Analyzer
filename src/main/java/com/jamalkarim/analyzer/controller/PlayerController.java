@@ -1,10 +1,13 @@
 package com.jamalkarim.analyzer.controller;
 
+import com.jamalkarim.analyzer.domain.enums.Position;
+import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -57,5 +60,13 @@ public class PlayerController {
     @GetMapping("/{id:\\d+}/analysis")
     public ApiResponse<ScareResponseDTO> getScareResultById(@PathVariable long id) {
         return ApiResponse.success(scareResultService.getScareResultById(id));
+    }
+
+    @GetMapping
+    public ApiResponse<Page<PlayerResponseDTO>> getAllPlayers(@RequestParam(required = false) Position position,
+                                                              @RequestParam(defaultValue = "0") int page,
+                                                              @RequestParam(defaultValue = "10") int size) {
+        Page<PlayerResponseDTO> playerPage = playerService.getAllPlayers(position, page, size);
+        return ApiResponse.success(playerPage);
     }
 }
