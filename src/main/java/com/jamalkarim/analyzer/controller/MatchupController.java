@@ -13,6 +13,10 @@ import com.jamalkarim.analyzer.service.TeamMatchupService;
 import com.jamalkarim.analyzer.service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST Controller for managing head-to-head matchups.
+ * Provides endpoints for analyzing and retrieving both player-to-player and team-to-team comparisons.
+ */
 @RestController
 @RequestMapping("/api/matchup")
 public class MatchupController {

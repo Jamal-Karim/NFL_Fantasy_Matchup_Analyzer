@@ -93,7 +93,7 @@ public class TeamMatchupIntegrationTest {
         matchupRequest.setTeam1Id(team1.getId());
         matchupRequest.setTeam2Id(team2.getId());
 
-        mockMvc.perform(post("/api/team/matchup/create")
+        mockMvc.perform(post("/api/matchup/team/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(matchupRequest)))
                 .andExpect(status().isOk())
@@ -108,7 +108,7 @@ public class TeamMatchupIntegrationTest {
         // 5. Get Matchup by ID
         long matchupId = teamMatchupRepository.findByTeam1AndTeam2(teamName1, teamName2).get().getId();
 
-        mockMvc.perform(get("/api/team/matchup/" + matchupId)
+        mockMvc.perform(get("/api/matchup/team/" + matchupId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("SUCCESS"))

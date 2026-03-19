@@ -65,6 +65,12 @@ public class TeamMapper {
         return responseDTO;
     }
 
+    /**
+     * Directly converts a TeamEntity to a TeamResponseDTO.
+     *
+     * @param entity The team entity to convert
+     * @return A TeamResponseDTO for API responses
+     */
     public TeamResponseDTO entityToResponse(TeamEntity entity) {
         TeamResponseDTO responseDTO = new TeamResponseDTO();
         responseDTO.setId(entity.getId());

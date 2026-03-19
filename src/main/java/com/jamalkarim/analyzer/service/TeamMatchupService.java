@@ -7,6 +7,7 @@ import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.entities.TeamMatchupResultEntity;
+import com.jamalkarim.analyzer.exceptions.MatchupNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerMatchupRepository;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamMatchupRepository;
@@ -41,11 +42,11 @@ public class TeamMatchupService {
      *
      * @param id The unique identifier of the team matchup record
      * @return A DTO containing the team matchup results
-     * @throws RuntimeException if the matchup record is not found
+     * @throws MatchupNotFoundException if the matchup record is not found
      */
     public TeamMatchupResponseDTO getTeamMatchupById(long id) {
         TeamMatchupResultEntity entity = teamMatchupRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Team matchup does not exist")
+                () -> new MatchupNotFoundException("Team matchup with id " + id + " does not exist")
         );
 
         return teamMatchupMapper.domainToResponse(teamMatchupMapper.entityToDomain(entity));

@@ -1,5 +1,6 @@
 package com.jamalkarim.analyzer.domain.models;
 
+import com.jamalkarim.analyzer.exceptions.InvalidRosterException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,7 +64,7 @@ class TeamTest {
 
         assertThatThrownBy(() -> team.addPlayer(extraQb))
                 .as("Should throw exception because QBs cannot fill the Flex slot")
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(InvalidRosterException.class)
                 .hasMessageContaining("Quarterbacks cannot fill the Flex slot");
     }
 
@@ -83,7 +84,7 @@ class TeamTest {
 
         assertThatThrownBy(() -> team.addPlayer(extraRb))
                 .as("Should throw exception because both RB and Flex slots are full")
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(InvalidRosterException.class)
                 .hasMessageContaining("Roster full");
     }
 }

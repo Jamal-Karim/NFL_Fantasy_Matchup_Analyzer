@@ -1,6 +1,7 @@
 package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
+import com.jamalkarim.analyzer.exceptions.InvalidRosterException;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class Team {
      * If that slot is full, it attempts to place them in the Flex slot (unless they are a QB).
      *
      * @param player The player to add to the team.
-     * @throws RuntimeException if the position slot and Flex slot are both full, or if a QB is added when the QB slot is full.
+     * @throws InvalidRosterException if the position slot and Flex slot are both full, or if a QB is added when the QB slot is full.
      */
     public void addPlayer(Player player) {
 
@@ -47,7 +48,7 @@ public class Team {
         }
 
         if (player.getPosition() == Position.QB) {
-            throw new RuntimeException("Max QBs reached. Quarterbacks cannot fill the Flex slot.");
+            throw new InvalidRosterException("Max QBs reached. Quarterbacks cannot fill the Flex slot.");
         }
 
         if (countOverflow(roster) < MAX_FLEX) {
@@ -55,7 +56,7 @@ public class Team {
             return;
         }
 
-        throw new RuntimeException("Roster full: Both the " + player.getPosition() + " and Flex slots are occupied.");
+        throw new InvalidRosterException("Roster full: Both the " + player.getPosition() + " and Flex slots are occupied.");
     }
 
     private int getLimitOfPosition(Position position) {

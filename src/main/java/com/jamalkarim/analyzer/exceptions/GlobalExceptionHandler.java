@@ -80,4 +80,43 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+    /**
+     * Handles MatchupNotFoundException and returns a 404 NOT FOUND status.
+     *
+     * @param ex The exception thrown when a matchup is not found
+     * @return A ResponseEntity containing an error ApiResponse
+     */
+    @ExceptionHandler(MatchupNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleMatchupNotFound(MatchupNotFoundException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Handles InvalidRosterException and returns a 400 BAD REQUEST status.
+     *
+     * @param ex The exception thrown when a roster is invalid
+     * @return A ResponseEntity containing an error ApiResponse
+     */
+    @ExceptionHandler(InvalidRosterException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidRoster(InvalidRosterException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Handles PlayerSyncException and returns a 500 INTERNAL SERVER ERROR status.
+     *
+     * @param ex The exception thrown when player syncing fails
+     * @return A ResponseEntity containing an error ApiResponse
+     */
+    @ExceptionHandler(PlayerSyncException.class)
+    public ResponseEntity<ApiResponse<Void>> handlePlayerSyncFailure(PlayerSyncException ex) {
+        ApiResponse<Void> response = ApiResponse.error(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

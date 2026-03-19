@@ -114,6 +114,14 @@ public class PlayerService {
         }
     }
 
+    /**
+     * Retrieves a paginated list of all players from the database.
+     *
+     * @param position Optional filter for a specific player position
+     * @param page     The page number to retrieve
+     * @param size     The number of records per page
+     * @return A page of player response DTOs
+     */
     public Page<PlayerResponseDTO> getAllPlayers(Position position, int page, int size) {
 
         Pageable pageable = PageRequest.of(

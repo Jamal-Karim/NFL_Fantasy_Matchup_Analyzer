@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.domain.matchups;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
+import com.jamalkarim.analyzer.exceptions.InvalidRosterException;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -33,12 +34,12 @@ public class TeamMatchupAnalyzer {
      * @param team1 The first team to analyze.
      * @param team2 The second team to analyze.
      * @return A TeamMatchupResult containing scores, probabilities, and star matchups.
-     * @throws RuntimeException if team sizes are not equal.
+     * @throws InvalidRosterException if team sizes are not equal or rosters are too small.
      */
     public TeamMatchupResult analyzeTeamMatchup(Team team1, Team team2) {
 
         if (!areTeamSizesEqual(team1, team2)) {
-            throw new RuntimeException("Team roster sizes should be equal");
+            throw new InvalidRosterException("Team roster sizes should be equal");
         }
 
         // initialize team names
@@ -75,7 +76,7 @@ public class TeamMatchupAnalyzer {
     private Map<Player, Double> setUpPlayerMaps(Team team) {
 
         if (team.getRoster().size() < 3) {
-            throw new RuntimeException("Team roster must be greater than a size of 3");
+            throw new InvalidRosterException("Team roster must be greater than a size of 3");
         }
 
         List<Map.Entry<Player, Double>> entries = new ArrayList<>();

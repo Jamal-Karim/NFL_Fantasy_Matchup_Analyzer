@@ -80,7 +80,7 @@ public class TeamMatchupServiceTest {
     void getTeamMatchupById_NotFound() {
         when(teamMatchupRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> teamMatchupService.getTeamMatchupById(1L));
+        assertThrows(com.jamalkarim.analyzer.exceptions.MatchupNotFoundException.class, () -> teamMatchupService.getTeamMatchupById(1L));
     }
 
     @Test

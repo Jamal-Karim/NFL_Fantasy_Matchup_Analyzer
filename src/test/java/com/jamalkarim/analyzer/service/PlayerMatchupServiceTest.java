@@ -78,10 +78,10 @@ public class PlayerMatchupServiceTest {
     }
 
     @Test
-    void createPlayerMatchupResponseById_NotFound() {
+    void getPlayerMatchupResponseById_NotFound() {
         when(matchupRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> matchupService.getPlayerMatchupResponseById(1L));
+        assertThrows(com.jamalkarim.analyzer.exceptions.MatchupNotFoundException.class, () -> matchupService.getPlayerMatchupResponseById(1L));
     }
 
     @Test

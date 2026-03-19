@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * REST Controller for managing and analyzing players and matchups.
- * Provides endpoints for retrieving player data, initiating head-to-head comparisons,
- * and performing detailed Scare Factor analysis.
+ * Provides endpoints for retrieving player data and performing detailed Scare Factor analysis.
  */
 @RestController
 @RequestMapping("/api/player")
@@ -62,6 +61,15 @@ public class PlayerController {
         return ApiResponse.success(scareResultService.getScareResultById(id));
     }
 
+    /**
+     * Retrieves a paginated list of all players, optionally filtered by position.
+     * Results are sorted by Scare Factor in descending order.
+     *
+     * @param position Optional position filter (QB, RB, WR, TE)
+     * @param page     The page number (0-indexed)
+     * @param size     The number of items per page
+     * @return An ApiResponse containing a page of player details
+     */
     @GetMapping
     public ApiResponse<Page<PlayerResponseDTO>> getAllPlayers(@RequestParam(required = false) Position position,
                                                               @RequestParam(defaultValue = "0") int page,
