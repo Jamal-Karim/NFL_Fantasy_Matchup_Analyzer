@@ -2,7 +2,8 @@ package com.jamalkarim.analyzer.entities;
 
 import com.jamalkarim.analyzer.domain.enums.MatchupAdvantages;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -12,7 +13,8 @@ import java.util.List;
  * Persistence entity for storing the results of a team-to-team comparison.
  * Tracks total team scores, win probabilities, and links to individual player matchups.
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "team_matchup")
 public class TeamMatchupResultEntity {

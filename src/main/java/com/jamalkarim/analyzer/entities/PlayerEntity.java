@@ -2,13 +2,15 @@ package com.jamalkarim.analyzer.entities;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Database entity representing an NFL player.
  * Contains demographic information, status, and links to seasonal statistics.
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "player")
 public class PlayerEntity {
