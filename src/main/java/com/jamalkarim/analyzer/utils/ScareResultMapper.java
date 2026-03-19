@@ -55,7 +55,7 @@ public class ScareResultMapper {
         scareResponseDTO.setName(scareResult.getName());
         scareResponseDTO.setTeam(scareResult.getTeam());
         scareResponseDTO.setPosition(scareResult.getPosition());
-        scareResponseDTO.setScareScore(scareResult.getScareScore());
+        scareResponseDTO.setScareScore(NumberUtils.round(scareResult.getScareScore()));
         scareResponseDTO.setScareTier(scareResult.getScareTier());
         scareResponseDTO.setPrimaryExplanation(scareResult.getPrimaryExplanation());
         scareResponseDTO.setSupportingExplanations(scareResult.getSupportingExplanations());

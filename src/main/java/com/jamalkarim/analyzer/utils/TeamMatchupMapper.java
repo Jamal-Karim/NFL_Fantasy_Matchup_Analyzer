@@ -70,10 +70,10 @@ public class TeamMatchupMapper {
         responseDTO.setId(domain.getId());
         responseDTO.setTeam1(domain.getTeam1());
         responseDTO.setTeam2(domain.getTeam2());
-        responseDTO.setTeam1TotalScore(domain.getTeam1TotalScore());
-        responseDTO.setTeam2TotalScore(domain.getTeam2TotalScore());
-        responseDTO.setTeam1Probability(domain.getTeam1Probability());
-        responseDTO.setTeam2Probability(domain.getTeam2Probability());
+        responseDTO.setTeam1TotalScore(NumberUtils.round(domain.getTeam1TotalScore()));
+        responseDTO.setTeam2TotalScore(NumberUtils.round(domain.getTeam2TotalScore()));
+        responseDTO.setTeam1Probability(NumberUtils.round(domain.getTeam1Probability()));
+        responseDTO.setTeam2Probability(NumberUtils.round(domain.getTeam2Probability()));
         responseDTO.setAdvantage(domain.getAdvantage());
 
         List<PlayerMatchupResponseForTeamDTO> playerMatchups = new LinkedList<>();
