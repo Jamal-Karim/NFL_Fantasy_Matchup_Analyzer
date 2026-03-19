@@ -15,6 +15,7 @@ import com.jamalkarim.analyzer.utils.ScareResultMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -115,7 +116,12 @@ public class PlayerService {
 
     public Page<PlayerResponseDTO> getAllPlayers(Position position, int page, int size) {
 
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by("scareResult.scareScore").descending()
+        );
+
         Page<PlayerEntity> entities;
         if (position == null) {
             entities = repository.findAll(pageable);
