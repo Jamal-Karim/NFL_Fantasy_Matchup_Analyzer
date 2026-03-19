@@ -1,6 +1,5 @@
 package com.jamalkarim.analyzer;
 
-import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
@@ -47,7 +46,7 @@ public class TeamIntegrationTest {
         assertEquals("Dream Team", createdTeam.getName());
         assertEquals(2, createdTeam.getRoster().size());
 
-        TeamResponseDTO retrievedTeam = teamService.getTeamById(createdTeam.getId());
+        TeamResponseDTO retrievedTeam = teamService.getTeamResponseById(createdTeam.getId());
         assertEquals("Dream Team", retrievedTeam.getName());
         assertEquals(2, retrievedTeam.getRoster().size());
     }

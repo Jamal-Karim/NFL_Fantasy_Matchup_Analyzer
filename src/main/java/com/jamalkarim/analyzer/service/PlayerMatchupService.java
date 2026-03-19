@@ -61,7 +61,7 @@ public class PlayerMatchupService {
      * @param player2 The second player model
      * @return A DTO containing the results of the analysis
      */
-    public PlayerMatchupResponseDTO getPlayerMatchup(Player player1, Player player2) {
+    public PlayerMatchupResponseDTO createPlayerMatchup(Player player1, Player player2) {
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);
 
         PlayerMatchupResultEntity playerMatchupResultEntity = mapper.domainToEntity(result);

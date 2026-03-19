@@ -7,7 +7,7 @@ import lombok.Data;
  * Contains the IDs of the two players to be compared.
  */
 @Data
-public class MatchupRequest {
+public class PlayerMatchupRequest {
     private long player1Id;
     private long player2Id;
 }

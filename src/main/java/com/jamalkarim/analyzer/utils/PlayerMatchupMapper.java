@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.domain.matchups.PlayerMatchupResult;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
+import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseForTeamDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import org.springframework.stereotype.Component;
@@ -69,6 +70,7 @@ public class PlayerMatchupMapper {
 
         result.setPlayer1ScareResult(player1ScareResult);
         result.setPlayer2ScareResult(player2ScareResult);
+        result.setId(entity.getId());
 
         return result;
     }
@@ -81,8 +83,6 @@ public class PlayerMatchupMapper {
      */
     public PlayerMatchupResponseDTO domainToResponse(PlayerMatchupResult playerMatchupResult) {
         PlayerMatchupResponseDTO playerMatchupResponseDTO = new PlayerMatchupResponseDTO();
-
-        playerMatchupResponseDTO.setId(playerMatchupResult.getId());
 
         playerMatchupResponseDTO.setWinner(
                 playerMatchupResult.getWinner()
@@ -106,6 +106,30 @@ public class PlayerMatchupMapper {
         ScareResponseDTO player2ScareResult = scareResultMapper.domainToResponse(playerMatchupResult.getPlayer2ScareResult());
         playerMatchupResponseDTO.setPlayer2ScareResult(player2ScareResult);
 
+        playerMatchupResponseDTO.setId(playerMatchupResult.getId());
+
         return playerMatchupResponseDTO;
+    }
+
+    public PlayerMatchupResponseForTeamDTO domainToTeamResponse(PlayerMatchupResult domain) {
+        PlayerMatchupResponseForTeamDTO response = new PlayerMatchupResponseForTeamDTO();
+        response.setId(domain.getId());
+
+        response.setWinner(
+                domain.getWinner()
+                        .map(Player::getName)
+                        .orElse("TIE")
+        );
+
+        response.setLoser(
+                domain.getLoser()
+                        .map(Player::getName)
+                        .orElse("TIE")
+        );
+
+        response.setScareDifference(domain.getScareDifference());
+        response.setAdvantage(domain.getAdvantage());
+
+        return response;
     }
 }

@@ -1,7 +1,7 @@
 package com.jamalkarim.analyzer.controller;
 
 import com.jamalkarim.analyzer.domain.models.Player;
-import com.jamalkarim.analyzer.dto.requests.MatchupRequest;
+import com.jamalkarim.analyzer.dto.requests.PlayerMatchupRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
@@ -61,11 +61,11 @@ public class PlayerController {
      * @return An ApiResponse containing detailed matchup results
      */
     @PostMapping("/matchup/create")
-    public ApiResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody MatchupRequest request) {
+    public ApiResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody PlayerMatchupRequest request) {
         Player player1 = playerService.getPlayerByID(request.getPlayer1Id());
         Player player2 = playerService.getPlayerByID(request.getPlayer2Id());
 
-        PlayerMatchupResponseDTO response = matchupService.getPlayerMatchup(player1, player2);
+        PlayerMatchupResponseDTO response = matchupService.createPlayerMatchup(player1, player2);
         return ApiResponse.success(response);
     }
 

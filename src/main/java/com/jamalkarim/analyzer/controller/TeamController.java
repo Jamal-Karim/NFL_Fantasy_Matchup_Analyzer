@@ -1,8 +1,13 @@
 package com.jamalkarim.analyzer.controller;
 
+import com.jamalkarim.analyzer.domain.matchups.TeamMatchupResult;
+import com.jamalkarim.analyzer.domain.models.Team;
+import com.jamalkarim.analyzer.dto.requests.TeamMatchupRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
+import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
+import com.jamalkarim.analyzer.service.TeamMatchupService;
 import com.jamalkarim.analyzer.service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +20,11 @@ import org.springframework.web.bind.annotation.*;
 public class TeamController {
 
     private final TeamService teamService;
+    private final TeamMatchupService teamMatchupService;
 
-    public TeamController(TeamService teamService) {
+    public TeamController(TeamService teamService, TeamMatchupService teamMatchupService) {
         this.teamService = teamService;
+        this.teamMatchupService = teamMatchupService;
     }
 
     /**
@@ -28,7 +35,7 @@ public class TeamController {
      */
     @GetMapping("/{id}")
     public ApiResponse<TeamResponseDTO> getTeamById(@PathVariable long id) {
-        return ApiResponse.success(teamService.getTeamById(id));
+        return ApiResponse.success(teamService.getTeamResponseById(id));
     }
 
     /**
@@ -40,5 +47,18 @@ public class TeamController {
     @PostMapping("/create")
     public ApiResponse<TeamResponseDTO> createTeam(@RequestBody TeamRequest request) {
         return ApiResponse.success(teamService.createTeam(request));
+    }
+
+    @PostMapping("/matchup/create")
+    public ApiResponse<TeamMatchupResponseDTO> createTeamMatchupResult(@RequestBody TeamMatchupRequest request) {
+        Team team1 = teamService.getTeamById(request.getTeam1Id());
+        Team team2 = teamService.getTeamById(request.getTeam2Id());
+
+        return ApiResponse.success(teamMatchupService.createTeamMatchup(team1, team2));
+    }
+
+    @GetMapping("/matchup/{id:\\d+}")
+    public ApiResponse<TeamMatchupResponseDTO> getTeamMatchupById(@PathVariable long id) {
+        return ApiResponse.success(teamMatchupService.getTeamMatchupById(id));
     }
 }
