@@ -43,6 +43,13 @@ public class TeamService {
         this.playerMapper = playerMapper;
     }
 
+    /**
+     * Retrieves a paginated list of all fantasy teams.
+     *
+     * @param page The page number to retrieve
+     * @param size The number of records per page
+     * @return A page of team response DTOs
+     */
     public Page<TeamResponseDTO> getAllTeams(int page, int size) {
         Pageable pageable = PageRequest.of(
                 page,
@@ -106,6 +113,15 @@ public class TeamService {
         return mapper.entityToResponse(repository.save(teamEntity));
     }
 
+    /**
+     * Updates an existing team's name and roster.
+     * Existing roster is cleared before adding the new set of players.
+     *
+     * @param id      The ID of the team to update
+     * @param request The TeamRequest containing the new name and players
+     * @return The updated Team response object
+     * @throws TeamNotFoundException if the team does not exist
+     */
     @Transactional
     public TeamResponseDTO updateTeam(long id, TeamRequest request) {
         TeamEntity teamEntity = repository.findById(id).orElseThrow(
@@ -121,6 +137,13 @@ public class TeamService {
         return mapper.entityToResponse(repository.save(teamEntity));
     }
 
+    /**
+     * Deletes a team and removes all player associations from it.
+     *
+     * @param id The ID of the team to delete
+     * @return A success message
+     * @throws TeamNotFoundException if the team does not exist
+     */
     @Transactional
     public String deleteTeam(long id) {
         TeamEntity teamEntity = repository.findById(id).orElseThrow(
@@ -133,6 +156,13 @@ public class TeamService {
         return "Successfully deleted team " + name;
     }
 
+    /**
+     * Helper method to sync players and add them to a team entity.
+     * Enforces that a player cannot be on two different teams simultaneously.
+     *
+     * @param teamEntity The team receiving the players
+     * @param roster     The list of player requests to process
+     */
     private void addRosterToEntity(TeamEntity teamEntity, List<PlayerRequest> roster) {
         for (PlayerRequest pr : roster) {
             PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());

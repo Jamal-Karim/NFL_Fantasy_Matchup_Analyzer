@@ -30,11 +30,19 @@ public class TeamEntity {
         player.setTeamEntity(this);
     }
 
+    /**
+     * Removes a player from the team roster and clears the back-reference.
+     *
+     * @param player The player entity to remove
+     */
     public void removePlayer(PlayerEntity player) {
         this.roster.remove(player);
         player.setTeamEntity(null);
     }
 
+    /**
+     * Clears all players from the roster and removes their association with this team.
+     */
     public void clearRoster() {
         List<PlayerEntity> players = new ArrayList<>(this.roster);
         for (PlayerEntity player : players) {
