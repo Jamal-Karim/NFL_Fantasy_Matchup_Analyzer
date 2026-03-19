@@ -64,4 +64,17 @@ public class TeamMapper {
         responseDTO.setRoster(roster);
         return responseDTO;
     }
+
+    public TeamResponseDTO entityToResponse(TeamEntity entity) {
+        TeamResponseDTO responseDTO = new TeamResponseDTO();
+        responseDTO.setId(entity.getId());
+        responseDTO.setName(entity.getName());
+
+        List<RosterMemberDTO> roster = new ArrayList<>();
+        for (PlayerEntity player : entity.getRoster()) {
+            roster.add(playerMapper.entityToRosterMember(player));
+        }
+        responseDTO.setRoster(roster);
+        return responseDTO;
+    }
 }
