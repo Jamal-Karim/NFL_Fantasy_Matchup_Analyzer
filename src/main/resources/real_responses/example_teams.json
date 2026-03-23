@@ -1,0 +1,534 @@
+[
+  {
+    "team": {
+      "id": "22",
+      "uid": "s:20~l:28~t:22",
+      "slug": "arizona-cardinals",
+      "abbreviation": "ARI",
+      "displayName": "Arizona Cardinals",
+      "shortDisplayName": "Cardinals",
+      "name": "Cardinals",
+      "nickname": "Cardinals",
+      "location": "Arizona",
+      "color": "a40227",
+      "alternateColor": "ffffff",
+      "isActive": true,
+      "isAllStar": false,
+      "logos": [
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/ari.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "scoreboard"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ari.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "scoreboard",
+            "dark"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/primary_logo_on_white_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_white_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/primary_logo_on_black_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_black_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/primary_logo_on_primary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_primary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/primary_logo_on_secondary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_secondary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/primary_logo_black.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_black"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/primary_logo_white.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_white"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/secondary_logo_on_white_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_white_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/secondary_logo_on_black_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_black_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/secondary_logo_on_primary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_primary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/secondary_logo_on_secondary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_secondary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/secondary_logo_black.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_black"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/d1a9b001-1df7-fbd7-ae4c-6ca7065286ec/logos/secondary_logo_white.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_white"
+          ],
+          "width": 500,
+          "height": 500
+        }
+      ],
+      "links": [
+        {
+          "language": "en-US",
+          "rel": [
+            "clubhouse",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/_/name/ari/arizona-cardinals",
+          "text": "Clubhouse",
+          "shortText": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "roster",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/roster/_/name/ari/arizona-cardinals",
+          "text": "Roster",
+          "shortText": "Roster",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "stats",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/stats/_/name/ari/arizona-cardinals",
+          "text": "Statistics",
+          "shortText": "Statistics",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "schedule",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/schedule/_/name/ari",
+          "text": "Schedule",
+          "shortText": "Schedule",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "tickets",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.vividseats.com/arizona-cardinals-tickets--sports-nfl-football/performer/40?wsUser=717",
+          "text": "Tickets",
+          "shortText": "Tickets",
+          "isExternal": true,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "depthchart",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/depth/_/name/ari",
+          "text": "Depth Chart",
+          "shortText": "Depth Chart",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        }
+      ]
+    }
+  },
+  {
+    "team": {
+      "id": "1",
+      "uid": "s:20~l:28~t:1",
+      "slug": "atlanta-falcons",
+      "abbreviation": "ATL",
+      "displayName": "Atlanta Falcons",
+      "shortDisplayName": "Falcons",
+      "name": "Falcons",
+      "nickname": "Falcons",
+      "location": "Atlanta",
+      "color": "a71930",
+      "alternateColor": "000000",
+      "isActive": true,
+      "isAllStar": false,
+      "logos": [
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/atl.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "scoreboard"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/atl.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "scoreboard",
+            "dark"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/primary_logo_on_white_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_white_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/primary_logo_on_black_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_black_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/primary_logo_on_primary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_primary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/primary_logo_on_secondary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_on_secondary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/primary_logo_black.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_black"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/primary_logo_white.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "primary_logo_white"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/secondary_logo_on_white_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_white_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/secondary_logo_on_black_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_black_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/secondary_logo_on_primary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_primary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/secondary_logo_on_secondary_color.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_on_secondary_color"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/secondary_logo_black.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_black"
+          ],
+          "width": 500,
+          "height": 500
+        },
+        {
+          "href": "https://a.espncdn.com/guid/595690b3-2161-4913-a7a7-814af2fd2621/logos/secondary_logo_white.png",
+          "alt": "",
+          "rel": [
+            "full",
+            "secondary_logo_white"
+          ],
+          "width": 500,
+          "height": 500
+        }
+      ],
+      "links": [
+        {
+          "language": "en-US",
+          "rel": [
+            "clubhouse",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/_/name/atl/atlanta-falcons",
+          "text": "Clubhouse",
+          "shortText": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "roster",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/roster/_/name/atl/atlanta-falcons",
+          "text": "Roster",
+          "shortText": "Roster",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "stats",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/stats/_/name/atl/atlanta-falcons",
+          "text": "Statistics",
+          "shortText": "Statistics",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "schedule",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/schedule/_/name/atl",
+          "text": "Schedule",
+          "shortText": "Schedule",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "tickets",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.vividseats.com/atlanta-falcons-tickets--sports-nfl-football/performer/51?wsUser=717",
+          "text": "Tickets",
+          "shortText": "Tickets",
+          "isExternal": true,
+          "isPremium": false,
+          "isHidden": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
+            "depthchart",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/depth/_/name/atl",
+          "text": "Depth Chart",
+          "shortText": "Depth Chart",
+          "isExternal": false,
+          "isPremium": false,
+          "isHidden": false
+        }
+      ]
+    }
+  }
+]

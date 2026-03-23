@@ -1,0 +1,943 @@
+{
+  "athlete": {
+    "id": "4595348",
+    "uid": "s:20~l:28~a:4595348",
+    "guid": "44a2174b-1d11-3acf-8e75-fe0c13db47a6",
+    "type": "football",
+    "firstName": "Malik",
+    "lastName": "Nabers",
+    "displayName": "Malik Nabers",
+    "fullName": "Malik Nabers",
+    "jersey": "1",
+    "links": [
+      {
+        "language": "en",
+        "rel": [
+          "playercard",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/_/id/4595348/malik-nabers",
+        "text": "Player Card",
+        "shortText": "Player Card",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "language": "en",
+        "rel": [
+          "stats",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/stats/_/id/4595348/malik-nabers",
+        "text": "Stats",
+        "shortText": "Stats",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "language": "en",
+        "rel": [
+          "splits",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/splits/_/id/4595348/malik-nabers",
+        "text": "Splits",
+        "shortText": "Splits",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "language": "en",
+        "rel": [
+          "gamelog",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/gamelog/_/id/4595348/malik-nabers",
+        "text": "Game Log",
+        "shortText": "Game Log",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "language": "en",
+        "rel": [
+          "news",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/news/_/id/4595348/malik-nabers",
+        "text": "News",
+        "shortText": "News",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "language": "en",
+        "rel": [
+          "bio",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/bio/_/id/4595348/malik-nabers",
+        "text": "Bio",
+        "shortText": "Bio",
+        "isExternal": false,
+        "isPremium": false
+      },
+      {
+        "language": "en",
+        "rel": [
+          "overview",
+          "desktop",
+          "athlete"
+        ],
+        "href": "https://www.espn.com/nfl/player/_/id/4595348/malik-nabers",
+        "text": "Overview",
+        "shortText": "Overview",
+        "isExternal": false,
+        "isPremium": false
+      }
+    ],
+    "college": {
+      "id": "99",
+      "mascot": "Tigers",
+      "name": "LSU",
+      "shortName": "LSU",
+      "abbrev": "LSU"
+    },
+    "collegeTeam": {
+      "id": "99",
+      "uid": "s:20~l:23~t:99",
+      "guid": "b9a22bd6-7449-92bc-0e95-a6d8da673b3e",
+      "slug": "lsu-tigers",
+      "location": "LSU",
+      "name": "Tigers",
+      "nickname": "LSU",
+      "abbreviation": "LSU",
+      "displayName": "LSU Tigers",
+      "shortDisplayName": "LSU",
+      "color": "461d76",
+      "alternateColor": "fdd023",
+      "isActive": true,
+      "isAllStar": false,
+      "logos": [
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png",
+          "width": 500,
+          "height": 500,
+          "rel": [
+            "full",
+            "default"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/99.png",
+          "width": 500,
+          "height": 500,
+          "rel": [
+            "full",
+            "dark"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/primary_logo_on_white_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_white_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/primary_logo_on_black_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_black_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/primary_logo_on_primary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_primary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/primary_logo_on_secondary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_secondary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/primary_logo_black.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_black"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/primary_logo_white.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_white"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/secondary_logo_on_white_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_white_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/secondary_logo_on_black_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_black_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/secondary_logo_on_primary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_primary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/secondary_logo_on_secondary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_secondary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/secondary_logo_black.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_black"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/b9a22bd6-7449-92bc-0e95-a6d8da673b3e/logos/secondary_logo_white.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_white"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "language": "en",
+          "rel": [
+            "clubhouse",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/college-football/team/_/id/99/lsu-tigers",
+          "text": "Clubhouse",
+          "shortText": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "clubhouse",
+            "mobile",
+            "team"
+          ],
+          "href": "https://www.espn.com/college-football/team/_/id/99/lsu-tigers",
+          "text": "Clubhouse",
+          "shortText": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "roster",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/college-football/team/roster/_/id/99",
+          "text": "Roster",
+          "shortText": "Roster",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "stats",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/college-football/team/stats/_/id/99",
+          "text": "Statistics",
+          "shortText": "Statistics",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "schedule",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/college-football/team/schedule/_/id/99",
+          "text": "Schedule",
+          "shortText": "Schedule",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "tickets",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.vividseats.com/lsu-tigers-football-tickets--sports-ncaa-football/performer/1003?wsUser=717",
+          "text": "Tickets",
+          "shortText": "Tickets",
+          "isExternal": true,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "awards",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/college-football/awards/_/team/99",
+          "text": "Awards",
+          "shortText": "Awards",
+          "isExternal": false,
+          "isPremium": false
+        }
+      ],
+      "groups": {},
+      "college": {},
+      "coaches": {},
+      "venue": {
+        "id": "3958",
+        "fullName": "Tiger Stadium (LA)",
+        "address": {
+          "city": "Baton Rouge",
+          "state": "LA",
+          "zipCode": "70803",
+          "country": "USA"
+        },
+        "grass": true,
+        "indoor": false,
+        "images": [
+          {
+            "href": "https://a.espncdn.com/i/venues/college-football/day/3958.jpg",
+            "width": 2000,
+            "height": 1125,
+            "rel": [
+              "full",
+              "day"
+            ]
+          },
+          {
+            "href": "https://a.espncdn.com/i/venues/college-football/day/interior/3958.jpg",
+            "width": 2000,
+            "height": 1125,
+            "rel": [
+              "full",
+              "day",
+              "interior"
+            ]
+          }
+        ]
+      },
+      "record": {},
+      "againstTheSpreadRecords": {},
+      "ranks": {},
+      "franchise": {}
+    },
+    "collegeAthlete": {
+      "id": "4595348"
+    },
+    "headshot": {
+      "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4595348.png",
+      "alt": "Malik Nabers"
+    },
+    "position": {
+      "id": "1",
+      "name": "Wide Receiver",
+      "displayName": "Wide Receiver",
+      "abbreviation": "WR",
+      "leaf": true,
+      "parent": {
+        "leaf": false
+      },
+      "slug": "wide-receiver"
+    },
+    "team": {
+      "id": "19",
+      "uid": "s:20~l:28~t:19",
+      "guid": "378600ea-2397-8364-8399-b7c1606a49a7",
+      "slug": "new-york-giants",
+      "location": "New York",
+      "name": "Giants",
+      "nickname": "Giants",
+      "abbreviation": "NYG",
+      "displayName": "New York Giants",
+      "shortDisplayName": "Giants",
+      "color": "003c7f",
+      "alternateColor": "c9243f",
+      "isActive": true,
+      "isAllStar": false,
+      "logos": [
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",
+          "width": 500,
+          "height": 500,
+          "rel": [
+            "full",
+            "default"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/nyg.png",
+          "width": 500,
+          "height": 500,
+          "rel": [
+            "full",
+            "dark"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png",
+          "width": 500,
+          "height": 500,
+          "rel": [
+            "full",
+            "scoreboard"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyg.png",
+          "width": 500,
+          "height": 500,
+          "rel": [
+            "full",
+            "scoreboard",
+            "dark"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/primary_logo_on_white_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_white_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/primary_logo_on_black_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_black_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/primary_logo_on_primary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_primary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/primary_logo_on_secondary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_on_secondary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/primary_logo_black.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_black"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/primary_logo_white.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "primary_logo_white"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/secondary_logo_on_white_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_white_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/secondary_logo_on_black_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_black_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/secondary_logo_on_primary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_primary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/secondary_logo_on_secondary_color.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_on_secondary_color"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/secondary_logo_black.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_black"
+          ]
+        },
+        {
+          "href": "https://a.espncdn.com/guid/378600ea-2397-8364-8399-b7c1606a49a7/logos/secondary_logo_white.png",
+          "width": 4096,
+          "height": 4096,
+          "rel": [
+            "full",
+            "secondary_logo_white"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "language": "en",
+          "rel": [
+            "clubhouse",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/_/name/nyg/new-york-giants",
+          "text": "Clubhouse",
+          "shortText": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "roster",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/roster/_/name/nyg/new-york-giants",
+          "text": "Roster",
+          "shortText": "Roster",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "stats",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/stats/_/name/nyg/new-york-giants",
+          "text": "Statistics",
+          "shortText": "Statistics",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "schedule",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/schedule/_/name/nyg",
+          "text": "Schedule",
+          "shortText": "Schedule",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "photos",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/photos/_/name/nyg",
+          "text": "photos",
+          "shortText": "photos",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "tickets",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.vividseats.com/new-york-giants-tickets--sports-nfl-football/performer/599?wsUser=717",
+          "text": "Tickets",
+          "shortText": "Tickets",
+          "isExternal": true,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "draftpicks",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/draft/teams/_/name/nyg/new-york-giants",
+          "text": "Draft Picks",
+          "shortText": "Draft Picks",
+          "isExternal": false,
+          "isPremium": true
+        },
+        {
+          "language": "en",
+          "rel": [
+            "transactions",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/transactions/_/name/nyg",
+          "text": "Transactions",
+          "shortText": "Transactions",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "injuries",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/injuries/_/name/nyg",
+          "text": "Injuries",
+          "shortText": "Injuries",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en",
+          "rel": [
+            "depthchart",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/nfl/team/depth/_/name/nyg",
+          "text": "Depth Chart",
+          "shortText": "Depth Chart",
+          "isExternal": false,
+          "isPremium": false
+        }
+      ],
+      "groups": {
+        "uid": "s:20~l:28~g:1",
+        "id": "1",
+        "name": "NFC East",
+        "abbreviation": "EAST",
+        "slug": "nfc-east",
+        "season": {
+          "year": 2026,
+          "startDate": "2026-08-06T07:00:00.000+00:00",
+          "endDate": "2027-02-16T07:59:00.000+00:00",
+          "type": {
+            "id": "2",
+            "type": 2,
+            "name": "Regular Season",
+            "abbreviation": "reg",
+            "slug": "regular-season",
+            "startDate": "2026-09-09T07:00:00.000+00:00",
+            "endDate": "2027-01-13T07:59:00.000+00:00",
+            "hasGroups": false,
+            "hasStandings": false,
+            "hasLegs": false,
+            "weeks": {},
+            "year": 2026
+          },
+          "types": {
+            "count": 4,
+            "pageIndex": 1,
+            "pageSize": 4,
+            "pageCount": 1,
+            "items": [
+              {
+                "id": "1",
+                "type": 1,
+                "name": "Preseason",
+                "abbreviation": "pre",
+                "slug": "preseason",
+                "startDate": "2026-08-06T07:00:00.000+00:00",
+                "endDate": "2026-09-09T06:59:00.000+00:00",
+                "hasGroups": false,
+                "hasStandings": false,
+                "hasLegs": false,
+                "weeks": {},
+                "year": 2026
+              },
+              {
+                "id": "2",
+                "type": 2,
+                "name": "Regular Season",
+                "abbreviation": "reg",
+                "slug": "regular-season",
+                "startDate": "2026-09-09T07:00:00.000+00:00",
+                "endDate": "2027-01-13T07:59:00.000+00:00",
+                "hasGroups": false,
+                "hasStandings": false,
+                "hasLegs": false,
+                "weeks": {},
+                "year": 2026
+              },
+              {
+                "id": "3",
+                "type": 3,
+                "name": "Postseason",
+                "abbreviation": "post",
+                "slug": "post-season",
+                "startDate": "2027-01-13T08:00:00.000+00:00",
+                "endDate": "2027-02-16T07:59:00.000+00:00",
+                "hasGroups": false,
+                "hasStandings": false,
+                "hasLegs": false,
+                "weeks": {},
+                "year": 2026
+              },
+              {
+                "id": "4",
+                "type": 4,
+                "name": "Off Season",
+                "abbreviation": "off",
+                "slug": "off-season",
+                "startDate": "2027-02-16T08:00:00.000+00:00",
+                "endDate": "2027-08-01T06:59:00.000+00:00",
+                "hasGroups": false,
+                "hasStandings": false,
+                "hasLegs": false,
+                "weeks": {},
+                "year": 2026
+              }
+            ]
+          },
+          "displayName": "2026"
+        },
+        "parent": {
+          "uid": "s:20~l:28~g:7",
+          "id": "7",
+          "name": "National Football Conference",
+          "abbreviation": "NFC",
+          "slug": "national-football-conference",
+          "season": {},
+          "parent": {},
+          "standings": {},
+          "isConference": true,
+          "teams": {}
+        },
+        "standings": {},
+        "isConference": false,
+        "teams": {}
+      },
+      "coaches": {},
+      "venue": {
+        "id": "3839",
+        "fullName": "MetLife Stadium",
+        "address": {
+          "city": "East Rutherford",
+          "state": "NJ",
+          "zipCode": "07073",
+          "country": "USA"
+        },
+        "grass": false,
+        "indoor": false,
+        "images": [
+          {
+            "href": "https://a.espncdn.com/i/venues/nfl/day/3839.jpg",
+            "width": 2000,
+            "height": 1125,
+            "rel": [
+              "full",
+              "day"
+            ]
+          },
+          {
+            "href": "https://a.espncdn.com/i/venues/nfl/day/interior/3839.jpg",
+            "width": 2000,
+            "height": 1125,
+            "rel": [
+              "full",
+              "day",
+              "interior"
+            ]
+          }
+        ]
+      },
+      "record": {},
+      "againstTheSpreadRecords": {},
+      "ranks": {},
+      "franchise": {
+        "id": "19",
+        "uid": "s:20~l:28~f:19",
+        "slug": "new-york-giants",
+        "abbreviation": "NYG",
+        "displayName": "New York Giants",
+        "location": "New York",
+        "name": "Giants",
+        "nickname": "Giants",
+        "shortDisplayName": "Giants"
+      }
+    },
+    "active": true,
+    "status": {
+      "id": "1",
+      "name": "Active",
+      "type": "active",
+      "abbreviation": "Active"
+    },
+    "injuries": [
+      {
+        "longComment": "questionable",
+        "shortComment": "questionable",
+        "status": "Questionable",
+        "date": "2026-02-13T02:20:00.000+00:00",
+        "type": {
+          "id": "2",
+          "name": "INJURY_STATUS_QUESTIONABLE",
+          "description": "questionable",
+          "abbreviation": "Q"
+        },
+        "details": {
+          "fantasyStatus": {
+            "description": "QUESTIONABLE",
+            "abbreviation": "QUESTIONABLE"
+          },
+          "type": "Knee - ACL",
+          "location": "Leg",
+          "detail": "Surgery",
+          "side": "Right",
+          "returnDate": "2026-08-01T00:00:00.000+00:00"
+        }
+      }
+    ],
+    "statsSummary": {
+      "displayName": "2025 regular season stats",
+      "statistics": [
+        {
+          "name": "receptions",
+          "displayName": "Receptions",
+          "shortDisplayName": "Receptions",
+          "description": "The total number of receptions.",
+          "abbreviation": "REC",
+          "value": 18,
+          "displayValue": "18"
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Yards",
+          "shortDisplayName": "Rec. Yards",
+          "description": "The total receiving yards.",
+          "abbreviation": "YDS",
+          "value": 271,
+          "displayValue": "271"
+        },
+        {
+          "name": "receivingTouchdowns",
+          "displayName": "Receiving Touchdowns",
+          "shortDisplayName": "Receiving Touchdowns",
+          "description": "The total number of receiving touchdowns.",
+          "abbreviation": "TD",
+          "value": 2,
+          "displayValue": "2"
+        },
+        {
+          "name": "yardsPerReception",
+          "displayName": "Yards Per Reception",
+          "shortDisplayName": "YDS/R",
+          "description": "The average number of yards per reception.",
+          "abbreviation": "AVG",
+          "value": 15.055999755859375,
+          "displayValue": "15.1"
+        }
+      ]
+    },
+    "displayBirthPlace": "Youngsville, LA",
+    "displayHeight": "6' 0\"",
+    "displayWeight": "200 lbs",
+    "displayDOB": "28/7/2003",
+    "age": 22,
+    "displayJersey": "#1",
+    "displayExperience": "2nd Season",
+    "displayDraft": "2024: Rd 1, Pk 6 (NYG)",
+    "hand": {
+      "type": "LEFT",
+      "abbreviation": "L",
+      "displayValue": "Left"
+    }
+  }
+}
