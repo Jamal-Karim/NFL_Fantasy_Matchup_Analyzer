@@ -16,6 +16,7 @@ public class AthleteExternalDTO {
 
     private PositionDTO position;
 
+    @JsonProperty("team")
     private TeamDTO nflTeam;
 
     // contains stats for year drafted and draft position
@@ -28,16 +29,19 @@ public class AthleteExternalDTO {
 
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class PositionDTO {
         private String abbreviation;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class InjuryDTO {
         private String status;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TeamDTO {
         private String abbreviation;
         private String displayName;
