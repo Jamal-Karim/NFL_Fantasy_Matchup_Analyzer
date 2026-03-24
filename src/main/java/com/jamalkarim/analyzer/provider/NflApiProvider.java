@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Component
-@Primary
 public class NflApiProvider implements PlayerDataProvider {
 
     private final ObjectMapper objectMapper;
@@ -46,10 +45,21 @@ public class NflApiProvider implements PlayerDataProvider {
 
                 AthleteExternalDTO.TeamRosterWrapper wrapper = objectMapper.readValue(inputStream, AthleteExternalDTO.TeamRosterWrapper.class);
 
-                for (AthleteExternalDTO athleteExternalDTO : wrapper.getAthletes()) {
-                    if (athleteExternalDTO.getName().equals(name)) {
-                        athlete = athleteExternalDTO;
+//                for (AthleteExternalDTO athleteExternalDTO : wrapper.getAthletes()) {
+//                    if (athleteExternalDTO.getName().equals(name)) {
+//                        athlete = athleteExternalDTO;
+//                    }
+//                }
+
+                for (AthleteExternalDTO.RosterGroup group : wrapper.getAthletes()) {
+                    // Iterate through the players in that group
+                    for (AthleteExternalDTO athleteInGroup : group.getItems()) {
+                        if (athleteInGroup.getName().equalsIgnoreCase(name)) {
+                            athlete = athleteInGroup;
+                            break;
+                        }
                     }
+                    if (athlete != null) break;
                 }
 
                 if (athlete == null) {

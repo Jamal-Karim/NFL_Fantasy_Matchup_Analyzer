@@ -8,12 +8,14 @@ import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.provider.PlayerDataProvider;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import java.time.LocalDate;
 
 @Service
+@Primary
 public class NflApiClient implements PlayerDataProvider {
 
     private final RestClient restClient;
@@ -49,10 +51,15 @@ public class NflApiClient implements PlayerDataProvider {
 
             AthleteExternalDTO athlete = null;
 
-            for (AthleteExternalDTO athleteExternalDTO : roster.getAthletes()) {
-                if (athleteExternalDTO.getName().equalsIgnoreCase(name)) {
-                    athlete = athleteExternalDTO;
+
+            for (AthleteExternalDTO.RosterGroup group : roster.getAthletes()) {
+                for (AthleteExternalDTO athleteInGroup : group.getItems()) {
+                    if (athleteInGroup.getName().equalsIgnoreCase(name)) {
+                        athlete = athleteInGroup;
+                        break;
+                    }
                 }
+                if (athlete != null) break;
             }
 
             // no athlete found, return null
@@ -91,10 +98,15 @@ public class NflApiClient implements PlayerDataProvider {
                     .retrieve()
                     .body(StatsExternalDTO.class);
 
-            externalPlayer.setCurrentSeasonStats(statsWrapper);
-            externalPlayer.getCurrentSeasonStats().getStatistics().getSplits().setSeason(currentYear);
+            if (statsWrapper != null &&
+                    statsWrapper.getStatistics() != null &&
+                    statsWrapper.getStatistics().getSplits() != null) {
+
+                externalPlayer.setCurrentSeasonStats(statsWrapper);
+                externalPlayer.getCurrentSeasonStats().getStatistics().getSplits().setSeason(currentYear);
+            }
         } catch (Exception e) {
-            System.out.println("DEBUG: No stats found for " + currentYear);
+            System.out.println("No stats found for " + currentYear);
         }
 
         try {
@@ -103,10 +115,15 @@ public class NflApiClient implements PlayerDataProvider {
                     .retrieve()
                     .body(StatsExternalDTO.class);
 
-            externalPlayer.setLastSeasonStats(statsWrapper);
-            externalPlayer.getLastSeasonStats().getStatistics().getSplits().setSeason(lastYear);
+            if (statsWrapper != null &&
+                    statsWrapper.getStatistics() != null &&
+                    statsWrapper.getStatistics().getSplits() != null) {
+
+                externalPlayer.setLastSeasonStats(statsWrapper);
+                externalPlayer.getLastSeasonStats().getStatistics().getSplits().setSeason(lastYear);
+            }
         } catch (Exception e) {
-            System.out.println("DEBUG: No stats found for " + lastYear);
+            System.out.println("No stats found for " + lastYear);
         }
 
         MockPlayerDTO mockPlayerDTO = playerMapper.externalToMock(externalPlayer);

@@ -28,9 +28,13 @@ public class AthleteExternalDTO {
     private String draftInfo;
 
     // if null set isInjured in domain player to false
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private List<InjuryDTO> injuries;
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private StatsExternalDTO lastSeasonStats;
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private StatsExternalDTO currentSeasonStats;
 
 
@@ -53,6 +57,13 @@ public class AthleteExternalDTO {
         private String displayName;
     }
 
+    @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class RosterGroup {
+        private String position; // This will hold "offense", "defense", etc.
+        private List<AthleteExternalDTO> items; // This is where the actual players are!
+    }
+
     /**
      * Wrapper for the "Team Roster" endpoint.
      * JSON looks like: { "athletes": [ {...}, {...} ] }
@@ -60,7 +71,7 @@ public class AthleteExternalDTO {
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TeamRosterWrapper {
-        private List<AthleteExternalDTO> athletes;
+        private List<RosterGroup> athletes;
     }
 
     /**
