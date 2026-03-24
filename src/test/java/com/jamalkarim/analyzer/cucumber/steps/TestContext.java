@@ -1,4 +1,4 @@
-package com.jamalkarim.analyzer.steps;
+package com.jamalkarim.analyzer.cucumber.steps;
 
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import io.restassured.response.Response;
