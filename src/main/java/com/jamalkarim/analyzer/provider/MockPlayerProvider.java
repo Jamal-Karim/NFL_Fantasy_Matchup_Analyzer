@@ -17,7 +17,7 @@ import java.util.List;
  * Reads player statistical data from local JSON files to simulate an external API.
  */
 @Component
-@Profile("dev")
+@Profile({"dev", "automation"})
 public class MockPlayerProvider implements PlayerDataProvider {
     private final ObjectMapper objectMapper;
     private final PlayerMapper playerMapper;
