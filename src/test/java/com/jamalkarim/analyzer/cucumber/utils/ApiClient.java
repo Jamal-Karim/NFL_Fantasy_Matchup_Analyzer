@@ -14,4 +14,11 @@ public class ApiClient {
                 .when()
                 .get("/api/player/team/" + nflTeam);
     }
+
+    public Response getScareFactor(long id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/player/" + id + "/analysis");
+    }
 }

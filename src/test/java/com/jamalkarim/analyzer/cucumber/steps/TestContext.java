@@ -9,5 +9,4 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestContext {
     private Response response;
-    private PlayerResponseDTO player;
 }
