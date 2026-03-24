@@ -192,6 +192,13 @@ public class StatsMapper {
         return stats;
     }
 
+    /**
+     * Converts external API statistics to a MockStatsDTO.
+     *
+     * @param externalStats The statistics from the external API
+     * @param position      The player's position
+     * @return A MockStatsDTO
+     */
     public MockStatsDTO externalToMock(StatsExternalDTO externalStats, Position position) {
 
         if (externalStats == null) {
@@ -273,6 +280,13 @@ public class StatsMapper {
         return stats;
     }
 
+    /**
+     * Extracts a specific stat value from a category.
+     *
+     * @param category The category containing the stat
+     * @param statName The name of the stat to extract
+     * @return The integer value of the stat
+     */
     private Integer getStatValue(StatsExternalDTO.CategoryDTO category, String statName) {
         String stat = category.getStatsInCategory().stream().filter(s -> statName.equals(s.getName()))
                 .map(StatsExternalDTO.InternalStatsDTO::getValue)

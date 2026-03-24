@@ -17,6 +17,11 @@ public class TeamController {
 
     private final TeamService teamService;
 
+    /**
+     * Constructs a new TeamController with the required TeamService.
+     *
+     * @param teamService Service for managing fantasy team data
+     */
     public TeamController(TeamService teamService) {
         this.teamService = teamService;
     }

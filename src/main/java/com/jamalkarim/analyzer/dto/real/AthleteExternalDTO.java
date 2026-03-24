@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Data Transfer Object for mapping athlete data from the external NFL API.
+ * This class captures various player details including names, positions, teams,
+ * injuries, and statistics.
+ */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AthleteExternalDTO {
@@ -37,19 +42,27 @@ public class AthleteExternalDTO {
     @JsonIgnoreProperties(ignoreUnknown = true)
     private StatsExternalDTO currentSeasonStats;
 
-
+    /**
+     * DTO for player position information.
+     */
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class PositionDTO {
         private String abbreviation;
     }
 
+    /**
+     * DTO for player injury status.
+     */
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class InjuryDTO {
         private String status;
     }
 
+    /**
+     * DTO for team information associated with an athlete.
+     */
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TeamDTO {
@@ -57,6 +70,9 @@ public class AthleteExternalDTO {
         private String displayName;
     }
 
+    /**
+     * DTO representing a group of athletes on a roster, typically categorized by unit.
+     */
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class RosterGroup {
@@ -83,6 +99,12 @@ public class AthleteExternalDTO {
         private AthleteExternalDTO athlete;
     }
 
+    /**
+     * Extracts the draft position from a draft info string.
+     *
+     * @param draftInfo The draft information string (e.g., "2023: Rd 1, Pk 1")
+     * @return The draft position, or 0 if not found
+     */
     public int getDraftPosition(String draftInfo) {
         Pattern pattern = Pattern.compile("Pk (\\d+)");
         Matcher matcher = pattern.matcher(draftInfo);
@@ -93,6 +115,12 @@ public class AthleteExternalDTO {
         return 0;
     }
 
+    /**
+     * Determines if a player is a rookie based on draft information.
+     *
+     * @param draftInfo The draft information string
+     * @return true if the player was drafted in the current year, false otherwise
+     */
     public boolean isRookie(String draftInfo) {
         Pattern pattern = Pattern.compile("^(\\d{4})");
         Matcher matcher = pattern.matcher(draftInfo);
@@ -107,6 +135,11 @@ public class AthleteExternalDTO {
         return false;
     }
 
+    /**
+     * Checks if the player has any active injuries listed.
+     *
+     * @return true if injuries list is not null and not empty, false otherwise
+     */
     public boolean hasActiveInjuries() {
         return injuries != null && !injuries.isEmpty();
     }

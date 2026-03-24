@@ -27,6 +27,11 @@ public class Team {
     private String name;
     private List<Player> roster = new ArrayList<>();
 
+    /**
+     * Constructs a new Team with the specified name.
+     *
+     * @param name The name of the fantasy team.
+     */
     public Team(String name) {
         this.name = name;
     }

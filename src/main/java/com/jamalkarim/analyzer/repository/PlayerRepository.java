@@ -26,5 +26,12 @@ public interface PlayerRepository extends JpaRepository<PlayerEntity, Long> {
      */
     Optional<PlayerEntity> findByNameAndNflTeam(String name, String nflTeam);
 
+    /**
+     * Retrieves a paginated list of players filtered by their position.
+     *
+     * @param position The position to filter by
+     * @param pageable Pagination and sorting information
+     * @return A page of player entities
+     */
     Page<PlayerEntity> findAllByPosition(Position position, Pageable pageable);
 }

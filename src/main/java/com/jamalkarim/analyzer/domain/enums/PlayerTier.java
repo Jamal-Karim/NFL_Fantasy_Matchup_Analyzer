@@ -19,6 +19,12 @@ public enum PlayerTier {
         this.max = max;
     }
 
+    /**
+     * Determines the player's tier based on their Scare Factor score.
+     *
+     * @param score The Scare Factor score to evaluate (0.0 - 99.9).
+     * @return The corresponding PlayerTier.
+     */
     public static PlayerTier fromScore(double score) {
         if (score >= ELITE.min) return ELITE;
         

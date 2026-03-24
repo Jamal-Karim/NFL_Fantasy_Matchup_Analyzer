@@ -8,7 +8,6 @@ import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.entities.TeamMatchupResultEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +20,11 @@ public class TeamMatchupMapper {
 
     private final PlayerMatchupMapper playerMatchupMapper;
 
+    /**
+     * Constructs a TeamMatchupMapper with necessary dependencies.
+     *
+     * @param playerMatchupMapper The mapper for player matchups
+     */
     public TeamMatchupMapper(PlayerMatchupMapper playerMatchupMapper) {
         this.playerMatchupMapper = playerMatchupMapper;
     }

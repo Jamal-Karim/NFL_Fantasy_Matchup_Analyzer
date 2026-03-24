@@ -14,7 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "team")
+@Table(name = "team", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name")
+})
 public class TeamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,11 @@ public class TeamEntity {
     @OneToMany(mappedBy = "teamEntity", cascade = CascadeType.ALL)
     private List<PlayerEntity> roster = new ArrayList<>();
 
+    /**
+     * Adds a player to the team roster and sets the back-reference.
+     *
+     * @param player The player entity to add
+     */
     public void addPlayer(PlayerEntity player) {
         this.roster.add(player);
         player.setTeamEntity(this);

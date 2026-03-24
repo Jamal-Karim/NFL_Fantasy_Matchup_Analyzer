@@ -20,6 +20,11 @@ public class TeamMatchupAnalyzer {
 
     private final PlayerMatchupAnalyzer analyzer;
 
+    /**
+     * Constructs a TeamMatchupAnalyzer with the necessary player-level analyzer.
+     *
+     * @param analyzer The analyzer used for individual player comparisons.
+     */
     public TeamMatchupAnalyzer(PlayerMatchupAnalyzer analyzer) {
         this.analyzer = analyzer;
     }

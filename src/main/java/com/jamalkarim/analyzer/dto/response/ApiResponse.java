@@ -19,6 +19,13 @@ public class ApiResponse<T> {
     private final String message;
     private final T data;
 
+    /**
+     * Constructs an ApiResponse with the specified status, message, and data.
+     *
+     * @param status  The status of the response (e.g., "SUCCESS", "ERROR")
+     * @param message A descriptive message about the response
+     * @param data    The data payload
+     */
     public ApiResponse(String status, String message, T data) {
         this.status = status;
         this.message = message;

@@ -26,6 +26,12 @@ public class TightEnd extends Player {
     public static final double RECEIVING_YARDS_WEIGHT = 0.30;
     public static final double RECEIVING_TDS_WEIGHT = 0.30;
 
+    /**
+     * Constructs a new TightEnd with the specified name and team.
+     *
+     * @param name The player's full name.
+     * @param team The team the player belongs to.
+     */
     public TightEnd(String name, String team) {
         super(name, team, Position.TE);
     }
@@ -48,6 +54,12 @@ public class TightEnd extends Player {
         return impactMap;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Calculated based on receiving volume, yardage, and touchdowns.
+     * Includes a bonus for exceptionally high reception volume.
+     */
     @Override
     public double calculateScareFactor() {
         BlendedStats stats = calculateStatBlendStrategy();
@@ -66,6 +78,11 @@ public class TightEnd extends Player {
         return Math.max(0, applySoftCap(score * 135));
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Analyzes top contributors among receptions, receiving yards, and receiving touchdowns.
+     */
     @Override
     public List<String> generateListOfExplanations() {
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());

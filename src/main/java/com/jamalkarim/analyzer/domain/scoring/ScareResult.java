@@ -26,6 +26,12 @@ public class ScareResult {
     private String primaryExplanation;
     private List<String> supportingExplanations;
 
+    /**
+     * Constructs a ScareResult for a specific player, initializing basic
+     * information such as name, team, and position.
+     *
+     * @param player The player being analyzed.
+     */
     public ScareResult(Player player) {
         this.player = player;
         this.name = player.getName();

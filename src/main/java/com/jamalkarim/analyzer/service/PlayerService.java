@@ -33,6 +33,15 @@ public class PlayerService {
     private final ScareResultMapper scareResultMapper;
     private final ScareResultFactory factory;
 
+    /**
+     * Constructs a PlayerService with required dependencies.
+     *
+     * @param repository        The repository for player data
+     * @param provider          The provider for fetching external player data
+     * @param playerMapper      The mapper for player models
+     * @param scareResultMapper The mapper for Scare Factor models
+     * @param factory           The factory for generating performance analysis
+     */
     public PlayerService(PlayerRepository repository, PlayerDataProvider provider, PlayerMapper playerMapper, ScareResultMapper scareResultMapper, ScareResultFactory factory) {
         this.repository = repository;
         this.provider = provider;
@@ -88,29 +97,31 @@ public class PlayerService {
      * @throws PlayerNotFoundException if the player is not found in the database or the provider
      */
     public PlayerResponseDTO getOrSyncPlayer(String name, String team) {
-        Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
-        if (player.isPresent()) {
-            return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
-        } else {
-            Player newPlayer = provider.fetchPlayer(name, team);
+        synchronized (repository) {
+            Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
+            if (player.isPresent()) {
+                return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
+            } else {
+                Player newPlayer = provider.fetchPlayer(name, team);
 
-            if (newPlayer == null) {
-                throw new PlayerNotFoundException(name, team);
+                if (newPlayer == null) {
+                    throw new PlayerNotFoundException(name, team);
+                }
+
+                PlayerEntity playerEntity = playerMapper.domainToEntity(newPlayer);
+
+                ScareResult res = factory.generateScareResult(newPlayer);
+
+                ScareResultEntity scareEntity = scareResultMapper.scareDomainToScareEntity(res);
+
+                scareEntity.setPlayer(playerEntity);
+                playerEntity.setScareResult(scareEntity);
+
+                PlayerEntity savedEntity = repository.save(playerEntity);
+                newPlayer.setId(savedEntity.getId());
+
+                return playerMapper.domainToResponse(newPlayer);
             }
-
-            PlayerEntity playerEntity = playerMapper.domainToEntity(newPlayer);
-
-            ScareResult res = factory.generateScareResult(newPlayer);
-
-            ScareResultEntity scareEntity = scareResultMapper.scareDomainToScareEntity(res);
-
-            scareEntity.setPlayer(playerEntity);
-            playerEntity.setScareResult(scareEntity);
-
-            PlayerEntity savedEntity = repository.save(playerEntity);
-            newPlayer.setId(savedEntity.getId());
-
-            return playerMapper.domainToResponse(newPlayer);
         }
     }
 

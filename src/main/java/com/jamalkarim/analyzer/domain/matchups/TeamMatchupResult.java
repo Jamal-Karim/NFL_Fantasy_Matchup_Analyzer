@@ -25,6 +25,13 @@ public class TeamMatchupResult {
     private MatchupAdvantages advantage;
     private List<PlayerMatchupResult> playerMatchupResults;
 
+    /**
+     * Constructs a TeamMatchupResult for a head-to-head comparison
+     * between two specific teams.
+     *
+     * @param team1 The name of the first team.
+     * @param team2 The name of the second team.
+     */
     public TeamMatchupResult(String team1, String team2) {
         this.team1 = team1;
         this.team2 = team2;

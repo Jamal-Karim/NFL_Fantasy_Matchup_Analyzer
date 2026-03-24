@@ -1,7 +1,6 @@
 package com.jamalkarim.analyzer.controller;
 
 import com.jamalkarim.analyzer.domain.enums.Position;
-import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.dto.response.ApiResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
@@ -21,6 +20,12 @@ public class PlayerController {
     private final PlayerService playerService;
     private final ScareResultService scareResultService;
 
+    /**
+     * Constructs a new PlayerController with the required services.
+     *
+     * @param playerService      Service for managing player data
+     * @param scareResultService Service for managing Scare Factor analysis
+     */
     public PlayerController(PlayerService playerService, ScareResultService scareResultService) {
         this.playerService = playerService;
         this.scareResultService = scareResultService;

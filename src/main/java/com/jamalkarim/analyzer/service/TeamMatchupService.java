@@ -8,10 +8,8 @@ import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.entities.TeamMatchupResultEntity;
 import com.jamalkarim.analyzer.exceptions.MatchupNotFoundException;
-import com.jamalkarim.analyzer.repository.PlayerMatchupRepository;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamMatchupRepository;
-import com.jamalkarim.analyzer.utils.PlayerMapper;
 import com.jamalkarim.analyzer.utils.TeamMatchupMapper;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +27,14 @@ public class TeamMatchupService {
     private final TeamMatchupMapper teamMatchupMapper;
     private final PlayerRepository playerRepository;
 
+    /**
+     * Constructs a TeamMatchupService with required dependencies.
+     *
+     * @param teamMatchupRepository The repository for team matchup results
+     * @param teamMatchupAnalyzer   The component for analyzing team battles
+     * @param teamMatchupMapper     The mapper for team matchup models
+     * @param playerRepository      The repository for player data
+     */
     public TeamMatchupService(TeamMatchupRepository teamMatchupRepository, TeamMatchupAnalyzer teamMatchupAnalyzer,
                               TeamMatchupMapper teamMatchupMapper, PlayerRepository playerRepository) {
         this.teamMatchupRepository = teamMatchupRepository;

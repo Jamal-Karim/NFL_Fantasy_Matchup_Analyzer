@@ -26,6 +26,13 @@ public class PlayerMatchupResult {
     private ScareResult player1ScareResult;
     private ScareResult player2ScareResult;
 
+    /**
+     * Constructs a PlayerMatchupResult for a head-to-head comparison
+     * between two specific players.
+     *
+     * @param player1 The first player in the matchup.
+     * @param player2 The second player in the matchup.
+     */
     public PlayerMatchupResult(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
