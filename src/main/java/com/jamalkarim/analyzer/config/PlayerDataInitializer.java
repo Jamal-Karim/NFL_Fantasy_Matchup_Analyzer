@@ -16,7 +16,7 @@ import java.util.Map;
  * Seeds the database with players listed in a JSON file.
  */
 @Component
-@Profile({"!prod", "!test"})
+@Profile("!prod & !test & !automation")
 public class PlayerDataInitializer implements CommandLineRunner {
 
     private final PlayerService playerService;
