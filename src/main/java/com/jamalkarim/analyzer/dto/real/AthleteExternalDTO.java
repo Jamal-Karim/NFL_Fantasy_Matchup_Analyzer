@@ -58,6 +58,7 @@ public class AthleteExternalDTO {
      * JSON looks like: { "athletes": [ {...}, {...} ] }
      */
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TeamRosterWrapper {
         private List<AthleteExternalDTO> athletes;
     }
