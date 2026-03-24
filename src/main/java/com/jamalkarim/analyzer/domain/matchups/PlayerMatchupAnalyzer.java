@@ -15,6 +15,12 @@ public class PlayerMatchupAnalyzer {
 
     private final ScareResultFactory scareResultFactory;
 
+    /**
+     * Constructs a PlayerMatchupAnalyzer with the necessary factory for generating
+     * Scare Factor results.
+     *
+     * @param scareResultFactory The factory used to analyze individual players.
+     */
     public PlayerMatchupAnalyzer(ScareResultFactory scareResultFactory) {
         this.scareResultFactory = scareResultFactory;
     }

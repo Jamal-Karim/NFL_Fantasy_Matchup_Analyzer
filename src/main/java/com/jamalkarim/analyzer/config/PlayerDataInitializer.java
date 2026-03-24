@@ -10,17 +10,33 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Component that initializes player data when the application starts.
+ * Seeds the database with players listed in a JSON file.
+ */
 @Component
 public class PlayerDataInitializer implements CommandLineRunner {
 
     private final PlayerService playerService;
     private final ObjectMapper objectMapper;
 
+    /**
+     * Constructs a PlayerDataInitializer with necessary dependencies.
+     *
+     * @param playerService The service for player operations
+     * @param objectMapper  The Jackson object mapper for JSON processing
+     */
     public PlayerDataInitializer(PlayerService playerService, ObjectMapper objectMapper) {
         this.playerService = playerService;
         this.objectMapper = objectMapper;
     }
 
+    /**
+     * Seeds player data from a JSON file when the application context is ready.
+     *
+     * @param args command line arguments
+     * @throws Exception if an error occurs during seeding
+     */
     @Override
     public void run(String... args) throws Exception {
         ClassPathResource resource = new ClassPathResource("seeding/players.json");

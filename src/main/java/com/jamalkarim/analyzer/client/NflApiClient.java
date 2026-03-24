@@ -14,6 +14,10 @@ import org.springframework.web.client.RestClient;
 
 import java.time.LocalDate;
 
+/**
+ * Production implementation of PlayerDataProvider that fetches real-time data from an external NFL API.
+ * Uses RestClient to communicate with the RapidAPI NFL service.
+ */
 @Component
 @Profile("prod")
 public class NflApiClient implements PlayerDataProvider {
@@ -23,6 +27,14 @@ public class NflApiClient implements PlayerDataProvider {
     private static final int currentYear = LocalDate.now().getYear();
     private static final int lastYear = currentYear - 1;
 
+    /**
+     * Constructs an NflApiClient with necessary configurations for API access.
+     *
+     * @param builder      The RestClient builder
+     * @param playerMapper The mapper for player objects
+     * @param apiHost      The host for the RapidAPI service
+     * @param apiKey       The authentication key for the RapidAPI service
+     */
     public NflApiClient(RestClient.Builder builder, PlayerMapper playerMapper,
                         @Value("${rapidapi.host}") String apiHost,
                         @Value("${rapidapi.key}") String apiKey) {
@@ -34,6 +46,14 @@ public class NflApiClient implements PlayerDataProvider {
         this.playerMapper = playerMapper;
     }
 
+    /**
+     * Fetches real-world player data from the external API.
+     * Performs multiple requests to gather roster information, player details, and statistics.
+     *
+     * @param name    The name of the player
+     * @param nflTeam The NFL team the player plays for
+     * @return A Player domain object with fetched data, or null if not found
+     */
     @Override
     public Player fetchPlayer(String name, String nflTeam) {
 

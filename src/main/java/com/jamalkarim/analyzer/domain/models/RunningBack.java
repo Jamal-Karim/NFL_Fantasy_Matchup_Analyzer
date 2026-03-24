@@ -30,6 +30,12 @@ public class RunningBack extends Player {
     public static final double RECEIVING_YARDS_WEIGHT = 0.05;
     public static final double RECEIVING_TDS_WEIGHT = 0.05;
 
+    /**
+     * Constructs a new RunningBack with the specified name and team.
+     *
+     * @param name The player's full name.
+     * @param team The team the player belongs to.
+     */
     public RunningBack(String name, String team) {
         super(name, team, Position.RB);
     }
@@ -58,6 +64,12 @@ public class RunningBack extends Player {
         return impactMap;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Calculated based on rushing volume and efficiency, as well as involvement
+     * and scoring threat in the passing game.
+     */
     @Override
     public double calculateScareFactor() {
         Map<PlayerStats, Impact> impactMap = generateImpactMap();
@@ -74,6 +86,12 @@ public class RunningBack extends Player {
         return Math.max(0, applySoftCap(score * 130));
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Analyzes top contributors among rushing yards, rushing touchdowns,
+     * receptions, receiving yards, and receiving touchdowns.
+     */
     @Override
     public List<String> generateListOfExplanations() {
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());

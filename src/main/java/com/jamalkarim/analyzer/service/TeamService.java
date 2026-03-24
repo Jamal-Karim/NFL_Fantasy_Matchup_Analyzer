@@ -36,6 +36,15 @@ public class TeamService {
     private final PlayerService playerService;
     private final PlayerMapper playerMapper;
 
+    /**
+     * Constructs a TeamService with required dependencies.
+     *
+     * @param repository       The repository for fantasy team data
+     * @param playerRepository The repository for player data
+     * @param mapper           The mapper for fantasy team models
+     * @param playerService    The service for managing individual players
+     * @param playerMapper     The mapper for player models
+     */
     public TeamService(TeamRepository repository, PlayerRepository playerRepository, TeamMapper mapper, PlayerService playerService, PlayerMapper playerMapper) {
         this.repository = repository;
         this.playerRepository = playerRepository;

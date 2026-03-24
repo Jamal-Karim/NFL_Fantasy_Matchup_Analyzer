@@ -33,6 +33,15 @@ public class PlayerService {
     private final ScareResultMapper scareResultMapper;
     private final ScareResultFactory factory;
 
+    /**
+     * Constructs a PlayerService with required dependencies.
+     *
+     * @param repository        The repository for player data
+     * @param provider          The provider for fetching external player data
+     * @param playerMapper      The mapper for player models
+     * @param scareResultMapper The mapper for Scare Factor models
+     * @param factory           The factory for generating performance analysis
+     */
     public PlayerService(PlayerRepository repository, PlayerDataProvider provider, PlayerMapper playerMapper, ScareResultMapper scareResultMapper, ScareResultFactory factory) {
         this.repository = repository;
         this.provider = provider;

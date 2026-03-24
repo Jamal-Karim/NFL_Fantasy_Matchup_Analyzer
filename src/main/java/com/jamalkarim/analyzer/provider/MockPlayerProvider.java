@@ -22,6 +22,12 @@ public class MockPlayerProvider implements PlayerDataProvider {
     private final ObjectMapper objectMapper;
     private final PlayerMapper playerMapper;
 
+    /**
+     * Constructs a MockPlayerProvider with necessary dependencies.
+     *
+     * @param objectMapper The Jackson object mapper for JSON processing
+     * @param playerMapper The mapper for player objects
+     */
     public MockPlayerProvider(ObjectMapper objectMapper, PlayerMapper playerMapper) {
         this.objectMapper = objectMapper;
         this.playerMapper = playerMapper;

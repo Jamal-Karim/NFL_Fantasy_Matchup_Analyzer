@@ -1,7 +1,6 @@
 package com.jamalkarim.analyzer.domain.models;
 
 import com.jamalkarim.analyzer.domain.enums.PlayerStats;
-import com.jamalkarim.analyzer.domain.enums.PlayerTier;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.BlendedStats;
 import com.jamalkarim.analyzer.domain.scoring.ScareFactor;
@@ -35,6 +34,13 @@ public abstract class Player implements ScareFactor {
     private Stats currentSeasonStats;
     private Stats lastSeasonStats;
 
+    /**
+     * Constructs a new Player with basic identity information.
+     *
+     * @param name The player's full name.
+     * @param team The team the player belongs to.
+     * @param position The player's primary field position.
+     */
     public Player(String name, String team, Position position) {
         this.name = name;
         this.team = team;

@@ -26,6 +26,14 @@ public class MatchupController {
     private final PlayerMatchupService matchupService;
     private final TeamMatchupService teamMatchupService;
 
+    /**
+     * Constructs a new MatchupController with the required services.
+     *
+     * @param playerService       Service for managing player data
+     * @param teamService         Service for managing team data
+     * @param matchupService      Service for analyzing player matchups
+     * @param teamMatchupService  Service for analyzing team matchups
+     */
     public MatchupController(PlayerService playerService, TeamService teamService, PlayerMatchupService matchupService, TeamMatchupService teamMatchupService) {
         this.playerService = playerService;
         this.teamService = teamService;

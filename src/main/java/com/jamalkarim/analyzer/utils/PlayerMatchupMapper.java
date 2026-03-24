@@ -21,6 +21,13 @@ public class PlayerMatchupMapper {
     private final ScareResultMapper scareResultMapper;
     private final PlayerMatchupAnalyzer analyzer;
 
+    /**
+     * Constructs a PlayerMatchupMapper with necessary dependencies.
+     *
+     * @param playerMapper      The mapper for player objects
+     * @param scareResultMapper The mapper for scare result objects
+     * @param analyzer          The analyzer for player matchups
+     */
     public PlayerMatchupMapper(PlayerMapper playerMapper, ScareResultMapper scareResultMapper, PlayerMatchupAnalyzer analyzer) {
         this.playerMapper = playerMapper;
         this.scareResultMapper = scareResultMapper;

@@ -24,6 +24,14 @@ public class ScareResultService {
     private final ScareResultMapper scareResultMapper;
 
 
+    /**
+     * Constructs a ScareResultService with required dependencies.
+     *
+     * @param factory           The factory for generating Scare Factor results
+     * @param repository        The repository for player data
+     * @param playerMapper      The mapper for player models
+     * @param scareResultMapper The mapper for Scare Factor results
+     */
     public ScareResultService(ScareResultFactory factory, PlayerRepository repository, PlayerMapper playerMapper, ScareResultMapper scareResultMapper) {
         this.factory = factory;
         this.repository = repository;

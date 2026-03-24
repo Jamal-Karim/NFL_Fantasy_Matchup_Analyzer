@@ -26,6 +26,12 @@ public class WideReceiver extends Player {
     public static final double RECEIVING_YARDS_WEIGHT = 0.35;
     public static final double RECEIVING_TDS_WEIGHT = 0.40;
 
+    /**
+     * Constructs a new WideReceiver with the specified name and team.
+     *
+     * @param name The player's full name.
+     * @param team The team the player belongs to.
+     */
     public WideReceiver(String name, String team) {
         super(name, team, Position.WR);
     }
@@ -48,6 +54,11 @@ public class WideReceiver extends Player {
         return impactMap;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Calculated based on receiving volume, efficiency (yardage), and scoring threat.
+     */
     @Override
     public double calculateScareFactor() {
         Map<PlayerStats, Impact> impactMap = generateImpactMap();
@@ -60,6 +71,11 @@ public class WideReceiver extends Player {
         return Math.max(0, applySoftCap(score * 138));
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Analyzes top contributors among receptions, receiving yards, and receiving touchdowns.
+     */
     @Override
     public List<String> generateListOfExplanations() {
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());

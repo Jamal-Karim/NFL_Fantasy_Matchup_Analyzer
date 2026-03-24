@@ -20,6 +20,11 @@ public class TeamMapper {
 
     private final PlayerMapper playerMapper;
 
+    /**
+     * Constructs a TeamMapper with necessary dependencies.
+     *
+     * @param playerMapper The mapper for player objects
+     */
     public TeamMapper(PlayerMapper playerMapper) {
         this.playerMapper = playerMapper;
     }

@@ -52,6 +52,11 @@ public class MatchupHistory {
         });
     }
 
+    /**
+     * Returns the current number of matchup results stored in history.
+     *
+     * @return The number of results in the history buffer.
+     */
     public int getHistorySize() {
         return matchupResults.size();
     }

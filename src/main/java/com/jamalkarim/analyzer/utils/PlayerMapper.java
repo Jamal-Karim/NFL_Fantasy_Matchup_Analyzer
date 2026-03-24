@@ -3,7 +3,6 @@ package com.jamalkarim.analyzer.utils;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
-import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.dto.real.AthleteExternalDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.RosterMemberDTO;
@@ -170,6 +169,12 @@ public class PlayerMapper {
         return rosterMemberDTO;
     }
 
+    /**
+     * Converts a PlayerEntity to a simplified RosterMemberDTO.
+     *
+     * @param player The player entity
+     * @return A RosterMemberDTO containing key player info
+     */
     public RosterMemberDTO entityToRosterMember(PlayerEntity player) {
         RosterMemberDTO rosterMemberDTO = new RosterMemberDTO();
         rosterMemberDTO.setId(player.getId());
@@ -179,6 +184,12 @@ public class PlayerMapper {
         return rosterMemberDTO;
     }
 
+    /**
+     * Converts an external API athlete DTO to a MockPlayerDTO.
+     *
+     * @param externalPlayer The athlete from the external API
+     * @return A MockPlayerDTO
+     */
     public MockPlayerDTO externalToMock(AthleteExternalDTO externalPlayer) {
         MockPlayerDTO player = new MockPlayerDTO();
 

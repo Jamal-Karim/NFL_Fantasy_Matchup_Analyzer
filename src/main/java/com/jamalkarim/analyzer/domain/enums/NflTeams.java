@@ -1,5 +1,9 @@
 package com.jamalkarim.analyzer.domain.enums;
 
+/**
+ * Enum representing all 32 NFL teams with their external API IDs,
+ * abbreviations, and display names.
+ */
 public enum NflTeams {
     ARIZONA_CARDINALS("22", "ARI", "Arizona Cardinals"),
     ATLANTA_FALCONS("1", "ATL", "Atlanta Falcons"),

@@ -25,6 +25,11 @@ public class TeamEntity {
     @OneToMany(mappedBy = "teamEntity", cascade = CascadeType.ALL)
     private List<PlayerEntity> roster = new ArrayList<>();
 
+    /**
+     * Adds a player to the team roster and sets the back-reference.
+     *
+     * @param player The player entity to add
+     */
     public void addPlayer(PlayerEntity player) {
         this.roster.add(player);
         player.setTeamEntity(this);

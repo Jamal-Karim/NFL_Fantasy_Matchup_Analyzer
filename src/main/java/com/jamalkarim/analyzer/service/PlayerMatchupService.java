@@ -26,6 +26,15 @@ public class PlayerMatchupService {
     private final PlayerMatchupAnalyzer analyzer;
     private final ScareResultFactory factory;
 
+    /**
+     * Constructs a PlayerMatchupService with required dependencies.
+     *
+     * @param playerRepository  The repository for player data
+     * @param matchupRepository The repository for matchup results
+     * @param mapper            The mapper for converting between domain and entity/DTO models
+     * @param analyzer          The component for analyzing player matchups
+     * @param factory           The factory for generating Scare Factor results
+     */
     public PlayerMatchupService(PlayerRepository playerRepository, PlayerMatchupRepository matchupRepository, PlayerMatchupMapper mapper, PlayerMatchupAnalyzer analyzer, ScareResultFactory factory) {
         this.playerRepository = playerRepository;
         this.matchupRepository = matchupRepository;

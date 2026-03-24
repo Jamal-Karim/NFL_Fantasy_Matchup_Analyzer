@@ -13,5 +13,12 @@ import java.util.Optional;
 @Repository
 public interface TeamMatchupRepository extends JpaRepository<TeamMatchupResultEntity, Long> {
 
+    /**
+     * Finds a stored team matchup result between two specific teams.
+     *
+     * @param team1 The name of the first team
+     * @param team2 The name of the second team
+     * @return An Optional containing the matchup result if it exists
+     */
     Optional<TeamMatchupResultEntity> findByTeam1AndTeam2(String team1, String team2);
 }

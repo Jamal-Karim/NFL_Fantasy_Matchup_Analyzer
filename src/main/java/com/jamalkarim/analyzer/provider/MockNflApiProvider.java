@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Mock implementation of PlayerDataProvider for testing purposes.
+ * Simulates fetching player data by reading from local JSON files that mimic real API responses.
+ */
 @Component
 @Profile("test")
 public class MockNflApiProvider implements PlayerDataProvider {
@@ -22,11 +26,24 @@ public class MockNflApiProvider implements PlayerDataProvider {
     private final String[] jsonFiles = {"real_responses/example_player.json",
             "real_responses/example_player_details.json", "real_responses/example_player_stats.json"};
 
+    /**
+     * Constructs a MockNflApiProvider with necessary dependencies.
+     *
+     * @param objectMapper The Jackson object mapper for JSON processing
+     * @param playerMapper The mapper for player objects
+     */
     public MockNflApiProvider(ObjectMapper objectMapper, PlayerMapper playerMapper) {
         this.objectMapper = objectMapper;
         this.playerMapper = playerMapper;
     }
 
+    /**
+     * Fetches a player by simulating multiple API calls using local JSON files.
+     *
+     * @param name    The name of the player
+     * @param nflTeam The NFL team the player plays for
+     * @return A Player domain object if found in the mock responses, otherwise null
+     */
     @Override
     public Player fetchPlayer(String name, String nflTeam) {
 

@@ -31,6 +31,12 @@ public class QuarterBack extends Player {
     public static final double RUSHING_YARDS_WEIGHT = 0.15;
     public static final double RUSHING_TDS_WEIGHT = 0.35;
 
+    /**
+     * Constructs a new QuarterBack with the specified name and team.
+     *
+     * @param name The player's full name.
+     * @param team The team the player belongs to.
+     */
     public QuarterBack(String name, String team) {
         super(name, team, Position.QB);
     }
@@ -64,6 +70,12 @@ public class QuarterBack extends Player {
         return impactMap;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Calculated based on passing efficiency, completion percentage, and rushing production,
+     * while penalizing interceptions.
+     */
     @Override
     public double calculateScareFactor() {
         Map<PlayerStats, Impact> impactMap = generateImpactMap();
@@ -82,6 +94,12 @@ public class QuarterBack extends Player {
         return Math.max(0, applySoftCap(score * 125));
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Analyzes top contributors among passing yards, touchdowns, interceptions,
+     * completion percentage, and rushing impact.
+     */
     @Override
     public List<String> generateListOfExplanations() {
         Map<PlayerStats, Double> topContributingFactors = findTopContributingScores(generateImpactMap());
