@@ -186,7 +186,7 @@ public class PlayerMapper {
         player.setNflTeam(externalPlayer.getNflTeam().getAbbreviation());
         player.setPosition(Position.valueOf(externalPlayer.getPosition().getAbbreviation()));
 
-        player.setInjured(!externalPlayer.getInjuries().isEmpty());
+        player.setInjured(externalPlayer.hasActiveInjuries());
         player.setDraftPick(externalPlayer.getDraftPosition(externalPlayer.getDraftInfo()));
         player.setRookie(externalPlayer.isRookie(externalPlayer.getDraftInfo()));
 

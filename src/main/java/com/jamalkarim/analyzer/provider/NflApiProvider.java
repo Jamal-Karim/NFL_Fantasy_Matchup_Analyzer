@@ -9,8 +9,6 @@ import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,14 +36,25 @@ public class NflApiProvider implements PlayerDataProvider {
         String teamId = NflTeams.getIdByAbbreviation(nflTeam);
 
         try {
-
-
             String allPlayersOnTeam = jsonFiles[0];
 
             try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(allPlayersOnTeam)) {
+                AthleteExternalDTO athlete = null;
+                if (inputStream == null) {
+                    return null;
+                }
 
                 AthleteExternalDTO.TeamRosterWrapper wrapper = objectMapper.readValue(inputStream, AthleteExternalDTO.TeamRosterWrapper.class);
-                AthleteExternalDTO athlete = wrapper.getAthletes().get(0);
+
+                for (AthleteExternalDTO athleteExternalDTO : wrapper.getAthletes()) {
+                    if (athleteExternalDTO.getName().equals(name)) {
+                        athlete = athleteExternalDTO;
+                    }
+                }
+
+                if (athlete == null) {
+                    return null;
+                }
 
                 externalPlayer.setId(athlete.getId());
                 externalPlayer.setName(athlete.getName());
@@ -56,6 +65,11 @@ public class NflApiProvider implements PlayerDataProvider {
             String playerDetails = jsonFiles[1];
 
             try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(playerDetails)) {
+
+                if (inputStream == null) {
+                    return null;
+                }
+
                 AthleteExternalDTO.PlayerDetailWrapper wrapper = objectMapper.readValue(inputStream, AthleteExternalDTO.PlayerDetailWrapper.class);
                 AthleteExternalDTO athlete = wrapper.getAthlete();
 
@@ -70,6 +84,10 @@ public class NflApiProvider implements PlayerDataProvider {
             String statsDetails = jsonFiles[2];
 
             try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(statsDetails)) {
+
+                if (inputStream == null) {
+                    return null;
+                }
 
                 StatsExternalDTO statsWrapper = objectMapper.readValue(inputStream, StatsExternalDTO.class);
                 externalPlayer.setCurrentSeasonStats(statsWrapper);

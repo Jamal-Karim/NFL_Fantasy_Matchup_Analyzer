@@ -72,7 +72,7 @@ public class AthleteExternalDTO {
     }
 
     public int getDraftPosition(String draftInfo) {
-        Pattern pattern = Pattern.compile("Pk (\\d)+");
+        Pattern pattern = Pattern.compile("Pk (\\d+)");
         Matcher matcher = pattern.matcher(draftInfo);
 
         if (matcher.find()) {
@@ -93,5 +93,9 @@ public class AthleteExternalDTO {
         }
 
         return false;
+    }
+
+    public boolean hasActiveInjuries() {
+        return injuries != null && !injuries.isEmpty();
     }
 }
