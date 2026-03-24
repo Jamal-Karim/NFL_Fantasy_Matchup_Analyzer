@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -26,6 +29,9 @@ public class AthleteExternalDTO {
 
     // if null set isInjured in domain player to false
     private List<InjuryDTO> injuries;
+
+    private StatsExternalDTO lastSeasonStats;
+    private StatsExternalDTO currentSeasonStats;
 
 
     @Data
@@ -63,5 +69,29 @@ public class AthleteExternalDTO {
     @Data
     public static class PlayerDetailWrapper {
         private AthleteExternalDTO athlete;
+    }
+
+    public int getDraftPosition(String draftInfo) {
+        Pattern pattern = Pattern.compile("Pk (\\d)+");
+        Matcher matcher = pattern.matcher(draftInfo);
+
+        if (matcher.find()) {
+            return Integer.parseInt(matcher.group(1));
+        }
+        return 0;
+    }
+
+    public boolean isRookie(String draftInfo) {
+        Pattern pattern = Pattern.compile("^(\\d{4})");
+        Matcher matcher = pattern.matcher(draftInfo);
+
+        if (matcher.find()) {
+            int draftYear = Integer.parseInt(matcher.group(1));
+            int year = LocalDate.now().getYear();
+
+            return draftYear == year;
+        }
+
+        return false;
     }
 }

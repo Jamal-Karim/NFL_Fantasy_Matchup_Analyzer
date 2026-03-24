@@ -4,6 +4,7 @@ import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.models.*;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
+import com.jamalkarim.analyzer.dto.real.AthleteExternalDTO;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.RosterMemberDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
@@ -176,5 +177,22 @@ public class PlayerMapper {
         rosterMemberDTO.setPosition(player.getPosition());
         rosterMemberDTO.setNflTeam(player.getNflTeam());
         return rosterMemberDTO;
+    }
+
+    public MockPlayerDTO externalToMock(AthleteExternalDTO externalPlayer) {
+        MockPlayerDTO player = new MockPlayerDTO();
+
+        player.setName(externalPlayer.getName());
+        player.setNflTeam(externalPlayer.getNflTeam().getAbbreviation());
+        player.setPosition(Position.valueOf(externalPlayer.getPosition().getAbbreviation()));
+
+        player.setInjured(!externalPlayer.getInjuries().isEmpty());
+        player.setDraftPick(externalPlayer.getDraftPosition(externalPlayer.getDraftInfo()));
+        player.setRookie(externalPlayer.isRookie(externalPlayer.getDraftInfo()));
+
+        player.setCurrentSeasonStats(statsMapper.externalToMock(externalPlayer.getCurrentSeasonStats(), player.getPosition(), 2025));
+        player.setLastSeasonStats(statsMapper.externalToMock(externalPlayer.getLastSeasonStats(), player.getPosition(), 2025));
+
+        return player;
     }
 }

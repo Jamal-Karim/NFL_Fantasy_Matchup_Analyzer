@@ -3,7 +3,10 @@ package com.jamalkarim.analyzer.utils;
 import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.domain.stats.Stats;
 import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
+import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.entities.StatsEntity;
+
+import java.util.List;
 
 /**
  * Mapper utility for player statistics.
@@ -187,5 +190,94 @@ public class StatsMapper {
 
         }
         return stats;
+    }
+
+    public MockStatsDTO externalToMock(StatsExternalDTO externalStats, Position position, int season) {
+
+        if (externalStats == null) {
+            return null;
+        }
+
+        StatsExternalDTO.SplitsContainer container = externalStats.getStatistics().getSplits();
+        List<StatsExternalDTO.CategoryDTO> categories = container.getCategories();
+        MockStatsDTO stats = new MockStatsDTO();
+        stats.setSeason(container.getSeason());
+
+        StatsExternalDTO.CategoryDTO generalCategory = categories.stream()
+                .filter(cat -> "general".equals(cat.getName()))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("General category not found"));
+
+        StatsExternalDTO.CategoryDTO passingCategory = categories.stream()
+                .filter(cat -> "passing".equals(cat.getName()))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("Passing category not found"));
+
+        StatsExternalDTO.CategoryDTO rushingCategory = categories.stream()
+                .filter(cat -> "rushing".equals(cat.getName()))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("Rushing category not found"));
+
+        StatsExternalDTO.CategoryDTO receivingCategory = categories.stream()
+                .filter(cat -> "receiving".equals(cat.getName()))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("Receiving category not found"));
+
+        Integer gamesPlayed = getStatValue(generalCategory, "gamesPlayed");
+
+        Integer passAttempts = getStatValue(passingCategory, "passingAttempts");
+        Integer completions = getStatValue(passingCategory, "completions");
+        Integer passingYards = getStatValue(passingCategory, "passingYards");
+        Integer passingTDs = getStatValue(passingCategory, "passingTouchdowns");
+        Integer interceptions = getStatValue(passingCategory, "interceptions");
+
+        Integer rushingAttempts = getStatValue(rushingCategory, "rushingAttempts");
+        Integer rushingYards = getStatValue(rushingCategory, "rushingYards");
+        Integer rushingTDs = getStatValue(rushingCategory, "rushingTouchdowns");
+
+        Integer receptions = getStatValue(receivingCategory, "receptions");
+        Integer receivingYards = getStatValue(receivingCategory, "receivingYards");
+        Integer receivingTouchdowns = getStatValue(receivingCategory, "receivingTouchdowns");
+
+        stats.setSeason(season);
+        stats.setGamesPlayed(gamesPlayed);
+
+        if (position == Position.QB) {
+            stats.setPassAttempts(passAttempts);
+            stats.setCompletions(completions);
+            stats.setPassingYards(passingYards);
+            stats.setPassingTDs(passingTDs);
+            stats.setInterceptions(interceptions);
+            stats.setRushingAttempts(rushingAttempts);
+            stats.setRushingYards(rushingYards);
+            stats.setRushingTDs(rushingTDs);
+        }
+
+        if (position == Position.RB) {
+            stats.setRushingAttempts(rushingAttempts);
+            stats.setRushingYards(rushingYards);
+            stats.setRushingTDs(rushingTDs);
+
+            stats.setReceptions(receptions);
+            stats.setReceivingYards(receivingYards);
+            stats.setReceivingTDs(receivingTouchdowns);
+        }
+
+        if (position == Position.WR || position == Position.TE) {
+            stats.setReceptions(receptions);
+            stats.setReceivingYards(receivingYards);
+            stats.setReceivingTDs(receivingTouchdowns);
+
+        }
+
+        return stats;
+    }
+
+    private Integer getStatValue(StatsExternalDTO.CategoryDTO category, String statName) {
+        String stat = category.getStatsInCategory().stream().filter(s -> statName.equals(s.getName()))
+                .map(StatsExternalDTO.InternalStatsDTO::getValue)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("Stat " + statName + " not found in category " + category.getName()));
+        return Integer.valueOf(stat);
     }
 }
