@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.List;
  * Reads player statistical data from local JSON files to simulate an external API.
  */
 @Repository
+@Profile("dev")
 public class MockPlayerProvider implements PlayerDataProvider {
     private final ObjectMapper objectMapper;
     private final PlayerMapper playerMapper;
@@ -29,7 +31,7 @@ public class MockPlayerProvider implements PlayerDataProvider {
      * Fetches a player by searching through local mock JSON data files.
      * Searches through QB, RB, WR, and TE files to find a matching name and team.
      *
-     * @param name The name of the player
+     * @param name    The name of the player
      * @param nflTeam The NFL team the player plays for
      * @return A Player domain object if found in the mock files, otherwise null
      */

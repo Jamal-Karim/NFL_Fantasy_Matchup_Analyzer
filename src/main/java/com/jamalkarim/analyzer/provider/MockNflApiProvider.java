@@ -7,21 +7,20 @@ import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.dto.real.AthleteExternalDTO;
 import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 @Component
-public class NflApiProvider implements PlayerDataProvider {
+public class MockNflApiProvider implements PlayerDataProvider {
 
     private final ObjectMapper objectMapper;
     private final PlayerMapper playerMapper;
     private final String[] jsonFiles = {"real_responses/example_player.json",
             "real_responses/example_player_details.json", "real_responses/example_player_stats.json"};
 
-    public NflApiProvider(ObjectMapper objectMapper, PlayerMapper playerMapper) {
+    public MockNflApiProvider(ObjectMapper objectMapper, PlayerMapper playerMapper) {
         this.objectMapper = objectMapper;
         this.playerMapper = playerMapper;
     }
@@ -44,12 +43,6 @@ public class NflApiProvider implements PlayerDataProvider {
                 }
 
                 AthleteExternalDTO.TeamRosterWrapper wrapper = objectMapper.readValue(inputStream, AthleteExternalDTO.TeamRosterWrapper.class);
-
-//                for (AthleteExternalDTO athleteExternalDTO : wrapper.getAthletes()) {
-//                    if (athleteExternalDTO.getName().equals(name)) {
-//                        athlete = athleteExternalDTO;
-//                    }
-//                }
 
                 for (AthleteExternalDTO.RosterGroup group : wrapper.getAthletes()) {
                     // Iterate through the players in that group

@@ -8,14 +8,14 @@ import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.provider.PlayerDataProvider;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 import java.time.LocalDate;
 
-@Service
-@Primary
+@Component
+@Profile("prod")
 public class NflApiClient implements PlayerDataProvider {
 
     private final RestClient restClient;

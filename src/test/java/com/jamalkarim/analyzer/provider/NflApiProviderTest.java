@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class NflApiProviderTest {
 
     @Autowired
-    private NflApiProvider nflApiProvider;
+    private MockNflApiProvider mockNflApiProvider;
 
     @Test
     void testFetchPlayer_Success() {
         // 1. Act: Call the provider using your "Nabers" logic
         // (Even if you pass "Malik Nabers", your provider is currently hardcoded to your JSON files)
-        Player player = nflApiProvider.fetchPlayer("Malik Nabers", "NYG");
+        Player player = mockNflApiProvider.fetchPlayer("Malik Nabers", "NYG");
 
         // 2. Assert: Verify the "Identity"
         assertNotNull(player);
