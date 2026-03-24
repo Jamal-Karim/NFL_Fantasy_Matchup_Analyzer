@@ -6,7 +6,7 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,7 @@ import java.util.List;
  * Mock implementation of PlayerDataProvider.
  * Reads player statistical data from local JSON files to simulate an external API.
  */
-@Repository
+@Component
 @Profile("dev")
 public class MockPlayerProvider implements PlayerDataProvider {
     private final ObjectMapper objectMapper;

@@ -7,12 +7,14 @@ import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.dto.real.AthleteExternalDTO;
 import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 @Component
+@Profile("test")
 public class MockNflApiProvider implements PlayerDataProvider {
 
     private final ObjectMapper objectMapper;
