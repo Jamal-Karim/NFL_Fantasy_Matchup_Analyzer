@@ -26,7 +26,7 @@ class ExternalDTOMappingTest {
         assertThat(wrapper).isNotNull();
         assertThat(wrapper.getAthletes()).isNotEmpty();
 
-        AthleteExternalDTO athlete = wrapper.getAthletes().get(0);
+        AthleteExternalDTO athlete = wrapper.getAthletes().get(0).getItems().get(0);
         assertThat(athlete.getId()).isEqualTo("4595348");
         assertThat(athlete.getName()).isEqualTo("Malik Nabers");
         assertThat(athlete.getPosition().getAbbreviation()).isEqualTo("WR");

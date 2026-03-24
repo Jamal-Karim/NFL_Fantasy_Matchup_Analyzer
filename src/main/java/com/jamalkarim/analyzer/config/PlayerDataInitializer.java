@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
-//@Component
+@Component
 public class PlayerDataInitializer implements CommandLineRunner {
 
     private final PlayerService playerService;

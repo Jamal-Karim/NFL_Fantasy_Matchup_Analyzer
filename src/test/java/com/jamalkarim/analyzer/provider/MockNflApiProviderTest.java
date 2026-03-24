@@ -4,20 +4,22 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class NflApiProviderTest {
+@ActiveProfiles("test")
+class MockNflApiProviderTest {
 
     @Autowired
-    private NflApiProvider nflApiProvider;
+    private MockNflApiProvider mockNflApiProvider;
 
     @Test
     void testFetchPlayer_Success() {
         // 1. Act: Call the provider using your "Nabers" logic
         // (Even if you pass "Malik Nabers", your provider is currently hardcoded to your JSON files)
-        Player player = nflApiProvider.fetchPlayer("Malik Nabers", "NYG");
+        Player player = mockNflApiProvider.fetchPlayer("Malik Nabers", "NYG");
 
         // 2. Assert: Verify the "Identity"
         assertNotNull(player);

@@ -192,7 +192,7 @@ public class StatsMapper {
         return stats;
     }
 
-    public MockStatsDTO externalToMock(StatsExternalDTO externalStats, Position position, int season) {
+    public MockStatsDTO externalToMock(StatsExternalDTO externalStats, Position position) {
 
         if (externalStats == null) {
             return null;
@@ -239,7 +239,7 @@ public class StatsMapper {
         Integer receivingYards = getStatValue(receivingCategory, "receivingYards");
         Integer receivingTouchdowns = getStatValue(receivingCategory, "receivingTouchdowns");
 
-        stats.setSeason(season);
+        stats.setSeason(container.getSeason());
         stats.setGamesPlayed(gamesPlayed);
 
         if (position == Position.QB) {
