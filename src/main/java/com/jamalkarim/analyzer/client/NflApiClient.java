@@ -7,20 +7,27 @@ import com.jamalkarim.analyzer.dto.real.AthleteExternalDTO;
 import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.provider.PlayerDataProvider;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+
+import java.time.LocalDate;
 
 @Service
 public class NflApiClient implements PlayerDataProvider {
 
     private final RestClient restClient;
     private final PlayerMapper playerMapper;
+    private static final int currentYear = LocalDate.now().getYear();
+    private static final int lastYear = currentYear - 1;
 
-    public NflApiClient(RestClient.Builder builder, PlayerMapper playerMapper) {
+    public NflApiClient(RestClient.Builder builder, PlayerMapper playerMapper,
+                        @Value("${rapidapi.host}") String apiHost,
+                        @Value("${rapidapi.key}") String apiKey) {
         this.restClient = builder
                 .baseUrl("https://nfl-api-data.p.rapidapi.com") // Example URL
-                .defaultHeader("x-rapidapi-host", "nfl-api-data.p.rapidapi.com")
-                .defaultHeader("x-rapidapi-key", "tbd")
+                .defaultHeader("x-rapidapi-host", apiHost)
+                .defaultHeader("x-rapidapi-key", apiKey)
                 .build();
         this.playerMapper = playerMapper;
     }
@@ -78,16 +85,28 @@ public class NflApiClient implements PlayerDataProvider {
         }
 
         // get specific stats for a player
-        // TODO add logic for current year and last year
         try {
             StatsExternalDTO statsWrapper = restClient.get()
-                    .uri("/nfl-ath-statistics?year=2025&id=" + externalPlayer.getId())
+                    .uri("/nfl-ath-statistics?year=" + currentYear + "&id=" + externalPlayer.getId())
                     .retrieve()
                     .body(StatsExternalDTO.class);
 
             externalPlayer.setCurrentSeasonStats(statsWrapper);
+            externalPlayer.getCurrentSeasonStats().getStatistics().getSplits().setSeason(currentYear);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("DEBUG: No stats found for " + currentYear);
+        }
+
+        try {
+            StatsExternalDTO statsWrapper = restClient.get()
+                    .uri("/nfl-ath-statistics?year=" + lastYear + "&id=" + externalPlayer.getId())
+                    .retrieve()
+                    .body(StatsExternalDTO.class);
+
+            externalPlayer.setLastSeasonStats(statsWrapper);
+            externalPlayer.getLastSeasonStats().getStatistics().getSplits().setSeason(lastYear);
+        } catch (Exception e) {
+            System.out.println("DEBUG: No stats found for " + lastYear);
         }
 
         MockPlayerDTO mockPlayerDTO = playerMapper.externalToMock(externalPlayer);

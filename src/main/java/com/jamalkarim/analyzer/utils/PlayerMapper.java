@@ -190,8 +190,8 @@ public class PlayerMapper {
         player.setDraftPick(externalPlayer.getDraftPosition(externalPlayer.getDraftInfo()));
         player.setRookie(externalPlayer.isRookie(externalPlayer.getDraftInfo()));
 
-        player.setCurrentSeasonStats(statsMapper.externalToMock(externalPlayer.getCurrentSeasonStats(), player.getPosition(), 2025));
-        player.setLastSeasonStats(statsMapper.externalToMock(externalPlayer.getLastSeasonStats(), player.getPosition(), 2025));
+        player.setCurrentSeasonStats(statsMapper.externalToMock(externalPlayer.getCurrentSeasonStats(), player.getPosition()));
+        player.setLastSeasonStats(statsMapper.externalToMock(externalPlayer.getLastSeasonStats(), player.getPosition()));
 
         return player;
     }
