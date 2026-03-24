@@ -97,29 +97,31 @@ public class PlayerService {
      * @throws PlayerNotFoundException if the player is not found in the database or the provider
      */
     public PlayerResponseDTO getOrSyncPlayer(String name, String team) {
-        Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
-        if (player.isPresent()) {
-            return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
-        } else {
-            Player newPlayer = provider.fetchPlayer(name, team);
+        synchronized (repository) {
+            Optional<PlayerEntity> player = repository.findByNameAndNflTeam(name, team);
+            if (player.isPresent()) {
+                return playerMapper.domainToResponse(playerMapper.entityToDomain(player.get()));
+            } else {
+                Player newPlayer = provider.fetchPlayer(name, team);
 
-            if (newPlayer == null) {
-                throw new PlayerNotFoundException(name, team);
+                if (newPlayer == null) {
+                    throw new PlayerNotFoundException(name, team);
+                }
+
+                PlayerEntity playerEntity = playerMapper.domainToEntity(newPlayer);
+
+                ScareResult res = factory.generateScareResult(newPlayer);
+
+                ScareResultEntity scareEntity = scareResultMapper.scareDomainToScareEntity(res);
+
+                scareEntity.setPlayer(playerEntity);
+                playerEntity.setScareResult(scareEntity);
+
+                PlayerEntity savedEntity = repository.save(playerEntity);
+                newPlayer.setId(savedEntity.getId());
+
+                return playerMapper.domainToResponse(newPlayer);
             }
-
-            PlayerEntity playerEntity = playerMapper.domainToEntity(newPlayer);
-
-            ScareResult res = factory.generateScareResult(newPlayer);
-
-            ScareResultEntity scareEntity = scareResultMapper.scareDomainToScareEntity(res);
-
-            scareEntity.setPlayer(playerEntity);
-            playerEntity.setScareResult(scareEntity);
-
-            PlayerEntity savedEntity = repository.save(playerEntity);
-            newPlayer.setId(savedEntity.getId());
-
-            return playerMapper.domainToResponse(newPlayer);
         }
     }
 

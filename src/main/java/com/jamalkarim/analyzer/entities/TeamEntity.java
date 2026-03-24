@@ -14,7 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "team")
+@Table(name = "team", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name")
+})
 public class TeamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

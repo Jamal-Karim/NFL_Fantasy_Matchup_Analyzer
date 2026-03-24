@@ -12,7 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "player")
+@Table(name = "player", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "nfl_team"})
+})
 public class PlayerEntity {
 
     @Id
