@@ -28,4 +28,12 @@ public class ApiClient {
                 .when()
                 .get("/api/player");
     }
+
+    public Response getAllPlayersByPosition(String position) {
+        return RestAssured.given()
+                .log().uri()
+                .queryParam("position", position)
+                .when()
+                .get("/api/player");
+    }
 }

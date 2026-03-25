@@ -9,6 +9,7 @@ Feature: Player Scare Factor Analysis
   Scenario: Calculate Scare Factor for a known Elite QB
     When I request the Scare Factor for Josh Allen
     Then the api call should be successful
+    Then the scare score should be saved to the database
     Then the scare factor should be greater than 90
 
   Scenario: Fetch a player that does not exist
@@ -42,3 +43,7 @@ Feature: Player Scare Factor Analysis
       | status             | SUCCESS |
       | data.totalElements | 4       |
     And the players are sorted by Scare Factor descending
+    When I get all players with position QB
+    Then the response body has:
+      | status             | SUCCESS |
+      | data.totalElements | 2       |

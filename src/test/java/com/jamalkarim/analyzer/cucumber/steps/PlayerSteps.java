@@ -99,6 +99,11 @@ public class PlayerSteps {
         dbUtils.verifyPlayerIsSaved(testContext.getPlayerResponse().getName());
     }
 
+    @Then("^the scare score should be saved to the database$")
+    public void verifyScareScoreSavedToDB() {
+        dbUtils.verifyScareResultIsSaved(testContext.getPlayerResponse().getId());
+    }
+
     @And("^the player id is saved to (\\{\\w+\\})$")
     public void savePlayerId(String id) {
         testVariables.fillSafely(id, testContext.getPlayerResponse().getId());
@@ -107,6 +112,13 @@ public class PlayerSteps {
     @When("^I get all players$")
     public void getAllPlayers() {
         Response response = client.getAllPlayers();
+        testContext.setResponse(response);
+        response.prettyPrint();
+    }
+
+    @When("^I get all players with position ([A-Z]+)$")
+    public void getAllPlayersByPosition(String position) {
+        Response response = client.getAllPlayersByPosition(position);
         testContext.setResponse(response);
         response.prettyPrint();
     }
