@@ -15,6 +15,22 @@ Feature: Team feature
       | data.name          | Cucumber team |
       | data.roster.size() | 3             |
 
+  Scenario: Update a fantasy team
+    Given I create a fantasy team Cucumber team:
+      | name            | team |
+      | Patrick Mahomes | KC   |
+      | Saquon Barkley  | PHI  |
+      | Brock Bowers    | LV   |
+    Then the api call should be successful
+    And the team id is saved to {team2}
+    Then Patrick Mahomes should be on team {team2}
+    When I update the team {team2} to Cucumber team2:
+      | name           | team |
+      | Josh Allen     | BUF  |
+      | Saquon Barkley | PHI  |
+      | Brock Bowers   | LV   |
+    Then the api call should be successful
+
   Scenario: Cannot get team with invalid id
     When I request the team with id 4266
     Then the response body has:

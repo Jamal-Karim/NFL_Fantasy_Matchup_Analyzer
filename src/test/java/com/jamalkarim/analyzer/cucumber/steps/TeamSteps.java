@@ -35,6 +35,38 @@ public class TeamSteps {
 
     @Given("^I create a fantasy team ([a-zA-Z0-9\\s]+):$")
     public void createTeam(String fantasyTeamName, DataTable table) {
+
+        Response response = client.createTeam(fantasyTeamName, createRosterFromTable(table));
+        testContext.setResponse(response);
+
+        if (response.getStatusCode() == 200) {
+            TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
+            testContext.setTeamResponseDTO(teamResponseDTO);
+        }
+
+        response.prettyPrint();
+    }
+
+    @When("^I update the team (\\{\\w+\\})(?: to ([a-zA-Z0-9\\s]+))?:$")
+    public void updateTeam(String id, String newName, DataTable table) {
+
+        TeamResponseDTO team = client.getTeamById(testVariables.getKey(id).toString())
+                .jsonPath().getObject("data", TeamResponseDTO.class);
+
+        String finalName = (newName != null) ? newName : team.getName();
+
+        Response response = client.updateTeam(testVariables.getKey(id).toString(),
+                finalName, createRosterFromTable(table));
+
+        if (response.getStatusCode() == 200) {
+            TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
+            testContext.setTeamResponseDTO(teamResponseDTO);
+        }
+
+        response.prettyPrint();
+    }
+
+    private List<PlayerRequest> createRosterFromTable(DataTable table) {
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 
         List<PlayerRequest> roster = new ArrayList<>();
@@ -50,15 +82,7 @@ public class TeamSteps {
             roster.add(playerRequest);
         }
 
-        Response response = client.createTeam(fantasyTeamName, roster);
-        testContext.setResponse(response);
-
-        if (response.getStatusCode() == 200) {
-            TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
-            testContext.setTeamResponseDTO(teamResponseDTO);
-        }
-
-        response.prettyPrint();
+        return roster;
     }
 
     @And("^the team id is saved to (\\{\\w+\\})$")

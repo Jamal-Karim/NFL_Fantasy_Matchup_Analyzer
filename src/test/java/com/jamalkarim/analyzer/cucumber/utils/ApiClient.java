@@ -83,4 +83,17 @@ public class ApiClient {
                 .when()
                 .get("/api/team");
     }
+
+    public Response updateTeam(String id, String name, List<PlayerRequest> players) {
+        TeamRequest request = new TeamRequest();
+        request.setName(name);
+        request.setRoster(players);
+
+        return RestAssured.given()
+                .contentType("application/json")
+                .body(request)
+                .log().uri()
+                .when()
+                .put("/api/team/" + id);
+    }
 }
