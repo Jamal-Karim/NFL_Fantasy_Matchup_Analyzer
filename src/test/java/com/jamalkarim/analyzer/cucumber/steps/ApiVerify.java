@@ -30,11 +30,11 @@ public class ApiVerify {
 
     private void compareResponses(Response response, String key, String value) {
         if (key.equals("status_code")) {
-            Assertions.assertEquals(response.getStatusCode(), Integer.parseInt(value),
+            Assertions.assertEquals(Integer.parseInt(value), response.getStatusCode(),
                     "HTTP Status Code mismatch");
         } else {
             String jsonKey = testContext.getResponse().jsonPath().getString(key);
-            Assertions.assertEquals(jsonKey, value, String.format("JSON field [%s] mismatch", key));
+            Assertions.assertEquals(value, jsonKey, String.format("JSON field [%s] mismatch", key));
         }
     }
 }

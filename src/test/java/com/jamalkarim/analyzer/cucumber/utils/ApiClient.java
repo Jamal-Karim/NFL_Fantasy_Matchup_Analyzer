@@ -22,9 +22,25 @@ public class ApiClient {
                 .get("/api/player/" + id + "/analysis");
     }
 
+    public Response getScareFactor(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/player/" + id + "/analysis");
+    }
+
     public Response getAllPlayers() {
         return RestAssured.given()
                 .log().uri()
+                .when()
+                .get("/api/player");
+    }
+
+    public Response getAllPlayers(int page, int size) {
+        return RestAssured.given()
+                .log().uri()
+                .queryParam("page", page)
+                .queryParam("size", size)
                 .when()
                 .get("/api/player");
     }

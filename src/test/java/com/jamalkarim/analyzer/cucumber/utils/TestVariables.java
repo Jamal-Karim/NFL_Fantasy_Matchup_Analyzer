@@ -38,6 +38,10 @@ public class TestVariables {
         map.put(extractedKey, value);
     }
 
+    public void clearAll() {
+        map.clear();
+    }
+
     private String extractKey(String key) {
         if (!key.startsWith("{") || !key.endsWith("}")) {
             throw new RuntimeException("Invalid key format, key must be wrapped in curly braces {key}");

@@ -63,7 +63,7 @@ public class PlayerSteps {
         response.prettyPrint();
     }
 
-    @When("^I request the Scare Factor for ([a-zA-Z\\s]+)$")
+    @When("^I request the Scare Factor for ((?!player with id)[a-zA-Z\\s]+)$")
     public void getScareFactorFromName(String name) {
         PlayerResponseDTO playerDto = testVariables.getPlayer(name);
         long id = playerDto.getId();
@@ -81,12 +81,14 @@ public class PlayerSteps {
         testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
     }
 
-    @When("^I request the Scare Factor for player with id (\\d+)$")
+    @When("^I request the Scare Factor for player with id ([a-zA-Z\\d]+)$")
     public void getScareFactorFromId(String id) {
-        Response response = client.getScareFactor(Long.parseLong(id));
+        Response response = client.getScareFactor(id);
         response.prettyPrint();
         testContext.setResponse(response);
-        testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
+        if (response.getStatusCode() == 200) {
+            testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
+        }
     }
 
     @Then("^the scare factor should be greater than ([0-9]+)$")
@@ -112,6 +114,13 @@ public class PlayerSteps {
     @When("^I get all players$")
     public void getAllPlayers() {
         Response response = client.getAllPlayers();
+        testContext.setResponse(response);
+        response.prettyPrint();
+    }
+
+    @When("^I get all players with page (\\d+) and size (\\d+)$")
+    public void getAllPlayersPaginated(int page, int size) {
+        Response response = client.getAllPlayers(page, size);
         testContext.setResponse(response);
         response.prettyPrint();
     }

@@ -12,4 +12,10 @@ public class TestContext {
     private Response response;
     private PlayerResponseDTO playerResponse;
     private ScareResponseDTO scareResponse;
+
+    public void clear() {
+        this.response = null;
+        this.playerResponse = null;
+        this.scareResponse = null;
+    }
 }

@@ -35,4 +35,11 @@ public class DbUtils {
         Long count = (Long) results.get("count");
         Assertions.assertEquals(1, count);
     }
+
+    public void clearDatabase() {
+        jdbcTemplate.execute("DELETE FROM scare_result");
+        jdbcTemplate.execute("DELETE FROM player");
+        jdbcTemplate.execute("DELETE FROM stats");
+        jdbcTemplate.execute("DELETE FROM team");
+    }
 }
