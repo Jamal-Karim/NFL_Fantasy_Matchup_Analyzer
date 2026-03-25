@@ -25,4 +25,30 @@ public class TestVariables {
             throw new RuntimeException("Player not found");
         }
     }
+
+    public Object getKey(String key) {
+        String extractedKey = extractKey(key);
+
+        if (map.containsKey(extractedKey)) {
+            return map.get(extractedKey);
+        } else {
+            throw new RuntimeException("Key not found");
+        }
+    }
+
+    public void fillSafely(String key, Object value) {
+        String extractedKey = extractKey(key);
+
+        if (map.containsKey(extractedKey)) {
+            throw new RuntimeException("Key already exists");
+        }
+        map.put(extractedKey, value);
+    }
+
+    private String extractKey(String key) {
+        if (!key.startsWith("{") || !key.endsWith("}")) {
+            throw new RuntimeException("Invalid key format, key must be wrapped in curly braces {key}");
+        }
+        return key.substring(1, key.length() - 1);
+    }
 }

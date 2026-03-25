@@ -5,7 +5,7 @@ import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
 import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
-import io.cucumber.java.PendingException;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -47,12 +47,29 @@ public class PlayerSteps {
         response.prettyPrint();
     }
 
-    @When("^I request the Scare Factor for ([a-zA-Z\\s]+)")
-    public void getScareFactor(String name) {
+    @When("^I request the Scare Factor for ([a-zA-Z\\s]+)$")
+    public void getScareFactorFromName(String name) {
         PlayerResponseDTO playerDto = testVariables.getPlayer(name);
         long id = playerDto.getId();
         Response response = client.getScareFactor(id);
         response.prettyPrint();
+        testContext.setResponse(response);
+        testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
+    }
+
+    @When("^I request the Scare Factor for player with id (\\{\\w+\\})$")
+    public void getScareFactorFromSavedId(String id) {
+        Response response = client.getScareFactor((Long) testVariables.getKey(id));
+        response.prettyPrint();
+        testContext.setResponse(response);
+        testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
+    }
+
+    @When("^I request the Scare Factor for player with id (\\d+)$")
+    public void getScareFactorFromId(String id) {
+        Response response = client.getScareFactor(Long.parseLong(id));
+        response.prettyPrint();
+        testContext.setResponse(response);
         testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
     }
 
@@ -64,5 +81,10 @@ public class PlayerSteps {
     @Then("^the player should be saved to the database$")
     public void verifyPlayerSavedToDB() {
         dbUtils.verifyPlayerIsSaved(testContext.getPlayerResponse().getName());
+    }
+
+    @And("^the player id is saved to (\\{\\w+\\})$")
+    public void savePlayerId(String id) {
+        testVariables.fillSafely(id, testContext.getPlayerResponse().getId());
     }
 }
