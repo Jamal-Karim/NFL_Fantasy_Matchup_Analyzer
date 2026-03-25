@@ -34,4 +34,12 @@ public interface PlayerRepository extends JpaRepository<PlayerEntity, Long> {
      * @return A page of player entities
      */
     Page<PlayerEntity> findAllByPosition(Position position, Pageable pageable);
+
+    /**
+     * Finds a player by their name.
+     *
+     * @param name The name of the player
+     * @return An Optional containing the player entity if found
+     */
+    Optional<PlayerEntity> findByName(String name);
 }
