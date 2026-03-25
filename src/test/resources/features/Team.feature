@@ -7,6 +7,7 @@ Feature: Team feature
       | Saquon Barkley  | PHI  |
       | Brock Bowers    | LV   |
     Then the api call should be successful
+    Then the team should be saved to the database
     And the team id is saved to {team1}
 
   Scenario: Create a fantasy team with too many qbs

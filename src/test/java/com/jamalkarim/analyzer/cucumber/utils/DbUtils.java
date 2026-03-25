@@ -1,7 +1,9 @@
 package com.jamalkarim.analyzer.cucumber.utils;
 
 import com.jamalkarim.analyzer.entities.PlayerEntity;
+import com.jamalkarim.analyzer.entities.TeamEntity;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
+import com.jamalkarim.analyzer.repository.TeamRepository;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.stereotype.Component;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,16 +18,25 @@ public class DbUtils {
 
     private final JdbcTemplate jdbcTemplate;
     private final PlayerRepository playerRepository;
+    private final TeamRepository teamRepository;
 
-    public DbUtils(JdbcTemplate jdbcTemplate, PlayerRepository playerRepository) {
+    public DbUtils(JdbcTemplate jdbcTemplate, PlayerRepository playerRepository, TeamRepository teamRepository) {
         this.jdbcTemplate = jdbcTemplate;
         this.playerRepository = playerRepository;
+        this.teamRepository = teamRepository;
     }
 
     public void verifyPlayerIsSaved(String name) {
         Optional<PlayerEntity> player = playerRepository.findByName(name);
         assertThat(player)
                 .withFailMessage("Expected player %s to be in the database, but was not.", name)
+                .isPresent();
+    }
+
+    public void verifyTeamIsSaved(String name) {
+        Optional<TeamEntity> team = teamRepository.findByName(name);
+        assertThat(team)
+                .withFailMessage("Expected team %s to be in the database, but was not.", name)
                 .isPresent();
     }
 

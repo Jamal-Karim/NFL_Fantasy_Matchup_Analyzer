@@ -10,6 +10,7 @@ import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 
 import java.util.ArrayList;
@@ -61,5 +62,10 @@ public class TeamSteps {
     @And("^the team id is saved to (\\{\\w+\\})$")
     public void saveTeamId(String id) {
         testVariables.fillSafely(id, testContext.getTeamResponseDTO().getId());
+    }
+
+    @Then("^the team should be saved to the database$")
+    public void verifyTeamSavedToDB() {
+        dbUtils.verifyTeamIsSaved(testContext.getTeamResponseDTO().getName());
     }
 }
