@@ -39,6 +39,6 @@ Feature: Player Scare Factor Analysis
     Then the api call should be successful
     When I get all players
     Then the response body has:
-      | status    | SUCCESS |
-      | data.size | 10      |
+      | status             | SUCCESS |
+      | data.totalElements | 4       |
     And the players are sorted by Scare Factor descending

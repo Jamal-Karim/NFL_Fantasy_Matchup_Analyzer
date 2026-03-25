@@ -12,9 +12,6 @@ public class TestVariables {
     private final Map<String, Object> map = new HashMap<>();
 
     public void addPlayerToMap(PlayerResponseDTO playerDTO) {
-        if (map.containsKey(playerDTO.getName())) {
-            throw new RuntimeException("Player already exists");
-        }
         map.put(playerDTO.getName(), playerDTO);
     }
 
@@ -38,10 +35,6 @@ public class TestVariables {
 
     public void fillSafely(String key, Object value) {
         String extractedKey = extractKey(key);
-
-        if (map.containsKey(extractedKey)) {
-            throw new RuntimeException("Key already exists");
-        }
         map.put(extractedKey, value);
     }
 
