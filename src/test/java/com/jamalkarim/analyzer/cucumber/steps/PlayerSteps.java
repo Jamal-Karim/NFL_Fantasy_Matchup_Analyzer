@@ -113,21 +113,21 @@ public class PlayerSteps extends BaseSteps {
 
     @When("^I get all players$")
     public void getAllPlayers() {
-        Response response = client.getAllPlayers();
+        Response response = client.getAllPlayers(null, null, null);
         testContext.setResponse(response);
         response.prettyPrint();
     }
 
     @When("^I get all players with page (\\d+) and size (\\d+)$")
     public void getAllPlayersPaginated(int page, int size) {
-        Response response = client.getAllPlayers(page, size);
+        Response response = client.getAllPlayers(null, page, size);
         testContext.setResponse(response);
         response.prettyPrint();
     }
 
     @When("^I get all players with position ([A-Z]+)$")
     public void getAllPlayersByPosition(String position) {
-        Response response = client.getAllPlayersByPosition(position);
+        Response response = client.getAllPlayers(position, null, null);
         testContext.setResponse(response);
         response.prettyPrint();
     }
