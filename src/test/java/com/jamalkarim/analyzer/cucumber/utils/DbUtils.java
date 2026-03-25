@@ -37,9 +37,13 @@ public class DbUtils {
     }
 
     public void clearDatabase() {
-        jdbcTemplate.execute("DELETE FROM scare_result");
-        jdbcTemplate.execute("DELETE FROM player");
-        jdbcTemplate.execute("DELETE FROM stats");
-        jdbcTemplate.execute("DELETE FROM team");
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0");
+
+        jdbcTemplate.execute("TRUNCATE TABLE scare_result");
+        jdbcTemplate.execute("TRUNCATE TABLE player");
+        jdbcTemplate.execute("TRUNCATE TABLE stats");
+        jdbcTemplate.execute("TRUNCATE TABLE team");
+
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1");
     }
 }

@@ -1,8 +1,12 @@
 package com.jamalkarim.analyzer.cucumber.utils;
 
+import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
+import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ApiClient {
@@ -51,5 +55,18 @@ public class ApiClient {
                 .queryParam("position", position)
                 .when()
                 .get("/api/player");
+    }
+
+    public Response createTeam(String name, List<PlayerRequest> players) {
+        TeamRequest request = new TeamRequest();
+        request.setName(name);
+        request.setRoster(players);
+
+        return RestAssured.given()
+                .contentType("application/json")
+                .body(request)
+                .log().uri()
+                .when()
+                .post("/api/team/create");
     }
 }

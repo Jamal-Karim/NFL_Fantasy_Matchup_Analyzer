@@ -1,4 +1,4 @@
-Feature: Player Scare Factor Analysis
+Feature: Player feature
 
   Background:
     Given I fetch the player Josh Allen on team BUF

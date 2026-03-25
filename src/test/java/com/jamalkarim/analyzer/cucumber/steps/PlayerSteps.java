@@ -6,10 +6,7 @@ import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 
 import java.util.List;
