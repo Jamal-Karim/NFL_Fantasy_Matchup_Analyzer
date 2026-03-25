@@ -14,7 +14,7 @@ Feature: Team feature
     Then the team should be saved to the database
     And the team id is saved to {team}
     When I request the team with id {team}
-    And the response body has:
+    Then the response body has:
       | data.name          | Cucumber team |
       | data.roster.size() | 7             |
 

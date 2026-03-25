@@ -42,6 +42,11 @@ public class PlayerSteps {
             String name = cols.get("name");
             String nflTeam = cols.get("nfl_team");
             fetchPlayer(name, nflTeam);
+
+            if (cols.containsKey("variable")) {
+                String variable = cols.get("variable");
+                testVariables.fillSafely(variable, testContext.getPlayerResponse().getId());
+            }
         }
     }
 

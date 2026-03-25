@@ -13,6 +13,7 @@ import com.jamalkarim.analyzer.repository.TeamMatchupRepository;
 import com.jamalkarim.analyzer.utils.TeamMatchupMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -67,6 +68,10 @@ public class TeamMatchupService {
      * @return A DTO containing the analysis results, including player battles
      */
     public TeamMatchupResponseDTO createTeamMatchup(Team team1, Team team2) {
+
+        if (Objects.equals(team1.getId(), team2.getId())) {
+            throw new RuntimeException("Cannot create matchup between the same team");
+        }
 
         Optional<TeamMatchupResultEntity> existing = teamMatchupRepository
                 .findByTeam1AndTeam2(team1.getName(), team2.getName());

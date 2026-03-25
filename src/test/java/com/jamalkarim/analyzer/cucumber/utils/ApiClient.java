@@ -1,6 +1,8 @@
 package com.jamalkarim.analyzer.cucumber.utils;
 
+import com.jamalkarim.analyzer.dto.requests.PlayerMatchupRequest;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
+import com.jamalkarim.analyzer.dto.requests.TeamMatchupRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -102,5 +104,45 @@ public class ApiClient {
                 .log().uri()
                 .when()
                 .delete("/api/team/" + id);
+    }
+
+    public Response createPlayerMatchup(String id1, String id2) {
+        PlayerMatchupRequest request = new PlayerMatchupRequest();
+        request.setPlayer1Id(Long.parseLong(id1));
+        request.setPlayer2Id(Long.parseLong(id2));
+
+        return RestAssured.given()
+                .contentType("application/json")
+                .body(request)
+                .log().uri()
+                .when()
+                .post("/api/matchup/player/create");
+    }
+
+    public Response getPlayerMatchupById(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/matchup/player/" + id);
+    }
+
+    public Response createTeamMatchup(String id1, String id2) {
+        TeamMatchupRequest request = new TeamMatchupRequest();
+        request.setTeam1Id(Long.parseLong(id1));
+        request.setTeam2Id(Long.parseLong(id2));
+
+        return RestAssured.given()
+                .contentType("application/json")
+                .body(request)
+                .log().uri()
+                .when()
+                .post("/api/matchup/team/create");
+    }
+
+    public Response getTeamMatchupById(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/matchup/team/" + id);
     }
 }

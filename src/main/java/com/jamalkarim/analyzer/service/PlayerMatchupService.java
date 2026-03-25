@@ -13,6 +13,8 @@ import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.utils.PlayerMatchupMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 /**
  * Service for analyzing and retrieving head-to-head player matchups.
  * Orchestrates the comparison of players and handles the persistence of matchup results.
@@ -72,6 +74,11 @@ public class PlayerMatchupService {
      * @return A DTO containing the results of the analysis
      */
     public PlayerMatchupResponseDTO createPlayerMatchup(Player player1, Player player2) {
+
+        if (Objects.equals(player1.getId(), player2.getId())) {
+            throw new RuntimeException("Cannot create matchup between the same player");
+        }
+
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);
 
         PlayerMatchupResultEntity playerMatchupResultEntity = mapper.domainToEntity(result);
