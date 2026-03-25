@@ -168,24 +168,28 @@ public class TeamService {
 
     /**
      * Helper method to sync players and add them to a team entity.
-     * Enforces that a player cannot be on two different teams simultaneously.
+     * Enforces roster construction rules using the Team domain model.
      *
      * @param teamEntity The team receiving the players
      * @param roster     The list of player requests to process
      */
     private void addRosterToEntity(TeamEntity teamEntity, List<PlayerRequest> roster) {
+        Team domainTeam = mapper.entityToDomain(teamEntity);
+
         for (PlayerRequest pr : roster) {
             PlayerResponseDTO dto = playerService.getOrSyncPlayer(pr.getName(), pr.getTeam());
 
-            PlayerEntity player = playerRepository.findById(dto.getId())
+            PlayerEntity playerEntity = playerRepository.findById(dto.getId())
                     .orElseThrow(() -> new PlayerSyncException("Player sync failed for ID " + dto.getId()));
 
-            if (player.getTeamEntity() != null && !player.getTeamEntity().getId().equals(teamEntity.getId())) {
+            if (playerEntity.getTeamEntity() != null && !playerEntity.getTeamEntity().getId().equals(teamEntity.getId())) {
                 throw new PlayerAlreadyRosteredException(
-                        player.getName() + " is already on team: " + player.getTeamEntity().getName()
+                        playerEntity.getName() + " is already on team: " + playerEntity.getTeamEntity().getName()
                 );
             }
-            teamEntity.addPlayer(player);
+
+            domainTeam.addPlayer(playerMapper.entityToDomain(playerEntity));
+            teamEntity.addPlayer(playerEntity);
         }
     }
 }

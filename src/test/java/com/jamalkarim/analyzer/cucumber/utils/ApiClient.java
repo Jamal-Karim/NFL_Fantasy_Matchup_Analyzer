@@ -1,8 +1,12 @@
 package com.jamalkarim.analyzer.cucumber.utils;
 
+import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
+import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ApiClient {
@@ -15,11 +19,11 @@ public class ApiClient {
                 .get("/api/player/team/" + nflTeam);
     }
 
-    public Response getScareFactor(long id) {
+    public Response getPlayerById(String id) {
         return RestAssured.given()
                 .log().uri()
                 .when()
-                .get("/api/player/" + id + "/analysis");
+                .get("/api/player/" + id);
     }
 
     public Response getScareFactor(String id) {
@@ -51,5 +55,52 @@ public class ApiClient {
                 .queryParam("position", position)
                 .when()
                 .get("/api/player");
+    }
+
+    public Response createTeam(String name, List<PlayerRequest> players) {
+        TeamRequest request = new TeamRequest();
+        request.setName(name);
+        request.setRoster(players);
+
+        return RestAssured.given()
+                .contentType("application/json")
+                .body(request)
+                .log().uri()
+                .when()
+                .post("/api/team/create");
+    }
+
+    public Response getTeamById(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/team/" + id);
+    }
+
+    public Response getAlLTeams() {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/team");
+    }
+
+    public Response updateTeam(String id, String name, List<PlayerRequest> players) {
+        TeamRequest request = new TeamRequest();
+        request.setName(name);
+        request.setRoster(players);
+
+        return RestAssured.given()
+                .contentType("application/json")
+                .body(request)
+                .log().uri()
+                .when()
+                .put("/api/team/" + id);
+    }
+
+    public Response deleteTeam(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .delete("/api/team/" + id);
     }
 }

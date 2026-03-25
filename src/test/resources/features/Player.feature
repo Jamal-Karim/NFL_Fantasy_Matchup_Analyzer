@@ -1,4 +1,4 @@
-Feature: Player Scare Factor Analysis
+Feature: Player feature
 
   Background:
     Given I fetch the player Josh Allen on team BUF
@@ -11,6 +11,13 @@ Feature: Player Scare Factor Analysis
     Then the api call should be successful
     Then the scare score should be saved to the database
     Then the scare factor should be greater than 90
+
+  Scenario: Get player by id
+    When I request the player with id {id1}
+    And the response body has:
+      | data.name     | Josh Allen |
+      | data.position | QB         |
+      | data.nfl_team | BUF        |
 
   Scenario: Fetch a player that does not exist
     Given I fetch the player Player NA on team BUF

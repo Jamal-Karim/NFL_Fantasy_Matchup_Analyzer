@@ -5,11 +5,9 @@ import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
 import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
+import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 
 import java.util.List;
@@ -63,11 +61,19 @@ public class PlayerSteps {
         response.prettyPrint();
     }
 
+    @When("^I request the player with id (\\{\\w+\\})$")
+    public void getPlayerFromSavedId(String id) {
+        Response response = client.getPlayerById(String.valueOf(testVariables.getKey(id)));
+        response.prettyPrint();
+        testContext.setResponse(response);
+        testContext.setPlayerResponse(response.jsonPath().getObject("data", PlayerResponseDTO.class));
+    }
+
     @When("^I request the Scare Factor for ((?!player with id)[a-zA-Z\\s]+)$")
     public void getScareFactorFromName(String name) {
         PlayerResponseDTO playerDto = testVariables.getPlayer(name);
         long id = playerDto.getId();
-        Response response = client.getScareFactor(id);
+        Response response = client.getScareFactor(String.valueOf(id));
         response.prettyPrint();
         testContext.setResponse(response);
         testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
@@ -75,7 +81,7 @@ public class PlayerSteps {
 
     @When("^I request the Scare Factor for player with id (\\{\\w+\\})$")
     public void getScareFactorFromSavedId(String id) {
-        Response response = client.getScareFactor((Long) testVariables.getKey(id));
+        Response response = client.getScareFactor(String.valueOf(testVariables.getKey(id)));
         response.prettyPrint();
         testContext.setResponse(response);
         testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
@@ -140,10 +146,27 @@ public class PlayerSteps {
         double maxScareScore = 101;
 
         for (PlayerResponseDTO player : listOfPlayers) {
-            Response response = client.getScareFactor(player.getId());
+            Response response = client.getScareFactor(String.valueOf(player.getId()));
             double scareFactor = response.jsonPath().getObject("data", ScareResponseDTO.class).getScareScore();
             assertThat(scareFactor).isLessThanOrEqualTo(maxScareScore);
             maxScareScore = scareFactor;
         }
+    }
+
+    @Then("^([a-zA-Z\\s]+) should (not )?be on team (\\{\\w+\\})$")
+    public void verifyPlayerIsOnTeam(String playerName, String not, String key) {
+
+        String teamId = testVariables.getKey(key).toString();
+        boolean shouldBePresent = (not == null);
+        String teamName = "";
+
+        if (shouldBePresent) {
+            Response response = client.getTeamById(teamId);
+            teamName = response.jsonPath().getObject("data", TeamResponseDTO.class).getName();
+        } else {
+            teamName = "DELETED_TEAM";
+        }
+
+        dbUtils.verifyPlayerIsOnTeam(playerName, teamName, shouldBePresent);
     }
 }
