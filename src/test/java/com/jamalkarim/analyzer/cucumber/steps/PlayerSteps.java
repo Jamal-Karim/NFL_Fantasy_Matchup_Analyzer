@@ -33,11 +33,18 @@ public class PlayerSteps {
     @Given("^I fetch the player ([a-zA-Z\\s]+) on team ([A-Z]{2,3})$")
     public void fetchPlayer(String name, String nflTeam) {
         Response response = client.getPlayer(name, nflTeam);
-        response.prettyPrint();
-        PlayerResponseDTO playerDto = response.jsonPath().getObject("data", PlayerResponseDTO.class);
         testContext.setResponse(response);
-        testContext.setPlayerResponse(playerDto);
-        testVariables.addPlayerToMap(playerDto);
+
+        if (response.getStatusCode() == 200) {
+            PlayerResponseDTO playerDto = response.jsonPath().getObject("data", PlayerResponseDTO.class);
+
+            if (playerDto != null) {
+                testContext.setPlayerResponse(playerDto);
+                testVariables.addPlayerToMap(playerDto);
+            }
+        }
+
+        response.prettyPrint();
     }
 
     @When("^I request the Scare Factor for ([a-zA-Z\\s]+)")
