@@ -6,11 +6,13 @@ import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
+import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
 import java.util.ArrayList;
@@ -68,4 +70,23 @@ public class TeamSteps {
     public void verifyTeamSavedToDB() {
         dbUtils.verifyTeamIsSaved(testContext.getTeamResponseDTO().getName());
     }
+
+    @When("^I request the team with id (\\{\\w+\\})$")
+    public void getTeamFromSavedId(String id) {
+        Response response = client.getTeamById(String.valueOf(testVariables.getKey(id)));
+        response.prettyPrint();
+        testContext.setResponse(response);
+        testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+    }
+
+    @When("^I request the team with id ([a-zA-Z\\d]+)$")
+    public void getTeamFromId(String id) {
+        Response response = client.getTeamById(id);
+        response.prettyPrint();
+        testContext.setResponse(response);
+        if (response.getStatusCode() == 200) {
+            testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+        }
+    }
+
 }

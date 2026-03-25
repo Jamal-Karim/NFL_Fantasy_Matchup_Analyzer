@@ -9,6 +9,17 @@ Feature: Team feature
     Then the api call should be successful
     Then the team should be saved to the database
     And the team id is saved to {team1}
+    When I request the team with id {team1}
+    And the response body has:
+      | data.name          | Cucumber team |
+      | data.roster.size() | 3             |
+
+  Scenario: Cannot get team with invalid id
+    When I request the team with id 4266
+    Then the response body has:
+      | status_code | 404                         |
+      | status      | ERROR                       |
+      | message     | Team with id 4266 not found |
 
   Scenario: Create a fantasy team with too many qbs
     Given I create a fantasy team Cucumber team2:

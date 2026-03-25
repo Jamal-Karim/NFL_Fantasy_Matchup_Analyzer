@@ -19,11 +19,11 @@ public class ApiClient {
                 .get("/api/player/team/" + nflTeam);
     }
 
-    public Response getScareFactor(long id) {
+    public Response getPlayerById(String id) {
         return RestAssured.given()
                 .log().uri()
                 .when()
-                .get("/api/player/" + id + "/analysis");
+                .get("/api/player/" + id);
     }
 
     public Response getScareFactor(String id) {
@@ -68,5 +68,12 @@ public class ApiClient {
                 .log().uri()
                 .when()
                 .post("/api/team/create");
+    }
+
+    public Response getTeamById(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/team/" + id);
     }
 }
