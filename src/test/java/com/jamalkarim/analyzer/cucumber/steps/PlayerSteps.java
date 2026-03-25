@@ -157,11 +157,16 @@ public class PlayerSteps {
     public void verifyPlayerIsOnTeam(String playerName, String not, String key) {
 
         String teamId = testVariables.getKey(key).toString();
+        boolean shouldBePresent = (not == null);
+        String teamName = "";
 
-        Response response = client.getTeamById(teamId);
-        String teamName = response.jsonPath().getObject("data", TeamResponseDTO.class).getName();
+        if (shouldBePresent) {
+            Response response = client.getTeamById(teamId);
+            teamName = response.jsonPath().getObject("data", TeamResponseDTO.class).getName();
+        } else {
+            teamName = "DELETED_TEAM";
+        }
 
-
-        dbUtils.verifyPlayerIsOnTeam(playerName, teamName, not == null);
+        dbUtils.verifyPlayerIsOnTeam(playerName, teamName, shouldBePresent);
     }
 }

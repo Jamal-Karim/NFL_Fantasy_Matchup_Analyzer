@@ -119,4 +119,11 @@ public class TeamSteps {
         testContext.setResponse(response);
         response.prettyPrint();
     }
+
+    @When("^I delete the team with id (\\{\\w+\\})$")
+    public void deleteTeamFromSavedId(String id) {
+        Response response = client.deleteTeam(String.valueOf(testVariables.getKey(id)));
+        response.prettyPrint();
+        testContext.setResponse(response);
+    }
 }

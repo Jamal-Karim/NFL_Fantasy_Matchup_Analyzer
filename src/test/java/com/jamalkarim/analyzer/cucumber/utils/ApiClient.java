@@ -96,4 +96,11 @@ public class ApiClient {
                 .when()
                 .put("/api/team/" + id);
     }
+
+    public Response deleteTeam(String id) {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .delete("/api/team/" + id);
+    }
 }

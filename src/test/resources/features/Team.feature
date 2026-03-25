@@ -32,6 +32,26 @@ Feature: Team feature
     Then the api call should be successful
     Then Patrick Mahomes should not be on team {team2}
 
+  Scenario: Delete a fantasy team
+    Given I create a fantasy team Cucumber team:
+      | name            | team |
+      | Patrick Mahomes | KC   |
+      | Saquon Barkley  | PHI  |
+      | Brock Bowers    | LV   |
+    Then the api call should be successful
+    And the team id is saved to {team2}
+    Then Patrick Mahomes should be on team {team2}
+    Then Saquon Barkley should be on team {team2}
+    Then Brock Bowers should be on team {team2}
+    When I delete the team with id {team2}
+    Then the response body has:
+      | status_code | 200                  |
+      | status      | SUCCESS              |
+      | message     | Operation successful |
+    Then Patrick Mahomes should not be on team {team2}
+    Then Saquon Barkley should not be on team {team2}
+    Then Brock Bowers should not be on team {team2}
+    
   Scenario: Cannot get team with invalid id
     When I request the team with id 4266
     Then the response body has:
