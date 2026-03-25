@@ -29,3 +29,16 @@ Feature: Player Scare Factor Analysis
       | status_code | 404                   |
       | status      | ERROR                 |
       | message     | Player does not exist |
+
+  Scenario: Fetch multiple players
+    Given I fetch the players:
+      | name            | nfl_team |
+      | Patrick Mahomes | KC       |
+      | Saquon Barkley  | PHI      |
+      | Brock Bowers    | LV       |
+    Then the api call should be successful
+    When I get all players
+    Then the response body has:
+      | status    | SUCCESS |
+      | data.size | 10      |
+    And the players are sorted by Scare Factor descending

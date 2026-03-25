@@ -21,4 +21,11 @@ public class ApiClient {
                 .when()
                 .get("/api/player/" + id + "/analysis");
     }
+
+    public Response getAllPlayers() {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/player");
+    }
 }

@@ -5,17 +5,18 @@ import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
 import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Step definitions for player-related features.
- */
 public class PlayerSteps {
 
     private final ApiClient client;
@@ -31,7 +32,22 @@ public class PlayerSteps {
     }
 
     @Given("^I fetch the player ([a-zA-Z\\s]+) on team ([A-Z]{2,3})$")
-    public void fetchPlayer(String name, String nflTeam) {
+    public void fetchSinglePlayer(String name, String nflTeam) {
+        fetchPlayer(name, nflTeam);
+    }
+
+    @Given("^I fetch the players:$")
+    public void fetchMultiplePlayers(DataTable table) {
+        List<Map<String, String>> rows = table.asMaps(String.class, String.class);
+
+        for (Map<String, String> cols : rows) {
+            String name = cols.get("name");
+            String nflTeam = cols.get("nfl_team");
+            fetchPlayer(name, nflTeam);
+        }
+    }
+
+    private void fetchPlayer(String name, String nflTeam) {
         Response response = client.getPlayer(name, nflTeam);
         testContext.setResponse(response);
 
@@ -86,5 +102,27 @@ public class PlayerSteps {
     @And("^the player id is saved to (\\{\\w+\\})$")
     public void savePlayerId(String id) {
         testVariables.fillSafely(id, testContext.getPlayerResponse().getId());
+    }
+
+    @When("^I get all players$")
+    public void getAllPlayers() {
+        Response response = client.getAllPlayers();
+        testContext.setResponse(response);
+        response.prettyPrint();
+    }
+
+    @And("the players are sorted by Scare Factor descending")
+    public void verifyPlayersSortedByScareFactorDescending() {
+        List<PlayerResponseDTO> listOfPlayers = testContext.getResponse().jsonPath()
+                .getList("data.content", PlayerResponseDTO.class);
+
+        double maxScareScore = 101;
+
+        for (PlayerResponseDTO player : listOfPlayers) {
+            Response response = client.getScareFactor(player.getId());
+            double scareFactor = response.jsonPath().getObject("data", ScareResponseDTO.class).getScareScore();
+            assertThat(scareFactor).isLessThanOrEqualTo(maxScareScore);
+            maxScareScore = scareFactor;
+        }
     }
 }
