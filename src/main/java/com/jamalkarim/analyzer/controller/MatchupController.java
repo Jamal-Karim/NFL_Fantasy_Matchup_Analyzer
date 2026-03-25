@@ -64,7 +64,7 @@ public class MatchupController {
      * @return An ApiResponse containing the stored matchup details
      */
     @GetMapping("/player/{id:\\d+}")
-    public ApiResponse<PlayerMatchupResponseDTO> getMatchupById(@PathVariable long id) {
+    public ApiResponse<PlayerMatchupResponseDTO> getPlayerMatchupById(@PathVariable long id) {
         return ApiResponse.success(matchupService.getPlayerMatchupResponseById(id));
     }
 

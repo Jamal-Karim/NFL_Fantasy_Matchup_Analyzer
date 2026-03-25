@@ -89,4 +89,10 @@ public class TeamSteps {
         }
     }
 
+    @When("^I get all teams$")
+    public void getAllTeams() {
+        Response response = client.getAlLTeams();
+        testContext.setResponse(response);
+        response.prettyPrint();
+    }
 }

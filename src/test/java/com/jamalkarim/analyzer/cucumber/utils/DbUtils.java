@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.entities.TeamEntity;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamRepository;
 import org.junit.jupiter.api.Assertions;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -45,6 +46,26 @@ public class DbUtils {
         Map<String, Object> results = jdbcTemplate.queryForMap(sql, id);
         Long count = (Long) results.get("count");
         Assertions.assertEquals(1, count);
+    }
+
+    public void verifyPlayerIsOnTeam(String playerName, String expectedTeamName) {
+        String sql = "SELECT p.name AS player_name, t.name AS team_name " +
+                "FROM player p LEFT JOIN team t ON p.team_id = t.id " +
+                "WHERE p.name = ?";
+
+        try {
+            Map<String, Object> results = jdbcTemplate.queryForMap(sql, playerName);
+
+            String actualTeam = (results.get("team_name") != null)
+                    ? results.get("team_name").toString()
+                    : "NO TEAM ASSIGNED";
+
+            Assertions.assertEquals(expectedTeamName, actualTeam,
+                    String.format("Data Integrity Error: Player [%s] should be on [%s]", playerName, expectedTeamName));
+
+        } catch (EmptyResultDataAccessException e) {
+            Assertions.fail("Database Error: Player [" + playerName + "] was not found in the player table.");
+        }
     }
 
     public void clearDatabase() {

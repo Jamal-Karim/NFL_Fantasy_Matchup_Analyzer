@@ -9,6 +9,7 @@ Feature: Team feature
     Then the api call should be successful
     Then the team should be saved to the database
     And the team id is saved to {team1}
+    Then Patrick Mahomes should be on team {team1}
     When I request the team with id {team1}
     And the response body has:
       | data.name          | Cucumber team |
@@ -58,3 +59,61 @@ Feature: Team feature
       | status_code | 400                                                   |
       | status      | ERROR                                                 |
       | message     | Roster full: Both the RB and Flex slots are occupied. |
+
+  Scenario: Failure to add player that already exists on a team
+    Given I create a fantasy team Cucumber team:
+      | name            | team |
+      | Patrick Mahomes | KC   |
+      | Saquon Barkley  | PHI  |
+      | Brock Bowers    | LV   |
+    Then the api call should be successful
+    Then the team should be saved to the database
+    Given I create a fantasy team Cucumber team2:
+      | name         | team |
+      | Josh Allen   | BUF  |
+      | James Cook   | BUF  |
+      | Brock Bowers | LV   |
+    Then the response body has:
+      | status_code | 409                                            |
+      | status      | ERROR                                          |
+      | message     | Brock Bowers is already on team: Cucumber team |
+
+  Scenario: Get all teams
+    Given I create a fantasy team team1:
+      | name            | team |
+      | Patrick Mahomes | KC   |
+      | Saquon Barkley  | PHI  |
+      | Brock Bowers    | LV   |
+    Then the api call should be successful
+    Given I create a fantasy team team2:
+      | name         | team |
+      | Josh Allen   | BUF  |
+      | James Cook   | BUF  |
+      | Travis Kelce | KC   |
+    Then the api call should be successful
+    Given I create a fantasy team team3:
+      | name           | team |
+      | Joe Burrow     | CIN  |
+      | Bijan Robinson | ATL  |
+      | Chris Olave    | NO   |
+    Then the api call should be successful
+    When I get all teams
+    Then the response body has:
+      | status             | SUCCESS |
+      | data.totalElements | 3       |
+
+  Scenario: Cannot create team with same name
+    Given I create a fantasy team team1:
+      | name            | team |
+      | Patrick Mahomes | KC   |
+      | Saquon Barkley  | PHI  |
+      | Brock Bowers    | LV   |
+    Then the api call should be successful
+    Given I create a fantasy team team1:
+      | name         | team |
+      | Josh Allen   | BUF  |
+      | James Cook   | BUF  |
+      | Travis Kelce | KC   |
+    Then the response body has:
+      | status  | ERROR                                  |
+      | message | Team with name 'team1' already exists. |

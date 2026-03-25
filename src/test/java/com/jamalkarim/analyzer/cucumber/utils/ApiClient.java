@@ -76,4 +76,11 @@ public class ApiClient {
                 .when()
                 .get("/api/team/" + id);
     }
+
+    public Response getAlLTeams() {
+        return RestAssured.given()
+                .log().uri()
+                .when()
+                .get("/api/team");
+    }
 }

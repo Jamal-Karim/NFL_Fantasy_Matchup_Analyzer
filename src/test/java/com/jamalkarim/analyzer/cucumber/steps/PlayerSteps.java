@@ -152,4 +152,15 @@ public class PlayerSteps {
             maxScareScore = scareFactor;
         }
     }
+
+    @Then("^([a-zA-Z\\s]+) should be on team (\\{\\w+\\})$")
+    public void verifyPlayerIsOnTeam(String playerName, String key) {
+
+        String teamId = testVariables.getKey(key).toString();
+
+        Response response = client.getTeamById(teamId);
+        String teamName = response.jsonPath().getObject("data", TeamResponseDTO.class).getName();
+
+        dbUtils.verifyPlayerIsOnTeam(playerName, teamName);
+    }
 }
