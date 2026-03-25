@@ -1,17 +1,28 @@
 package com.jamalkarim.analyzer.cucumber.steps;
 
+import com.jamalkarim.analyzer.cucumber.utils.ApiClient;
+import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
+import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 
-public class ApiVerify {
+/**
+ * Generic step definitions that can be used across multiple features.
+ */
+public class CommonSteps extends BaseSteps {
 
-    private final TestContext testContext;
+    public CommonSteps(ApiClient client, TestContext testContext, TestVariables testVariables, DbUtils dbUtils) {
+        super(client, testContext, testVariables, dbUtils);
+    }
 
-    public ApiVerify(TestContext testContext) {
-        this.testContext = testContext;
+    @And("^I save the response id to (\\{\\w+\\})$")
+    public void saveResponseId(String key) {
+        Object id = testContext.getResponse().jsonPath().get("data.id");
+        testVariables.saveIdToVariable(key, id);
     }
 
     @Then("^the api call should be successful$")

@@ -42,6 +42,17 @@ public class TestVariables {
         map.clear();
     }
 
+    public String resolve(String input) {
+        if (input.startsWith("{") && input.endsWith("}")) {
+            return String.valueOf(getKey(input));
+        }
+        return input;
+    }
+
+    public void saveIdToVariable(String variableName, Object id) {
+        fillSafely(variableName, id);
+    }
+
     private String extractKey(String key) {
         if (!key.startsWith("{") || !key.endsWith("}")) {
             throw new RuntimeException("Invalid key format, key must be wrapped in curly braces {key}");

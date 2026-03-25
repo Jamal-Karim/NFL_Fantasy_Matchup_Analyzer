@@ -4,9 +4,6 @@ import com.jamalkarim.analyzer.cucumber.utils.ApiClient;
 import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
 import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.requests.PlayerRequest;
-import com.jamalkarim.analyzer.dto.requests.TeamRequest;
-import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
-import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -19,18 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TeamSteps {
-
-    private final ApiClient client;
-    private final TestContext testContext;
-    private final TestVariables testVariables;
-    private final DbUtils dbUtils;
+public class TeamSteps extends BaseSteps {
 
     public TeamSteps(ApiClient client, TestContext testContext, TestVariables testVariables, DbUtils dbUtils) {
-        this.client = client;
-        this.testContext = testContext;
-        this.testVariables = testVariables;
-        this.dbUtils = dbUtils;
+        super(client, testContext, testVariables, dbUtils);
     }
 
     @Given("^I create a fantasy team ([a-zA-Z0-9\\s]+):$")
@@ -47,15 +36,16 @@ public class TeamSteps {
         response.prettyPrint();
     }
 
-    @When("^I update the team (\\{\\w+\\})(?: to ([a-zA-Z0-9\\s]+))?:$")
+    @When("^I update the team ([a-zA-Z\\d\\{\\}]+)(?: to ([a-zA-Z0-9\\s]+))?:$")
     public void updateTeam(String id, String newName, DataTable table) {
 
-        TeamResponseDTO team = client.getTeamById(testVariables.getKey(id).toString())
+        String resolvedId = testVariables.resolve(id);
+        TeamResponseDTO team = client.getTeamById(resolvedId)
                 .jsonPath().getObject("data", TeamResponseDTO.class);
 
         String finalName = (newName != null) ? newName : team.getName();
 
-        Response response = client.updateTeam(testVariables.getKey(id).toString(),
+        Response response = client.updateTeam(resolvedId,
                 finalName, createRosterFromTable(table));
 
         if (response.getStatusCode() == 200) {
@@ -87,7 +77,7 @@ public class TeamSteps {
 
     @And("^the team id is saved to (\\{\\w+\\})$")
     public void saveTeamId(String id) {
-        testVariables.fillSafely(id, testContext.getTeamResponseDTO().getId());
+        testVariables.saveIdToVariable(id, testContext.getTeamResponseDTO().getId());
     }
 
     @Then("^the team should be saved to the database$")
@@ -95,17 +85,9 @@ public class TeamSteps {
         dbUtils.verifyTeamIsSaved(testContext.getTeamResponseDTO().getName());
     }
 
-    @When("^I request the team with id (\\{\\w+\\})$")
-    public void getTeamFromSavedId(String id) {
-        Response response = client.getTeamById(String.valueOf(testVariables.getKey(id)));
-        response.prettyPrint();
-        testContext.setResponse(response);
-        testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
-    }
-
-    @When("^I request the team with id ([a-zA-Z\\d]+)$")
-    public void getTeamFromId(String id) {
-        Response response = client.getTeamById(id);
+    @When("^I request the team with id ([a-zA-Z\\d\\{\\}]+)$")
+    public void getTeamById(String id) {
+        Response response = client.getTeamById(testVariables.resolve(id));
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
@@ -120,20 +102,10 @@ public class TeamSteps {
         response.prettyPrint();
     }
 
-    @When("^I delete the team with id (\\{\\w+\\})$")
-    public void deleteTeamFromSavedId(String id) {
-        Response response = client.deleteTeam(String.valueOf(testVariables.getKey(id)));
+    @When("^I delete the team with id ([a-zA-Z\\d\\{\\}]+)$")
+    public void deleteTeamById(String id) {
+        Response response = client.deleteTeam(testVariables.resolve(id));
         response.prettyPrint();
         testContext.setResponse(response);
-    }
-
-    @When("^I delete the team with id ([a-zA-Z\\d]+)$")
-    public void deleteTeamFromId(String id) {
-        Response response = client.deleteTeam(id);
-        response.prettyPrint();
-        testContext.setResponse(response);
-        if (response.getStatusCode() == 200) {
-            testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
-        }
     }
 }

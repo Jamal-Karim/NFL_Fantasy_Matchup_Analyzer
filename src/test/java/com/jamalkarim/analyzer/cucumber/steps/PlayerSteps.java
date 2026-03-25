@@ -7,7 +7,10 @@ import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
 import java.util.List;
@@ -15,18 +18,10 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PlayerSteps {
-
-    private final ApiClient client;
-    private final TestContext testContext;
-    private final TestVariables testVariables;
-    private final DbUtils dbUtils;
+public class PlayerSteps extends BaseSteps {
 
     public PlayerSteps(ApiClient client, TestContext testContext, TestVariables testVariables, DbUtils dbUtils) {
-        this.client = client;
-        this.testContext = testContext;
-        this.testVariables = testVariables;
-        this.dbUtils = dbUtils;
+        super(client, testContext, testVariables, dbUtils);
     }
 
     @Given("^I fetch the player ([a-zA-Z\\s]+) on team ([A-Z]{2,3})$")
@@ -45,7 +40,7 @@ public class PlayerSteps {
 
             if (cols.containsKey("variable")) {
                 String variable = cols.get("variable");
-                testVariables.fillSafely(variable, testContext.getPlayerResponse().getId());
+                testVariables.saveIdToVariable(variable, testContext.getPlayerResponse().getId());
             }
         }
     }
@@ -66,12 +61,14 @@ public class PlayerSteps {
         response.prettyPrint();
     }
 
-    @When("^I request the player with id (\\{\\w+\\})$")
-    public void getPlayerFromSavedId(String id) {
-        Response response = client.getPlayerById(String.valueOf(testVariables.getKey(id)));
+    @When("^I request the player with id ([a-zA-Z\\d\\{\\}]+)$")
+    public void getPlayerById(String id) {
+        Response response = client.getPlayerById(testVariables.resolve(id));
         response.prettyPrint();
         testContext.setResponse(response);
-        testContext.setPlayerResponse(response.jsonPath().getObject("data", PlayerResponseDTO.class));
+        if (response.getStatusCode() == 200) {
+            testContext.setPlayerResponse(response.jsonPath().getObject("data", PlayerResponseDTO.class));
+        }
     }
 
     @When("^I request the Scare Factor for ((?!player with id)[a-zA-Z\\s]+)$")
@@ -84,17 +81,9 @@ public class PlayerSteps {
         testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
     }
 
-    @When("^I request the Scare Factor for player with id (\\{\\w+\\})$")
-    public void getScareFactorFromSavedId(String id) {
-        Response response = client.getScareFactor(String.valueOf(testVariables.getKey(id)));
-        response.prettyPrint();
-        testContext.setResponse(response);
-        testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
-    }
-
-    @When("^I request the Scare Factor for player with id ([a-zA-Z\\d]+)$")
-    public void getScareFactorFromId(String id) {
-        Response response = client.getScareFactor(id);
+    @When("^I request the Scare Factor for player with id ([a-zA-Z\\d\\{\\}]+)$")
+    public void getScareFactorById(String id) {
+        Response response = client.getScareFactor(testVariables.resolve(id));
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
@@ -119,7 +108,7 @@ public class PlayerSteps {
 
     @And("^the player id is saved to (\\{\\w+\\})$")
     public void savePlayerId(String id) {
-        testVariables.fillSafely(id, testContext.getPlayerResponse().getId());
+        testVariables.saveIdToVariable(id, testContext.getPlayerResponse().getId());
     }
 
     @When("^I get all players$")
@@ -158,10 +147,10 @@ public class PlayerSteps {
         }
     }
 
-    @Then("^([a-zA-Z\\s]+) should (not )?be on team (\\{\\w+\\})$")
+    @Then("^([a-zA-Z\\s]+) should (not )?be on team ([a-zA-Z\\d\\{\\}]+)$")
     public void verifyPlayerIsOnTeam(String playerName, String not, String key) {
 
-        String teamId = testVariables.getKey(key).toString();
+        String teamId = testVariables.resolve(key);
         boolean shouldBePresent = (not == null);
         String teamName = "";
 
