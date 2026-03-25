@@ -1,5 +1,23 @@
 Feature: Team feature
 
+  Scenario: Create a full fantasy team
+    Given I create a fantasy team Cucumber team:
+      | name             | team |
+      | Patrick Mahomes  | KC   |
+      | Saquon Barkley   | PHI  |
+      | James Cook       | BUF  |
+      | Justin Jefferson | MIN  |
+      | Jaylen Waddle    | MIA  |
+      | Brock Bowers     | LV   |
+      | Travis Kelce     | KC   |
+    Then the api call should be successful
+    Then the team should be saved to the database
+    And the team id is saved to {team}
+    When I request the team with id {team}
+    And the response body has:
+      | data.name          | Cucumber team |
+      | data.roster.size() | 7             |
+
   Scenario: Create a single fantasy team
     Given I create a fantasy team Cucumber team:
       | name            | team |
@@ -51,7 +69,14 @@ Feature: Team feature
     Then Patrick Mahomes should not be on team {team2}
     Then Saquon Barkley should not be on team {team2}
     Then Brock Bowers should not be on team {team2}
-    
+
+  Scenario: Cannot delete team with invalid id
+    When I delete the team with id 4266
+    Then the response body has:
+      | status_code | 404                         |
+      | status      | ERROR                       |
+      | message     | Team with id 4266 not found |
+
   Scenario: Cannot get team with invalid id
     When I request the team with id 4266
     Then the response body has:

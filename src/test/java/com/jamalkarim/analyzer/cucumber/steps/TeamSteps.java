@@ -126,4 +126,14 @@ public class TeamSteps {
         response.prettyPrint();
         testContext.setResponse(response);
     }
+
+    @When("^I delete the team with id ([a-zA-Z\\d]+)$")
+    public void deleteTeamFromId(String id) {
+        Response response = client.deleteTeam(id);
+        response.prettyPrint();
+        testContext.setResponse(response);
+        if (response.getStatusCode() == 200) {
+            testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+        }
+    }
 }
