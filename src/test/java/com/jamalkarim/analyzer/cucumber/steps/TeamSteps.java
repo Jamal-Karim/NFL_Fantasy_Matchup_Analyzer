@@ -30,7 +30,7 @@ public class TeamSteps {
         this.dbUtils = dbUtils;
     }
 
-    @Given("^I create a fantasy team ([a-zA-Z\\s]+):$")
+    @Given("^I create a fantasy team ([a-zA-Z0-9\\s]+):$")
     public void createTeam(String fantasyTeamName, DataTable table) {
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 
@@ -48,9 +48,14 @@ public class TeamSteps {
         }
 
         Response response = client.createTeam(fantasyTeamName, roster);
-        TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
         testContext.setResponse(response);
-        testContext.setTeamResponseDTO(teamResponseDTO);
+
+        if (response.getStatusCode() == 200) {
+            TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
+            testContext.setTeamResponseDTO(teamResponseDTO);
+        }
+
+        response.prettyPrint();
     }
 
     @And("^the team id is saved to (\\{\\w+\\})$")

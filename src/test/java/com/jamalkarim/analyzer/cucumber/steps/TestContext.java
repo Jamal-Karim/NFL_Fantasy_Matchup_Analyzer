@@ -19,5 +19,6 @@ public class TestContext {
         this.response = null;
         this.playerResponse = null;
         this.scareResponse = null;
+        this.teamResponseDTO = null;
     }
 }
