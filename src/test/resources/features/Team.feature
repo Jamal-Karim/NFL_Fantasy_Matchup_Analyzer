@@ -30,6 +30,7 @@ Feature: Team feature
       | Saquon Barkley | PHI  |
       | Brock Bowers   | LV   |
     Then the api call should be successful
+    Then Patrick Mahomes should not be on team {team2}
 
   Scenario: Cannot get team with invalid id
     When I request the team with id 4266

@@ -48,23 +48,28 @@ public class DbUtils {
         Assertions.assertEquals(1, count);
     }
 
-    public void verifyPlayerIsOnTeam(String playerName, String expectedTeamName) {
+    public void verifyPlayerIsOnTeam(String playerName, String expectedTeamName, boolean present) {
         String sql = "SELECT p.name AS player_name, t.name AS team_name " +
                 "FROM player p LEFT JOIN team t ON p.team_id = t.id " +
                 "WHERE p.name = ?";
 
         try {
             Map<String, Object> results = jdbcTemplate.queryForMap(sql, playerName);
+            Object actualTeamObj = results.get("team_name");
 
-            String actualTeam = (results.get("team_name") != null)
-                    ? results.get("team_name").toString()
-                    : "NO TEAM ASSIGNED";
+            if (present) {
+                assertThat(actualTeamObj)
+                        .withFailMessage("Expected player [%s] to be on team [%s], but they are not assigned to any team.", playerName, expectedTeamName)
+                        .isNotNull();
 
-            Assertions.assertEquals(expectedTeamName, actualTeam,
-                    String.format("Data Integrity Error: Player [%s] should be on [%s]", playerName, expectedTeamName));
-
-        } catch (EmptyResultDataAccessException e) {
-            Assertions.fail("Database Error: Player [" + playerName + "] was not found in the player table.");
+                Assertions.assertEquals(expectedTeamName, actualTeamObj.toString());
+            } else {
+                assertThat(actualTeamObj)
+                        .withFailMessage("Expected player [%s] to NOT be on a team, but they are assigned to [%s].", playerName, actualTeamObj)
+                        .isNull();
+            }
+        } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+            Assertions.fail("Database Error: Player [" + playerName + "] does not exist in the database.");
         }
     }
 

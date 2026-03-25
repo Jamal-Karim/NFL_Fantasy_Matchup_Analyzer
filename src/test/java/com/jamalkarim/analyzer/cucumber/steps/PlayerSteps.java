@@ -153,14 +153,15 @@ public class PlayerSteps {
         }
     }
 
-    @Then("^([a-zA-Z\\s]+) should be on team (\\{\\w+\\})$")
-    public void verifyPlayerIsOnTeam(String playerName, String key) {
+    @Then("^([a-zA-Z\\s]+) should (not )?be on team (\\{\\w+\\})$")
+    public void verifyPlayerIsOnTeam(String playerName, String not, String key) {
 
         String teamId = testVariables.getKey(key).toString();
 
         Response response = client.getTeamById(teamId);
         String teamName = response.jsonPath().getObject("data", TeamResponseDTO.class).getName();
 
-        dbUtils.verifyPlayerIsOnTeam(playerName, teamName);
+
+        dbUtils.verifyPlayerIsOnTeam(playerName, teamName, not == null);
     }
 }
