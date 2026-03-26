@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Generic step definitions that can be used across multiple features.
+ * Handles common API verifications and state management.
  */
 public class CommonSteps extends BaseSteps {
 
@@ -19,17 +20,19 @@ public class CommonSteps extends BaseSteps {
         super(client, testContext, testVariables, dbUtils);
     }
 
-    @And("^I save the response id to (\\{\\w+\\})$")
-    public void saveResponseId(String key) {
-        Object id = testContext.getResponse().jsonPath().get("data.id");
-        testVariables.saveIdToVariable(key, id);
-    }
-
+    /**
+     * Verifies that the last API call returned a 200 OK status code.
+     */
     @Then("^the api call should be successful$")
     public void verifyApiSuccess() {
         Assertions.assertEquals(200, testContext.getResponse().getStatusCode(), "API Response was not successful");
     }
 
+    /**
+     * Verifies multiple fields in the response body against expected values.
+     *
+     * @param table A data table containing key-value pairs of JSON paths and expected values
+     */
     @Then("^the response body has:$")
     public void verifyResponseBody(List<List<String>> table) {
         for (List<String> row : table) {
@@ -39,6 +42,9 @@ public class CommonSteps extends BaseSteps {
         }
     }
 
+    /**
+     * Helper method to compare a single JSON field or status code.
+     */
     private void compareResponses(Response response, String key, String value) {
         if (key.equals("status_code")) {
             Assertions.assertEquals(Integer.parseInt(value), response.getStatusCode(),
