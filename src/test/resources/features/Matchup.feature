@@ -12,6 +12,7 @@ Feature: Matchup feature
       | data.loser     | Patrick Mahomes |
       | data.advantage | DOMINANT        |
     And I save the player matchup id to {matchupId1}
+    Then the player matchup should be saved to the database
     When I request the player matchup with id {matchupId1}
     Then the response body has:
       | data.winner    | Brock Bowers    |
@@ -57,6 +58,7 @@ Feature: Matchup feature
       | data.team_2_win_probability | 85.04      |
       | data.advantage              | CLEAR_EDGE |
     And I save the team matchup id to {matchupId2}
+    Then the amount of player matchups saved to the database is 3
     When I request the team matchup with id {matchupId2}
     Then the response body has:
       | data.team_1_win_probability | 14.96      |

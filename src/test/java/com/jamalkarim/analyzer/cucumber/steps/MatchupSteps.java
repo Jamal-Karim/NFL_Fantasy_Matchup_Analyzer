@@ -6,6 +6,7 @@ import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
@@ -69,5 +70,17 @@ public class MatchupSteps extends BaseSteps {
         if (response.getStatusCode() == 200) {
             testContext.setTeamMatchupResponseDTO(response.jsonPath().getObject("data", TeamMatchupResponseDTO.class));
         }
+    }
+
+    @Then("^the player matchup should be saved to the database$")
+    public void verifyPlayerMatchupSaved() {
+        PlayerMatchupResponseDTO playerMatchup = testContext.getPlayerMatchupResponseDTO();
+        dbUtils.verifyPlayerMatchupIsSaved(playerMatchup.getId(), playerMatchup.getLoser(), playerMatchup.getWinner());
+    }
+
+    @Then("^the amount of player matchups saved to the database is (\\d+)$")
+    public void verifyTeamMatchupSaved(String amount) {
+        TeamMatchupResponseDTO teamMatchup = testContext.getTeamMatchupResponseDTO();
+        dbUtils.verifyTeamMatchupIsSaved(teamMatchup.getId(), Integer.parseInt(amount));
     }
 }
