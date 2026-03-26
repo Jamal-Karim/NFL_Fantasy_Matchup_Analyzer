@@ -17,6 +17,10 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * Utility class for performing direct database verifications and state management.
+ * Breaks the 'fourth wall' to ensure data integrity beyond API responses.
+ */
 @Component
 public class DbUtils {
 
@@ -34,6 +38,9 @@ public class DbUtils {
         this.teamMatchupRepository = teamMatchupRepository;
     }
 
+    /**
+     * Verifies that a player with the given name exists in the database.
+     */
     public void verifyPlayerIsSaved(String name) {
         Optional<PlayerEntity> player = playerRepository.findByName(name);
         assertThat(player)
@@ -41,6 +48,9 @@ public class DbUtils {
                 .isPresent();
     }
 
+    /**
+     * Verifies that a team with the given name exists in the database.
+     */
     public void verifyTeamIsSaved(String name) {
         Optional<TeamEntity> team = teamRepository.findByName(name);
         assertThat(team)
@@ -48,6 +58,9 @@ public class DbUtils {
                 .isPresent();
     }
 
+    /**
+     * Verifies that a team with the given name does NOT exist in the database.
+     */
     public void verifyTeamDoesNotExist(String name) {
         Optional<TeamEntity> team = teamRepository.findByName(name);
         assertThat(team)
@@ -55,6 +68,9 @@ public class DbUtils {
                 .isNotPresent();
     }
 
+    /**
+     * Verifies that statistical entities for a player are properly persisted and linked.
+     */
     public void verifyPlayerStatsAreSaved(String playerName) {
         String sql = "SELECT p.name, current_stats_id, last_stats_id " +
                 "FROM player p WHERE p.name = ?";
@@ -70,6 +86,9 @@ public class DbUtils {
                 .isNotNull();
     }
 
+    /**
+     * Verifies that a Scare Factor result is saved for a specific player ID.
+     */
     public void verifyScareResultIsSaved(Long id) {
         String sql = "SELECT count(*) AS count FROM scare_result WHERE player_id = ?";
         Map<String, Object> results = jdbcTemplate.queryForMap(sql, id);
@@ -77,6 +96,13 @@ public class DbUtils {
         Assertions.assertEquals(1, count);
     }
 
+    /**
+     * Verifies if a player is correctly associated with a team in the database.
+     *
+     * @param playerName       The name of the player
+     * @param expectedTeamName The expected name of the team
+     * @param present          True if the player should be on the team, false if they should not
+     */
     public void verifyPlayerIsOnTeam(String playerName, String expectedTeamName, boolean present) {
         String sql = "SELECT p.name AS player_name, t.name AS team_name " +
                 "FROM player p LEFT JOIN team t ON p.team_id = t.id " +
@@ -102,6 +128,9 @@ public class DbUtils {
         }
     }
 
+    /**
+     * Verifies that a head-to-head player matchup result is correctly stored.
+     */
     public void verifyPlayerMatchupIsSaved(long id, String player1Name, String player2Name) {
         Optional<PlayerMatchupResultEntity> playerMatchupResult = playerMatchupRepository.findById(id);
         assertThat(playerMatchupResult)
@@ -125,6 +154,9 @@ public class DbUtils {
         }
     }
 
+    /**
+     * Verifies the count of player battle records associated with a team matchup.
+     */
     public void verifyTeamMatchupIsSaved(long id, int expectedAmount) {
         Optional<TeamMatchupResultEntity> teamMatchupResult = teamMatchupRepository.findById(id);
         assertThat(teamMatchupResult)
@@ -138,6 +170,10 @@ public class DbUtils {
         Assertions.assertEquals(expectedAmount, actualCount, "Player matchup count mismatch");
     }
 
+    /**
+     * Truncates all tables to ensure a clean state before each scenario.
+     * Uses FOREIGN_KEY_CHECKS=0 to handle circular dependencies.
+     */
     public void clearDatabase() {
         jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0");
 

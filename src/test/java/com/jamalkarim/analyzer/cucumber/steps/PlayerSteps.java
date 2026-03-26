@@ -18,17 +18,27 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Step definitions for Player-related operations.
+ * Handles fetching, syncing, and analyzing player data and Scare Factors.
+ */
 public class PlayerSteps extends BaseSteps {
 
     public PlayerSteps(ApiClient client, TestContext testContext, TestVariables testVariables, DbUtils dbUtils) {
         super(client, testContext, testVariables, dbUtils);
     }
 
+    /**
+     * Fetches or syncs a single player by name and NFL team.
+     */
     @Given("^I fetch the player ([a-zA-Z\\s]+) on team ([A-Z]{2,3})$")
     public void fetchSinglePlayer(String name, String nflTeam) {
         fetchPlayer(name, nflTeam);
     }
 
+    /**
+     * Fetches or syncs multiple players using a data table.
+     */
     @Given("^I fetch the players:$")
     public void fetchMultiplePlayers(DataTable table) {
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
@@ -45,6 +55,9 @@ public class PlayerSteps extends BaseSteps {
         }
     }
 
+    /**
+     * Internal helper to fetch a player and update shared state.
+     */
     private void fetchPlayer(String name, String nflTeam) {
         Response response = client.getPlayer(name, nflTeam);
         testContext.setResponse(response);
@@ -61,6 +74,9 @@ public class PlayerSteps extends BaseSteps {
         response.prettyPrint();
     }
 
+    /**
+     * Requests a player's details by their database ID.
+     */
     @When("^I request the player with id ([a-zA-Z\\d\\{\\}]+)$")
     public void getPlayerById(String id) {
         Response response = client.getPlayerById(testVariables.resolve(id));
@@ -71,6 +87,9 @@ public class PlayerSteps extends BaseSteps {
         }
     }
 
+    /**
+     * Requests the Scare Factor analysis for a player by their name.
+     */
     @When("^I request the Scare Factor for ((?!player with id)[a-zA-Z\\s]+)$")
     public void getScareFactorFromName(String name) {
         PlayerResponseDTO playerDto = testVariables.getPlayer(name);
@@ -81,6 +100,9 @@ public class PlayerSteps extends BaseSteps {
         testContext.setScareResponse(response.jsonPath().getObject("data", ScareResponseDTO.class));
     }
 
+    /**
+     * Requests the Scare Factor analysis for a player by their database ID.
+     */
     @When("^I request the Scare Factor for player with id ([a-zA-Z\\d\\{\\}]+)$")
     public void getScareFactorById(String id) {
         Response response = client.getScareFactor(testVariables.resolve(id));
@@ -91,31 +113,49 @@ public class PlayerSteps extends BaseSteps {
         }
     }
 
+    /**
+     * Asserts that the player's Scare Score is greater than a specified threshold.
+     */
     @Then("^the scare factor should be greater than ([0-9]+)$")
     public void verifyScareFactor(String scareFactor) {
         assertThat(testContext.getScareResponse().getScareScore()).isGreaterThan(Integer.parseInt(scareFactor));
     }
 
+    /**
+     * Verifies that the player record exists in the database.
+     */
     @Then("^the player should be saved to the database$")
     public void verifyPlayerSavedToDB() {
         dbUtils.verifyPlayerIsSaved(testContext.getPlayerResponse().getName());
     }
 
+    /**
+     * Verifies that the player's statistical entities are persisted in the database.
+     */
     @And("^the player stats should be saved to the database$")
     public void verifyPlayerStatsSavedToDB() {
         dbUtils.verifyPlayerStatsAreSaved(testContext.getPlayerResponse().getName());
     }
 
+    /**
+     * Verifies that the analysis result is persisted in the database.
+     */
     @Then("^the scare score should be saved to the database$")
     public void verifyScareScoreSavedToDB() {
         dbUtils.verifyScareResultIsSaved(testContext.getPlayerResponse().getId());
     }
 
+    /**
+     * Verifies that the player's Scare Tier matches the expected value.
+     */
     @And("^the scare tier should be ([A-Z]+)$")
     public void verifyScareTier(String expectedTier) {
         assertThat(testContext.getScareResponse().getScareTier().name()).isEqualTo(expectedTier);
     }
 
+    /**
+     * Verifies that the analysis reasoning contains specific text.
+     */
     @And("^the scare analysis should contain explanation: \"([^\"]+)\"$")
     public void verifyScareExplanation(String expectedExplanation) {
         String primary = testContext.getScareResponse().getPrimaryExplanation();
@@ -129,11 +169,17 @@ public class PlayerSteps extends BaseSteps {
                 .isTrue();
     }
 
+    /**
+     * Saves the current player's ID to a variable.
+     */
     @And("^the player id is saved to (\\{\\w+\\})$")
     public void savePlayerId(String id) {
         testVariables.saveIdToVariable(id, testContext.getPlayerResponse().getId());
     }
 
+    /**
+     * Fetches all players from the system.
+     */
     @When("^I get all players$")
     public void getAllPlayers() {
         Response response = client.getAllPlayers(null, null, null);
@@ -141,6 +187,9 @@ public class PlayerSteps extends BaseSteps {
         response.prettyPrint();
     }
 
+    /**
+     * Fetches a paginated list of players.
+     */
     @When("^I get all players with page (\\d+) and size (\\d+)$")
     public void getAllPlayersPaginated(int page, int size) {
         Response response = client.getAllPlayers(null, page, size);
@@ -148,6 +197,9 @@ public class PlayerSteps extends BaseSteps {
         response.prettyPrint();
     }
 
+    /**
+     * Fetches players filtered by a specific position.
+     */
     @When("^I get all players with position ([A-Z]+)$")
     public void getAllPlayersByPosition(String position) {
         Response response = client.getAllPlayers(position, null, null);
@@ -155,6 +207,9 @@ public class PlayerSteps extends BaseSteps {
         response.prettyPrint();
     }
 
+    /**
+     * Verifies that the player list is returned in descending order of Scare Factor.
+     */
     @And("the players are sorted by Scare Factor descending")
     public void verifyPlayersSortedByScareFactorDescending() {
         List<PlayerResponseDTO> listOfPlayers = testContext.getResponse().jsonPath()
@@ -170,6 +225,9 @@ public class PlayerSteps extends BaseSteps {
         }
     }
 
+    /**
+     * Verifies if a player is (or is not) assigned to a specific fantasy team in the database.
+     */
     @Then("^([a-zA-Z\\s]+) should (not )?be on team ([a-zA-Z\\d\\{\\}]+)$")
     public void verifyPlayerIsOnTeam(String playerName, String not, String key) {
 
