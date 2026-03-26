@@ -1,0 +1,1519 @@
+{
+  "info": {
+    "_postman_id": "64fdbf57-0cdd-4800-b292-5fba53c1b885",
+    "name": "NFL Fantasy API Analyzer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43029224"
+  },
+  "item": [
+    {
+      "name": "Player Requests",
+      "item": [
+        {
+          "name": "Retrieve a Player with Name and NFL Team",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/player/team/BUF?name=Josh Allen",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "player",
+                "team",
+                "BUF"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Josh Allen"
+                }
+              ]
+            },
+            "description": "## Retrieve a Player with Name and NFL Team\n\nRetrieves detailed information about a specific NFL player by their name and team abbreviation. Use this endpoint to look up a player's data when you know both their full name and the team they play for.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/player/team/{team}?name={playerName}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `team` | string | Yes | The NFL team abbreviation (e.g., `BUF` for Buffalo Bills, `KC` for Kansas City Chiefs). |\n\n---\n\n### Query Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `name` | string | Yes | The full name of the player to retrieve (e.g., `Josh Allen`). |\n\n---\n\n### Example Request\n\n``` http\nGET http://localhost:8081/api/player/team/BUF?name=Josh Allen\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 — Successful Retrieval of Player\n\nReturned when the player is found on the specified team.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Player retrieved successfully\",\n  \"timestamp\": \"2026-03-26T18:53:12.953706900Z\",\n  \"data\": {\n    \"name\": \"Josh Allen\",\n    \"team\": \"BUF\"\n  }\n}\n\n ```\n\n#### 404 — Failure of Player That Does Not Exist\n\nReturned when the specified player cannot be found on the given team.\n\n``` json\n{\n  \"status\": \"ERROR\",\n  \"message\": \"Player 'Random Player' not found on team\",\n  \"timestamp\": \"2026-03-26T18:53:12.953706900Z\",\n  \"data\": null\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Successful Retrieval of Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/team/BUF?name=Josh Allen",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "team",
+                    "BUF"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "Josh Allen"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 18:52:42 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T18:52:42.675731500Z\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Josh Allen\",\n        \"position\": \"QB\",\n        \"nfl_team\": \"BUF\",\n        \"is_rookie\": false,\n        \"is_injured\": false,\n        \"current_season_stats\": {\n            \"season\": 2025,\n            \"completions\": 0,\n            \"interceptions\": 10,\n            \"games_played\": 17,\n            \"passing_attempts\": 0,\n            \"passing_yards\": 3668,\n            \"passing_tds\": 25,\n            \"rushing_attempts\": 112,\n            \"rushing_yards\": 579,\n            \"rushing_tds\": 14\n        },\n        \"last_season_stats\": {\n            \"season\": 2024,\n            \"completions\": 0,\n            \"interceptions\": 6,\n            \"games_played\": 17,\n            \"passing_attempts\": 0,\n            \"passing_yards\": 3731,\n            \"passing_tds\": 28,\n            \"rushing_attempts\": 102,\n            \"rushing_yards\": 531,\n            \"rushing_tds\": 12\n        }\n    }\n}"
+            },
+            {
+              "name": "Failure of Player That Does Not Exist",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/team/BUF?name=Random Player",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "team",
+                    "BUF"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "Random Player"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 18:53:12 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Player 'Random Player' not found on team: BUF\",\n    \"timestamp\": \"2026-03-26T18:53:12.953706900Z\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve a Player with its ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/player/78",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "player",
+                "78"
+              ]
+            },
+            "description": "## Retrieve a Player with its ID\n\nRetrieves detailed information about a specific NFL player by their unique ID. Use this endpoint to look up a player's full profile including stats when you know their player ID.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/player/{id}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | The unique identifier of the player (e.g., `78` for Chris Olave). |\n\n---\n\n### Example Request\n\n``` http\nGET http://localhost:8081/api/player/78\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 — Successful Retrieval of Player\n\nReturned when the player is found with the specified ID.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T20:04:15.098335900Z\",\n  \"data\": {\n    \"id\": 78,\n    \"name\": \"Chris Olave\",\n    \"position\": \"WR\",\n    \"nfl_team\": \"NO\",\n    \"is_rookie\": false,\n    \"is_injured\": false,\n    \"current_season_stats\": {\n      \"season\": 2025,\n      \"receptions\": 100,\n      \"games_played\": 16,\n      \"receiving_yards\": 1163,\n      \"receiving_tds\": 9\n    },\n    \"last_season_stats\": {\n      \"season\": 2024,\n      \"receptions\": 32,\n      \"games_played\": 8,\n      \"receiving_yards\": 400,\n      \"receiving_tds\": 1\n    }\n  }\n}\n\n ```\n\n#### 404 — Failure of Player ID That Does Not Exist\n\nReturned when no player can be found with the given ID.\n\n``` json\n{\n  \"status\": \"ERROR\",\n  \"message\": \"Player with ID '0' not found\",\n  \"timestamp\": \"2026-03-26T20:04:15.098335900Z\",\n  \"data\": null\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Successful Retrieval of Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/78",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "78"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:02:54 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:02:54.737055700Z\",\n    \"data\": {\n        \"id\": 78,\n        \"name\": \"Chris Olave\",\n        \"position\": \"WR\",\n        \"nfl_team\": \"NO\",\n        \"is_rookie\": false,\n        \"is_injured\": false,\n        \"current_season_stats\": {\n            \"season\": 2025,\n            \"receptions\": 100,\n            \"games_played\": 16,\n            \"receiving_yards\": 1163,\n            \"receiving_tds\": 9\n        },\n        \"last_season_stats\": {\n            \"season\": 2024,\n            \"receptions\": 32,\n            \"games_played\": 8,\n            \"receiving_yards\": 400,\n            \"receiving_tds\": 1\n        }\n    }\n}"
+            },
+            {
+              "name": "Failure with Player ID That Does Not Exist",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/0",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "0"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:03:31 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Player with id 0 not found\",\n    \"timestamp\": \"2026-03-26T20:03:31.072519700Z\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve Analysis of a Player with its ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/player/22/analysis",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "player",
+                "22",
+                "analysis"
+              ]
+            },
+            "description": "## Retrieve Analysis of a Player with its ID\n\nRetrieves a detailed fantasy analysis for a specific NFL player by their unique ID. Use this endpoint to evaluate a player's fantasy value, including their scare score, tier rating, and supporting explanations.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/player/{id}/analysis\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | The unique identifier of the player (e.g., `22` for Bijan Robinson). |\n\n---\n\n### Example Request\n\n``` http\nGET http://localhost:8081/api/player/22/analysis\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 — Successful Retrieval of Player Analysis\n\nReturned when the player is found and their analysis is available.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T20:13:13.089545200Z\",\n  \"data\": {\n    \"name\": \"Bijan Robinson\",\n    \"nfl_team\": \"ATL\",\n    \"position\": \"RB\",\n    \"scare_score\": 92.41,\n    \"scare_tier\": \"ELITE\",\n    \"primary_explanation\": \"Highly productive lead runner with strong overall metrics.\",\n    \"supporting_explanations\": [\n      \"Lethal red zone threat; consistently finishes drives.\",\n      \"Elite receiving back; a vital mismatch in the passing game.\"\n    ]\n  }\n}\n\n ```\n\n#### 404 — Failure of Player ID That Does Not Exist\n\nReturned when no player can be found with the given ID.\n\n``` json\n{\n  \"status\": \"ERROR\",\n  \"message\": \"Player with ID '0' not found\",\n  \"timestamp\": \"2026-03-26T20:13:13.089545200Z\",\n  \"data\": null\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Scare Analysis of an Elite Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/22/analysis",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "22",
+                    "analysis"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:06:34 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:06:34.084472Z\",\n    \"data\": {\n        \"name\": \"Bijan Robinson\",\n        \"nfl_team\": \"ATL\",\n        \"position\": \"RB\",\n        \"scare_score\": 92.41,\n        \"scare_tier\": \"ELITE\",\n        \"primary_explanation\": \"Highly productive lead runner with strong yardage output\",\n        \"supporting_explanations\": [\n            \"Lethal red zone threat; consistently finds the end zone\",\n            \"Elite receiving back; a vital mismatch in the passing game\"\n        ]\n    }\n}"
+            },
+            {
+              "name": "Scare Analysis of a Weak Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/91/analysis",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "91",
+                    "analysis"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:07:12 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:07:12.241416700Z\",\n    \"data\": {\n        \"name\": \"Luther Burden\",\n        \"nfl_team\": \"CHI\",\n        \"position\": \"WR\",\n        \"scare_score\": 42.14,\n        \"scare_tier\": \"WEAK\",\n        \"primary_explanation\": \"Rarely utilized in high-leverage scoring situations\",\n        \"supporting_explanations\": [\n            \"Limited explosive potential; strictly a short-yardage option\",\n            \"Low-volume receiver; limited involvement in the weekly gameplan\"\n        ]\n    }\n}"
+            },
+            {
+              "name": "Scare Analysis of an Average Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/20/analysis",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "20",
+                    "analysis"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:07:40 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:07:40.620173400Z\",\n    \"data\": {\n        \"name\": \"Sam Darnold\",\n        \"nfl_team\": \"SEA\",\n        \"position\": \"QB\",\n        \"scare_score\": 54.69,\n        \"scare_tier\": \"AVERAGE\",\n        \"primary_explanation\": \"Rarely used to pick up touchdowns\",\n        \"supporting_explanations\": [\n            \"Aggressive finisher; consistently finds the end zone\",\n            \"Elite passing QB\"\n        ]\n    }\n}"
+            },
+            {
+              "name": "Failure to Get Analysis of a Player That Does Not Exist",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/0/analysis",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "0",
+                    "analysis"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:08:10 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Player does not exist\",\n    \"timestamp\": \"2026-03-26T20:08:10.189313300Z\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET All Players",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/player",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "player"
+              ]
+            },
+            "description": "## Retrieve All Players (Paginated)\n\nRetrieves a paginated list of NFL players along with their current and previous season statistics. This endpoint supports pagination and is typically used as the starting point for browsing or selecting players.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/player\n\n ```\n\n---\n\n### Query Parameters (Optional)\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `page` | integer | No | The page number to retrieve (default is `0`). |\n| `size` | integer | No | Number of players per page (default is `10`). |\n| `position` | string | No | Sorting criteria based on position. |\n\n---\n\n### Example Request\n\n``` http\nGET {{base_url}}/api/player?page=0&size=10\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Players Retrieved Successfully\n\nReturned when a paginated list of players is successfully retrieved.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T20:16:16.064672900Z\",\n  \"data\": {\n    \"content\": [\n      {\n        \"id\": 49,\n        \"name\": \"Trey McBride\",\n        \"position\": \"TE\",\n        \"nfl_team\": \"ARI\",\n        \"is_rookie\": false,\n        \"is_injured\": false,\n        \"current_season_stats\": {\n          \"season\": 2025,\n          \"receptions\": 126,\n          \"games_played\": 17,\n          \"receiving_yards\": 1239,\n          \"receiving_tds\": 11\n        },\n        \"last_season_stats\": {\n          \"season\": 2024,\n          \"receptions\": 111,\n          \"games_played\": 16,\n          \"receiving_yards\": 1146,\n          \"receiving_tds\": 2\n        }\n      }\n    ],\n    \"pageable\": {\n      \"pageNumber\": 0,\n      \"pageSize\": 10\n    },\n    \"totalPages\": 11,\n    \"totalElements\": 105,\n    \"numberOfElements\": 10\n  }\n}\n\n ```\n\n---"
+          },
+          "response": [
+            {
+              "name": "Retrieve All Players In Descending Order Based On Scare Factor",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:09:00 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:09:00.104884900Z\",\n    \"data\": {\n        \"content\": [\n            {\n                \"id\": 49,\n                \"name\": \"Trey McBride\",\n                \"position\": \"TE\",\n                \"nfl_team\": \"ARI\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 126,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1239,\n                    \"receiving_tds\": 11\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 111,\n                    \"games_played\": 16,\n                    \"receiving_yards\": 1146,\n                    \"receiving_tds\": 2\n                }\n            },\n            {\n                \"id\": 68,\n                \"name\": \"Puka Nacua\",\n                \"position\": \"WR\",\n                \"nfl_team\": \"LAR\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 129,\n                    \"games_played\": 16,\n                    \"receiving_yards\": 1715,\n                    \"receiving_tds\": 10\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 79,\n                    \"games_played\": 11,\n                    \"receiving_yards\": 990,\n                    \"receiving_tds\": 3\n                }\n            },\n            {\n                \"id\": 62,\n                \"name\": \"George Kittle\",\n                \"position\": \"TE\",\n                \"nfl_team\": \"SF\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 57,\n                    \"games_played\": 11,\n                    \"receiving_yards\": 628,\n                    \"receiving_tds\": 7\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 78,\n                    \"games_played\": 15,\n                    \"receiving_yards\": 1106,\n                    \"receiving_tds\": 8\n                }\n            },\n            {\n                \"id\": 48,\n                \"name\": \"Brock Bowers\",\n                \"position\": \"TE\",\n                \"nfl_team\": \"LV\",\n                \"is_rookie\": false,\n                \"is_injured\": true,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 64,\n                    \"games_played\": 12,\n                    \"receiving_yards\": 680,\n                    \"receiving_tds\": 7\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 112,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1194,\n                    \"receiving_tds\": 5\n                }\n            },\n            {\n                \"id\": 70,\n                \"name\": \"Jaxon Smith-Njigba\",\n                \"position\": \"WR\",\n                \"nfl_team\": \"SEA\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 119,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1793,\n                    \"receiving_tds\": 10\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 100,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1130,\n                    \"receiving_tds\": 6\n                }\n            },\n            {\n                \"id\": 24,\n                \"name\": \"Jonathan Taylor\",\n                \"position\": \"RB\",\n                \"nfl_team\": \"IND\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 46,\n                    \"games_played\": 17,\n                    \"rushing_attempts\": 0,\n                    \"rushing_yards\": 1585,\n                    \"rushing_tds\": 18,\n                    \"receiving_yards\": 378,\n                    \"receiving_tds\": 2\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 18,\n                    \"games_played\": 14,\n                    \"rushing_attempts\": 0,\n                    \"rushing_yards\": 1431,\n                    \"rushing_tds\": 11,\n                    \"receiving_yards\": 136,\n                    \"receiving_tds\": 1\n                }\n            },\n            {\n                \"id\": 83,\n                \"name\": \"Davante Adams\",\n                \"position\": \"WR\",\n                \"nfl_team\": \"LAR\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 60,\n                    \"games_played\": 14,\n                    \"receiving_yards\": 789,\n                    \"receiving_tds\": 14\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 85,\n                    \"games_played\": 14,\n                    \"receiving_yards\": 1063,\n                    \"receiving_tds\": 8\n                }\n            },\n            {\n                \"id\": 71,\n                \"name\": \"Amon-Ra St Brown\",\n                \"position\": \"WR\",\n                \"nfl_team\": \"DET\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 117,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1401,\n                    \"receiving_tds\": 11\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 115,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1263,\n                    \"receiving_tds\": 12\n                }\n            },\n            {\n                \"id\": 69,\n                \"name\": \"Jamarr Chase\",\n                \"position\": \"WR\",\n                \"nfl_team\": \"CIN\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 125,\n                    \"games_played\": 16,\n                    \"receiving_yards\": 1412,\n                    \"receiving_tds\": 8\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 127,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 1708,\n                    \"receiving_tds\": 17\n                }\n            },\n            {\n                \"id\": 51,\n                \"name\": \"Tucker Kraft\",\n                \"position\": \"TE\",\n                \"nfl_team\": \"GB\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"receptions\": 32,\n                    \"games_played\": 8,\n                    \"receiving_yards\": 489,\n                    \"receiving_tds\": 6\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"receptions\": 50,\n                    \"games_played\": 17,\n                    \"receiving_yards\": 707,\n                    \"receiving_tds\": 7\n                }\n            }\n        ],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": false,\n                \"sorted\": true,\n                \"unsorted\": false\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"last\": false,\n        \"totalPages\": 11,\n        \"totalElements\": 105,\n        \"first\": true,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"numberOfElements\": 10,\n        \"empty\": false\n    }\n}"
+            },
+            {
+              "name": "Retrieve All QBs",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player?position=QB",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player"
+                  ],
+                  "query": [
+                    {
+                      "key": "position",
+                      "value": "QB"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:23:04 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:23:04.768033500Z\",\n    \"data\": {\n        \"content\": [\n            {\n                \"id\": 1,\n                \"name\": \"Josh Allen\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"BUF\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 10,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3668,\n                    \"passing_tds\": 25,\n                    \"rushing_attempts\": 112,\n                    \"rushing_yards\": 579,\n                    \"rushing_tds\": 14\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 6,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3731,\n                    \"passing_tds\": 28,\n                    \"rushing_attempts\": 102,\n                    \"rushing_yards\": 531,\n                    \"rushing_tds\": 12\n                }\n            },\n            {\n                \"id\": 6,\n                \"name\": \"Jalen Hurts\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"PHI\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 6,\n                    \"games_played\": 16,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3224,\n                    \"passing_tds\": 25,\n                    \"rushing_attempts\": 105,\n                    \"rushing_yards\": 421,\n                    \"rushing_tds\": 9\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 5,\n                    \"games_played\": 15,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 2903,\n                    \"passing_tds\": 18,\n                    \"rushing_attempts\": 150,\n                    \"rushing_yards\": 630,\n                    \"rushing_tds\": 14\n                }\n            },\n            {\n                \"id\": 9,\n                \"name\": \"Trevor Lawrence\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"JAX\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 12,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 4007,\n                    \"passing_tds\": 29,\n                    \"rushing_attempts\": 82,\n                    \"rushing_yards\": 359,\n                    \"rushing_tds\": 9\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 7,\n                    \"games_played\": 10,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 2045,\n                    \"passing_tds\": 11,\n                    \"rushing_attempts\": 26,\n                    \"rushing_yards\": 119,\n                    \"rushing_tds\": 3\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Drake Maye\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"NE\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 8,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 4394,\n                    \"passing_tds\": 31,\n                    \"rushing_attempts\": 103,\n                    \"rushing_yards\": 450,\n                    \"rushing_tds\": 4\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 10,\n                    \"games_played\": 13,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 2276,\n                    \"passing_tds\": 15,\n                    \"rushing_attempts\": 54,\n                    \"rushing_yards\": 421,\n                    \"rushing_tds\": 2\n                }\n            },\n            {\n                \"id\": 14,\n                \"name\": \"Matthew Stafford\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"LAR\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 8,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 4707,\n                    \"passing_tds\": 46,\n                    \"rushing_attempts\": 29,\n                    \"rushing_yards\": 10,\n                    \"rushing_tds\": 0\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 8,\n                    \"games_played\": 16,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3762,\n                    \"passing_tds\": 20,\n                    \"rushing_attempts\": 30,\n                    \"rushing_yards\": 41,\n                    \"rushing_tds\": 0\n                }\n            },\n            {\n                \"id\": 12,\n                \"name\": \"Brock Purdy\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"SF\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 10,\n                    \"games_played\": 9,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 2167,\n                    \"passing_tds\": 20,\n                    \"rushing_attempts\": 33,\n                    \"rushing_yards\": 147,\n                    \"rushing_tds\": 2\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 12,\n                    \"games_played\": 15,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3864,\n                    \"passing_tds\": 20,\n                    \"rushing_attempts\": 66,\n                    \"rushing_yards\": 323,\n                    \"rushing_tds\": 5\n                }\n            },\n            {\n                \"id\": 7,\n                \"name\": \"Justin Herbert\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"LAC\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 13,\n                    \"games_played\": 16,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3727,\n                    \"passing_tds\": 26,\n                    \"rushing_attempts\": 83,\n                    \"rushing_yards\": 498,\n                    \"rushing_tds\": 4\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 3,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3870,\n                    \"passing_tds\": 23,\n                    \"rushing_attempts\": 69,\n                    \"rushing_yards\": 306,\n                    \"rushing_tds\": 4\n                }\n            },\n            {\n                \"id\": 5,\n                \"name\": \"Jayden Daniels\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"WAS\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 3,\n                    \"games_played\": 7,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 1262,\n                    \"passing_tds\": 8,\n                    \"rushing_attempts\": 58,\n                    \"rushing_yards\": 278,\n                    \"rushing_tds\": 2\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 9,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3568,\n                    \"passing_tds\": 25,\n                    \"rushing_attempts\": 148,\n                    \"rushing_yards\": 891,\n                    \"rushing_tds\": 6\n                }\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Lamar Jackson\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"BAL\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 7,\n                    \"games_played\": 13,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 2549,\n                    \"passing_tds\": 21,\n                    \"rushing_attempts\": 67,\n                    \"rushing_yards\": 349,\n                    \"rushing_tds\": 2\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 4,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 4172,\n                    \"passing_tds\": 41,\n                    \"rushing_attempts\": 139,\n                    \"rushing_yards\": 915,\n                    \"rushing_tds\": 10\n                }\n            },\n            {\n                \"id\": 15,\n                \"name\": \"Bo Nix\",\n                \"position\": \"QB\",\n                \"nfl_team\": \"DEN\",\n                \"is_rookie\": false,\n                \"is_injured\": false,\n                \"current_season_stats\": {\n                    \"season\": 2025,\n                    \"completions\": 0,\n                    \"interceptions\": 11,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3931,\n                    \"passing_tds\": 25,\n                    \"rushing_attempts\": 83,\n                    \"rushing_yards\": 356,\n                    \"rushing_tds\": 5\n                },\n                \"last_season_stats\": {\n                    \"season\": 2024,\n                    \"completions\": 0,\n                    \"interceptions\": 12,\n                    \"games_played\": 17,\n                    \"passing_attempts\": 0,\n                    \"passing_yards\": 3775,\n                    \"passing_tds\": 29,\n                    \"rushing_attempts\": 92,\n                    \"rushing_yards\": 430,\n                    \"rushing_tds\": 3\n                }\n            }\n        ],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": false,\n                \"sorted\": true,\n                \"unsorted\": false\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"last\": false,\n        \"totalPages\": 3,\n        \"totalElements\": 21,\n        \"first\": true,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"numberOfElements\": 10,\n        \"empty\": false\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Team Requests",
+      "item": [
+        {
+          "name": "Create a Fantasy Team with a Roster",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Ultimate Fantasy Team\",\r\n    \"roster\" : [\r\n        {\"name\": \"Lamar Jackson\", \"team\": \"BAL\"},\r\n        {\"name\": \"Bijan Robinson\", \"team\": \"ATL\"},\r\n        {\"name\": \"Saquon Barkley\", \"team\": \"PHI\"},\r\n        {\"name\": \"Ceedee Lamb\", \"team\": \"DAL\"},\r\n        {\"name\": \"Puka Nacua\", \"team\": \"LAR\"},\r\n        {\"name\": \"Brock Bowers\", \"team\": \"LV\"},\r\n        {\"name\": \"Justin Jefferson\", \"team\": \"MIN\"}\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/team/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "team",
+                "create"
+              ]
+            },
+            "description": "## Create Fantasy Team\n\nCreates a new fantasy team by selecting a roster of NFL players. The endpoint validates roster composition rules (such as position limits) and returns the created team with enriched player data.\n\n---\n\n### HTTP Method & URL\n\n```\nPOST {{base_url}}/api/team/create\n\n ```\n\n---\n\n### Request Body\n\n| Field | Type | Required | Description |\n| --- | --- | --- | --- |\n| `name` | string | Yes | Name of the fantasy team |\n| `roster` | array | Yes | List of players to include in the team |\n| `roster[].name` | string | Yes | Player name |\n| `roster[].team` | string | Yes | NFL team abbreviation |\n\n---\n\n### Example Request\n\n``` json\n{\n  \"name\": \"Ultimate Fantasy Team\",\n  \"roster\": [\n    { \"name\": \"Lamar Jackson\", \"team\": \"BAL\" },\n    { \"name\": \"Bijan Robinson\", \"team\": \"ATL\" },\n    { \"name\": \"Saquon Barkley\", \"team\": \"PHI\" },\n    { \"name\": \"CeeDee Lamb\", \"team\": \"DAL\" },\n    { \"name\": \"Puka Nacua\", \"team\": \"LAR\" },\n    { \"name\": \"Brock Bowers\", \"team\": \"LV\" },\n    { \"name\": \"Justin Jefferson\", \"team\": \"MIN\" }\n  ]\n}\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Team Created Successfully\n\nReturned when the team is successfully created and all players are valid.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T20:26:19.402419100Z\",\n  \"data\": {\n    \"id\": 14,\n    \"name\": \"Ultimate Fantasy Team\",\n    \"roster\": [\n      {\n        \"id\": 3,\n        \"position\": \"QB\",\n        \"name\": \"Lamar Jackson\",\n        \"nfl_team\": \"BAL\"\n      },\n      {\n        \"id\": 22,\n        \"position\": \"RB\",\n        \"name\": \"Bijan Robinson\",\n        \"nfl_team\": \"ATL\"\n      },\n      {\n        \"id\": 32,\n        \"position\": \"RB\",\n        \"name\": \"Saquon Barkley\",\n        \"nfl_team\": \"PHI\"\n      },\n      {\n        \"id\": 72,\n        \"position\": \"WR\",\n        \"name\": \"CeeDee Lamb\",\n        \"nfl_team\": \"DAL\"\n      },\n      {\n        \"id\": 68,\n        \"position\": \"WR\",\n        \"name\": \"Puka Nacua\",\n        \"nfl_team\": \"LAR\"\n      },\n      {\n        \"id\": 48,\n        \"position\": \"TE\",\n        \"name\": \"Brock Bowers\",\n        \"nfl_team\": \"LV\"\n      },\n      {\n        \"id\": 77,\n        \"position\": \"WR\",\n        \"name\": \"Justin Jefferson\",\n        \"nfl_team\": \"MIN\"\n      }\n    ]\n  }\n}\n\n ```\n\n---\n\n#### 400 Bad Request — Roster Validation Failed\n\nReturned when roster rules are violated (e.g., too many QBs or invalid lineup structure).\n\n``` json\n{\n  \"status\": \"ERROR\",\n  \"message\": \"Max QBs reached. Quarterbacks cannot fill the Flex slot.\",\n  \"timestamp\": \"2026-03-26T20:28:27.497282Z\",\n  \"data\": null\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Create a Full Fantasy Team",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\" : \"Ultimate Fantasy Team\",\r\n    \"roster\" : [\r\n        {\"name\": \"Lamar Jackson\", \"team\": \"BAL\"},\r\n        {\"name\": \"Bijan Robinson\", \"team\": \"ATL\"},\r\n        {\"name\": \"Saquon Barkley\", \"team\": \"PHI\"},\r\n        {\"name\": \"Ceedee Lamb\", \"team\": \"DAL\"},\r\n        {\"name\": \"Puka Nacua\", \"team\": \"LAR\"},\r\n        {\"name\": \"Brock Bowers\", \"team\": \"LV\"},\r\n        {\"name\": \"Justin Jefferson\", \"team\": \"MIN\"}\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/team/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team",
+                    "create"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:26:19 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T20:26:19.402419100Z\",\n    \"data\": {\n        \"id\": 14,\n        \"name\": \"Ultimate Fantasy Team\",\n        \"roster\": [\n            {\n                \"id\": 3,\n                \"position\": \"QB\",\n                \"name\": \"Lamar Jackson\",\n                \"nfl_team\": \"BAL\"\n            },\n            {\n                \"id\": 22,\n                \"position\": \"RB\",\n                \"name\": \"Bijan Robinson\",\n                \"nfl_team\": \"ATL\"\n            },\n            {\n                \"id\": 32,\n                \"position\": \"RB\",\n                \"name\": \"Saquon Barkley\",\n                \"nfl_team\": \"PHI\"\n            },\n            {\n                \"id\": 72,\n                \"position\": \"WR\",\n                \"name\": \"CeeDee Lamb\",\n                \"nfl_team\": \"DAL\"\n            },\n            {\n                \"id\": 68,\n                \"position\": \"WR\",\n                \"name\": \"Puka Nacua\",\n                \"nfl_team\": \"LAR\"\n            },\n            {\n                \"id\": 48,\n                \"position\": \"TE\",\n                \"name\": \"Brock Bowers\",\n                \"nfl_team\": \"LV\"\n            },\n            {\n                \"id\": 77,\n                \"position\": \"WR\",\n                \"name\": \"Justin Jefferson\",\n                \"nfl_team\": \"MIN\"\n            }\n        ]\n    }\n}"
+            },
+            {
+              "name": "Failure to Create Team With Roster Violations",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\" : \"QB Heavy Team\",\r\n    \"roster\" : [\r\n        {\"name\": \"Sam Darnold\", \"team\": \"SEA\"},\r\n        {\"name\": \"Jalen Hurts\", \"team\": \"PHI\"}\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/team/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team",
+                    "create"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 20:28:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Max QBs reached. Quarterbacks cannot fill the Flex slot.\",\n    \"timestamp\": \"2026-03-26T20:28:27.497282Z\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve Team with its ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/team/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "team",
+                "14"
+              ]
+            },
+            "description": "## Retrieve Team by ID\n\nRetrieves a specific fantasy team by its unique ID, including the full roster of players associated with the team. This endpoint is useful for viewing an existing team’s composition and details.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/team/{id}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | The unique identifier of the team |\n\n---\n\n### Example Request\n\n``` http\nGET {{base_url}}/api/team/11\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Team Retrieved Successfully\n\nReturned when a team with the given ID exists and is successfully retrieved.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:28:45.467179200Z\",\n  \"data\": {\n    \"id\": 11,\n    \"name\": \"Fantasy team\",\n    \"roster\": [\n      {\n        \"id\": 26,\n        \"position\": \"RB\",\n        \"name\": \"James Cook\",\n        \"nfl_team\": \"BUF\"\n      },\n      {\n        \"id\": 78,\n        \"position\": \"WR\",\n        \"name\": \"Chris Olave\",\n        \"nfl_team\": \"NO\"\n      }\n    ]\n  }\n}\n\n ```\n\n---\n\n#### 404 Not Found — Team Does Not Exist\n\nReturned when no team exists for the provided ID.\n\n``` json\n{\n  \"status\": \"ERROR\",\n  \"message\": \"Team with id 1 not found\",\n  \"timestamp\": \"2026-03-26T21:29:39.288950900Z\",\n  \"data\": null\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Successful Retrieval of Team",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/team/11",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team",
+                    "11"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:28:45 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:28:45.467179200Z\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"Fantasy team\",\n        \"roster\": [\n            {\n                \"id\": 26,\n                \"position\": \"RB\",\n                \"name\": \"James Cook\",\n                \"nfl_team\": \"BUF\"\n            },\n            {\n                \"id\": 78,\n                \"position\": \"WR\",\n                \"name\": \"Chris Olave\",\n                \"nfl_team\": \"NO\"\n            }\n        ]\n    }\n}"
+            },
+            {
+              "name": "Failure of Team ID That Does Not Exist",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/team/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:29:39 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Team with id 1 not found\",\n    \"timestamp\": \"2026-03-26T21:29:39.288950900Z\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve All Fantasy Teams",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/team",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "team"
+              ]
+            },
+            "description": "## Retrieve All Teams (Paginated)\n\nRetrieves a paginated list of all fantasy teams, including their rosters. This endpoint is useful for browsing all created teams and viewing their compositions.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/team\n\n ```\n\n---\n\n### Query Parameters (Optional)\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `page` | integer | No | The page number to retrieve (default is `0`). |\n| `size` | integer | No | Number of teams per page (default is `10`). |\n\n---\n\n### Example Request\n\n``` http\nGET {{base_url}}/api/team?page=0&size=10\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Teams Retrieved Successfully\n\nReturned when a paginated list of teams is successfully retrieved.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:34:49.855038300Z\",\n  \"data\": {\n    \"content\": [\n      {\n        \"id\": 11,\n        \"name\": \"Fantasy team\",\n        \"roster\": [\n          {\n            \"id\": 26,\n            \"position\": \"RB\",\n            \"name\": \"James Cook\",\n            \"nfl_team\": \"BUF\"\n          },\n          {\n            \"id\": 78,\n            \"position\": \"WR\",\n            \"name\": \"Chris Olave\",\n            \"nfl_team\": \"NO\"\n          }\n        ]\n      },\n      {\n        \"id\": 10,\n        \"name\": \"The Gridiron Gurus\",\n        \"roster\": [\n          {\n            \"id\": 1,\n            \"position\": \"QB\",\n            \"name\": \"Josh Allen\",\n            \"nfl_team\": \"BUF\"\n          }\n        ]\n      },\n      {\n        \"id\": 14,\n        \"name\": \"Ultimate Fantasy Team\",\n        \"roster\": [\n          {\n            \"id\": 3,\n            \"position\": \"QB\",\n            \"name\": \"Lamar Jackson\",\n            \"nfl_team\": \"BAL\"\n          },\n          {\n            \"id\": 22,\n            \"position\": \"RB\",\n            \"name\": \"Bijan Robinson\",\n            \"nfl_team\": \"ATL\"\n          },\n          {\n            \"id\": 32,\n            \"position\": \"RB\",\n            \"name\": \"Saquon Barkley\",\n            \"nfl_team\": \"PHI\"\n          },\n          {\n            \"id\": 48,\n            \"position\": \"TE\",\n            \"name\": \"Brock Bowers\",\n            \"nfl_team\": \"LV\"\n          },\n          {\n            \"id\": 68,\n            \"position\": \"WR\",\n            \"name\": \"Puka Nacua\",\n            \"nfl_team\": \"LAR\"\n          },\n          {\n            \"id\": 72,\n            \"position\": \"WR\",\n            \"name\": \"CeeDee Lamb\",\n            \"nfl_team\": \"DAL\"\n          },\n          {\n            \"id\": 77,\n            \"position\": \"WR\",\n            \"name\": \"Justin Jefferson\",\n            \"nfl_team\": \"MIN\"\n          }\n        ]\n      }\n    ],\n    \"pageable\": {\n      \"pageNumber\": 0,\n      \"pageSize\": 10,\n      \"sort\": {\n        \"empty\": true,\n        \"sorted\": false,\n        \"unsorted\": true\n      },\n      \"offset\": 0,\n      \"paged\": true,\n      \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalPages\": 1,\n    \"totalElements\": 3,\n    \"numberOfElements\": 3\n  }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Retrieve All Teams",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/team",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:34:49 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:34:49.855038300Z\",\n    \"data\": {\n        \"content\": [\n            {\n                \"id\": 11,\n                \"name\": \"Fantasy team\",\n                \"roster\": [\n                    {\n                        \"id\": 26,\n                        \"position\": \"RB\",\n                        \"name\": \"James Cook\",\n                        \"nfl_team\": \"BUF\"\n                    },\n                    {\n                        \"id\": 78,\n                        \"position\": \"WR\",\n                        \"name\": \"Chris Olave\",\n                        \"nfl_team\": \"NO\"\n                    }\n                ]\n            },\n            {\n                \"id\": 10,\n                \"name\": \"The Gridiron Gurus\",\n                \"roster\": [\n                    {\n                        \"id\": 1,\n                        \"position\": \"QB\",\n                        \"name\": \"Josh Allen\",\n                        \"nfl_team\": \"BUF\"\n                    }\n                ]\n            },\n            {\n                \"id\": 14,\n                \"name\": \"Ultimate Fantasy Team\",\n                \"roster\": [\n                    {\n                        \"id\": 3,\n                        \"position\": \"QB\",\n                        \"name\": \"Lamar Jackson\",\n                        \"nfl_team\": \"BAL\"\n                    },\n                    {\n                        \"id\": 22,\n                        \"position\": \"RB\",\n                        \"name\": \"Bijan Robinson\",\n                        \"nfl_team\": \"ATL\"\n                    },\n                    {\n                        \"id\": 32,\n                        \"position\": \"RB\",\n                        \"name\": \"Saquon Barkley\",\n                        \"nfl_team\": \"PHI\"\n                    },\n                    {\n                        \"id\": 48,\n                        \"position\": \"TE\",\n                        \"name\": \"Brock Bowers\",\n                        \"nfl_team\": \"LV\"\n                    },\n                    {\n                        \"id\": 68,\n                        \"position\": \"WR\",\n                        \"name\": \"Puka Nacua\",\n                        \"nfl_team\": \"LAR\"\n                    },\n                    {\n                        \"id\": 72,\n                        \"position\": \"WR\",\n                        \"name\": \"CeeDee Lamb\",\n                        \"nfl_team\": \"DAL\"\n                    },\n                    {\n                        \"id\": 77,\n                        \"position\": \"WR\",\n                        \"name\": \"Justin Jefferson\",\n                        \"nfl_team\": \"MIN\"\n                    }\n                ]\n            }\n        ],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"last\": true,\n        \"totalPages\": 1,\n        \"totalElements\": 3,\n        \"first\": true,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"numberOfElements\": 3,\n        \"empty\": false\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update an Existing Fantasy Team",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Fantasy team update\",\r\n    \"roster\" : [\r\n        {\"name\": \"Rome Odunze\", \"team\": \"CHI\"},\r\n        {\"name\" : \"Patrick Mahomes\", \"team\" : \"KC\"}\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/team/11",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "team",
+                "11"
+              ]
+            },
+            "description": "## Update Fantasy Team by ID\n\nUpdates an existing fantasy team by replacing its name and roster. The endpoint validates the new roster and returns the updated team with enriched player data.\n\n---\n\n### HTTP Method & URL\n\n```\nPUT {{base_url}}/api/team/{id}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | The unique identifier of the team to update |\n\n---\n\n### Request Body\n\n| Field | Type | Required | Description |\n| --- | --- | --- | --- |\n| `name` | string | Yes | Updated name of the fantasy team |\n| `roster` | array | Yes | Updated list of players in the team |\n| `roster[].name` | string | Yes | Player name |\n| `roster[].team` | string | Yes | NFL team abbreviation |\n\n---\n\n### Example Request\n\n``` json\n{\n  \"name\": \"Fantasy team update\",\n  \"roster\": [\n    { \"name\": \"Rome Odunze\", \"team\": \"CHI\" },\n    { \"name\": \"Patrick Mahomes\", \"team\": \"KC\" }\n  ]\n}\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Team Updated Successfully\n\nReturned when the team is successfully updated and all roster rules are satisfied.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:37:20.861932700Z\",\n  \"data\": {\n    \"id\": 11,\n    \"name\": \"Fantasy team update\",\n    \"roster\": [\n      {\n        \"id\": 97,\n        \"position\": \"WR\",\n        \"name\": \"Rome Odunze\",\n        \"nfl_team\": \"CHI\"\n      },\n      {\n        \"id\": 13,\n        \"position\": \"QB\",\n        \"name\": \"Patrick Mahomes\",\n        \"nfl_team\": \"KC\"\n      }\n    ]\n  }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Update Existing Fantasy Team Name and Roster",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\" : \"Fantasy team update\",\r\n    \"roster\" : [\r\n        {\"name\": \"Rome Odunze\", \"team\": \"CHI\"},\r\n        {\"name\" : \"Patrick Mahomes\", \"team\" : \"KC\"}\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/team/11",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team",
+                    "11"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:37:20 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:37:20.861932700Z\",\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"Fantasy team update\",\n        \"roster\": [\n            {\n                \"id\": 97,\n                \"position\": \"WR\",\n                \"name\": \"Rome Odunze\",\n                \"nfl_team\": \"CHI\"\n            },\n            {\n                \"id\": 13,\n                \"position\": \"QB\",\n                \"name\": \"Patrick Mahomes\",\n                \"nfl_team\": \"KC\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete a Fantasy Team",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/team/11",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "team",
+                "11"
+              ]
+            },
+            "description": "## Delete Fantasy Team by ID\n\nDeletes a fantasy team from the system using its unique ID. Once deleted, the team and its roster are permanently removed.\n\n---\n\n### HTTP Method & URL\n\n```\nDELETE {{base_url}}/api/team/{id}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | The unique identifier of the team to delete |\n\n---\n\n### Example Request\n\n``` http\nDELETE {{base_url}}/api/team/11\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Team Deleted Successfully\n\nReturned when the team is successfully deleted.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:39:37.636542200Z\",\n  \"data\": \"Successfully deleted team Fantasy team update\"\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Delete an Existing Fantasy Team",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/team/11",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "team",
+                    "11"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:39:37 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:39:37.636542200Z\",\n    \"data\": \"Successfully deleted team Fantasy team update\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Matchup Requests",
+      "item": [
+        {
+          "name": "Create a Matchup Analysis Between Two Players",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"player1Id\" : 1,\r\n    \"player2Id\" : 70\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/matchup/player/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "matchup",
+                "player",
+                "create"
+              ]
+            },
+            "description": "## Create Player Matchup Analysis\n\nCreates a head-to-head fantasy matchup between two NFL players and returns a detailed comparison including scare scores, winner, loser, and reasoning behind the result.\n\n---\n\n### HTTP Method & URL\n\n```\nPOST {{base_url}}/api/matchup/player/create\n\n ```\n\n---\n\n### Request Body\n\n| Field | Type | Required | Description |\n| --- | --- | --- | --- |\n| `player1Id` | integer | Yes | ID of the first player |\n| `player2Id` | integer | Yes | ID of the second player |\n\n---\n\n### Example Request\n\n``` json\n{\n  \"player1Id\": 1,\n  \"player2Id\": 70\n}\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Matchup Created Successfully\n\nReturned when both players exist and a matchup analysis is successfully generated.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:41:16.164908500Z\",\n  \"data\": {\n    \"id\": 4,\n    \"winner\": \"Jaxon Smith-Njigba\",\n    \"loser\": \"Josh Allen\",\n    \"scare_difference\": 2.13,\n    \"advantage\": \"SLIGHT_EDGE\",\n    \"explanation\": \"Jaxon Smith-Njigba wins the matchup because of: Elite vertical threat; capable of taking the top off any defense\",\n    \"player_1_scare_result\": {\n      \"name\": \"Josh Allen\",\n      \"nfl_team\": \"BUF\",\n      \"position\": \"QB\",\n      \"scare_score\": 93.24,\n      \"scare_tier\": \"ELITE\",\n      \"primary_explanation\": \"Elite goal-line weapon\",\n      \"supporting_explanations\": [\n        \"Aggressive finisher; consistently finds the end zone\",\n        \"Elite passing QB\"\n      ]\n    },\n    \"player_2_scare_result\": {\n      \"name\": \"Jaxon Smith-Njigba\",\n      \"nfl_team\": \"SEA\",\n      \"position\": \"WR\",\n      \"scare_score\": 95.38,\n      \"scare_tier\": \"ELITE\",\n      \"primary_explanation\": \"Elite vertical threat; capable of taking the top off any defense\",\n      \"supporting_explanations\": [\n        \"Dangerous scoring threat; consistently finds paydirt\",\n        \"High-volume possession receiver with dependable hands\"\n      ]\n    }\n  }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Create a Matchup Report With Two Elite Players",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"player1Id\" : 1,\r\n    \"player2Id\" : 70\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/matchup/player/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "matchup",
+                    "player",
+                    "create"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:41:16 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:41:16.164908500Z\",\n    \"data\": {\n        \"id\": 4,\n        \"winner\": \"Jaxon Smith-Njigba\",\n        \"loser\": \"Josh Allen\",\n        \"scare_difference\": 2.13,\n        \"advantage\": \"SLIGHT_EDGE\",\n        \"explanation\": \"Jaxon Smith-Njigba wins the matchup because of: Elite vertical threat; capable of taking the top off any defense\",\n        \"player_1_scare_result\": {\n            \"name\": \"Josh Allen\",\n            \"nfl_team\": \"BUF\",\n            \"position\": \"QB\",\n            \"scare_score\": 93.24,\n            \"scare_tier\": \"ELITE\",\n            \"primary_explanation\": \"Elite goal-line weapon\",\n            \"supporting_explanations\": [\n                \"Aggressive finisher; consistently finds the end zone\",\n                \"Elite passing QB\"\n            ]\n        },\n        \"player_2_scare_result\": {\n            \"name\": \"Jaxon Smith-Njigba\",\n            \"nfl_team\": \"SEA\",\n            \"position\": \"WR\",\n            \"scare_score\": 95.38,\n            \"scare_tier\": \"ELITE\",\n            \"primary_explanation\": \"Elite vertical threat; capable of taking the top off any defense\",\n            \"supporting_explanations\": [\n                \"Dangerous scoring threat; consistently finds paydirt\",\n                \"High-volume possession receiver with dependable hands\"\n            ]\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve a Player Matchup Report by its ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/matchup/player/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "matchup",
+                "player",
+                "4"
+              ]
+            },
+            "description": "## Get Player Matchup By ID\n\nRetrieves a previously created player matchup analysis by its unique ID.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/matchup/player/{id}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | Unique identifier of the matchup |\n\n---\n\n### Example Request\n\n```\nGET http://localhost:8081/api/matchup/player/4\n\n ```\n\n---\n\n### Example Response\n\n#### 200 OK — Matchup Retrieved Successfully\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:43:53.953152100Z\",\n  \"data\": {\n    \"id\": 4,\n    \"winner\": \"Jaxon Smith-Njigba\",\n    \"loser\": \"Josh Allen\",\n    \"scare_difference\": 2.13,\n    \"advantage\": \"SLIGHT_EDGE\",\n    \"explanation\": \"Jaxon Smith-Njigba wins the matchup because of: Elite vertical threat; capable of taking the top off any defense\",\n    \"player_1_scare_result\": {\n      \"name\": \"Josh Allen\",\n      \"nfl_team\": \"BUF\",\n      \"position\": \"QB\",\n      \"scare_score\": 93.24,\n      \"scare_tier\": \"ELITE\",\n      \"primary_explanation\": \"Elite goal-line weapon\",\n      \"supporting_explanations\": [\n        \"Aggressive finisher; consistently finds the end zone\",\n        \"Elite passing QB\"\n      ]\n    },\n    \"player_2_scare_result\": {\n      \"name\": \"Jaxon Smith-Njigba\",\n      \"nfl_team\": \"SEA\",\n      \"position\": \"WR\",\n      \"scare_score\": 95.38,\n      \"scare_tier\": \"ELITE\",\n      \"primary_explanation\": \"Elite vertical threat; capable of taking the top off any defense\",\n      \"supporting_explanations\": [\n        \"Dangerous scoring threat; consistently finds paydirt\",\n        \"High-volume possession receiver with dependable hands\"\n      ]\n    }\n  }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Successful Retrieval of Player Matchup",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/matchup/player/4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "matchup",
+                    "player",
+                    "4"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:43:53 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:43:53.953152100Z\",\n    \"data\": {\n        \"id\": 4,\n        \"winner\": \"Jaxon Smith-Njigba\",\n        \"loser\": \"Josh Allen\",\n        \"scare_difference\": 2.13,\n        \"advantage\": \"SLIGHT_EDGE\",\n        \"explanation\": \"Jaxon Smith-Njigba wins the matchup because of: Elite vertical threat; capable of taking the top off any defense\",\n        \"player_1_scare_result\": {\n            \"name\": \"Josh Allen\",\n            \"nfl_team\": \"BUF\",\n            \"position\": \"QB\",\n            \"scare_score\": 93.24,\n            \"scare_tier\": \"ELITE\",\n            \"primary_explanation\": \"Elite goal-line weapon\",\n            \"supporting_explanations\": [\n                \"Aggressive finisher; consistently finds the end zone\",\n                \"Elite passing QB\"\n            ]\n        },\n        \"player_2_scare_result\": {\n            \"name\": \"Jaxon Smith-Njigba\",\n            \"nfl_team\": \"SEA\",\n            \"position\": \"WR\",\n            \"scare_score\": 95.38,\n            \"scare_tier\": \"ELITE\",\n            \"primary_explanation\": \"Elite vertical threat; capable of taking the top off any defense\",\n            \"supporting_explanations\": [\n                \"Dangerous scoring threat; consistently finds paydirt\",\n                \"High-volume possession receiver with dependable hands\"\n            ]\n        }\n    }\n}"
+            },
+            {
+              "name": "Failure to Retrieve Player Matchup with Invalid ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/matchup/player/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "matchup",
+                    "player",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:43:11 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Player matchup with id 1 does not exist\",\n    \"timestamp\": \"2026-03-26T21:43:11.373143800Z\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create a Matchup Analysis Between Two Teams",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"team1Id\" : 17,\r\n    \"team2Id\" : 18\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/matchup/team/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "matchup",
+                "team",
+                "create"
+              ]
+            },
+            "description": "## Create Team Matchup Analysis\n\nCreates a head-to-head fantasy matchup between two teams and returns aggregated team scoring, win probabilities, and individual player matchups.\n\n---\n\n### HTTP Method & URL\n\n```\nPOST {{base_url}}/api/matchup/team/create\n\n ```\n\n---\n\n### Request Body\n\n| Field | Type | Required | Description |\n| --- | --- | --- | --- |\n| `team1Id` | integer | Yes | ID of the first team |\n| `team2Id` | integer | Yes | ID of the second team |\n\n---\n\n### Example Request\n\n``` json\n{\n  \"team1Id\": 17,\n  \"team2Id\": 18\n}\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 OK — Team Matchup Created Successfully\n\nReturned when both teams exist and a full matchup analysis is generated.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:46:47.536599600Z\",\n  \"data\": {\n    \"id\": 2,\n    \"team_1\": \"First team\",\n    \"team_2\": \"Second team\",\n    \"team_1_score\": 251.98,\n    \"team_2_score\": 263.07,\n    \"team_1_win_probability\": 36.49,\n    \"team_2_win_probability\": 63.51,\n    \"advantage\": \"SLIGHT_EDGE\",\n    \"player_matchups\": [\n      {\n        \"id\": 5,\n        \"winner\": \"Drake London\",\n        \"loser\": \"George Pickens\",\n        \"scare_difference\": 0.04,\n        \"advantage\": \"EVEN\"\n      },\n      {\n        \"id\": 6,\n        \"winner\": \"Malik Nabers\",\n        \"loser\": \"Jalen Hurts\",\n        \"scare_difference\": 1.77,\n        \"advantage\": \"EVEN\"\n      },\n      {\n        \"id\": 7,\n        \"winner\": \"Nico Collins\",\n        \"loser\": \"Joe Burrow\",\n        \"scare_difference\": 12.9,\n        \"advantage\": \"CLEAR_EDGE\"\n      }\n    ]\n  }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Successful Team Matchup Creation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"team1Id\" : 17,\r\n    \"team2Id\" : 18\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/matchup/team/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "matchup",
+                    "team",
+                    "create"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:46:47 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:46:47.536599600Z\",\n    \"data\": {\n        \"id\": 2,\n        \"team_1\": \"First team\",\n        \"team_2\": \"Second team\",\n        \"team_1_score\": 251.98,\n        \"team_2_score\": 263.07,\n        \"team_1_win_probability\": 36.49,\n        \"team_2_win_probability\": 63.51,\n        \"advantage\": \"SLIGHT_EDGE\",\n        \"player_matchups\": [\n            {\n                \"id\": 5,\n                \"winner\": \"Drake London\",\n                \"loser\": \"George Pickens\",\n                \"scare_difference\": 0.04,\n                \"advantage\": \"EVEN\"\n            },\n            {\n                \"id\": 6,\n                \"winner\": \"Malik Nabers\",\n                \"loser\": \"Jalen Hurts\",\n                \"scare_difference\": 1.77,\n                \"advantage\": \"EVEN\"\n            },\n            {\n                \"id\": 7,\n                \"winner\": \"Nico Collins\",\n                \"loser\": \"Joe Burrow\",\n                \"scare_difference\": 12.9,\n                \"advantage\": \"CLEAR_EDGE\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve a Team Matchup Report by its ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/matchup/team/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "matchup",
+                "team",
+                "2"
+              ]
+            },
+            "description": "## Get Team Matchup By ID\n\nRetrieves a previously generated team matchup analysis, including team scores, win probabilities, and all individual player matchups.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/matchup/team/{id}\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | Unique identifier of the team matchup |\n\n---\n\n### Example Request\n\n```\nGET http://localhost:8081/api/matchup/team/2\n\n ```\n\n---\n\n### Example Response\n\n#### 200 OK — Team Matchup Retrieved Successfully\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-26T21:50:18.260863600Z\",\n  \"data\": {\n    \"id\": 2,\n    \"team_1\": \"First team\",\n    \"team_2\": \"Second team\",\n    \"team_1_score\": 251.98,\n    \"team_2_score\": 263.07,\n    \"team_1_win_probability\": 36.49,\n    \"team_2_win_probability\": 63.51,\n    \"advantage\": \"SLIGHT_EDGE\",\n    \"player_matchups\": [\n      {\n        \"id\": 5,\n        \"winner\": \"Drake London\",\n        \"loser\": \"George Pickens\",\n        \"scare_difference\": 0.04,\n        \"advantage\": \"EVEN\"\n      },\n      {\n        \"id\": 6,\n        \"winner\": \"Malik Nabers\",\n        \"loser\": \"Jalen Hurts\",\n        \"scare_difference\": 1.77,\n        \"advantage\": \"EVEN\"\n      },\n      {\n        \"id\": 7,\n        \"winner\": \"Nico Collins\",\n        \"loser\": \"Joe Burrow\",\n        \"scare_difference\": 12.9,\n        \"advantage\": \"CLEAR_EDGE\"\n      }\n    ]\n  }\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "Successful Retrieval of Team Matchup",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/matchup/team/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "matchup",
+                    "team",
+                    "2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:49:02 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-26T21:49:02.242486300Z\",\n    \"data\": {\n        \"id\": 2,\n        \"team_1\": \"First team\",\n        \"team_2\": \"Second team\",\n        \"team_1_score\": 251.98,\n        \"team_2_score\": 263.07,\n        \"team_1_win_probability\": 36.49,\n        \"team_2_win_probability\": 63.51,\n        \"advantage\": \"SLIGHT_EDGE\",\n        \"player_matchups\": [\n            {\n                \"id\": 5,\n                \"winner\": \"Drake London\",\n                \"loser\": \"George Pickens\",\n                \"scare_difference\": 0.04,\n                \"advantage\": \"EVEN\"\n            },\n            {\n                \"id\": 6,\n                \"winner\": \"Malik Nabers\",\n                \"loser\": \"Jalen Hurts\",\n                \"scare_difference\": 1.77,\n                \"advantage\": \"EVEN\"\n            },\n            {\n                \"id\": 7,\n                \"winner\": \"Nico Collins\",\n                \"loser\": \"Joe Burrow\",\n                \"scare_difference\": 12.9,\n                \"advantage\": \"CLEAR_EDGE\"\n            }\n        ]\n    }\n}"
+            },
+            {
+              "name": "Failure to Retrieve Team Matchup with Invalid ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/matchup/team/22",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "matchup",
+                    "team",
+                    "22"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 26 Mar 2026 21:49:45 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Team matchup with id 22 does not exist\",\n    \"timestamp\": \"2026-03-26T21:49:45.056980300Z\",\n    \"data\": null\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
