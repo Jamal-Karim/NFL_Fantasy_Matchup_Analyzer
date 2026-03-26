@@ -1,5 +1,5 @@
 @Player
-Feature: Player Scare Factor Analysis
+Feature: Player Retrieval and Scare Factor Analysis
 
   Background:
     Given I fetch the player Josh Allen on team BUF

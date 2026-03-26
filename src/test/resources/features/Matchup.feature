@@ -1,5 +1,5 @@
 @Matchup
-Feature: Matchup feature
+Feature: Player matchup and Team matchup workflow
 
   Scenario: Create a player matchup
     Given I fetch the players:
@@ -78,8 +78,8 @@ Feature: Matchup feature
       | Saquon Barkley  | PHI  |
       | Brock Bowers    | LV   |
     Then the api call should be successful
-    And the team id is saved to {team4}
-    When I run the team matchup for {team4} and {team4}
+    And the team id is saved to {team3}
+    When I run the team matchup for {team3} and {team3}
     Then the response body has:
       | status_code | 400                                         |
       | status      | ERROR                                       |

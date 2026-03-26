@@ -107,7 +107,7 @@ public class TeamSteps extends BaseSteps {
     /**
      * Verifies that a specific team record no longer exists in the database.
      */
-    @And("^the team \"([^\"]+)\" should not exist in the database$")
+    @And("^the team ([a-zA-Z0-9\\s]+) should not exist in the database$")
     public void verifyTeamDeleted(String teamName) {
         dbUtils.verifyTeamDoesNotExist(teamName);
     }
