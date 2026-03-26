@@ -46,18 +46,18 @@ public class TeamSteps extends BaseSteps {
     /**
      * Updates an existing team's name or roster.
      */
-    @When("^I update the team ([a-zA-Z\\d\\{\\}]+)(?: to ([a-zA-Z0-9\\s]+))?:$")
+    @When("^I update the team (\\{\\w+\\})(?: to ([a-zA-Z0-9\\s]+))?:$")
     public void updateTeam(String id, String newName, DataTable table) {
 
-        String resolvedId = testVariables.resolve(id);
-        TeamResponseDTO team = client.getTeamById(resolvedId)
+        TeamResponseDTO team = client.getTeamById(testVariables.getKey(id).toString())
                 .jsonPath().getObject("data", TeamResponseDTO.class);
 
         String finalName = (newName != null) ? newName : team.getName();
 
-        Response response = client.updateTeam(resolvedId,
+        Response response = client.updateTeam(testVariables.getKey(id).toString(),
                 finalName, createRosterFromTable(table));
 
+        testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
             TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
             testContext.setTeamResponseDTO(teamResponseDTO);
@@ -66,9 +66,6 @@ public class TeamSteps extends BaseSteps {
         response.prettyPrint();
     }
 
-    /**
-     * Helper to transform a Gherkin data table into a list of PlayerRequest objects.
-     */
     private List<PlayerRequest> createRosterFromTable(DataTable table) {
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 
@@ -88,12 +85,9 @@ public class TeamSteps extends BaseSteps {
         return roster;
     }
 
-    /**
-     * Saves the current team's database ID to a variable.
-     */
     @And("^the team id is saved to (\\{\\w+\\})$")
     public void saveTeamId(String id) {
-        testVariables.saveIdToVariable(id, testContext.getTeamResponseDTO().getId());
+        testVariables.fillSafely(id, testContext.getTeamResponseDTO().getId());
     }
 
     /**
@@ -107,17 +101,28 @@ public class TeamSteps extends BaseSteps {
     /**
      * Verifies that a specific team record no longer exists in the database.
      */
-    @And("^the team \"([^\"]+)\" should not exist in the database$")
+    @And("^the team ([a-zA-Z0-9\\s]+) should not exist in the database$")
     public void verifyTeamDeleted(String teamName) {
         dbUtils.verifyTeamDoesNotExist(teamName);
     }
 
     /**
-     * Fetches a team's details by its ID.
+     * Fetches a team's details by its saved ID.
      */
-    @When("^I request the team with id ([a-zA-Z\\d\\{\\}]+)$")
-    public void getTeamById(String id) {
-        Response response = client.getTeamById(testVariables.resolve(id));
+    @When("^I request the team with id (\\{\\w+\\})$")
+    public void getTeamFromSavedId(String id) {
+        Response response = client.getTeamById(String.valueOf(testVariables.getKey(id)));
+        response.prettyPrint();
+        testContext.setResponse(response);
+        testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+    }
+
+    /**
+     * Fetches a team's details by its actual ID.
+     */
+    @When("^I request the team with id ([a-zA-Z\\d]+)$")
+    public void getTeamFromId(String id) {
+        Response response = client.getTeamById(id);
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
@@ -138,10 +143,20 @@ public class TeamSteps extends BaseSteps {
     /**
      * Deletes a team by its ID.
      */
-    @When("^I delete the team with id ([a-zA-Z\\d\\{\\}]+)$")
-    public void deleteTeamById(String id) {
-        Response response = client.deleteTeam(testVariables.resolve(id));
+    @When("^I delete the team with id (\\{\\w+\\})$")
+    public void deleteTeamFromSavedId(String id) {
+        Response response = client.deleteTeam(String.valueOf(testVariables.getKey(id)));
         response.prettyPrint();
         testContext.setResponse(response);
+    }
+
+    @When("^I delete the team with id ([a-zA-Z\\d]+)$")
+    public void deleteTeamFromId(String id) {
+        Response response = client.deleteTeam(id);
+        response.prettyPrint();
+        testContext.setResponse(response);
+        if (response.getStatusCode() == 200) {
+            testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+        }
     }
 }

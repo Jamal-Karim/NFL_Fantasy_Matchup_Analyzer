@@ -1,5 +1,5 @@
 @Matchup
-Feature: Matchup feature
+Feature: Player matchup and Team matchup workflow
 
   Scenario: Create a player matchup
     Given I fetch the players:
@@ -12,7 +12,7 @@ Feature: Matchup feature
       | data.winner    | Brock Bowers    |
       | data.loser     | Patrick Mahomes |
       | data.advantage | DOMINANT        |
-    And I save the player matchup id to {matchupId1}
+    And I save the response id to {matchupId1}
     Then the player matchup should be saved to the database
     When I request the player matchup with id {matchupId1}
     Then the response body has:
@@ -44,21 +44,21 @@ Feature: Matchup feature
       | Saquon Barkley  | PHI  |
       | Brock Bowers    | LV   |
     Then the api call should be successful
-    And the team id is saved to {team1}
+    And I save the response id to {team1}
     Given I create a fantasy team team2:
       | name         | team |
       | Josh Allen   | BUF  |
       | James Cook   | BUF  |
       | Travis Kelce | KC   |
     Then the api call should be successful
-    And the team id is saved to {team2}
+    And I save the response id to {team2}
     When I run the team matchup for {team1} and {team2}
     Then the api call should be successful
     Then the response body has:
       | data.team_1_win_probability | 14.96      |
       | data.team_2_win_probability | 85.04      |
       | data.advantage              | CLEAR_EDGE |
-    And I save the team matchup id to {matchupId2}
+    And I save the response id to {matchupId2}
     Then the amount of player matchups saved to the database is 3
     When I request the team matchup with id {matchupId2}
     Then the response body has:
@@ -78,8 +78,8 @@ Feature: Matchup feature
       | Saquon Barkley  | PHI  |
       | Brock Bowers    | LV   |
     Then the api call should be successful
-    And the team id is saved to {team4}
-    When I run the team matchup for {team4} and {team4}
+    And I save the response id to {team3}
+    When I run the team matchup for {team3} and {team3}
     Then the response body has:
       | status_code | 400                                         |
       | status      | ERROR                                       |

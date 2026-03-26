@@ -1,10 +1,10 @@
 @Player
-Feature: Player Scare Factor Analysis
+Feature: Player Retrieval and Scare Factor Analysis
 
   Background:
     Given I fetch the player Josh Allen on team BUF
     Then the api call should be successful
-    And the player id is saved to {id1}
+    And I save the response id to {id1}
     Then the player should be saved to the database
     And the player stats should be saved to the database
 

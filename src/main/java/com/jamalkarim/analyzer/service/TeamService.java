@@ -139,6 +139,7 @@ public class TeamService {
         );
 
         teamEntity.clearRoster();
+        repository.saveAndFlush(teamEntity);
 
         teamEntity.setName(request.getName());
 

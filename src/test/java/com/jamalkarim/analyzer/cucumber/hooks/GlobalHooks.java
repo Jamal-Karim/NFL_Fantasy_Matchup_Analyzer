@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.cucumber.hooks;
 import com.jamalkarim.analyzer.cucumber.steps.TestContext;
 import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
 import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.RestAssured;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -43,5 +44,13 @@ public class GlobalHooks {
         dbUtils.clearDatabase();
         testVariables.clearAll();
         testContext.clear();
+    }
+
+    /**
+     * Cleans up the database after each scenario.
+     */
+    @After
+    public void cleanUp() {
+        dbUtils.clearDatabase();
     }
 }
