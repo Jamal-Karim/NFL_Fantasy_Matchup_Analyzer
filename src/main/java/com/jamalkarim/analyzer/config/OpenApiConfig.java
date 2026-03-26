@@ -23,7 +23,7 @@ public class OpenApiConfig {
                         .description("### Professional Fantasy Football Analytical Engine\n\n" +
                                 "This API provides advanced analytical tools for NFL Fantasy Football enthusiasts and developers. " +
                                 "It leverages high-performance data processing to calculate 'Scare Factors'—a proprietary metric " +
-                                "evaluating player performance potential against specific matchups.\n\n" +
+                                "evaluating player performance potential.\n\n" +
                                 "Key Features:\n" +
                                 "* **Real-time Data Sync**: Seamlessly integrates with external NFL providers.\n" +
                                 "* **Predictive Analysis**: Advanced matchup evaluation for players and full rosters.\n" +
@@ -33,10 +33,7 @@ public class OpenApiConfig {
                         .contact(new Contact()
                                 .name("Jamal Karim")
                                 .url("https://github.com/Jamal-Karim")
-                                .email("1jamalkarim@gmail.com"))
-                        .license(new License()
-                                .name("MIT License")
-                                .url("https://opensource.org/licenses/MIT")))
+                                .email("1jamalkarim@gmail.com")))
                 .tags(Arrays.asList(
                         new Tag().name("1. Players").description("Management and analytical insights for NFL Players"),
                         new Tag().name("2. Teams").description("Roster management and fantasy team configuration"),

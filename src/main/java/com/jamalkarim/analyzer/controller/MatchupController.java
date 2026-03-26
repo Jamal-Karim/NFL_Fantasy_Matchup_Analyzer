@@ -4,13 +4,19 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.requests.PlayerMatchupRequest;
 import com.jamalkarim.analyzer.dto.requests.TeamMatchupRequest;
-import com.jamalkarim.analyzer.dto.response.ApiResponse;
+import com.jamalkarim.analyzer.dto.response.RestResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerMatchupService;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.TeamMatchupService;
 import com.jamalkarim.analyzer.service.TeamService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -19,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/matchup")
+@Tag(name = "3. Matchups", description = "Head-to-head comparison and predictive performance metrics")
 public class MatchupController {
 
     private final PlayerService playerService;
@@ -29,10 +36,10 @@ public class MatchupController {
     /**
      * Constructs a new MatchupController with the required services.
      *
-     * @param playerService       Service for managing player data
-     * @param teamService         Service for managing team data
-     * @param matchupService      Service for analyzing player matchups
-     * @param teamMatchupService  Service for analyzing team matchups
+     * @param playerService      Service for managing player data
+     * @param teamService        Service for managing team data
+     * @param matchupService     Service for analyzing player matchups
+     * @param teamMatchupService Service for analyzing team matchups
      */
     public MatchupController(PlayerService playerService, TeamService teamService, PlayerMatchupService matchupService, TeamMatchupService teamMatchupService) {
         this.playerService = playerService;
@@ -49,12 +56,17 @@ public class MatchupController {
      * @return An ApiResponse containing detailed matchup results
      */
     @PostMapping("/player/create")
-    public ApiResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody PlayerMatchupRequest request) {
+    @Operation(summary = "Analyze player vs player", description = "Performs a comparative analysis between two players, evaluating their Scare Factors and projectable stats for an upcoming matchup.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully generated player matchup"),
+            @ApiResponse(responseCode = "404", description = "One or both players not found", content = @Content)
+    })
+    public RestResponse<PlayerMatchupResponseDTO> createPlayerMatchup(@RequestBody PlayerMatchupRequest request) {
         Player player1 = playerService.getPlayerByID(request.getPlayer1Id());
         Player player2 = playerService.getPlayerByID(request.getPlayer2Id());
 
         PlayerMatchupResponseDTO response = matchupService.createPlayerMatchup(player1, player2);
-        return ApiResponse.success(response);
+        return RestResponse.success(response);
     }
 
     /**
@@ -64,8 +76,14 @@ public class MatchupController {
      * @return An ApiResponse containing the stored matchup details
      */
     @GetMapping("/player/{id:\\d+}")
-    public ApiResponse<PlayerMatchupResponseDTO> getPlayerMatchupById(@PathVariable long id) {
-        return ApiResponse.success(matchupService.getPlayerMatchupResponseById(id));
+    @Operation(summary = "Get player matchup by ID", description = "Retrieves a previously calculated player matchup report from the database.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved matchup"),
+            @ApiResponse(responseCode = "404", description = "Matchup ID not found", content = @Content)
+    })
+    public RestResponse<PlayerMatchupResponseDTO> getPlayerMatchupById(
+            @Parameter(description = "Internal database ID of the player matchup", required = true) @PathVariable long id) {
+        return RestResponse.success(matchupService.getPlayerMatchupResponseById(id));
     }
 
 
@@ -76,11 +94,16 @@ public class MatchupController {
      * @return An ApiResponse containing detailed team matchup results
      */
     @PostMapping("/team/create")
-    public ApiResponse<TeamMatchupResponseDTO> createTeamMatchupResult(@RequestBody TeamMatchupRequest request) {
+    @Operation(summary = "Analyze team vs team", description = "Performs a comprehensive roster comparison between two fantasy teams, identifying positional advantages and projected winner.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully generated team matchup"),
+            @ApiResponse(responseCode = "404", description = "One or both teams not found", content = @Content)
+    })
+    public RestResponse<TeamMatchupResponseDTO> createTeamMatchupResult(@RequestBody TeamMatchupRequest request) {
         Team team1 = teamService.getTeamById(request.getTeam1Id());
         Team team2 = teamService.getTeamById(request.getTeam2Id());
 
-        return ApiResponse.success(teamMatchupService.createTeamMatchup(team1, team2));
+        return RestResponse.success(teamMatchupService.createTeamMatchup(team1, team2));
     }
 
     /**
@@ -90,7 +113,13 @@ public class MatchupController {
      * @return An ApiResponse containing the stored team matchup details
      */
     @GetMapping("/team/{id:\\d+}")
-    public ApiResponse<TeamMatchupResponseDTO> getTeamMatchupById(@PathVariable long id) {
-        return ApiResponse.success(teamMatchupService.getTeamMatchupById(id));
+    @Operation(summary = "Get team matchup by ID", description = "Retrieves a previously calculated team matchup report from the database.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved matchup"),
+            @ApiResponse(responseCode = "404", description = "Matchup ID not found", content = @Content)
+    })
+    public RestResponse<TeamMatchupResponseDTO> getTeamMatchupById(
+            @Parameter(description = "Internal database ID of the team matchup", required = true) @PathVariable long id) {
+        return RestResponse.success(teamMatchupService.getTeamMatchupById(id));
     }
 }
