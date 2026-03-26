@@ -1,16 +1,19 @@
-Feature: Player feature
+@Player
+Feature: Player Scare Factor Analysis
 
   Background:
     Given I fetch the player Josh Allen on team BUF
     Then the api call should be successful
     And the player id is saved to {id1}
     Then the player should be saved to the database
+    And the player stats should be saved to the database
 
   Scenario: Calculate Scare Factor for a known Elite QB
     When I request the Scare Factor for Josh Allen
     Then the api call should be successful
     Then the scare score should be saved to the database
     Then the scare factor should be greater than 90
+    And the scare tier should be ELITE
 
   Scenario: Get player by id
     When I request the player with id {id1}
@@ -64,6 +67,7 @@ Feature: Player feature
       | data.position  | QB              |
       | data.is_rookie | false           |
     And the player should be saved to the database
+    And the player stats should be saved to the database
 
   Scenario: Filter players by Running Back position and verify persistence
     Given I fetch the player Christian McCaffrey on team SF
@@ -73,6 +77,7 @@ Feature: Player feature
       | status             | SUCCESS |
       | data.totalElements | 1       |
     And the player should be saved to the database
+    And the player stats should be saved to the database
 
   Scenario: Verify Scare Factor analysis for a Tight End
     Given I fetch the player Brock Bowers on team LV
@@ -80,6 +85,8 @@ Feature: Player feature
     Then the api call should be successful
     And the scare score should be saved to the database
     And the scare factor should be greater than 70
+    And the scare tier should be ELITE
+    And the scare analysis should contain explanation: "mismatch in the middle of the field"
 
   Scenario: Filter players by an invalid position
     When I get all players with position INVALID

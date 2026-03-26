@@ -101,9 +101,32 @@ public class PlayerSteps extends BaseSteps {
         dbUtils.verifyPlayerIsSaved(testContext.getPlayerResponse().getName());
     }
 
+    @And("^the player stats should be saved to the database$")
+    public void verifyPlayerStatsSavedToDB() {
+        dbUtils.verifyPlayerStatsAreSaved(testContext.getPlayerResponse().getName());
+    }
+
     @Then("^the scare score should be saved to the database$")
     public void verifyScareScoreSavedToDB() {
         dbUtils.verifyScareResultIsSaved(testContext.getPlayerResponse().getId());
+    }
+
+    @And("^the scare tier should be ([A-Z]+)$")
+    public void verifyScareTier(String expectedTier) {
+        assertThat(testContext.getScareResponse().getScareTier().name()).isEqualTo(expectedTier);
+    }
+
+    @And("^the scare analysis should contain explanation: \"([^\"]+)\"$")
+    public void verifyScareExplanation(String expectedExplanation) {
+        String primary = testContext.getScareResponse().getPrimaryExplanation();
+        List<String> supporting = testContext.getScareResponse().getSupportingExplanations();
+        
+        boolean foundInPrimary = primary != null && primary.contains(expectedExplanation);
+        boolean foundInSupporting = supporting.stream().anyMatch(e -> e.contains(expectedExplanation));
+        
+        assertThat(foundInPrimary || foundInSupporting)
+                .withFailMessage("Explanation [%s] not found in primary or supporting explanations.", expectedExplanation)
+                .isTrue();
     }
 
     @And("^the player id is saved to (\\{\\w+\\})$")

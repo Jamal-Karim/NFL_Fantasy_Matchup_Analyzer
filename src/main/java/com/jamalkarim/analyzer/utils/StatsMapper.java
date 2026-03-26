@@ -6,6 +6,7 @@ import com.jamalkarim.analyzer.dto.mock.MockStatsDTO;
 import com.jamalkarim.analyzer.dto.real.StatsExternalDTO;
 import com.jamalkarim.analyzer.entities.StatsEntity;
 
+import com.jamalkarim.analyzer.exceptions.ExternalDataMappingException;
 import java.util.List;
 
 /**
@@ -213,22 +214,22 @@ public class StatsMapper {
         StatsExternalDTO.CategoryDTO generalCategory = categories.stream()
                 .filter(cat -> "general".equals(cat.getName()))
                 .findFirst()
-                .orElseThrow(() -> new AssertionError("General category not found"));
+                .orElseThrow(() -> new ExternalDataMappingException("General category not found"));
 
         StatsExternalDTO.CategoryDTO passingCategory = categories.stream()
                 .filter(cat -> "passing".equals(cat.getName()))
                 .findFirst()
-                .orElseThrow(() -> new AssertionError("Passing category not found"));
+                .orElseThrow(() -> new ExternalDataMappingException("Passing category not found"));
 
         StatsExternalDTO.CategoryDTO rushingCategory = categories.stream()
                 .filter(cat -> "rushing".equals(cat.getName()))
                 .findFirst()
-                .orElseThrow(() -> new AssertionError("Rushing category not found"));
+                .orElseThrow(() -> new ExternalDataMappingException("Rushing category not found"));
 
         StatsExternalDTO.CategoryDTO receivingCategory = categories.stream()
                 .filter(cat -> "receiving".equals(cat.getName()))
                 .findFirst()
-                .orElseThrow(() -> new AssertionError("Receiving category not found"));
+                .orElseThrow(() -> new ExternalDataMappingException("Receiving category not found"));
 
         Integer gamesPlayed = getStatValue(generalCategory, "gamesPlayed");
 
@@ -291,7 +292,7 @@ public class StatsMapper {
         String stat = category.getStatsInCategory().stream().filter(s -> statName.equals(s.getName()))
                 .map(StatsExternalDTO.InternalStatsDTO::getValue)
                 .findFirst()
-                .orElseThrow(() -> new AssertionError("Stat " + statName + " not found in category " + category.getName()));
+                .orElseThrow(() -> new ExternalDataMappingException("Stat " + statName + " not found in category " + category.getName()));
         return Integer.valueOf(stat);
     }
 }

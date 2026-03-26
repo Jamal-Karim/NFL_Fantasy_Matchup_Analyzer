@@ -1,3 +1,4 @@
+@Matchup
 Feature: Matchup feature
 
   Scenario: Create a player matchup
@@ -32,9 +33,9 @@ Feature: Matchup feature
     Then the api call should be successful
     When I run the player matchup for {id1} and {id1}
     Then the response body has:
-      | status_code | 500                                                                         |
-      | status      | ERROR                                                                       |
-      | message     | An unexpected error occurred: Cannot create matchup between the same player |
+      | status_code | 400                                           |
+      | status      | ERROR                                         |
+      | message     | Cannot create matchup between the same player |
 
   Scenario: Create a team matchup
     Given I create a fantasy team team1:
@@ -80,6 +81,6 @@ Feature: Matchup feature
     And the team id is saved to {team4}
     When I run the team matchup for {team4} and {team4}
     Then the response body has:
-      | status_code | 500                                                                       |
-      | status      | ERROR                                                                     |
-      | message     | An unexpected error occurred: Cannot create matchup between the same team |
+      | status_code | 400                                         |
+      | status      | ERROR                                       |
+      | message     | Cannot create matchup between the same team |

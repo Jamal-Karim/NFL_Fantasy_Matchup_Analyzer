@@ -8,6 +8,8 @@ import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerEntity;
 import com.jamalkarim.analyzer.entities.TeamEntity;
+import com.jamalkarim.analyzer.exceptions.PlayerAlreadyRosteredException;
+import com.jamalkarim.analyzer.exceptions.TeamAlreadyExistsException;
 import com.jamalkarim.analyzer.exceptions.TeamNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamRepository;
@@ -92,7 +94,7 @@ public class TeamServiceTest {
     void createTeam_AlreadyExists() {
         when(repository.findByName("San Francisco 49ers")).thenReturn(Optional.of(teamEntity));
 
-        assertThrows(com.jamalkarim.analyzer.exceptions.TeamAlreadyExistsException.class, () -> teamService.createTeam(teamRequest));
+        assertThrows(TeamAlreadyExistsException.class, () -> teamService.createTeam(teamRequest));
         
         verify(repository, never()).save(any());
     }
@@ -120,6 +122,10 @@ public class TeamServiceTest {
 
         when(playerRepository.findById(10L)).thenReturn(Optional.of(playerEntity));
         
+        // Fix for refactored addRosterToEntity logic
+        when(mapper.entityToDomain(any(TeamEntity.class))).thenReturn(teamDomain);
+        when(playerMapper.entityToDomain(any(PlayerEntity.class))).thenReturn(new com.jamalkarim.analyzer.domain.models.QuarterBack("Brock Purdy", "SF"));
+
         // Mock save to return entity with ID so addRosterToEntity doesn't NPE or fail comparison
         when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
         when(mapper.entityToResponse(any(TeamEntity.class))).thenReturn(teamResponseDTO);
@@ -164,7 +170,7 @@ public class TeamServiceTest {
         when(repository.save(any(TeamEntity.class))).thenReturn(teamEntity);
 
         // Act & Assert
-        assertThrows(com.jamalkarim.analyzer.exceptions.PlayerAlreadyRosteredException.class, () -> teamService.createTeam(teamRequest));
+        assertThrows(PlayerAlreadyRosteredException.class, () -> teamService.createTeam(teamRequest));
     }
 
     @Test

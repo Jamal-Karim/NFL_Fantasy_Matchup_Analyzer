@@ -57,7 +57,9 @@ public class TeamMatchupServiceTest {
     @BeforeEach
     void setUp() {
         team1 = new Team("Team 1");
+        team1.setId(1L);
         team2 = new Team("Team 2");
+        team2.setId(2L);
     }
 
     @Test

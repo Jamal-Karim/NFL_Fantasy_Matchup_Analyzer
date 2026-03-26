@@ -7,6 +7,7 @@ import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.domain.scoring.ScareResultFactory;
 import com.jamalkarim.analyzer.dto.response.PlayerMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
+import com.jamalkarim.analyzer.exceptions.InvalidMatchupException;
 import com.jamalkarim.analyzer.exceptions.MatchupNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerMatchupRepository;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
@@ -76,7 +77,7 @@ public class PlayerMatchupService {
     public PlayerMatchupResponseDTO createPlayerMatchup(Player player1, Player player2) {
 
         if (Objects.equals(player1.getId(), player2.getId())) {
-            throw new RuntimeException("Cannot create matchup between the same player");
+            throw new InvalidMatchupException("Cannot create matchup between the same player");
         }
 
         PlayerMatchupResult result = analyzer.analyzePlayerMatchup(player1, player2);

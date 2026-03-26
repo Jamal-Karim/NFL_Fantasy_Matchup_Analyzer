@@ -48,6 +48,28 @@ public class DbUtils {
                 .isPresent();
     }
 
+    public void verifyTeamDoesNotExist(String name) {
+        Optional<TeamEntity> team = teamRepository.findByName(name);
+        assertThat(team)
+                .withFailMessage("Expected team %s to be deleted from the database, but it still exists.", name)
+                .isNotPresent();
+    }
+
+    public void verifyPlayerStatsAreSaved(String playerName) {
+        String sql = "SELECT p.name, current_stats_id, last_stats_id " +
+                "FROM player p WHERE p.name = ?";
+        
+        Map<String, Object> results = jdbcTemplate.queryForMap(sql, playerName);
+        
+        assertThat(results.get("current_stats_id"))
+                .withFailMessage("Current season stats for player %s were not saved.", playerName)
+                .isNotNull();
+        
+        assertThat(results.get("last_stats_id"))
+                .withFailMessage("Last season stats for player %s were not saved.", playerName)
+                .isNotNull();
+    }
+
     public void verifyScareResultIsSaved(Long id) {
         String sql = "SELECT count(*) AS count FROM scare_result WHERE player_id = ?";
         Map<String, Object> results = jdbcTemplate.queryForMap(sql, id);

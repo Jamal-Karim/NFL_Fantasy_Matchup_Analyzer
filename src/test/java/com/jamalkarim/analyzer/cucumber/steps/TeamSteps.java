@@ -85,6 +85,11 @@ public class TeamSteps extends BaseSteps {
         dbUtils.verifyTeamIsSaved(testContext.getTeamResponseDTO().getName());
     }
 
+    @And("^the team \"([^\"]+)\" should not exist in the database$")
+    public void verifyTeamDeleted(String teamName) {
+        dbUtils.verifyTeamDoesNotExist(teamName);
+    }
+
     @When("^I request the team with id ([a-zA-Z\\d\\{\\}]+)$")
     public void getTeamById(String id) {
         Response response = client.getTeamById(testVariables.resolve(id));
