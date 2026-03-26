@@ -1,6 +1,7 @@
 package com.jamalkarim.analyzer.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 import java.time.Instant;
@@ -13,10 +14,18 @@ import java.time.Instant;
  */
 @Getter
 @JsonPropertyOrder({"status", "message", "timestamp", "data"})
-public class ApiResponse<T> {
+@Schema(description = "Generic response wrapper for all API endpoints, providing consistent status and metadata")
+public class RestResponse<T> {
+    @Schema(description = "Response status indicator", example = "SUCCESS")
     private final String status;
+
+    @Schema(description = "ISO-8601 UTC timestamp of the response generation", example = "2024-03-26T15:30:00Z")
     private final String timestamp;
+
+    @Schema(description = "Descriptive message about the operation result", example = "Operation successful")
     private final String message;
+
+    @Schema(description = "The actual data payload of the response")
     private final T data;
 
     /**
@@ -26,7 +35,7 @@ public class ApiResponse<T> {
      * @param message A descriptive message about the response
      * @param data    The data payload
      */
-    public ApiResponse(String status, String message, T data) {
+    public RestResponse(String status, String message, T data) {
         this.status = status;
         this.message = message;
         this.timestamp = Instant.now().toString();
@@ -40,8 +49,8 @@ public class ApiResponse<T> {
      * @param <T>  The payload type
      * @return A success ApiResponse
      */
-    public static <T> ApiResponse<T> success(T data) {
-        return new ApiResponse<>("SUCCESS", "Operation successful", data);
+    public static <T> RestResponse<T> success(T data) {
+        return new RestResponse<>("SUCCESS", "Operation successful", data);
     }
 
     /**
@@ -51,7 +60,7 @@ public class ApiResponse<T> {
      * @param <T>          The expected payload type
      * @return An error ApiResponse
      */
-    public static <T> ApiResponse<T> error(String errorMessage) {
-        return new ApiResponse<>("ERROR", errorMessage, null);
+    public static <T> RestResponse<T> error(String errorMessage) {
+        return new RestResponse<>("ERROR", errorMessage, null);
     }
 }
