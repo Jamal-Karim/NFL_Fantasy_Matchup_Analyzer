@@ -86,6 +86,8 @@ public class PlayerMatchupServiceTest {
 
     @Test
     void createPlayerMatchup_Success() {
+        when(player1.getId()).thenReturn(1L);
+        when(player2.getId()).thenReturn(2L);
         when(player1.getName()).thenReturn("Player 1");
         when(player1.getTeam()).thenReturn("Team 1");
         when(player2.getName()).thenReturn("Player 2");

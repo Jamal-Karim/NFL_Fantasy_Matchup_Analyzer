@@ -19,7 +19,7 @@ public class TestVariables {
         if (map.containsKey(name)) {
             return (PlayerResponseDTO) map.get(name);
         } else {
-            throw new RuntimeException("Player not found");
+            throw new TestVariableException("Player not found: " + name);
         }
     }
 
@@ -29,7 +29,7 @@ public class TestVariables {
         if (map.containsKey(extractedKey)) {
             return map.get(extractedKey);
         } else {
-            throw new RuntimeException("Key not found");
+            throw new TestVariableException("Key not found: " + key);
         }
     }
 
@@ -55,7 +55,7 @@ public class TestVariables {
 
     private String extractKey(String key) {
         if (!key.startsWith("{") || !key.endsWith("}")) {
-            throw new RuntimeException("Invalid key format, key must be wrapped in curly braces {key}");
+            throw new TestVariableException("Invalid key format, key must be wrapped in curly braces {key}: " + key);
         }
         return key.substring(1, key.length() - 1);
     }

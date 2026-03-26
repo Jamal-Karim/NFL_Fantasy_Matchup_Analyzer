@@ -108,6 +108,22 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handles InvalidMatchupException and returns a 400 BAD REQUEST status.
+     */
+    @ExceptionHandler(InvalidMatchupException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidMatchup(InvalidMatchupException ex) {
+        return new ResponseEntity<>(ApiResponse.error(ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Handles ExternalDataMappingException and returns a 500 INTERNAL SERVER ERROR status.
+     */
+    @ExceptionHandler(ExternalDataMappingException.class)
+    public ResponseEntity<ApiResponse<Void>> handleMappingFailure(ExternalDataMappingException ex) {
+        return new ResponseEntity<>(ApiResponse.error("Data Mapping Error: " + ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    /**
      * Handles PlayerSyncException and returns a 500 INTERNAL SERVER ERROR status.
      *
      * @param ex The exception thrown when player syncing fails

@@ -1,4 +1,5 @@
-Feature: Team feature
+@Team
+Feature: Team management and roster construction
 
   Scenario: Create a full fantasy team
     Given I create a fantasy team Cucumber team:
@@ -69,6 +70,7 @@ Feature: Team feature
     Then Patrick Mahomes should not be on team {team2}
     Then Saquon Barkley should not be on team {team2}
     Then Brock Bowers should not be on team {team2}
+    And the team "Cucumber team" should not exist in the database
 
   Scenario: Cannot delete team with invalid id
     When I delete the team with id 4266

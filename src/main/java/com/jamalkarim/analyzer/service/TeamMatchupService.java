@@ -7,6 +7,7 @@ import com.jamalkarim.analyzer.domain.models.Team;
 import com.jamalkarim.analyzer.dto.response.TeamMatchupResponseDTO;
 import com.jamalkarim.analyzer.entities.PlayerMatchupResultEntity;
 import com.jamalkarim.analyzer.entities.TeamMatchupResultEntity;
+import com.jamalkarim.analyzer.exceptions.InvalidMatchupException;
 import com.jamalkarim.analyzer.exceptions.MatchupNotFoundException;
 import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamMatchupRepository;
@@ -70,7 +71,7 @@ public class TeamMatchupService {
     public TeamMatchupResponseDTO createTeamMatchup(Team team1, Team team2) {
 
         if (Objects.equals(team1.getId(), team2.getId())) {
-            throw new RuntimeException("Cannot create matchup between the same team");
+            throw new InvalidMatchupException("Cannot create matchup between the same team");
         }
 
         Optional<TeamMatchupResultEntity> existing = teamMatchupRepository
