@@ -1,7 +1,6 @@
 package com.jamalkarim.analyzer.controller;
 
 import com.jamalkarim.analyzer.dto.requests.TeamRequest;
-import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.RestResponse;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import com.jamalkarim.analyzer.service.TeamService;

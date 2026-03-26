@@ -56,7 +56,8 @@ public class MatchupController {
      * @return An ApiResponse containing detailed matchup results
      */
     @PostMapping("/player/create")
-    @Operation(summary = "Analyze player vs player", description = "Performs a comparative analysis between two players, evaluating their Scare Factors and projectable stats for an upcoming matchup.")
+    @Operation(summary = "Analyze player vs player",
+            description = "Performs a comparative analysis between two players, evaluating their Scare Factors and projectable stats for an upcoming matchup.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully generated player matchup"),
             @ApiResponse(responseCode = "404", description = "One or both players not found", content = @Content)
@@ -76,7 +77,8 @@ public class MatchupController {
      * @return An ApiResponse containing the stored matchup details
      */
     @GetMapping("/player/{id:\\d+}")
-    @Operation(summary = "Get player matchup by ID", description = "Retrieves a previously calculated player matchup report from the database.")
+    @Operation(summary = "Get player matchup by ID",
+            description = "Retrieves a previously calculated player matchup report from the database.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved matchup"),
             @ApiResponse(responseCode = "404", description = "Matchup ID not found", content = @Content)
@@ -94,7 +96,8 @@ public class MatchupController {
      * @return An ApiResponse containing detailed team matchup results
      */
     @PostMapping("/team/create")
-    @Operation(summary = "Analyze team vs team", description = "Performs a comprehensive roster comparison between two fantasy teams, identifying positional advantages and projected winner.")
+    @Operation(summary = "Analyze team vs team",
+            description = "Performs a comprehensive roster comparison between two fantasy teams, identifying positional advantages and projected winner.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully generated team matchup"),
             @ApiResponse(responseCode = "404", description = "One or both teams not found", content = @Content)
@@ -113,7 +116,8 @@ public class MatchupController {
      * @return An ApiResponse containing the stored team matchup details
      */
     @GetMapping("/team/{id:\\d+}")
-    @Operation(summary = "Get team matchup by ID", description = "Retrieves a previously calculated team matchup report from the database.")
+    @Operation(summary = "Get team matchup by ID",
+            description = "Retrieves a previously calculated team matchup report from the database.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved matchup"),
             @ApiResponse(responseCode = "404", description = "Matchup ID not found", content = @Content)
