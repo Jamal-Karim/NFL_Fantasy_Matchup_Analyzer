@@ -13,7 +13,7 @@ Feature: Team management and roster construction
       | Travis Kelce     | KC   |
     Then the api call should be successful
     Then the team should be saved to the database
-    And the team id is saved to {team1}
+    And I save the response id to {team1}
     When I request the team with id {team1}
     Then the response body has:
       | data.name          | Full Cucumber team |
@@ -27,7 +27,7 @@ Feature: Team management and roster construction
       | Brock Bowers    | LV   |
     Then the api call should be successful
     Then the team should be saved to the database
-    And the team id is saved to {team2}
+    And I save the response id to {team2}
     Then Patrick Mahomes should be on team {team2}
     When I request the team with id {team2}
     And the response body has:
@@ -41,7 +41,7 @@ Feature: Team management and roster construction
       | Saquon Barkley  | PHI  |
       | Brock Bowers    | LV   |
     Then the api call should be successful
-    And the team id is saved to {team3}
+    And I save the response id to {team3}
     Then Patrick Mahomes should be on team {team3}
     When I update the team {team3} to Cucumber update:
       | name           | team |
@@ -62,7 +62,7 @@ Feature: Team management and roster construction
       | Saquon Barkley  | PHI  |
       | Brock Bowers    | LV   |
     Then the api call should be successful
-    And the team id is saved to {team4}
+    And I save the response id to {team4}
     Then Patrick Mahomes should be on team {team4}
     Then Saquon Barkley should be on team {team4}
     Then Brock Bowers should be on team {team4}
@@ -136,6 +136,7 @@ Feature: Team management and roster construction
       | Brock Bowers    | LV   |
     Then the api call should be successful
     Then the team should be saved to the database
+    And I save the response id to {team5}
     Given I create a fantasy team fantasy team 2:
       | name         | team |
       | Josh Allen   | BUF  |

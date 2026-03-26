@@ -21,6 +21,17 @@ public class CommonSteps extends BaseSteps {
     }
 
     /**
+     * Extracts the 'id' from the last API response and saves it to a variable.
+     *
+     * @param key The variable name to save the ID under (e.g., {id1})
+     */
+    @And("^I save the response id to (\\{\\w+\\})$")
+    public void saveResponseId(String key) {
+        Object id = testContext.getResponse().jsonPath().get("data.id");
+        testVariables.fillSafely(key, id);
+    }
+
+    /**
      * Verifies that the last API call returned a 200 OK status code.
      */
     @Then("^the api call should be successful$")

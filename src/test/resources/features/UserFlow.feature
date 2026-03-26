@@ -13,7 +13,7 @@ Feature: Full End to End Flow of a User
       | Travis Kelce     | KC   |
     Then the api call should be successful
     Then the team should be saved to the database
-    And the team id is saved to {team1}
+    And I save the response id to {team1}
 
     Given I create a fantasy team Fantasy Team 2:
       | name           | team |
@@ -26,7 +26,7 @@ Feature: Full End to End Flow of a User
       | Jamarr Chase   | CIN  |
     Then the api call should be successful
     Then the team should be saved to the database
-    And the team id is saved to {team2}
+    And I save the response id to {team2}
 
   Scenario: Run team matchup between 2 teams
     When I run the team matchup for {team1} and {team2}
