@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jamalkarim.analyzer.domain.models.Player;
 import com.jamalkarim.analyzer.dto.mock.MockPlayerDTO;
 import com.jamalkarim.analyzer.utils.PlayerMapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @Component
 @Profile({"dev", "automation"})
+@Primary
 public class MockPlayerProvider implements PlayerDataProvider {
     private final ObjectMapper objectMapper;
     private final PlayerMapper playerMapper;
