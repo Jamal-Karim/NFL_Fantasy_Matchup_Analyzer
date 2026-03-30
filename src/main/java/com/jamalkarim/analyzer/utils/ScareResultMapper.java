@@ -2,6 +2,7 @@ package com.jamalkarim.analyzer.utils;
 
 import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
+import com.jamalkarim.analyzer.dto.response.SimulationResponseDTO;
 import com.jamalkarim.analyzer.entities.ScareResultEntity;
 import org.springframework.stereotype.Component;
 
@@ -60,5 +61,14 @@ public class ScareResultMapper {
         scareResponseDTO.setPrimaryExplanation(scareResult.getPrimaryExplanation());
         scareResponseDTO.setSupportingExplanations(scareResult.getSupportingExplanations());
         return scareResponseDTO;
+    }
+
+    public SimulationResponseDTO responseToSimulationResponse(ScareResponseDTO scareResultResponse) {
+        SimulationResponseDTO simulationResponseDTO = new SimulationResponseDTO();
+        simulationResponseDTO.setName(scareResultResponse.getName());
+        simulationResponseDTO.setTeam(scareResultResponse.getTeam());
+        simulationResponseDTO.setPosition(scareResultResponse.getPosition());
+        simulationResponseDTO.setScareTier(scareResultResponse.getScareTier());
+        return simulationResponseDTO;
     }
 }

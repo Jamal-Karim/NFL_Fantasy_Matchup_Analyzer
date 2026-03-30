@@ -7,10 +7,10 @@ import lombok.Getter;
  */
 @Getter
 public enum Position {
-    QB(0.15),
+    QB(0.25),
     RB(0.25),
     WR(0.35),
-    TE(0.45);
+    TE(0.40);
 
     private final double baseVolatility;
 

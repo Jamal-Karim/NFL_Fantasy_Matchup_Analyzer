@@ -4,8 +4,10 @@ import com.jamalkarim.analyzer.domain.enums.Position;
 import com.jamalkarim.analyzer.dto.response.RestResponse;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
+import com.jamalkarim.analyzer.dto.response.SimulationResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
+import com.jamalkarim.analyzer.service.SimulationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.extensions.Extension;
@@ -29,6 +31,7 @@ public class PlayerController {
 
     private final PlayerService playerService;
     private final ScareResultService scareResultService;
+    private final SimulationService simulationService;
 
     /**
      * Constructs a new PlayerController with the required services.
@@ -36,9 +39,10 @@ public class PlayerController {
      * @param playerService      Service for managing player data
      * @param scareResultService Service for managing Scare Factor analysis
      */
-    public PlayerController(PlayerService playerService, ScareResultService scareResultService) {
+    public PlayerController(PlayerService playerService, ScareResultService scareResultService, SimulationService simulationService) {
         this.playerService = playerService;
         this.scareResultService = scareResultService;
+        this.simulationService = simulationService;
     }
 
     /**
@@ -101,6 +105,18 @@ public class PlayerController {
         return RestResponse.success(scareResultService.getScareResultById(id));
     }
 
+    @GetMapping("/{id:\\d+}/simulation")
+    @Operation(summary = "Run Monte Carlo Simulation for a Player",
+            description = "Executes a Monte Carlo simulation across 10,000 iterations to project a player's range of outcomes",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-order", value = "04")))
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully generated simulation"),
+            @ApiResponse(responseCode = "404", description = "Player ID not found", content = @Content)
+    })
+    public RestResponse<SimulationResponseDTO> getSimulationOfPlayerById(@PathVariable long id) {
+        return RestResponse.success(simulationService.runSimulation(id));
+    }
+
     /**
      * Retrieves a paginated list of all players, optionally filtered by position.
      * Results are sorted by Scare Factor in descending order.
@@ -113,7 +129,7 @@ public class PlayerController {
     @GetMapping
     @Operation(summary = "List all players",
             description = "Retrieves a paginated list of all players currently in the system, ranked by scare factor descending.",
-            extensions = @Extension(properties = @ExtensionProperty(name = "x-order", value = "04")))
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-order", value = "05")))
     public RestResponse<Page<PlayerResponseDTO>> getAllPlayers(
             @Parameter(description = "Filter results by position (e.g., QB, RB)") @RequestParam(required = false) Position position,
             @Parameter(description = "Zero-indexed page number") @RequestParam(defaultValue = "0") int page,
