@@ -481,6 +481,126 @@
           ]
         },
         {
+          "name": "Run Monte Carlo Simulation for a Player",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/player/34/simulation",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "player",
+                "34",
+                "simulation"
+              ]
+            },
+            "description": "StartFragment\n\n## Run Monte Carlo Simulation for a Player by ID\n\nExecutes a Monte Carlo simulation for a specific NFL player using 10,000 iterations to project their range of fantasy outcomes. Use this endpoint to evaluate a player’s volatility, including their average, ceiling, floor, and boom/bust probabilities.\n\n---\n\n### HTTP Method & URL\n\n```\nGET {{base_url}}/api/player/{id}/simulation\n\n ```\n\n---\n\n### Path Parameters\n\n| Parameter | Type | Required | Description |\n| --- | --- | --- | --- |\n| `id` | integer | Yes | The unique identifier of the player (e.g., `34` for Josh Jacobs). |\n\n---\n\n### Example Request\n\n``` http\nGET http://localhost:8081/api/player/34/simulation\n\n ```\n\n---\n\n### Example Responses\n\n#### 200 — Successful Simulation Execution\n\nReturned when the player is found and the Monte Carlo simulation is successfully executed.\n\n``` json\n{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Operation successful\",\n  \"timestamp\": \"2026-03-30T22:08:05.752544600Z\",\n  \"data\": {\n    \"name\": \"Josh Jacobs\",\n    \"nfl_team\": \"GB\",\n    \"position\": \"RB\",\n    \"scare_tier\": \"SCARY\",\n    \"avg_scare_score\": 86.42,\n    \"best_scare_score\": 98.74,\n    \"worst_scare_score\": 76.9,\n    \"boom_percentage\": 7.89,\n    \"bust_percentage\": 0.15\n  }\n}\n\n ```\n\n#### 404 — Failure of Player ID That Does Not Exist\n\nReturned when no player can be found with the given ID.\n\n``` json\n{\n  \"status\": \"ERROR\",\n  \"message\": \"Player with ID '0' not found\",\n  \"timestamp\": \"2026-03-30T22:08:05.752544600Z\",\n  \"data\": null\n}\n\n ```\n\nEndFragment"
+          },
+          "response": [
+            {
+              "name": "Simulation for an Elite Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/69/simulation",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "69",
+                    "simulation"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 30 Mar 2026 22:07:09 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-30T22:07:09.125756800Z\",\n    \"data\": {\n        \"name\": \"Jamarr Chase\",\n        \"nfl_team\": \"CIN\",\n        \"position\": \"WR\",\n        \"scare_tier\": \"ELITE\",\n        \"avg_scare_score\": 94.2,\n        \"best_scare_score\": 100,\n        \"worst_scare_score\": 80.8,\n        \"boom_percentage\": 40.02,\n        \"bust_percentage\": 1.24\n    }\n}"
+            },
+            {
+              "name": "Simulation for an Average Player",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/player/47/simulation",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "player",
+                    "47",
+                    "simulation"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 30 Mar 2026 22:07:32 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Operation successful\",\n    \"timestamp\": \"2026-03-30T22:07:32.681319300Z\",\n    \"data\": {\n        \"name\": \"Jaylen Warren\",\n        \"nfl_team\": \"PIT\",\n        \"position\": \"RB\",\n        \"scare_tier\": \"AVERAGE\",\n        \"avg_scare_score\": 60.43,\n        \"best_scare_score\": 72.9,\n        \"worst_scare_score\": 50.63,\n        \"boom_percentage\": 11.32,\n        \"bust_percentage\": 2.24\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "GET All Players",
           "request": {
             "method": "GET",
