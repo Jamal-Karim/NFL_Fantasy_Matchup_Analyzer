@@ -110,3 +110,25 @@ Feature: Player Retrieval and Scare Factor Analysis
     And the response body has:
       | data.numberOfElements | 2 |
       | data.totalElements    | 4 |
+
+  Scenario: Run Monte Carlo simulation for an Elite QB
+    When I run the simulation on the player with id {id1}
+    Then the api call should be successful
+    And the simulation results should be valid
+    And the response body has:
+      | data.name       | Josh Allen |
+      | data.nfl_team   | BUF        |
+      | data.position   | QB         |
+      | data.scare_tier | ELITE      |
+
+  Scenario: Run simulation for a player that does not exist
+    When I run the simulation on the player with id 9999
+    Then the response body has:
+      | status_code | 404                   |
+      | status      | ERROR                 |
+      | message     | Player does not exist |
+
+  Scenario: Run simulation with invalid ID format
+    When I run the simulation on the player with id abc
+    Then the response body has:
+      | status_code | 404 |

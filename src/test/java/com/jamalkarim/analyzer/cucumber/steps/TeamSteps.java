@@ -37,7 +37,7 @@ public class TeamSteps extends BaseSteps {
 
         if (response.getStatusCode() == 200) {
             TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
-            testContext.setTeamResponseDTO(teamResponseDTO);
+            testContext.setTeamResponse(teamResponseDTO);
         }
 
         response.prettyPrint();
@@ -60,7 +60,7 @@ public class TeamSteps extends BaseSteps {
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
             TeamResponseDTO teamResponseDTO = response.jsonPath().getObject("data", TeamResponseDTO.class);
-            testContext.setTeamResponseDTO(teamResponseDTO);
+            testContext.setTeamResponse(teamResponseDTO);
         }
 
         response.prettyPrint();
@@ -87,7 +87,7 @@ public class TeamSteps extends BaseSteps {
 
     @And("^the team id is saved to (\\{\\w+\\})$")
     public void saveTeamId(String id) {
-        testVariables.fillSafely(id, testContext.getTeamResponseDTO().getId());
+        testVariables.fillSafely(id, testContext.getTeamResponse().getId());
     }
 
     /**
@@ -95,7 +95,7 @@ public class TeamSteps extends BaseSteps {
      */
     @Then("^the team should be saved to the database$")
     public void verifyTeamSavedToDB() {
-        dbUtils.verifyTeamIsSaved(testContext.getTeamResponseDTO().getName());
+        dbUtils.verifyTeamIsSaved(testContext.getTeamResponse().getName());
     }
 
     /**
@@ -114,7 +114,7 @@ public class TeamSteps extends BaseSteps {
         Response response = client.getTeamById(String.valueOf(testVariables.getKey(id)));
         response.prettyPrint();
         testContext.setResponse(response);
-        testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+        testContext.setTeamResponse(response.jsonPath().getObject("data", TeamResponseDTO.class));
     }
 
     /**
@@ -126,7 +126,7 @@ public class TeamSteps extends BaseSteps {
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
-            testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+            testContext.setTeamResponse(response.jsonPath().getObject("data", TeamResponseDTO.class));
         }
     }
 
@@ -156,7 +156,7 @@ public class TeamSteps extends BaseSteps {
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
-            testContext.setTeamResponseDTO(response.jsonPath().getObject("data", TeamResponseDTO.class));
+            testContext.setTeamResponse(response.jsonPath().getObject("data", TeamResponseDTO.class));
         }
     }
 }

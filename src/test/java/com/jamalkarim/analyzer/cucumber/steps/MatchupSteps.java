@@ -33,7 +33,7 @@ public class MatchupSteps extends BaseSteps {
 
         if (response.getStatusCode() == 200) {
             PlayerMatchupResponseDTO playerMatchupResponseDTO = response.jsonPath().getObject("data", PlayerMatchupResponseDTO.class);
-            testContext.setPlayerMatchupResponseDTO(playerMatchupResponseDTO);
+            testContext.setPlayerMatchupResponse(playerMatchupResponseDTO);
         }
 
         response.prettyPrint();
@@ -52,7 +52,7 @@ public class MatchupSteps extends BaseSteps {
 
         if (response.getStatusCode() == 200) {
             TeamMatchupResponseDTO teamMatchupResponseDTO = response.jsonPath().getObject("data", TeamMatchupResponseDTO.class);
-            testContext.setTeamMatchupResponseDTO(teamMatchupResponseDTO);
+            testContext.setTeamMatchupResponse(teamMatchupResponseDTO);
         }
 
         response.prettyPrint();
@@ -63,7 +63,7 @@ public class MatchupSteps extends BaseSteps {
      */
     @And("^I save the player matchup id to (\\{\\w+\\})")
     public void savePlayerMatchupId(String id) {
-        testVariables.saveIdToVariable(id, testContext.getPlayerMatchupResponseDTO().getId());
+        testVariables.saveIdToVariable(id, testContext.getPlayerMatchupResponse().getId());
     }
 
     /**
@@ -75,7 +75,7 @@ public class MatchupSteps extends BaseSteps {
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
-            testContext.setPlayerMatchupResponseDTO(response.jsonPath().getObject("data", PlayerMatchupResponseDTO.class));
+            testContext.setPlayerMatchupResponse(response.jsonPath().getObject("data", PlayerMatchupResponseDTO.class));
         }
     }
 
@@ -84,7 +84,7 @@ public class MatchupSteps extends BaseSteps {
      */
     @And("^I save the team matchup id to (\\{\\w+\\})")
     public void saveTeamMatchupId(String id) {
-        testVariables.saveIdToVariable(id, testContext.getTeamMatchupResponseDTO().getId());
+        testVariables.saveIdToVariable(id, testContext.getTeamMatchupResponse().getId());
     }
 
     /**
@@ -96,7 +96,7 @@ public class MatchupSteps extends BaseSteps {
         response.prettyPrint();
         testContext.setResponse(response);
         if (response.getStatusCode() == 200) {
-            testContext.setTeamMatchupResponseDTO(response.jsonPath().getObject("data", TeamMatchupResponseDTO.class));
+            testContext.setTeamMatchupResponse(response.jsonPath().getObject("data", TeamMatchupResponseDTO.class));
         }
     }
 
@@ -105,7 +105,7 @@ public class MatchupSteps extends BaseSteps {
      */
     @Then("^the player matchup should be saved to the database$")
     public void verifyPlayerMatchupSaved() {
-        PlayerMatchupResponseDTO playerMatchup = testContext.getPlayerMatchupResponseDTO();
+        PlayerMatchupResponseDTO playerMatchup = testContext.getPlayerMatchupResponse();
         dbUtils.verifyPlayerMatchupIsSaved(playerMatchup.getId(), playerMatchup.getLoser(), playerMatchup.getWinner());
     }
 
@@ -114,7 +114,7 @@ public class MatchupSteps extends BaseSteps {
      */
     @Then("^the amount of player matchups saved to the database is (\\d+)$")
     public void verifyTeamMatchupSaved(String amount) {
-        TeamMatchupResponseDTO teamMatchup = testContext.getTeamMatchupResponseDTO();
+        TeamMatchupResponseDTO teamMatchup = testContext.getTeamMatchupResponse();
         dbUtils.verifyTeamMatchupIsSaved(teamMatchup.getId(), Integer.parseInt(amount));
     }
 }

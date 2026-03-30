@@ -5,6 +5,7 @@ import com.jamalkarim.analyzer.cucumber.utils.DbUtils;
 import com.jamalkarim.analyzer.cucumber.utils.TestVariables;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
+import com.jamalkarim.analyzer.dto.response.SimulationResponseDTO;
 import com.jamalkarim.analyzer.dto.response.TeamResponseDTO;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -114,6 +115,33 @@ public class PlayerSteps extends BaseSteps {
     }
 
     /**
+     * Runs the Monte Carlo simulation for a player by their database ID.
+     */
+    @When("^I run the simulation on the player with id ([a-zA-Z\\d\\{\\}]+)$")
+    public void runSimulation(String id) {
+        Response response = client.runSimulation(testVariables.resolve(id));
+        response.prettyPrint();
+        testContext.setResponse(response);
+        if (response.getStatusCode() == 200) {
+            testContext.setSimulationResponse(response.jsonPath().getObject("data", SimulationResponseDTO.class));
+        }
+    }
+
+    /**
+     * Verifies that the Monte Carlo simulation returned valid statistical metrics.
+     */
+    @Then("^the simulation results should be valid$")
+    public void verifySimulationResults() {
+        SimulationResponseDTO simulation = testContext.getSimulationResponse();
+        assertThat(simulation).isNotNull();
+        assertThat(simulation.getMeanScareScore()).isBetween(0.0, 100.0);
+        assertThat(simulation.getFloorScore()).isLessThanOrEqualTo(simulation.getMeanScareScore());
+        assertThat(simulation.getCeilingScore()).isGreaterThanOrEqualTo(simulation.getMeanScareScore());
+        assertThat(simulation.getBoomPercentage()).isBetween(0.0, 100.0);
+        assertThat(simulation.getBustPercentage()).isBetween(0.0, 100.0);
+    }
+
+    /**
      * Asserts that the player's Scare Score is greater than a specified threshold.
      */
     @Then("^the scare factor should be greater than ([0-9]+)$")
@@ -160,10 +188,10 @@ public class PlayerSteps extends BaseSteps {
     public void verifyScareExplanation(String expectedExplanation) {
         String primary = testContext.getScareResponse().getPrimaryExplanation();
         List<String> supporting = testContext.getScareResponse().getSupportingExplanations();
-        
+
         boolean foundInPrimary = primary != null && primary.contains(expectedExplanation);
         boolean foundInSupporting = supporting.stream().anyMatch(e -> e.contains(expectedExplanation));
-        
+
         assertThat(foundInPrimary || foundInSupporting)
                 .withFailMessage("Explanation [%s] not found in primary or supporting explanations.", expectedExplanation)
                 .isTrue();
