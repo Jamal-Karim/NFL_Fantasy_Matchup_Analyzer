@@ -9,9 +9,12 @@ import com.jamalkarim.analyzer.repository.PlayerRepository;
 import com.jamalkarim.analyzer.repository.TeamMatchupRepository;
 import com.jamalkarim.analyzer.repository.TeamRepository;
 import org.junit.jupiter.api.Assertions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.Connection;
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,6 +27,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @Component
 public class DbUtils {
 
+    private static final Logger log = LoggerFactory.getLogger(DbUtils.class);
     private final JdbcTemplate jdbcTemplate;
     private final PlayerRepository playerRepository;
     private final TeamRepository teamRepository;
@@ -74,13 +78,13 @@ public class DbUtils {
     public void verifyPlayerStatsAreSaved(String playerName) {
         String sql = "SELECT p.name, current_stats_id, last_stats_id " +
                 "FROM player p WHERE p.name = ?";
-        
+
         Map<String, Object> results = jdbcTemplate.queryForMap(sql, playerName);
-        
+
         assertThat(results.get("current_stats_id"))
                 .withFailMessage("Current season stats for player %s were not saved.", playerName)
                 .isNotNull();
-        
+
         assertThat(results.get("last_stats_id"))
                 .withFailMessage("Last season stats for player %s were not saved.", playerName)
                 .isNotNull();
@@ -175,15 +179,37 @@ public class DbUtils {
      * Uses FOREIGN_KEY_CHECKS=0 to handle circular dependencies.
      */
     public void clearDatabase() {
-        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0");
+        try (Connection conn = jdbcTemplate.getDataSource().getConnection()) {
+            String dbName = conn.getMetaData().getDatabaseProductName();
+            boolean isH2 = "H2".equalsIgnoreCase(dbName);
 
-        jdbcTemplate.execute("TRUNCATE TABLE player_matchup");
-        jdbcTemplate.execute("TRUNCATE TABLE team_matchup");
-        jdbcTemplate.execute("TRUNCATE TABLE scare_result");
-        jdbcTemplate.execute("TRUNCATE TABLE player");
-        jdbcTemplate.execute("TRUNCATE TABLE stats");
-        jdbcTemplate.execute("TRUNCATE TABLE team");
+            log.info("Cleaning up {} database...", dbName);
 
-        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1");
+            if (isH2) {
+                jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY FALSE");
+            } else {
+                jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0");
+            }
+
+            log.debug("Truncating fantasy analyzer tables...");
+            jdbcTemplate.execute("TRUNCATE TABLE player_matchup");
+            jdbcTemplate.execute("TRUNCATE TABLE team_matchup");
+            jdbcTemplate.execute("TRUNCATE TABLE scare_result");
+            jdbcTemplate.execute("TRUNCATE TABLE player");
+            jdbcTemplate.execute("TRUNCATE TABLE stats");
+            jdbcTemplate.execute("TRUNCATE TABLE team");
+
+            if (isH2) {
+                jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY TRUE");
+            } else {
+                jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1");
+            }
+
+            log.info("Database cleanup successful.");
+
+        } catch (Exception e) {
+            log.error("CRITICAL: Database cleanup failed! Check for deadlocks or active connections.", e);
+            throw new RuntimeException(e);
+        }
     }
 }

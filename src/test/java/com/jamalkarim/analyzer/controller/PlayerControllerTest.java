@@ -3,6 +3,7 @@ package com.jamalkarim.analyzer.controller;
 import com.jamalkarim.analyzer.dto.response.PlayerResponseDTO;
 import com.jamalkarim.analyzer.service.PlayerService;
 import com.jamalkarim.analyzer.service.ScareResultService;
+import com.jamalkarim.analyzer.service.SimulationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -24,6 +25,9 @@ public class PlayerControllerTest {
 
     @MockitoBean
     private PlayerService playerService;
+
+    @MockitoBean
+    private SimulationService simulationService;
 
     @MockitoBean
     private ScareResultService scareResultService;
