@@ -69,6 +69,15 @@ public class ApiClient {
     }
 
     /**
+     * Fetches the Monte Carlo simulation for a specific player.
+     */
+    public Response runSimulation(String id) {
+        return baseRequest()
+                .when()
+                .get(PLAYER_BASE + "/" + id + "/simulation");
+    }
+
+    /**
      * Fetches all players with optional filtering and pagination.
      */
     public Response getAllPlayers(String position, Integer page, Integer size) {

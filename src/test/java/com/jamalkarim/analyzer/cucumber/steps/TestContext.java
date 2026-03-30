@@ -12,23 +12,37 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class TestContext {
-    /** The last HTTP response received. */
+    /**
+     * The last HTTP response received.
+     */
     private Response response;
-    
-    /** Parsed player details from the response. */
+
+    /**
+     * Parsed player details from the response.
+     */
     private PlayerResponseDTO playerResponse;
-    
-    /** Detailed Scare Factor analysis from the response. */
+
+    /**
+     * Detailed Scare Factor analysis from the response.
+     */
     private ScareResponseDTO scareResponse;
-    
-    /** Parsed team details from the response. */
-    private TeamResponseDTO teamResponseDTO;
-    
-    /** Result of a player-to-player matchup. */
-    private PlayerMatchupResponseDTO playerMatchupResponseDTO;
-    
-    /** Result of a team-to-team matchup. */
-    private TeamMatchupResponseDTO teamMatchupResponseDTO;
+
+    private SimulationResponseDTO simulationResponse;
+
+    /**
+     * Parsed team details from the response.
+     */
+    private TeamResponseDTO teamResponse;
+
+    /**
+     * Result of a player-to-player matchup.
+     */
+    private PlayerMatchupResponseDTO playerMatchupResponse;
+
+    /**
+     * Result of a team-to-team matchup.
+     */
+    private TeamMatchupResponseDTO teamMatchupResponse;
 
     /**
      * Resets all fields to null.
@@ -38,8 +52,8 @@ public class TestContext {
         this.response = null;
         this.playerResponse = null;
         this.scareResponse = null;
-        this.teamResponseDTO = null;
-        this.playerMatchupResponseDTO = null;
-        this.teamMatchupResponseDTO = null;
+        this.teamResponse = null;
+        this.playerMatchupResponse = null;
+        this.teamMatchupResponse = null;
     }
 }
