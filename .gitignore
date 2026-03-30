@@ -1,41 +1,44 @@
-HELP.md
+### --- System Files --- ###
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### --- Build Tooling (Maven) --- ###
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-.env
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+!**/wrapper/maven-wrapper.jar
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
+### --- IDEs --- ###
+.idea/
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
 .vscode/
+.settings/
+.classpath
+.project
+.factorypath
+.springBeans
+.sts4-cache
 
-### NFL Analyzer Custom Ignores ###
-# Ignore the real configuration containing secrets
+### --- Environment & Secrets --- ###
+.env
+.env.local
+.env.*.local
 src/main/resources/application.properties
-
-# Do NOT ignore the template example file
 !src/main/resources/application.properties.example
+
+### --- Logs --- ###
+*.log
+logs/
+
+### --- Docker & Temp --- ###
+data/
+temp/
