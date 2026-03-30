@@ -105,6 +105,13 @@ public class PlayerController {
         return RestResponse.success(scareResultService.getScareResultById(id));
     }
 
+    /**
+     * Executes a Monte Carlo simulation for a player to project their range of fantasy outcomes.
+     * Runs 10,000 iterations based on the player's base stats and positional volatility.
+     *
+     * @param id The ID of the player to simulate
+     * @return An ApiResponse containing the simulation results (floor, ceiling, boom/bust)
+     */
     @GetMapping("/{id:\\d+}/simulation")
     @Operation(summary = "Run Monte Carlo Simulation for a Player",
             description = "Executes a Monte Carlo simulation across 10,000 iterations to project a player's range of outcomes",
