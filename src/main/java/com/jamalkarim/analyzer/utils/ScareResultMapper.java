@@ -63,6 +63,13 @@ public class ScareResultMapper {
         return scareResponseDTO;
     }
 
+    /**
+     * Maps a basic ScareResponseDTO to a SimulationResponseDTO template.
+     * Used as the starting point for Monte Carlo analysis.
+     *
+     * @param scareResultResponse The base analysis response
+     * @return A SimulationResponseDTO with identifying fields populated
+     */
     public SimulationResponseDTO responseToSimulationResponse(ScareResponseDTO scareResultResponse) {
         SimulationResponseDTO simulationResponseDTO = new SimulationResponseDTO();
         simulationResponseDTO.setName(scareResultResponse.getName());

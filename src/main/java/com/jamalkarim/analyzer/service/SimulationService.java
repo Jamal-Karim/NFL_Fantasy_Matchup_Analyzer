@@ -1,6 +1,5 @@
 package com.jamalkarim.analyzer.service;
 
-import com.jamalkarim.analyzer.domain.scoring.ScareResult;
 import com.jamalkarim.analyzer.dto.response.ScareResponseDTO;
 import com.jamalkarim.analyzer.dto.response.SimulationResponseDTO;
 import com.jamalkarim.analyzer.utils.NumberUtils;
@@ -10,17 +9,34 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Service for executing Monte Carlo simulations to project fantasy player performance.
+ * This service uses probabilistic modeling to provide a range of outcomes beyond simple averages.
+ */
 @Service
 public class SimulationService {
 
     private final ScareResultMapper scareResultMapper;
     private final ScareResultService scareResultService;
 
+    /**
+     * Constructs a SimulationService with required dependencies.
+     *
+     * @param scareResultMapper  The mapper for Scare Factor results
+     * @param scareResultService The service for retrieving base Scare Factor data
+     */
     public SimulationService(ScareResultMapper scareResultMapper, ScareResultService scareResultService) {
         this.scareResultMapper = scareResultMapper;
         this.scareResultService = scareResultService;
     }
 
+    /**
+     * Executes a Monte Carlo simulation for a specific player across 10,000 iterations.
+     * Projects a range of outcomes including production floors, ceilings, and boom/bust probabilities.
+     *
+     * @param id The unique identifier of the player to simulate
+     * @return A SimulationResponseDTO containing probabilistic performance metrics
+     */
     public SimulationResponseDTO runSimulation(long id) {
 
         ScareResponseDTO scareResult = scareResultService.getScareResultById(id);
@@ -46,6 +62,13 @@ public class SimulationService {
         return responseDTO;
     }
 
+    /**
+     * Analyzes the raw results of a Monte Carlo simulation to extract meaningful statistical insights.
+     * Calculates median, floor (10th percentile), ceiling (95th percentile), and boom/bust probabilities.
+     *
+     * @param results Array of simulated scores from 10,000 iterations
+     * @param result  The DTO to be populated with statistical analysis
+     */
     private void analyzeResults(double[] results, SimulationResponseDTO result) {
         Arrays.sort(results);
         double median = results[5000];
