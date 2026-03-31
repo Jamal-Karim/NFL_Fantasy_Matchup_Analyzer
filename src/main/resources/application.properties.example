@@ -12,6 +12,10 @@ spring.jpa.properties.hibernate.format_sql=false
 server.port=8081
 
 rapidapi.key=YOUR_API_KEY
+
+# Get your API key from:
+# https://rapidapi.com/Creativesdev/api/nfl-api-data
+
 rapidapi.host=nfl-api-data.p.rapidapi.com
 
 springdoc.swagger-ui.path=/swagger-ui.html
