@@ -12,6 +12,8 @@
       "passing_yards": 3668,
       "passing_tds": 25,
       "interceptions": 10,
+      "completions": 319,
+      "passing_attempts": 460,
       "rushing_attempts": 112,
       "rushing_yards": 579,
       "rushing_tds": 14
@@ -22,6 +24,8 @@
       "passing_yards": 3731,
       "passing_tds": 28,
       "interceptions": 6,
+      "completions": 307,
+      "passing_attempts": 483,
       "rushing_attempts": 102,
       "rushing_yards": 531,
       "rushing_tds": 12
@@ -40,6 +44,8 @@
       "passing_yards": 4394,
       "passing_tds": 31,
       "interceptions": 8,
+      "completions": 354,
+      "passing_attempts": 492,
       "rushing_attempts": 103,
       "rushing_yards": 450,
       "rushing_tds": 4
@@ -50,6 +56,8 @@
       "passing_yards": 2276,
       "passing_tds": 15,
       "interceptions": 10,
+      "completions": 225,
+      "passing_attempts": 338,
       "rushing_attempts": 54,
       "rushing_yards": 421,
       "rushing_tds": 2
@@ -68,6 +76,8 @@
       "passing_yards": 2549,
       "passing_tds": 21,
       "interceptions": 7,
+      "completions": 192,
+      "passing_attempts": 302,
       "rushing_attempts": 67,
       "rushing_yards": 349,
       "rushing_tds": 2
@@ -78,6 +88,8 @@
       "passing_yards": 4172,
       "passing_tds": 41,
       "interceptions": 4,
+      "completions": 316,
+      "passing_attempts": 474,
       "rushing_attempts": 139,
       "rushing_yards": 915,
       "rushing_tds": 10
@@ -96,6 +108,8 @@
       "passing_yards": 1809,
       "passing_tds": 17,
       "interceptions": 5,
+      "completions": 173,
+      "passing_attempts": 259,
       "rushing_attempts": 14,
       "rushing_yards": 41,
       "rushing_tds": 0
@@ -106,6 +120,8 @@
       "passing_yards": 4918,
       "passing_tds": 43,
       "interceptions": 9,
+      "completions": 460,
+      "passing_attempts": 652,
       "rushing_attempts": 42,
       "rushing_yards": 201,
       "rushing_tds": 2
@@ -124,6 +140,8 @@
       "passing_yards": 1262,
       "passing_tds": 8,
       "interceptions": 3,
+      "completions": 114,
+      "passing_attempts": 188,
       "rushing_attempts": 58,
       "rushing_yards": 278,
       "rushing_tds": 2
@@ -134,6 +152,8 @@
       "passing_yards": 3568,
       "passing_tds": 25,
       "interceptions": 9,
+      "completions": 331,
+      "passing_attempts": 480,
       "rushing_attempts": 148,
       "rushing_yards": 891,
       "rushing_tds": 6
@@ -152,6 +172,8 @@
       "passing_yards": 3224,
       "passing_tds": 25,
       "interceptions": 6,
+      "completions": 294,
+      "passing_attempts": 454,
       "rushing_attempts": 105,
       "rushing_yards": 421,
       "rushing_tds": 9
@@ -162,6 +184,8 @@
       "passing_yards": 2903,
       "passing_tds": 18,
       "interceptions": 5,
+      "completions": 248,
+      "passing_attempts": 361,
       "rushing_attempts": 150,
       "rushing_yards": 630,
       "rushing_tds": 14
@@ -180,6 +204,8 @@
       "passing_yards": 3727,
       "passing_tds": 26,
       "interceptions": 13,
+      "completions": 340,
+      "passing_attempts": 512,
       "rushing_attempts": 83,
       "rushing_yards": 498,
       "rushing_tds": 4
@@ -190,6 +216,8 @@
       "passing_yards": 3870,
       "passing_tds": 23,
       "interceptions": 3,
+      "completions": 332,
+      "passing_attempts": 504,
       "rushing_attempts": 69,
       "rushing_yards": 306,
       "rushing_tds": 4
@@ -208,6 +236,8 @@
       "passing_yards": 2272,
       "passing_tds": 15,
       "interceptions": 5,
+      "completions": 216,
+      "passing_attempts": 339,
       "rushing_attempts": 86,
       "rushing_yards": 487,
       "rushing_tds": 2
@@ -227,6 +257,8 @@
       "passing_yards": 4007,
       "passing_tds": 29,
       "interceptions": 12,
+      "completions": 341,
+      "passing_attempts": 560,
       "rushing_attempts": 82,
       "rushing_yards": 359,
       "rushing_tds": 9
@@ -237,6 +269,8 @@
       "passing_yards": 2045,
       "passing_tds": 11,
       "interceptions": 7,
+      "completions": 172,
+      "passing_attempts": 284,
       "rushing_attempts": 26,
       "rushing_yards": 119,
       "rushing_tds": 3
@@ -255,6 +289,8 @@
       "passing_yards": 3942,
       "passing_tds": 27,
       "interceptions": 7,
+      "completions": 330,
+      "passing_attempts": 568,
       "rushing_attempts": 77,
       "rushing_yards": 388,
       "rushing_tds": 2
@@ -265,6 +301,8 @@
       "passing_yards": 3541,
       "passing_tds": 20,
       "interceptions": 6,
+      "completions": 351,
+      "passing_attempts": 562,
       "rushing_attempts": 81,
       "rushing_yards": 489,
       "rushing_tds": 1
@@ -283,6 +321,8 @@
       "passing_yards": 4552,
       "passing_tds": 30,
       "interceptions": 10,
+      "completions": 404,
+      "passing_attempts": 600,
       "rushing_attempts": 53,
       "rushing_yards": 177,
       "rushing_tds": 1
@@ -293,6 +333,8 @@
       "passing_yards": 1978,
       "passing_tds": 11,
       "interceptions": 8,
+      "completions": 185,
+      "passing_attempts": 286,
       "rushing_attempts": 13,
       "rushing_yards": 54,
       "rushing_tds": 1
@@ -311,6 +353,8 @@
       "passing_yards": 2167,
       "passing_tds": 20,
       "interceptions": 10,
+      "completions": 197,
+      "passing_attempts": 284,
       "rushing_attempts": 33,
       "rushing_yards": 147,
       "rushing_tds": 2
@@ -321,6 +365,8 @@
       "passing_yards": 3864,
       "passing_tds": 20,
       "interceptions": 12,
+      "completions": 300,
+      "passing_attempts": 455,
       "rushing_attempts": 66,
       "rushing_yards": 323,
       "rushing_tds": 5
@@ -339,6 +385,8 @@
       "passing_yards": 3587,
       "passing_tds": 22,
       "interceptions": 11,
+      "completions": 315,
+      "passing_attempts": 502,
       "rushing_attempts": 64,
       "rushing_yards": 422,
       "rushing_tds": 2
@@ -349,6 +397,8 @@
       "passing_yards": 3928,
       "passing_tds": 26,
       "interceptions": 11,
+      "completions": 392,
+      "passing_attempts": 581,
       "rushing_attempts": 58,
       "rushing_yards": 307,
       "rushing_tds": 3
@@ -367,6 +417,8 @@
       "passing_yards": 4707,
       "passing_tds": 46,
       "interceptions": 8,
+      "completions": 388,
+      "passing_attempts": 597,
       "rushing_attempts": 29,
       "rushing_yards": 10,
       "rushing_tds": 0
@@ -377,6 +429,8 @@
       "passing_yards": 3762,
       "passing_tds": 20,
       "interceptions": 8,
+      "completions": 340,
+      "passing_attempts": 517,
       "rushing_attempts": 30,
       "rushing_yards": 41,
       "rushing_tds": 0
@@ -395,6 +449,8 @@
       "passing_yards": 3931,
       "passing_tds": 25,
       "interceptions": 11,
+      "completions": 388,
+      "passing_attempts": 612,
       "rushing_attempts": 83,
       "rushing_yards": 356,
       "rushing_tds": 5
@@ -405,6 +461,8 @@
       "passing_yards": 3775,
       "passing_tds": 29,
       "interceptions": 12,
+      "completions": 376,
+      "passing_attempts": 567,
       "rushing_attempts": 92,
       "rushing_yards": 430,
       "rushing_tds": 3
@@ -433,6 +491,8 @@
       "passing_yards": 4564,
       "passing_tds": 34,
       "interceptions": 8,
+      "completions": 393,
+      "passing_attempts": 578,
       "rushing_yards": 45,
       "rushing_tds": 0
     },
@@ -442,6 +502,8 @@
       "passing_yards": 4629,
       "passing_tds": 37,
       "interceptions": 12,
+      "completions": 390,
+      "passing_attempts": 539,
       "rushing_yards": 55,
       "rushing_tds": 0
     }
@@ -459,6 +521,8 @@
       "passing_yards": 3381,
       "passing_tds": 23,
       "interceptions": 6,
+      "completions": 291,
+      "passing_attempts": 439,
       "rushing_yards": 199,
       "rushing_tds": 2
     },
@@ -468,6 +532,8 @@
       "passing_yards": 3389,
       "passing_tds": 25,
       "interceptions": 11,
+      "completions": 268,
+      "passing_attempts": 425,
       "rushing_yards": 83,
       "rushing_tds": 1
     }
@@ -485,6 +551,8 @@
       "passing_yards": 3693,
       "passing_tds": 26,
       "interceptions": 11,
+      "completions": 343,
+      "passing_attempts": 543,
       "rushing_yards": 382,
       "rushing_tds": 3
     },
@@ -494,6 +562,8 @@
       "passing_yards": 4500,
       "passing_tds": 41,
       "interceptions": 16,
+      "completions": 407,
+      "passing_attempts": 570,
       "rushing_yards": 378,
       "rushing_tds": 3
     }
@@ -511,6 +581,8 @@
       "passing_yards": 4048,
       "passing_tds": 25,
       "interceptions": 14,
+      "completions": 323,
+      "passing_attempts": 477,
       "rushing_yards": 95,
       "rushing_tds": 2
     },
@@ -520,6 +592,8 @@
       "passing_yards": 4319,
       "passing_tds": 35,
       "interceptions": 12,
+      "completions": 361,
+      "passing_attempts": 545,
       "rushing_yards": 212,
       "rushing_tds": 1
     }
@@ -537,6 +611,8 @@
       "passing_yards": 3011,
       "passing_tds": 23,
       "interceptions": 11,
+      "completions": 304,
+      "passing_attempts": 478,
       "rushing_yards": 216,
       "rushing_tds": 2
     },
@@ -546,6 +622,8 @@
       "passing_yards": 2403,
       "passing_tds": 15,
       "interceptions": 9,
+      "completions": 234,
+      "passing_attempts": 384,
       "rushing_yards": 249,
       "rushing_tds": 3
     }
