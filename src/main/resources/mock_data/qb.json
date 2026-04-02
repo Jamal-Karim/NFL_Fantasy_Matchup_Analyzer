@@ -627,5 +627,228 @@
       "rushing_yards": 249,
       "rushing_tds": 3
     }
+  },
+  {
+    "name": "Malik Willis",
+    "nfl_team": "MIA",
+    "position": "QB",
+    "draft_pick": 86,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 4,
+      "passing_yards": 422,
+      "passing_tds": 3,
+      "interceptions": 0,
+      "completions": 30,
+      "passing_attempts": 35,
+      "rushing_attempts": 22,
+      "rushing_yards": 123,
+      "rushing_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 7,
+      "passing_yards": 550,
+      "passing_tds": 3,
+      "interceptions": 0,
+      "completions": 40,
+      "passing_attempts": 54,
+      "rushing_attempts": 20,
+      "rushing_yards": 138,
+      "rushing_tds": 1
+    }
+  },
+  {
+    "name": "Kyler Murray",
+    "nfl_team": "MIN",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 5,
+      "passing_yards": 962,
+      "passing_tds": 6,
+      "interceptions": 3,
+      "completions": 110,
+      "passing_attempts": 161,
+      "rushing_attempts": 29,
+      "rushing_yards": 173,
+      "rushing_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3851,
+      "passing_tds": 21,
+      "interceptions": 11,
+      "completions": 372,
+      "passing_attempts": 541,
+      "rushing_attempts": 78,
+      "rushing_yards": 572,
+      "rushing_tds": 5
+    }
+  },
+  {
+    "name": "Tyler Shough",
+    "nfl_team": "NO",
+    "position": "QB",
+    "draft_pick": 40,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 11,
+      "passing_yards": 2384,
+      "passing_tds": 10,
+      "interceptions": 6,
+      "completions": 221,
+      "passing_attempts": 327,
+      "rushing_attempts": 45,
+      "rushing_yards": 186,
+      "rushing_tds": 3
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "C.J. Stroud",
+    "nfl_team": "HOU",
+    "position": "QB",
+    "draft_pick": 2,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 14,
+      "passing_yards": 3041,
+      "passing_tds": 19,
+      "interceptions": 8,
+      "completions": 273,
+      "passing_attempts": 423,
+      "rushing_attempts": 48,
+      "rushing_yards": 209,
+      "rushing_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3727,
+      "passing_tds": 20,
+      "interceptions": 12,
+      "completions": 336,
+      "passing_attempts": 532,
+      "rushing_attempts": 52,
+      "rushing_yards": 233,
+      "rushing_tds": 0
+    }
+  },
+  {
+    "name": "Cam Ward",
+    "nfl_team": "TEN",
+    "position": "QB",
+    "draft_pick": 1,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "passing_yards": 3169,
+      "passing_tds": 15,
+      "interceptions": 7,
+      "completions": 323,
+      "passing_attempts": 540,
+      "rushing_attempts": 39,
+      "rushing_yards": 159,
+      "rushing_tds": 2
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Daniel Jones",
+    "nfl_team": "IND",
+    "position": "QB",
+    "draft_pick": 6,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 13,
+      "passing_yards": 3101,
+      "passing_tds": 19,
+      "interceptions": 8,
+      "completions": 261,
+      "passing_attempts": 384,
+      "rushing_attempts": 45,
+      "rushing_yards": 164,
+      "rushing_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 10,
+      "passing_yards": 2070,
+      "passing_tds": 8,
+      "interceptions": 7,
+      "completions": 216,
+      "passing_attempts": 341,
+      "rushing_attempts": 67,
+      "rushing_yards": 265,
+      "rushing_tds": 0
+    }
+  },
+  {
+    "name": "Shedeur Sanders",
+    "nfl_team": "CLE",
+    "position": "QB",
+    "draft_pick": 144,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 8,
+      "passing_yards": 1400,
+      "passing_tds": 7,
+      "interceptions": 10,
+      "completions": 120,
+      "passing_attempts": 212,
+      "rushing_attempts": 21,
+      "rushing_yards": 169,
+      "rushing_tds": 1
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Aaron Rodgers",
+    "nfl_team": "PIT",
+    "position": "QB",
+    "draft_pick": 24,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "passing_yards": 3322,
+      "passing_tds": 24,
+      "interceptions": 7,
+      "completions": 327,
+      "passing_attempts": 498,
+      "rushing_attempts": 21,
+      "rushing_yards": 61,
+      "rushing_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "passing_yards": 3897,
+      "passing_tds": 28,
+      "interceptions": 11,
+      "completions": 368,
+      "passing_attempts": 584,
+      "rushing_attempts": 22,
+      "rushing_yards": 107,
+      "rushing_tds": 0
+    }
   }
 ]

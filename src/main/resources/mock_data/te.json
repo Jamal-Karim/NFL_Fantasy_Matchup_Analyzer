@@ -414,5 +414,213 @@
       "receiving_yards": 477,
       "receiving_tds": 6
     }
+  },
+  {
+    "name": "Cole Kmet",
+    "nfl_team": "CHI",
+    "position": "TE",
+    "draft_pick": 43,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 30,
+      "receiving_yards": 347,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 47,
+      "receiving_yards": 474,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "T.J. Hockenson",
+    "nfl_team": "MIN",
+    "position": "TE",
+    "draft_pick": 8,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 95,
+      "receiving_yards": 960,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "receptions": 82,
+      "receiving_yards": 905,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Pat Freiermuth",
+    "nfl_team": "PIT",
+    "position": "TE",
+    "draft_pick": 55,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 41,
+      "receiving_yards": 486,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 65,
+      "receiving_yards": 653,
+      "receiving_tds": 7
+    }
+  },
+  {
+    "name": "Evan Engram",
+    "nfl_team": "DEN",
+    "position": "TE",
+    "draft_pick": 23,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 50,
+      "receiving_yards": 461,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 9,
+      "receptions": 47,
+      "receiving_yards": 365,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Michael Mayer",
+    "nfl_team": "LV",
+    "position": "TE",
+    "draft_pick": 35,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 13,
+      "receptions": 35,
+      "receiving_yards": 328,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 11,
+      "receptions": 21,
+      "receiving_yards": 156,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Tyler Higbee",
+    "nfl_team": "LAR",
+    "position": "TE",
+    "draft_pick": 110,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 10,
+      "receptions": 25,
+      "receiving_yards": 281,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 3,
+      "receptions": 8,
+      "receiving_yards": 66,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Cade Otton",
+    "nfl_team": "TB",
+    "position": "TE",
+    "draft_pick": 106,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 59,
+      "receiving_yards": 572,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 14,
+      "receptions": 59,
+      "receiving_yards": 600,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Kenyon Sadiq",
+    "nfl_team": "FA",
+    "position": "TE",
+    "draft_pick": 18,
+    "is_rookie": true,
+    "is_injured": false,
+    "current_season_stats": null,
+    "last_season_stats": null
+  },
+  {
+    "name": "Mike Gesicki",
+    "nfl_team": "CIN",
+    "position": "TE",
+    "draft_pick": 42,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 13,
+      "receptions": 28,
+      "receiving_yards": 307,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 65,
+      "receiving_yards": 665,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Chig Okonkwo",
+    "nfl_team": "WAS",
+    "position": "TE",
+    "draft_pick": 143,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 56,
+      "receiving_yards": 560,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 52,
+      "receiving_yards": 479,
+      "receiving_tds": 2
+    }
   }
 ]
