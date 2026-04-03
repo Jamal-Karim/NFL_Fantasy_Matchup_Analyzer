@@ -99,6 +99,58 @@ The system uses a multi-layered testing approach:
 
 This ensures both correctness of logic and reliability of API workflows.
 
+## 📈 Model Evaluation (2025 Fantasy Season)
+
+### Overview
+
+- **Total team matchups evaluated:** 24
+- **Total player matchups evaluated:** 72
+- **Prediction accuracy:** 58.33%
+
+### Confidence Calibration
+
+| Confidence Level    | Accuracy |
+|:--------------------|:---------|
+| **High (>80%)**     | 55.56%   |
+| **Medium (60–80%)** | 54.55%   |
+| **Low (<60%)**      | 75.00%   |
+
+> The model demonstrated higher accuracy in low-confidence matchups, indicating that high-confidence predictions may
+> overestimate certainty in a highly volatile environment.
+
+![Model Accuracy by Confidence Level](./images/Model%20Accuracy%20by%20Confidence%20Level.png)
+
+### Comparison to Traditional Projections
+
+- **App outperformed platform:** 6 matchups
+- **Platform outperformed app:** 7 matchups
+- **Both correct:** 8 matchups
+- **Both incorrect:** 3 matchups
+
+![Model App vs Platform](./images/Model%20Performance%20of%20Application%20vs%20Platform.png)
+
+Overall, the system matched or outperformed traditional projections in **58%** of matchups, demonstrating competitive
+performance.
+
+### Player vs Team-Level Performance
+
+- **Average player-level accuracy:** 50.75%
+- **Team-level accuracy:** 58.33%
+
+While individual player predictions were near baseline, aggregating them into team-level analysis improved overall
+accuracy, validating the system’s design.
+
+### Failure Analysis
+
+Most incorrect predictions were attributed to:
+
+1. Player injuries or unexpected performance drops
+2. Missing positional data (kicker/defense)
+3. Extreme boom/bust performances
+4. Giving too much scare factor potential to really volatile players
+
+These factors highlight the inherent volatility of fantasy football and areas for future improvement.
+
 ## ⚙️ DevOps & Infrastructure
 
 - **Docker:** Containerizes the application and MySQL database for consistent local environments
