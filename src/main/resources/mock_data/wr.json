@@ -784,5 +784,433 @@
     "is_injured": false,
     "current_season_stats": null,
     "last_season_stats": null
+  },
+  {
+    "name": "Jordan Addison",
+    "nfl_team": "MIN",
+    "position": "WR",
+    "draft_pick": 23,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 14,
+      "receptions": 42,
+      "receiving_yards": 610,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "receptions": 63,
+      "receiving_yards": 875,
+      "receiving_tds": 9
+    }
+  },
+  {
+    "name": "Chris Godwin Jr.",
+    "nfl_team": "TB",
+    "position": "WR",
+    "draft_pick": 84,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 9,
+      "receptions": 33,
+      "receiving_yards": 360,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 7,
+      "receptions": 50,
+      "receiving_yards": 576,
+      "receiving_tds": 5
+    }
+  },
+  {
+    "name": "Ricky Pearsall",
+    "nfl_team": "SF",
+    "position": "WR",
+    "draft_pick": 31,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 9,
+      "receptions": 36,
+      "receiving_yards": 528,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 11,
+      "receptions": 31,
+      "receiving_yards": 400,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Quentin Johnston",
+    "nfl_team": "LAC",
+    "position": "WR",
+    "draft_pick": 21,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 14,
+      "receptions": 51,
+      "receiving_yards": 735,
+      "receiving_tds": 8
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "receptions": 55,
+      "receiving_yards": 711,
+      "receiving_tds": 8
+    }
+  },
+  {
+    "name": "Jakobi Meyers",
+    "nfl_team": "JAX",
+    "position": "WR",
+    "draft_pick": 257,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 75,
+      "receiving_yards": 835,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "receptions": 87,
+      "receiving_yards": 1027,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Michael Pittman Jr.",
+    "nfl_team": "PIT",
+    "position": "WR",
+    "draft_pick": 34,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 80,
+      "receiving_yards": 784,
+      "receiving_tds": 7
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "receptions": 69,
+      "receiving_yards": 808,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Parker Washington",
+    "nfl_team": "JAX",
+    "position": "WR",
+    "draft_pick": 185,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 58,
+      "receiving_yards": 847,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 32,
+      "receiving_yards": 390,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Wan'Dale Robinson",
+    "nfl_team": "TEN",
+    "position": "WR",
+    "draft_pick": 43,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 92,
+      "receiving_yards": 1014,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 93,
+      "receiving_yards": 699,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Stefon Diggs",
+    "nfl_team": "FA",
+    "position": "WR",
+    "draft_pick": 146,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 85,
+      "receiving_yards": 1013,
+      "receiving_tds": 4
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 8,
+      "receptions": 47,
+      "receiving_yards": 496,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Xavier Worthy",
+    "nfl_team": "KC",
+    "position": "WR",
+    "draft_pick": 28,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 14,
+      "receptions": 42,
+      "receiving_yards": 532,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 59,
+      "receiving_yards": 638,
+      "receiving_tds": 6
+    }
+  },
+  {
+    "name": "Deebo Samuel Sr.",
+    "nfl_team": "FA",
+    "position": "WR",
+    "draft_pick": 36,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 72,
+      "receiving_yards": 727,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "receptions": 51,
+      "receiving_yards": 670,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Troy Franklin",
+    "nfl_team": "DEN",
+    "position": "WR",
+    "draft_pick": 102,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 65,
+      "receiving_yards": 709,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "receptions": 28,
+      "receiving_yards": 263,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Tre Tucker",
+    "nfl_team": "LV",
+    "position": "WR",
+    "draft_pick": 100,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 57,
+      "receiving_yards": 696,
+      "receiving_tds": 5
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 47,
+      "receiving_yards": 539,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Cooper Kupp",
+    "nfl_team": "SEA",
+    "position": "WR",
+    "draft_pick": 69,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 47,
+      "receiving_yards": 593,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 12,
+      "receptions": 67,
+      "receiving_yards": 710,
+      "receiving_tds": 6
+    }
+  },
+  {
+    "name": "Romeo Doubs",
+    "nfl_team": "NE",
+    "position": "WR",
+    "draft_pick": 132,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "receptions": 55,
+      "receiving_yards": 724,
+      "receiving_tds": 6
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 13,
+      "receptions": 46,
+      "receiving_yards": 601,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Jerry Jeudy",
+    "nfl_team": "CLE",
+    "position": "WR",
+    "draft_pick": 15,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 50,
+      "receiving_yards": 602,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 90,
+      "receiving_yards": 1229,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Travis Hunter",
+    "nfl_team": "JAX",
+    "position": "WR",
+    "draft_pick": 2,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 7,
+      "receptions": 28,
+      "receiving_yards": 298,
+      "receiving_tds": 1
+    },
+    "last_season_stats": null
+  },
+  {
+    "name": "Calvin Ridley",
+    "nfl_team": "TEN",
+    "position": "WR",
+    "draft_pick": 26,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 7,
+      "receptions": 17,
+      "receiving_yards": 303,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "receptions": 64,
+      "receiving_yards": 1017,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Xavier Legette",
+    "nfl_team": "CAR",
+    "position": "WR",
+    "draft_pick": 32,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 15,
+      "receptions": 35,
+      "receiving_yards": 363,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "receptions": 49,
+      "receiving_yards": 497,
+      "receiving_tds": 4
+    }
+  },
+  {
+    "name": "Jayden Higgins",
+    "nfl_team": "HOU",
+    "position": "WR",
+    "draft_pick": 34,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "receptions": 41,
+      "receiving_yards": 525,
+      "receiving_tds": 6
+    },
+    "last_season_stats": null
   }
 ]

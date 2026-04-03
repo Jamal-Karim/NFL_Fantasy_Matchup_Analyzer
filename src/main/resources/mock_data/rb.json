@@ -602,5 +602,265 @@
       "receiving_yards": 310,
       "receiving_tds": 0
     }
+  },
+  {
+    "name": "Rico Dowdle",
+    "nfl_team": "PIT",
+    "position": "RB",
+    "draft_pick": 257,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "rushing_yards": 1076,
+      "rushing_tds": 5,
+      "receptions": 39,
+      "receiving_yards": 297,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "rushing_yards": 1079,
+      "rushing_tds": 2,
+      "receptions": 39,
+      "receiving_yards": 249,
+      "receiving_tds": 3
+    }
+  },
+  {
+    "name": "Tony Pollard",
+    "nfl_team": "TEN",
+    "position": "RB",
+    "draft_pick": 128,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "rushing_yards": 1082,
+      "rushing_tds": 5,
+      "receptions": 33,
+      "receiving_yards": 206,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 16,
+      "rushing_yards": 1079,
+      "rushing_tds": 5,
+      "receptions": 41,
+      "receiving_yards": 238,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Zach Charbonnet",
+    "nfl_team": "SEA",
+    "position": "RB",
+    "draft_pick": 52,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 16,
+      "rushing_yards": 730,
+      "rushing_tds": 12,
+      "receptions": 20,
+      "receiving_yards": 144,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "rushing_yards": 569,
+      "rushing_tds": 8,
+      "receptions": 42,
+      "receiving_yards": 340,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Tyrone Tracy Jr.",
+    "nfl_team": "NYG",
+    "position": "RB",
+    "draft_pick": 166,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 15,
+      "rushing_yards": 740,
+      "rushing_tds": 2,
+      "receptions": 36,
+      "receiving_yards": 288,
+      "receiving_tds": 2
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "rushing_yards": 839,
+      "rushing_tds": 5,
+      "receptions": 38,
+      "receiving_yards": 284,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Kenneth Gainwell",
+    "nfl_team": "TB",
+    "position": "RB",
+    "draft_pick": 150,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 17,
+      "rushing_yards": 537,
+      "rushing_tds": 5,
+      "receptions": 73,
+      "receiving_yards": 486,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "rushing_yards": 290,
+      "rushing_tds": 1,
+      "receptions": 16,
+      "receiving_yards": 116,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Alvin Kamara",
+    "nfl_team": "NO",
+    "position": "RB",
+    "draft_pick": 67,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 11,
+      "rushing_yards": 471,
+      "rushing_tds": 1,
+      "receptions": 33,
+      "receiving_yards": 186,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 14,
+      "rushing_yards": 950,
+      "rushing_tds": 6,
+      "receptions": 68,
+      "receiving_yards": 543,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Aaron Jones Sr.",
+    "nfl_team": "MIN",
+    "position": "RB",
+    "draft_pick": 182,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 12,
+      "rushing_yards": 548,
+      "rushing_tds": 2,
+      "receptions": 28,
+      "receiving_yards": 199,
+      "receiving_tds": 1
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "rushing_yards": 1138,
+      "rushing_tds": 5,
+      "receptions": 51,
+      "receiving_yards": 408,
+      "receiving_tds": 2
+    }
+  },
+  {
+    "name": "Chuba Hubbard",
+    "nfl_team": "CAR",
+    "position": "RB",
+    "draft_pick": 126,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 15,
+      "rushing_yards": 511,
+      "rushing_tds": 1,
+      "receptions": 30,
+      "receiving_yards": 223,
+      "receiving_tds": 3
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 15,
+      "rushing_yards": 1195,
+      "rushing_tds": 10,
+      "receptions": 43,
+      "receiving_yards": 171,
+      "receiving_tds": 1
+    }
+  },
+  {
+    "name": "Najee Harris",
+    "nfl_team": "LAC",
+    "position": "RB",
+    "draft_pick": 24,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 3,
+      "rushing_yards": 61,
+      "rushing_tds": 0,
+      "receptions": 3,
+      "receiving_yards": 25,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 17,
+      "rushing_yards": 1043,
+      "rushing_tds": 6,
+      "receptions": 36,
+      "receiving_yards": 283,
+      "receiving_tds": 0
+    }
+  },
+  {
+    "name": "Michael Carter",
+    "nfl_team": "TEN",
+    "position": "RB",
+    "draft_pick": 107,
+    "is_rookie": false,
+    "is_injured": false,
+    "current_season_stats": {
+      "season": 2025,
+      "games_played": 13,
+      "rushing_yards": 333,
+      "rushing_tds": 1,
+      "receptions": 33,
+      "receiving_yards": 267,
+      "receiving_tds": 0
+    },
+    "last_season_stats": {
+      "season": 2024,
+      "games_played": 3,
+      "rushing_yards": 131,
+      "rushing_tds": 1,
+      "receptions": 11,
+      "receiving_yards": 57,
+      "receiving_tds": 0
+    }
   }
 ]
