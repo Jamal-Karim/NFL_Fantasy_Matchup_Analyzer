@@ -118,7 +118,7 @@ This ensures both correctness of logic and reliability of API workflows.
 > The model demonstrated higher accuracy in low-confidence matchups, indicating that high-confidence predictions may
 > overestimate certainty in a highly volatile environment.
 
-![Model Accuracy by Confidence Level](./images/Model%20Accuracy%20by%20Confidence%20Level.png)
+![Model Accuracy by Confidence Level](./docs/analysis/Model%20Accuracy%20by%20Confidence%20Level.png)
 
 ### Comparison to Traditional Projections
 
@@ -127,7 +127,7 @@ This ensures both correctness of logic and reliability of API workflows.
 - **Both correct:** 8 matchups
 - **Both incorrect:** 3 matchups
 
-![Model App vs Platform](./images/Model%20Performance%20of%20Application%20vs%20Platform.png)
+![Model App vs Platform](./docs/analysis/Model%20Performance%20of%20Application%20vs%20Platform.png)
 
 Overall, the system matched or outperformed traditional projections in **58%** of matchups, demonstrating competitive
 performance.
@@ -400,7 +400,7 @@ Once the application starts, you can verify functionality by:
     - Explore and test the API endpoints directly.
 - **Mock Data:** The system initializes with a default set of players.
     - Try calling the analysis endpoint for Bijan Robinson (ID: 22).
-- **Postman Collection:** Import the collection located in `/postman` to explore prebuilt requests.
+- **Postman Collection:** Import the collection located in `/docs/api` to explore prebuilt requests.
 
 ## 🧠 Key Design Decisions
 
