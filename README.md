@@ -1,48 +1,101 @@
 # 🏈 NFL Fantasy Analyzer
 
-A backend engine that models performance variability and analyzes NFL players and fantasy teams to determine matchup
-strength, win probability, and performance risk insights.
+A backend system for probabilistic fantasy football analysis, combining a custom scoring model with a Monte Carlo
+simulation to evaluate matchup outcomes, player performance, and risk.
 
 ## ❗ Problem
 
 Most fantasy football tools rely on a single projected point value for each player. These projections don’t capture how
 consistent or volatile a player is, forcing users to manually infer risk from averages alone.
 
-As a result, players with the same projected score can have completely different performance profiles, making it
+As a result, players with identical projections can have completely different performance profiles, making it
 difficult to make informed decisions.
 
 ## 💡 Solution
 
-This system introduces a concept called **Scare Factor**, a metric that quantifies how impactful and unpredictable a
-player is based on:
+This system introduces a custom scoring model called **Scare Factor**, designed to quantify player impact and
+performance volatility.
 
-- current and historical performance
-- positional context
-- compares performance metrics against elite positional baselines (2023–2025 NFL seasons)
+Scare Factor is computed using:
+
+- historical and current performance data
+- positional context and role
+- comparisons against elite positional baselines (2023–2025 seasons)
+
+To move beyond static projections, the system also incorporates a **Monte Carlo simulation** to model performance
+variability and generate probabilistic outcomes.
 
 For team-level analysis, individual player scores are aggregated to evaluate overall team strength.
 
-The system also provides explanations for each analysis, helping users understand *why* one player or team is favored
-over another.
+Each analysis includes generated explanations, helping users understand *why* one player or team is favored.
 
 ## ✨ Key Features
 
-- Player analysis based on historical and current performance data
+- **Scare Factor scoring model** for measuring player impact and volatility
+- **Monte Carlo simulation engine (10,000 iterations)** for probabilistic performance modeling
 - Player vs Player and Team vs Team matchup evaluation
-- Scare Factor scoring engine for measuring player impact and volatility
-- Monte Carlo simulation for probabilistic performance modeling
+- Aggregated team analysis based on individual player scoring
+- Dynamically generated explanations for all matchup results
 - RESTful APIs for player, team, and matchup analysis
 - Fantasy team creation and roster management
-- Dynamic explanations generated for all matchup results
 
 ## 🧱 System Architecture
 
-The application follows a layered architecture:
+The system is designed around a layered architecture with a pluggable data provider system and a sync-on-demand
+retrieval strategy.
 
-- **Controller Layer:** Exposes REST endpoints for players, teams, and matchups
-- **Service Layer:** Handles business logic, data retrieval, and analysis workflows
-- **Domain Layer:** Encapsulates core scoring logic, simulation models, and matchup evaluation
-- **Repository Layer:** Manages persistence using Spring Data JPA
+<details>
+<summary><b>Click to expand: System Architecture Diagram</b></summary>
+<br>
+
+```mermaid
+graph TD
+subgraph API_Layer [Web API Layer]
+PC[PlayerController]
+TC[TeamController]
+MC[MatchupController]
+end
+
+    subgraph Service_Layer [Business Logic & Orchestration]
+        PS[PlayerService]
+        TS[TeamService]
+        MS[Matchup Services]
+        SS[SimulationService]
+    end
+
+    subgraph Analysis_Engine [Domain Analysis Engine]
+        direction LR
+        Analyzers[Matchup Analyzers]
+        Scare[Scare Factor Logic]
+        Models[Domain Models]
+    end
+
+    subgraph Data_Orchestration [Data Access & Sync]
+        PDP[PlayerDataProvider]
+        Repo[JPA Repositories]
+    end
+
+    subgraph Infrastructure [External & Storage]
+        direction LR
+        API[External NFL API]
+        Mock[Mock JSON Provider]
+        DB[(H2/Relational DB)]
+    end
+
+    %% Flows
+    API_Layer --> Service_Layer
+    
+    Service_Layer --> Analysis_Engine
+    Service_Layer --> Data_Orchestration
+    
+    Analysis_Engine --> Data_Orchestration
+    
+    Data_Orchestration --> Infrastructure
+    PDP -.-> API & Mock
+    Repo -.-> DB
+```
+
+</details>
 
 ### 🔁 Data Flow
 
@@ -51,6 +104,21 @@ The application follows a layered architecture:
 3. Data is loaded from the database if present, otherwise fetched from an external API
 4. Domain models perform analysis (scoring, matchup evaluation)
 5. Results are mapped to response DTOs and returned to the client
+
+**For a detailed technical look at the internal logic, see our documentation:**
+
+* [Data Retrieval Flowchart](./docs/diagrams/data-providers.md) — Visualizes the Sync-on-Demand logic.
+* [Request Lifecycle Sequence](./docs/diagrams/team-matchup-request-lifecycle.md) — End-to-end API execution flow.
+
+### 🧠 Key Design Decisions
+
+- **Scare Factor metric:** Created to quantify player impact and volatility beyond traditional projections
+- **Sync-on-demand data strategy:** Ensures high availability by dynamically fetching and persisting player stats only
+  when local records are missing
+- **Monte Carlo simulation:** Models uncertainty and distribution of outcomes rather than relying on static averages
+- **Pluggable data providers:** Supports both mock and external APIs for testability and flexibility
+- **Layered architecture:** Enforces separation of concerns for maintainability and scalability
+- **Profile-based configuration:** Enables different environments without code changes
 
 ### 🧩 Data Providers
 
@@ -65,19 +133,10 @@ This design allows for reliable development while still supporting real-world da
 
 The system includes a Monte Carlo simulation endpoint for player performance analysis.
 
-Each simulation:
-
-- Runs 10,000 iterations of the Scare Factor calculation
-- Uses a Gaussian distribution to model performance variability
-- Applies position-specific variance to reflect real-world inconsistency
-
-From these simulations, the system calculates:
-
-- Average performance
-- Floor (low-end outcome)
-- Ceiling (high-end outcome)
-
-This allows the system to move beyond static projections and provide a probabilistic view of player performance.
+* **Logic:** Runs 10,000 iterations per request, applying position-specific Gaussian variance to reflect real-world
+  volatility.
+* **Outcomes:** Calculates probabilistic Floor, Ceiling, and Median outcomes to identify "Boom/Bust" potential.
+* **Deep Dive:** [View Simulation Engine Logic & Flowchart](./docs/diagrams/monte-carlo-simulation.md)
 
 ## 🗄️ Data Model
 
@@ -118,8 +177,6 @@ This ensures both correctness of logic and reliability of API workflows.
 > The model demonstrated higher accuracy in low-confidence matchups, indicating that high-confidence predictions may
 > overestimate certainty in a highly volatile environment.
 
-![Model Accuracy by Confidence Level](./images/Model%20Accuracy%20by%20Confidence%20Level.png)
-
 ### Comparison to Traditional Projections
 
 - **App outperformed platform:** 6 matchups
@@ -127,7 +184,7 @@ This ensures both correctness of logic and reliability of API workflows.
 - **Both correct:** 8 matchups
 - **Both incorrect:** 3 matchups
 
-![Model App vs Platform](./images/Model%20Performance%20of%20Application%20vs%20Platform.png)
+![Model App vs Platform](./docs/analysis/Model%20Performance%20of%20Application%20vs%20Platform.png)
 
 Overall, the system matched or outperformed traditional projections in **58%** of matchups, demonstrating competitive
 performance.
@@ -396,19 +453,10 @@ No additional setup is required — Docker handles all dependencies and configur
 Once the application starts, you can verify functionality by:
 
 - **Swagger UI:** [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
--
     - Explore and test the API endpoints directly.
 - **Mock Data:** The system initializes with a default set of players.
     - Try calling the analysis endpoint for Bijan Robinson (ID: 22).
-- **Postman Collection:** Import the collection located in `/postman` to explore prebuilt requests.
-
-## 🧠 Key Design Decisions
-
-- **Scare Factor metric:** Created to quantify player impact and volatility beyond traditional projections
-- **Monte Carlo simulation:** Models uncertainty and distribution of outcomes rather than relying on static averages
-- **Pluggable data providers:** Supports both mock and external APIs for testability and flexibility
-- **Layered architecture:** Enforces separation of concerns for maintainability and scalability
-- **Profile-based configuration:** Enables different environments without code changes
+- **Postman Collection:** Import the collection located in `/docs/api` to explore prebuilt requests.
 
 ## 🔮 Future Improvements
 
