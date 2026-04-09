@@ -1,3 +1,4 @@
+```mermaid
 graph TD
 subgraph API_Layer [Web API Layer]
 PC[PlayerController]
@@ -42,3 +43,4 @@ end
     Data_Orchestration --> Infrastructure
     PDP -.-> API & Mock
     Repo -.-> DB
+```

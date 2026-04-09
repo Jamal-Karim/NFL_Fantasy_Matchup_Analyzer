@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
 autonumber
 participant Client
@@ -27,3 +28,4 @@ participant Repository
 
     MatchupService-->>Controller: response DTO
     Controller-->>Client: 200 OK
+```

@@ -1,3 +1,4 @@
+```mermaid
 graph TD
 Start([Start Simulation]) --> Fetch[Fetch Player Scare Factor & Volatility]
 
@@ -22,3 +23,4 @@ Start([Start Simulation]) --> Fetch[Fetch Player Scare Factor & Volatility]
 
     style Engine fill:#f9f9f9,stroke:#333,stroke-dasharray: 5 5
     style Analysis fill:#f0f4ff,stroke:#005cc5
+```

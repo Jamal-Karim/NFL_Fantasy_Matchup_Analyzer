@@ -1,3 +1,4 @@
+```mermaid
 graph TD
 Start([Request Player Data]) --> CheckDB{Player in Database?}
 
@@ -15,3 +16,4 @@ Start([Request Player Data]) --> CheckDB{Player in Database?}
    
     ReturnDB --> End([End])
     ReturnNew --> End
+```
