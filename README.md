@@ -1,6 +1,6 @@
 # 🏈 NFL Fantasy Analyzer
 
-A backend system for probabilistic fantasy football analysis, combining a custom scoring model with Monte Carlo
+A backend system for probabilistic fantasy football analysis, combining a custom scoring model with a Monte Carlo
 simulation to evaluate matchup outcomes, player performance, and risk.
 
 ## ❗ Problem
@@ -14,7 +14,7 @@ difficult to make informed decisions.
 ## 💡 Solution
 
 This system introduces a custom scoring model called **Scare Factor**, designed to quantify player impact and
-performance volatility
+performance volatility.
 
 Scare Factor is computed using:
 
@@ -133,8 +133,6 @@ This design allows for reliable development while still supporting real-world da
 
 The system includes a Monte Carlo simulation endpoint for player performance analysis.
 
-To move beyond static projections, the system utilizes a Monte Carlo simulation to model performance probability.
-
 * **Logic:** Runs 10,000 iterations per request, applying position-specific Gaussian variance to reflect real-world
   volatility.
 * **Outcomes:** Calculates probabilistic Floor, Ceiling, and Median outcomes to identify "Boom/Bust" potential.
@@ -178,8 +176,6 @@ This ensures both correctness of logic and reliability of API workflows.
 
 > The model demonstrated higher accuracy in low-confidence matchups, indicating that high-confidence predictions may
 > overestimate certainty in a highly volatile environment.
-
-![Model Accuracy by Confidence Level](./docs/analysis/Model%20Accuracy%20by%20Confidence%20Level.png)
 
 ### Comparison to Traditional Projections
 
